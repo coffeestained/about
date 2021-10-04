@@ -84,7 +84,8 @@ function headerScrollFunction() {
   120deg, #155799, #fff);
   position: sticky;
   top: 0px;
-  height: 336px;
+  padding-top: 80px;
+  padding-bottom: 80px;
  }
  
  .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
@@ -93,19 +94,23 @@ function headerScrollFunction() {
  
   @keyframes collapse {
    from {
-     height: 336px;
+   padding-top: 80px;
+   padding-bottom: 80px;
    }
    to {
-    height: 20px;
+   padding-top: 10px;
+   padding-bottom: 10px;
    }
  }
 
  @keyframes expand {
    from {
-     height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
    }
    to {
-     height: 336px;
+    padding-top: 80px;
+    padding-bottom: 80px;
    }
  }
 </style>
