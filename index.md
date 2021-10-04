@@ -2,7 +2,7 @@
 
 Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).
 
-Get connected at linkedin.com/in/matthew-grady-7b752a163
+Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
 
 ```markdown
 Syntax highlighted code block
