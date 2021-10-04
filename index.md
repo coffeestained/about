@@ -5,11 +5,13 @@
 
 <div id="about"></div>
 
+In my free time, I like to enjoy time with my wife, friends, Twitch, gaming and a wide array of outdoorsy stuff.
+
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
  
 <script>
  
-document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
+document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 
 const header = document.getElementsByTagName("header");
 window.onscroll = function() {headerScrollFunction()};
@@ -81,6 +83,14 @@ function headerScrollFunction() {
    }
  }
 </style>
+
+### Stuff & Things (But not limited to)
+1. Agile
+2. Node
+3. Python
+4. Angular
+5. MongoDB, Postgres, MySql, MsSql
+6. Linux & Windows
 
 ### Special Thanks
 
