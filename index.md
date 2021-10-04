@@ -1,6 +1,6 @@
 
 
- ### Coffee Stained
+## Coffee Stained
 
 <img src="./Designer _Flatline.svg" class="top-right">
 <img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
@@ -22,11 +22,11 @@ function headerScrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     header[0].classList.remove('expand');
     header[0].classList.add('collapse');
-    document.body.scrollTop = 51;
+    window.scrollTo(0, 51);
   } else {
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
-    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
 }
 </script>
