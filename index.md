@@ -1,13 +1,11 @@
 ## Coffee Stained
 
-Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).
+<div id="about"></div>
 
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
-
-<div id="contact"></div>
  
 <script>
-document.getElementById("contact").innerHTML = "Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)";
+document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).";
 </script>
 
 ```markdown
