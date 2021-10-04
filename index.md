@@ -21,12 +21,12 @@ function headerScrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     header[0].classList.remove('expand');
     header[0].classList.add('collapse');
-    window.scrollTo(0, 665);
-  } else {
+  } 
+ if (document.body.scrollTop == 0) {
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
-    window.scrollTo(0, 0);
-  }
+
+ }
 }
 </script>
 
