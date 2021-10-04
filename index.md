@@ -4,10 +4,10 @@ Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).
 
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
 
-<div id="text"></div>
+<div id="contact"></div>
  
 <script>
-document.getElementById("text").innerHTML = "Text added by JavaScript code";
+document.getElementById("contact").innerHTML = "Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)";
 </script>
 
 ```markdown
