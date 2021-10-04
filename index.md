@@ -6,7 +6,7 @@
 
 <div id="about"></div>
 
-In my free time, I like to enjoy time with my wife, friends, Twitch, gaming and a wide array of outdoorsy stuff.
+In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube, gaming and a wide array of outdoorsy stuff.
 
 Get connected at [LinkedIn](https://linkedin.com/in/matthew-grady-7b752a16)
 
@@ -16,24 +16,20 @@ document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agi
 
 const header = document.getElementsByTagName("header");
 window.onscroll = function() {headerScrollFunction()};
-
-let headerState = 1;
  
 function headerScrollFunction() {
    console.log(document.body.scrollTop, document.documentElement.scrollTop);
   if (document.documentElement.scrollTop > 80) {
-    if (headerState == 1) {
-     header[0].classList.remove('expand');
-     header[0].classList.add('collapse');
-     headerState = 0;
-    }
+
+   header[0].classList.remove('expand');
+   header[0].classList.add('collapse');
+
   } 
  else if (document.documentElement.scrollTop == 0) {
-    if (headerState == 0) {
-     header[0].classList.remove('collapse');
-     header[0].classList.add('expand');
-     headerState = 1;
-    }
+
+    header[0].classList.remove('collapse');
+    header[0].classList.add('expand');
+
  }
 }
 </script>
@@ -48,10 +44,6 @@ function headerScrollFunction() {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
   animation: collapse .5s ease forwards;
- 
-}
-
-{
  
 }
 
