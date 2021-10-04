@@ -1,8 +1,4 @@
-<style>
- .main-content-inner {
-  
- }
-</style>
+
 
  ## Coffee Stained
 
@@ -36,7 +32,6 @@ function headerScrollFunction() {
 </script>
 
 <style>
- body { overflow: hidden; }
  
 .collapse {
   height: 20px;
