@@ -29,7 +29,7 @@ function headerScrollFunction() {
      window.scrollTo(0, 51);
     }
   } 
- if (document.body.scrollTop == 0) {
+ else if (document.body.scrollTop == 0) {
     if (headerState == 0) {
      header[0].classList.remove('collapse');
      header[0].classList.add('expand');
