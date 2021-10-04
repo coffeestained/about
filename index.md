@@ -23,6 +23,11 @@ document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do stuff and th
   top: 50px;
   right: 50px;
  }
+ 
+ .page-header {
+  background-image: linear-gradient(
+  120deg, #155799, #fff);
+ }
 </style>
 ```markdown
 Syntax highlighted code block
