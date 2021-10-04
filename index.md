@@ -20,16 +20,16 @@ window.onscroll = function() {headerScrollFunction()};
 let headerState = 1;
  
 function headerScrollFunction() {
-   console.log(document.body.scrollTop);
+   console.log(document.body.scrollTop || document.documentElement.scrollTop);
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     if (headerState == 1) {
      header[0].classList.remove('expand');
      header[0].classList.add('collapse');
      headerState = 0;
-     window.scrollTo(0, 51);
+     window.scrollTo(0, 1);
     }
   } 
- else if (document.body.scrollTop == 0) {
+ else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
     if (headerState == 0) {
      header[0].classList.remove('collapse');
      header[0].classList.add('expand');
