@@ -90,15 +90,15 @@ function headerScrollFunction() {
    padding-bottom: 80px;
    }
    to {
-   padding-top: 10px;
-   padding-bottom: 10px;
+   padding-top: 2px;
+   padding-bottom: 2px;
    }
  }
 
  @keyframes expand {
    from {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
    }
    to {
     padding-top: 80px;
