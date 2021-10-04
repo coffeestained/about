@@ -41,12 +41,12 @@ function headerScrollFunction() {
 <style>
  
 .collapse {
-  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: .5em .6em;
- 
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
   animation: collapse .5s ease forwards;
  
 }
@@ -65,6 +65,8 @@ function headerScrollFunction() {
  
 .expand {
  animation: expand .5s ease forwards;
+ padding-top: 80px;
+ padding-bottom: 80px;
 }
  
 .bottom-left {
