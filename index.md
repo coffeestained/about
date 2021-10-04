@@ -108,8 +108,10 @@ function headerScrollFunction() {
 3. Python
 4. Angular
 5. GIS
-6. MongoDB, Postgres, MySql, MsSql
-7. Linux & Windows
+6. Adobe Creative Cloud, Microsoft Suite
+8. MongoDB, Postgres, MySql, MsSql
+9. Cloud
+10. Linux & Windows
 
 ### 10XTS 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on untraditional databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
