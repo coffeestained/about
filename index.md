@@ -21,7 +21,7 @@ let headerState = 1;
  
 function headerScrollFunction() {
    console.log(document.body.scrollTop, document.documentElement.scrollTop);
-  if (document.documentElement.scrollTop > 50) {
+  if (document.documentElement.scrollTop > 80) {
     if (headerState == 1) {
      header[0].classList.remove('expand');
      header[0].classList.add('collapse');
