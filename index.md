@@ -1,5 +1,5 @@
 
-## Matthew Grady is <br> coffee stained ☕
+## Matthew Grady is <br> Coffee Stained ☕
 
 <img src="./Web Developer_Monochromatic.svg" class="top-right">
 <img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
@@ -21,7 +21,7 @@ let headerState = 1;
  
 function headerScrollFunction() {
    console.log(document.body.scrollTop, document.documentElement.scrollTop);
-  if (document.documentElement.scrollTop > 250) {
+  if (document.documentElement.scrollTop > 50) {
     if (headerState == 1) {
      header[0].classList.remove('expand');
      header[0].classList.add('collapse');
@@ -39,6 +39,14 @@ function headerScrollFunction() {
 </script>
 
 <style>
+ 
+ .project-name {
+  display: none;
+ }
+ 
+ .project-name:after {
+  content: '☕ Coffee Stained';
+ }
  
 .collapse {
   height: 20px;
