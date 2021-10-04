@@ -21,7 +21,7 @@ function headerScrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     header[0].classList.remove('expand');
     header[0].classList.add('collapse');
-    window.scrollTo(0, 51);
+    window.scrollTo(0, 151);
   } else {
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
