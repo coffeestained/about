@@ -17,15 +17,20 @@ document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agi
 const header = document.getElementsByTagName("header");
 window.onscroll = function() {headerScrollFunction()};
 
+let headerState = 1;
+ 
 function headerScrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     header[0].classList.remove('expand');
     header[0].classList.add('collapse');
+    if (headerState == 1) window.scrollTo(0, 51);
+    headerState = 0;
   } 
  if (document.body.scrollTop == 0) {
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
-
+    if (headerState == 0) window.scrollTo(0, 0);
+    headerState = 1;
  }
 }
 </script>
