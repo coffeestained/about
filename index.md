@@ -22,17 +22,17 @@ let headerState = 1;
 function headerScrollFunction() {
    console.log(document.body.scrollTop);
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    header[0].classList.remove('expand');
-    header[0].classList.add('collapse');
     if (headerState == 1) {
+     header[0].classList.remove('expand');
+     header[0].classList.add('collapse');
      headerState = 0;
      window.scrollTo(0, 51);
     }
   } 
  if (document.body.scrollTop == 0) {
-    header[0].classList.remove('collapse');
-    header[0].classList.add('expand');
     if (headerState == 0) {
+     header[0].classList.remove('collapse');
+     header[0].classList.add('expand');
      window.scrollTo(0, 0);
      headerState = 1;
     }
