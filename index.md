@@ -1,5 +1,4 @@
 
-
 ## Coffee Stained
 
 <img src="./Designer _Flatline.svg" class="top-right">
@@ -59,8 +58,8 @@ function headerScrollFunction() {
  
 .bottom-left {
   position: fixed;
-  bottom: 50px;
-  left: 50px;
+  bottom: 15px;
+  left: 25px;
  }
  
  .top-right {
