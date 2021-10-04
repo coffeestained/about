@@ -8,27 +8,6 @@
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
  
 <script>
- @keyframes collapse {
-  from {
-    opacity: 1;
-    top: 0;
-  }
-  to {
-    opacity: 0;
-    top: -$navBar-height;
-  }
-}
-
-@keyframes open {
-  from {
-    opacity: 0;
-    top: -$navBar-height;
-  }
-  to {
-    opacity: 1;
-    top: 0;
-  }
-}
  
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 
@@ -79,9 +58,31 @@ function headerScrollFunction() {
  .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
   color:  #155799;
  }
+ 
+  @keyframes collapse {
+   from {
+     opacity: 1;
+     top: 0;
+   }
+   to {
+     opacity: 0;
+     top: -$navBar-height;
+   }
+ }
+
+ @keyframes open {
+   from {
+     opacity: 0;
+     top: -$navBar-height;
+   }
+   to {
+     opacity: 1;
+     top: 0;
+   }
+ }
 </style>
 
 ### Special Thanks
 
-Jekyll Themes, [ManyPixels Vectors](https://www.manypixels.co/gallery) and my Wife, friends, family, co-workers and mentors (you know who you are) who helped me and continue to help me become the engineer I am today.
+Jekyll Themes, [ManyPixels Vectors](https://www.manypixels.co/gallery) and my Wife, friends, family, co-workers and mentors (you know who you are) who helped me and continue to help me to become a better engineer.
 
