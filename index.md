@@ -20,7 +20,9 @@ window.onscroll = function() {headerScrollFunction()};
 let headerState = 1;
  
 function headerScrollFunction() {
+ con
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    console.log(document.body.scrollTop);
     header[0].classList.remove('expand');
     header[0].classList.add('collapse');
     if (headerState == 1) {
