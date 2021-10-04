@@ -41,10 +41,11 @@ function headerScrollFunction() {
 <style>
  
  .project-name {
-  display: none;
+  visibility: hidden;
  }
  
  .project-name:after {
+  visibility: visible;
   content: '☕ Coffee Stained';
  }
  
