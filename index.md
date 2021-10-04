@@ -7,7 +7,11 @@ Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
 <script>
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).";
 </script>
-
+<style>
+ .page-header {
+  background-image: url(./Flat-Shaded-Mountains-Scene.svg);
+ }
+</style>
 ```markdown
 Syntax highlighted code block
 
