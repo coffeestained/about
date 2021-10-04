@@ -1,7 +1,7 @@
 
 ## ☕ Coffee Stained
 
-<img src="./Designer _Flatline.svg" class="top-right">
+<img src="./Web Developer_Monochromatic.svg" class="top-right">
 <img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
 
 <div id="about"></div>
