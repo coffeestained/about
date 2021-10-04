@@ -41,8 +41,8 @@ function headerScrollFunction() {
   justify-content: center;
   align-items: center;
   padding: .5em .6em;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
   animation: collapse .5s ease forwards;
  
 }
