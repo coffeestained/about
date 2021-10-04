@@ -21,19 +21,17 @@ let headerState = 1;
  
 function headerScrollFunction() {
    console.log(document.body.scrollTop, document.documentElement.scrollTop);
-  if (document.documentElement.scrollTop > 50) {
+  if (document.documentElement.scrollTop > 1) {
     if (headerState == 1) {
      header[0].classList.remove('expand');
      header[0].classList.add('collapse');
      headerState = 0;
-     window.scrollTo(0, 1);
     }
   } 
  else if (document.documentElement.scrollTop == 0) {
     if (headerState == 0) {
      header[0].classList.remove('collapse');
      header[0].classList.add('expand');
-     window.scrollTo(0, 0);
      headerState = 1;
     }
  }
