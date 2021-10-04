@@ -3,7 +3,7 @@
   
  }
 </style>
-<div class="main-content-inner">
+
  ## Coffee Stained
 
 <img src="./Designer _Flatline.svg" class="top-right">
@@ -118,28 +118,11 @@ function headerScrollFunction() {
 6. MongoDB, Postgres, MySql, MsSql
 7. Linux & Windows
 
-<script>
-  function httpGetAsync(theUrl, callback)
- {
-     var xmlHttp = new XMLHttpRequest();
-     xmlHttp.onreadystatechange = function() { 
-         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-             callback(xmlHttp.responseText);
-     }
-     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-     xmlHttp.send(null);
- }
- httpGetAsync('https://twitter.com/search?q=GO10XTS%205&src=typd', console.log())
-</script>
-
 ### 10XTS 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on untraditional databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
-<div id=”lastTweet”>
-</div>
 
 ### Special Thanks
 
 My Wife, [ManyPixels Vectors](https://www.manypixels.co/gallery), friends, family, co-workers and mentors (you know who you are) who helped me and continue to help me to become a better engineer.
 
 
-</div>
