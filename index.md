@@ -121,97 +121,165 @@ function headerScrollFunction() {
 ### 10XTS 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on untraditional databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
 <script>
- 
- // Step 1
- var dataset1 = [
-     [1,1], [12,20], [24,36],
-     [32, 50], [40, 70], [50, 100],
-     [55, 106], [65, 123], [73, 130],
-     [78, 134], [83, 136], [89, 138],
-     [100, 140]
- ];
+//------------------------1. PREPARATION------------------------//
+//-----------------------------SVG------------------------------// 
+const width = 960;
+const height = 500;
+const margin = 5;
+const padding = 5;
+const adj = 30;
+// we are appending SVG first
+const svg = d3.select("div#container").append("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "-"
+          + adj + " -"
+          + adj + " "
+          + (width + adj *3) + " "
+          + (height + adj*3))
+    .style("padding", padding)
+    .style("margin", margin)
+    .classed("svg-content", true);
 
- // Step 3
- var svg = d3.select("svg"),
-     margin = 200,
-     width = svg.attr("width") - margin, //300
-     height = svg.attr("height") - margin //200
+//-----------------------------DATA-----------------------------//
+const timeConv = d3.timeParse("%d-%b-%Y");
+const dataset = d3.csv("data.csv");
+dataset.then(function(data) {
+    var slices = data.columns.slice(1).map(function(id) {
+        return {
+            id: id,
+            values: data.map(function(d){
+                return {
+                    date: timeConv(d.date),
+                    measurement: +d[id]
+                };
+            })
+        };
+    });
 
- // Step 4 
- var xScale = d3.scaleLinear().domain([0, 100]).range([0, width]),
-     yScale = d3.scaleLinear().domain([0, 200]).range([height, 0]);
+//----------------------------SCALES----------------------------//
+const xScale = d3.scaleTime().range([0,width]);
+const yScale = d3.scaleLinear().rangeRound([height, 0]);
+xScale.domain(d3.extent(data, function(d){
+    return timeConv(d.date)}));
+yScale.domain([(0), d3.max(slices, function(c) {
+    return d3.max(c.values, function(d) {
+        return d.measurement + 4; });
+        })
+    ]);
 
- var g = svg.append("g")
-     .attr("transform", "translate(" + 100 + "," + 100 + ")");
+//-----------------------------AXES-----------------------------//
+const yaxis = d3.axisLeft()
+    .ticks((slices[0].values).length)
+    .scale(yScale);
 
- // Step 5
- // Title
- svg.append('text')
- .attr('x', width/2 + 100)
- .attr('y', 100)
- .attr('text-anchor', 'middle')
- .style('font-family', 'Helvetica')
- .style('font-size', 20)
- .text('Line Chart');
+const xaxis = d3.axisBottom()
+    .ticks(d3.timeDay.every(1))
+    .tickFormat(d3.timeFormat('%b %d'))
+    .scale(xScale);
 
- // X label
- svg.append('text')
- .attr('x', width/2 + 100)
- .attr('y', height - 15 + 150)
- .attr('text-anchor', 'middle')
- .style('font-family', 'Helvetica')
- .style('font-size', 12)
- .text('Independant');
+//----------------------------LINES-----------------------------//
+const line = d3.line()
+    .x(function(d) { return xScale(d.date); })
+    .y(function(d) { return yScale(d.measurement); }); 
 
- // Y label
- svg.append('text')
- .attr('text-anchor', 'middle')
- .attr('transform', 'translate(60,' + height + ')rotate(-90)')
- .style('font-family', 'Helvetica')
- .style('font-size', 12)
- .text('Dependant');
+let id = 0;
+const ids = function () {
+    return "line-"+id++;
+}  
+//-------------------------2. DRAWING---------------------------//
+//-----------------------------AXES-----------------------------//
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xaxis);
 
- // Step 6
- g.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(xScale));
+svg.append("g")
+    .attr("class", "axis")
+    .call(yaxis)
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("dy", ".75em")
+    .attr("y", 6)
+    .style("text-anchor", "end")
+    .text("Frequency");
 
- g.append("g")
-  .call(d3.axisLeft(yScale));
+//----------------------------LINES-----------------------------//
+const lines = svg.selectAll("lines")
+    .data(slices)
+    .enter()
+    .append("g");
 
- // Step 7
- svg.append('g')
- .selectAll("dot")
- .data(dataset1)
- .enter()
- .append("circle")
- .attr("cx", function (d) { return xScale(d[0]); } )
- .attr("cy", function (d) { return yScale(d[1]); } )
- .attr("r", 3)
- .attr("transform", "translate(" + 100 + "," + 100 + ")")
- .style("fill", "#CC0000");
+    lines.append("path")
+    .attr("class", ids)
+    .attr("d", function(d) { return line(d.values); });
 
- // Step 8        
- var line = d3.line()
- .x(function(d) { return xScale(d[0]); }) 
- .y(function(d) { return yScale(d[1]); }) 
- .curve(d3.curveMonotoneX)
+    lines.append("text")
+    .attr("class","serie_label")
+    .datum(function(d) {
+        return {
+            id: d.id,
+            value: d.values[d.values.length - 1]}; })
+    .attr("transform", function(d) {
+            return "translate(" + (xScale(d.value.date) + 10)  
+            + "," + (yScale(d.value.measurement) + 5 ) + ")"; })
+    .attr("x", 5)
+    .text(function(d) { return ("Serie ") + d.id; });
 
- svg.append("path")
- .datum(dataset1) 
- .attr("class", "line") 
- .attr("transform", "translate(" + 100 + "," + 100 + ")")
- .attr("d", line)
- .style("fill", "none")
- .style("stroke", "#CC0000")
- .style("stroke-width", "2");
- 
+});
 </script>
 
+<style>
+ /* AXES */
+/* ticks */
+.axis line{
+stroke: #706f6f;
+stroke-width: 0.5;
+shape-rendering: crispEdges;
+}
+
+/* axis contour */
+.axis path {
+stroke: #706f6f;
+stroke-width: 0.7;
+shape-rendering: crispEdges;
+}
+
+/* axis text */
+.axis text {
+fill: #2b2929;
+font-family: Georgia;
+font-size: 120%;
+}
+
+/* LINE CHART */
+path.line-0 {
+    fill: none;
+    stroke: #ed3700;
+}
+
+path.line-1 {
+    fill: none;
+    stroke: #2b2929;
+    stroke-dasharray: 2;
+}
+
+path.line-2 {
+    fill: none;
+    stroke: #9c9c9c;
+    stroke-dasharray: 6;
+}
+
+.serie_label {
+  fill: #2b2929;
+  font-family: Georgia;
+  font-size: 80%;
+}
+ </style>
+
 ### Curiosity Chart
-<svg width="500" height="400"></svg>
+<div id="container" class="svg-container"></div>
 
 ### Special Thanks
 
