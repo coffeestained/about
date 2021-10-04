@@ -8,10 +8,57 @@
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
  
 <script>
-document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).";
+ @keyframes collapse {
+  from {
+    opacity: 1;
+    top: 0;
+  }
+  to {
+    opacity: 0;
+    top: -$navBar-height;
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    top: -$navBar-height;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+ 
+document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
+
+const header = document.getElementsByTagName("header");
+window.onscroll = function() {headerScrollFunction()};
+
+function headerScrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    header[0].classList.remove('expand');
+    header[0].classList.add('collapse');
+  } else {
+    header[0].classList.remove('collapse');
+    header[0].classList.add('expand');
+  }
+}
 </script>
 
 <style>
+.collapse {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+ 
+.expand {
+ 
+}
+ 
 .bottom-left {
   position: fixed;
   bottom: 50px;
@@ -20,39 +67,21 @@ document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do stuff and th
  
  .top-right {
   position: fixed;
-  top: 50px;
-  right: 50px;
+  top: 20px;
+  right: 20px;
  }
  
  .page-header {
   background-image: linear-gradient(
   120deg, #155799, #fff);
  }
+ 
+ .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
+  color:  #155799;
+ }
 </style>
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+### Special Thanks
 
-- Bulleted
-- List
+Jekyll Themes, [ManyPixels Vectors](https://www.manypixels.co/gallery) and my Wife, friends, family, co-workers and mentors (you know who you are) who helped me and continue to help me become the engineer I am today.
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/coffeestained/about/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
