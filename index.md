@@ -4,6 +4,12 @@ Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).
 
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
 
+<div id="text"></div>
+ 
+<script>
+document.getElementById("text").innerHTML = "Text added by JavaScript code";
+</script>
+
 ```markdown
 Syntax highlighted code block
 
