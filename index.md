@@ -177,7 +177,7 @@ const dataset = [
  
    svg.append('g')
   .selectAll("dot")
-  .data(dataset1)
+  .data(dataset)
   .enter()
   .append("circle")
   .attr("cx", function (d) { return xScale(d[0]); } )
@@ -192,7 +192,7 @@ const dataset = [
         .curve(d3.curveMonotoneX)
         
         svg.append("path")
-        .datum(dataset1) 
+        .datum(dataset) 
         .attr("class", "line") 
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
         .attr("d", line)
