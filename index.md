@@ -1,5 +1,8 @@
 ## Coffee Stained
 
+<img src="./Designer _Flatline.svg" class="top-right">
+<img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
+
 <div id="about"></div>
 
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
@@ -7,9 +10,18 @@ Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
 <script>
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do stuff and things from behind a monitor ( or 2, or 3 ).";
 </script>
+
 <style>
- .page-header {
-  background-image: url(./Header-Background-1.svg);
+.bottom-left {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+ }
+ 
+ .top-right {
+  position: fixed;
+  top: 50px;
+  right: 50px;
  }
 </style>
 ```markdown
