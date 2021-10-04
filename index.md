@@ -28,6 +28,8 @@ function headerScrollFunction() {
 </script>
 
 <style>
+ body { overflow: hidden; }
+ 
 .collapse {
   height: 20px;
   display: flex;
@@ -75,8 +77,9 @@ function headerScrollFunction() {
   color:  #155799;
  }
  
- .content { 
+ .main-content { 
   height: 1000px;
+  overflow: auto;
  }
  
   @keyframes collapse {
