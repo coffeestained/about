@@ -1,4 +1,10 @@
-## Coffee Stained
+<style>
+ .main-content-inner {
+  
+ }
+</style>
+<div class="main-content-inner">
+ ## Coffee Stained
 
 <img src="./Designer _Flatline.svg" class="top-right">
 <img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
@@ -8,9 +14,7 @@
 In my free time, I like to enjoy time with my wife, friends, Twitch, gaming and a wide array of outdoorsy stuff.
 
 Get connected at [LinkedIn](linkedin.com/in/matthew-grady-7b752a16)
- 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-fetcher/18.0.4/js/twitterFetcher_min.js" integrity="sha512-2m0XVv8vgX9humldeS5h3k2TX7caDztbJ/2fUHcPM/u/5LAo/jHQD9V4/2yU/RcW3vLP2dqJN/Oz9T8k7mLNMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- 
+
 <script>
  
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
@@ -22,9 +26,11 @@ function headerScrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     header[0].classList.remove('expand');
     header[0].classList.add('collapse');
+    document.body.scrollTop = 50;
   } else {
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
+    document.body.scrollTop = 0;
   }
 }
 </script>
@@ -103,7 +109,6 @@ function headerScrollFunction() {
  }
 </style>
 
-https://twitter.com/search?q=Babylon%205&src=typd
 ### Stuff & Things (But not limited to)
 1. Agile
 2. Node
@@ -124,15 +129,17 @@ https://twitter.com/search?q=Babylon%205&src=typd
      xmlHttp.open("GET", theUrl, true); // true for asynchronous 
      xmlHttp.send(null);
  }
- httpGetAsync('https://twitter.com/search?q=10XTS%205&src=typd', console.log())
+ httpGetAsync('https://twitter.com/search?q=GO10XTS%205&src=typd', console.log())
 </script>
 
 ### 10XTS 
-I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching and securing traditional asset classes on untraditional databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
+I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on untraditional databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
 <div id=”lastTweet”>
 </div>
 
 ### Special Thanks
 
-My Wife, Jekyll Themes, [ManyPixels Vectors](https://www.manypixels.co/gallery), friends, family, co-workers and mentors (you know who you are) who helped me and continue to help me to become a better engineer.
+My Wife, [ManyPixels Vectors](https://www.manypixels.co/gallery), friends, family, co-workers and mentors (you know who you are) who helped me and continue to help me to become a better engineer.
 
+
+</div>
