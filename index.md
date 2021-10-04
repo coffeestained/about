@@ -9,7 +9,7 @@ document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do stuff and th
 </script>
 <style>
  .page-header {
-  background-image: url(./Flat-Shaded-Mountains-Scene.svg);
+  background-image: url(./Header-Background-1.svg);
  }
 </style>
 ```markdown
