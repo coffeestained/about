@@ -33,11 +33,22 @@ function headerScrollFunction() {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  padding: .5em .6em;
+ 
+  animation: collapse .5s ease forwards;
+ 
+  .project-name {
+   font-size: 12px;
+  }
+ 
+  a.btn {
+   display: none;
+  }
 }
  
 .expand {
- 
+ animation: expand .5s ease forwards;
+
 }
  
 .bottom-left {
@@ -55,31 +66,34 @@ function headerScrollFunction() {
  .page-header {
   background-image: linear-gradient(
   120deg, #155799, #fff);
+  position: sticky;
+  top: 0px;
+  height: 336px;
  }
  
  .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
   color:  #155799;
  }
  
+ .content { 
+  height: 1000px;
+ }
+ 
   @keyframes collapse {
    from {
-     opacity: 1;
-     top: 0;
+     height: 336px;
    }
    to {
-     opacity: 0;
-     top: -$navBar-height;
+    height: 20px;
    }
  }
 
- @keyframes open {
+ @keyframes expand {
    from {
-     opacity: 0;
-     top: -$navBar-height;
+     height: 20px;
    }
    to {
-     opacity: 1;
-     top: 0;
+     height: 336px;
    }
  }
 </style>
