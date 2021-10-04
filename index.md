@@ -1,5 +1,5 @@
 
-## Matthew Grady is <br> Coffee Stained ☕
+## Matthew Grady is Coffee Stained ☕
 
 <img src="./Web Developer_Monochromatic.svg" class="top-right">
 <img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
@@ -39,15 +39,6 @@ function headerScrollFunction() {
 </script>
 
 <style>
- 
- .project-name {
-  visibility: hidden;
- }
- 
- .project-name:after {
-  visibility: visible;
-  content: '☕ Coffee Stained';
- }
  
 .collapse {
   height: 20px;
