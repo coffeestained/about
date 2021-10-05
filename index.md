@@ -227,7 +227,8 @@ const	valueline = d3.svg.line()
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-let	svg = d3.select("body");
+let	svg = d3.select("#content");
+	console.log(svg)   
 	svg = findNode(svg[0][0]);
 	
 	console.log(svg);
@@ -289,10 +290,10 @@ path {
 	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
 	<div class="row-item"><h3>Curiosity Chart</h3> 
 This is an aggregate count of views of this repository supplied by GitHub API. 
-<section id="container" class="curiosity-container"></section>
+
 	</div>
 </div>
-
+<section id="container" class="curiosity-container"></section>
 <div class="row">
 	<img class="row-logo" src="./Brainstorming session _Monochromatic.svg">
 	<div class="row-item"><h3>Special Thanks</h3> 
