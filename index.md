@@ -1,6 +1,10 @@
 <div class="row">
 	<img class="row-logo" src="./Watermelon_Monochromatic.svg">
-	<div class="row-item"><h3>Matthew Grady ☕</h3> 
+	<div class="row-item"><h3>Matthew Grady ☕ <a href = "https://linkedin.com/in/matthew-grady-7b752a16"><img src="./LI-In-Bug.png" style=" float: right; max-width: 66px;
+    padding: 5px 15px;
+    border: 1px solid #155799; 
+    background: rgba(21, 87, 153, .05);
+    border-radius: 5px;"></a></h3> 
 <div id="about"></div>
 
 In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube, gaming and a wide array of outdoorsy stuff.
