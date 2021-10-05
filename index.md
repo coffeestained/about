@@ -1,6 +1,4 @@
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
-
-## Matthew Grady is Coffee Stained ☕
+## Matthew Grady ☕
 
 <img src="./Web Developer_Monochromatic.svg" class="top-right">
 <img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
@@ -25,6 +23,8 @@ function headerScrollFunction(event) {
 
    header[0].classList.remove('expand');
    header[0].classList.add('collapse');
+	
+   
 
   } 
  else if (document.documentElement.scrollTop < 10 && event.deltaY < 0) {
@@ -150,7 +150,7 @@ function headerScrollFunction(event) {
 ### 10XTS 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 
 // Set the dimensions of the canvas / graph
