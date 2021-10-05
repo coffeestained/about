@@ -159,8 +159,7 @@ function headerScrollFunction(event) {
 
 <div class="row">
 	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
-	<div class="row-item"> 
-### 10XTS 
+	<div class="row-item">### 10XTS 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
 	</div>
 </div>
