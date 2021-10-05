@@ -225,7 +225,7 @@ const	valueline = d3.svg.line()
     
 // Adds the svg canvas
 let	svg = d3.select("body");
-	svg = findNode(svg);
+	svg = findNode(svg[0][0]);
 	
 	console.log(svg);
 	
