@@ -154,15 +154,17 @@ function headerScrollFunction(event) {
 <div class="row">
 	<img class="row-logo" src="./Data Arranging_Monochromatic.svg">
 	<div class="row-item"><h3>Stuff & Things (But not limited to)</h3> 
-1. Agile
-2. Node
-3. Python
-4. Angular
-5. GIS
-6. Adobe Creative Cloud, Microsoft Suite
-8. MongoDB, Postgres, MySql, MsSql
-9. Cloud
-10. Linux & Windows
+<ul>
+  <li>Agile</li>
+  <li>Node</li>
+  <li>Python</li>
+  <li>Angular</li>
+  <li>GIS</li>
+  <li>Adobe Creative Cloud, Microsoft Suite</li>
+  <li>Coffee</li>
+  <li>MongoDB, Postgres, MySql, MsSql</li>
+  <li>Cloud</li>
+</ul>  
 	</div>
 </div>
 
