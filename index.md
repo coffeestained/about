@@ -27,6 +27,7 @@ function headerScrollFunction(event) {
 
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
+    window.scrollTo(0,1);
 
  }
 }
