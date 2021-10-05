@@ -21,7 +21,7 @@ window.onwheel = function(event) {headerScrollFunction(event)};
 function headerScrollFunction(event) {
  
    console.log(event.deltaY, document.documentElement.scrollTop);
-  if (document.documentElement.scrollTop > 10) {
+  if (document.documentElement.scrollTop > 10 && event.deltaY > 0) {
 
    header[0].classList.remove('expand');
    header[0].classList.add('collapse');
@@ -150,7 +150,7 @@ function headerScrollFunction(event) {
 ### 10XTS 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
 
-<script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 // Set the dimensions of the canvas / graph
