@@ -232,7 +232,7 @@ let	svg = d3.select("#curiosity-container");
 	
 	console.log(svg);
 	
-	svg.append("svg")
+	d3.select("#curiosity-container").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
