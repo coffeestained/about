@@ -5,7 +5,7 @@
 
 In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube, gaming and a wide array of outdoorsy stuff.
 
-Get connected at [LinkedIn](https://linkedin.com/in/matthew-grady-7b752a16)
+Get connected at <a href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>
 	</div>
 </div>
 
@@ -262,7 +262,7 @@ This is an aggregate count of views of this repository supplied by GitHub API.
 <div class="row">
 	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
 	<div class="row-item"><h3>Special Thanks</h3> 
-My Wife, [ManyPixels Vectors](https://www.manypixels.co/gallery), friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
+		My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 	</div>
 </div>
 
