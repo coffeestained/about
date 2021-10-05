@@ -26,7 +26,7 @@ function headerScrollFunction(event) {
    header[0].classList.add('collapse');
 
   } 
- else if (document.documentElement.scrollTop < 80 && document.documentElement !== 0) {
+ else if (document.documentElement.scrollTop < 80 && event.deltaY < 0) {
 
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
