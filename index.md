@@ -152,111 +152,68 @@ I'm currently working with a FinTech company out of Ohio. We are work to provide
 
 <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
 <script>
-//------------------------1. PREPARATION------------------------//
-//-----------------------------SVG------------------------------// 
-const width = 960;
-const height = 500;
-const margin = 5;
-const padding = 5;
-const adj = 30;
-// we are appending SVG first
-const svg = d3.select("div#container").append("svg")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "-"
-          + adj + " -"
-          + adj + " "
-          + (width + adj *3) + " "
-          + (height + adj*3))
-    .style("padding", padding)
-    .style("margin", margin)
-    .classed("svg-content", true);
 
-//-----------------------------DATA-----------------------------//
-const timeConv = d3.timeParse("%d-%b-%Y");
-const dataset = d3.csv("data.csv");
-dataset.then(function(data) {
-    var slices = data.columns.slice(1).map(function(id) {
-        return {
-            id: id,
-            values: data.map(function(d){
-                return {
-                    date: timeConv(d.date),
-                    measurement: +d[id]
-                };
-            })
-        };
-    });
+// Set the dimensions of the canvas / graph
+var	margin = {top: 30, right: 20, bottom: 30, left: 50},
+	width = 600 - margin.left - margin.right,
+	height = 270 - margin.top - margin.bottom;
 
-//----------------------------SCALES----------------------------//
-const xScale = d3.scaleTime().range([0,width]);
-const yScale = d3.scaleLinear().rangeRound([height, 0]);
-xScale.domain(d3.extent(data, function(d){
-    return timeConv(d.date)}));
-yScale.domain([(0), d3.max(slices, function(c) {
-    return d3.max(c.values, function(d) {
-        return d.measurement + 4; });
-        })
-    ]);
+// Parse the date / time
+var	parseDate = d3.time.format("%d-%b-%y").parse;
 
-//-----------------------------AXES-----------------------------//
-const yaxis = d3.axisLeft()
-    .ticks((slices[0].values).length)
-    .scale(yScale);
+// Set the ranges
+var	x = d3.time.scale().range([0, width]);
+var	y = d3.scale.linear().range([height, 0]);
 
-const xaxis = d3.axisBottom()
-    .ticks(d3.timeDay.every(1))
-    .tickFormat(d3.timeFormat('%b %d'))
-    .scale(xScale);
+// Define the axes
+var	xAxis = d3.svg.axis().scale(x)
+	.orient("bottom").ticks(5);
 
-//----------------------------LINES-----------------------------//
-const line = d3.line()
-    .x(function(d) { return xScale(d.date); })
-    .y(function(d) { return yScale(d.measurement); }); 
+var	yAxis = d3.svg.axis().scale(y)
+	.orient("left").ticks(5);
 
-let id = 0;
-const ids = function () {
-    return "line-"+id++;
-}  
-//-------------------------2. DRAWING---------------------------//
-//-----------------------------AXES-----------------------------//
-svg.append("g")
-    .attr("class", "axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xaxis);
+// Define the line
+var	valueline = d3.svg.line()
+	.x(function(d) { return x(d.date); })
+	.y(function(d) { return y(d.close); });
+    
+// Adds the svg canvas
+var	svg = d3.select("body")
+	.append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.append("g")
-    .attr("class", "axis")
-    .call(yaxis)
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("dy", ".75em")
-    .attr("y", 6)
-    .style("text-anchor", "end")
-    .text("Frequency");
+// Get the data
+d3.csv("data.csv", function(error, data) {
+	data.forEach(function(d) {
+		d.date = parseDate(d.date);
+		d.close = +d.close;
+	});
 
-//----------------------------LINES-----------------------------//
-const lines = svg.selectAll("lines")
-    .data(slices)
-    .enter()
-    .append("g");
+	// Scale the range of the data
+	x.domain(d3.extent(data, function(d) { return d.date; }));
+	y.domain([0, d3.max(data, function(d) { return d.close; })]);
 
-    lines.append("path")
-    .attr("class", ids)
-    .attr("d", function(d) { return line(d.values); });
+	// Add the valueline path.
+	svg.append("path")		// Add the valueline path.
+		.attr("class", "line")
+		.attr("d", valueline(data));
 
-    lines.append("text")
-    .attr("class","serie_label")
-    .datum(function(d) {
-        return {
-            id: d.id,
-            value: d.values[d.values.length - 1]}; })
-    .attr("transform", function(d) {
-            return "translate(" + (xScale(d.value.date) + 10)  
-            + "," + (yScale(d.value.measurement) + 5 ) + ")"; })
-    .attr("x", 5)
-    .text(function(d) { return ("Serie ") + d.id; });
+	// Add the X Axis
+	svg.append("g")			// Add the X Axis
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis);
+
+	// Add the Y Axis
+	svg.append("g")			// Add the Y Axis
+		.attr("class", "y axis")
+		.call(yAxis);
 
 });
+
 </script>
 
 <style>
