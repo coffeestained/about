@@ -4,7 +4,7 @@
     padding: 5px 15px;
     border: 1px solid #155799; 
     background: rgba(21, 87, 153, .05);
-    border-radius: 5px;"></a></h3> 
+    border-radius: 5px; max-height: 29.06px;"></a></h3> 
 <div id="about"></div>
 
 In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube, gaming and a wide array of outdoorsy stuff.
@@ -188,6 +188,16 @@ I'm currently working with a FinTech company out of Ohio. We are work to provide
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 
+function findNode (node) {
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var child = node.childNodes[i];
+      allDescendants(child);
+      if (child.className == 'curiosity-container') {
+ 	return child;
+      }
+    }
+}
+					       
 // Set the dimensions of the canvas / graph
 const	margin = {top: 30, right: 20, bottom: 30, left: 50},
 	width = 600 - margin.left - margin.right,
@@ -213,7 +223,8 @@ const	valueline = d3.svg.line()
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-const	svg = d3.select("#container");
+let	svg = d3.select("body");
+	svg = findNode(svg);
 	
 	console.log(svg);
 	
