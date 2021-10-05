@@ -279,6 +279,7 @@ path.line-2 {
  </style>
 
 ### Curiosity Chart
+This is an aggregate count of views of this repository supplied by GitHub API.
 <div id="container" class="svg-container"></div>
 
 ### Special Thanks
