@@ -81,6 +81,11 @@ function headerScrollFunction(event) {
 
 }
 
+ul li { 
+  list-style-image: radial-gradient(circle, #155799,  #155799);
+  list-style-border: 1px solid #155799;
+}
+	
 .collapse {
   display: flex;
   justify-content: center;
