@@ -15,10 +15,11 @@ Get connected at [LinkedIn](https://linkedin.com/in/matthew-grady-7b752a16)
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 
 const header = document.getElementsByTagName("header");
-window.onscroll = function() {headerScrollFunction()};
+window.onwheel = function(event) {headerScrollFunction(event)};
  
-function headerScrollFunction() {
-   console.log(document.body.scrollTop, document.documentElement.scrollTop);
+function headerScrollFunction(event) {
+ 
+   console.log(event.deltaY, document.documentElement.scrollTop);
   if (document.documentElement.scrollTop > 80) {
 
    header[0].classList.remove('expand');
