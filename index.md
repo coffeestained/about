@@ -193,6 +193,7 @@ function findNode (node) {
     for (var i = 0; i < node.children.length; i++) {
       var child = node.children[i];
       if (child.className == 'curiosity-container') {
+					     console.log('found');
  	return child;
       }
       findNode(child);
