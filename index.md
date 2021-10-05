@@ -154,31 +154,31 @@ I'm currently working with a FinTech company out of Ohio. We are work to provide
 <script>
 
 // Set the dimensions of the canvas / graph
-var	margin = {top: 30, right: 20, bottom: 30, left: 50},
+const	margin = {top: 30, right: 20, bottom: 30, left: 50},
 	width = 600 - margin.left - margin.right,
 	height = 270 - margin.top - margin.bottom;
 
 // Parse the date / time
-var	parseDate = d3.time.format("%d-%b-%y").parse;
+const	parseDate = d3.time.format("%d-%b-%y").parse;
 
 // Set the ranges
-var	x = d3.time.scale().range([0, width]);
-var	y = d3.scale.linear().range([height, 0]);
+const	x = d3.time.scale().range([0, width]);
+const	y = d3.scale.linear().range([height, 0]);
 
 // Define the axes
-var	xAxis = d3.svg.axis().scale(x)
+const	xAxis = d3.svg.axis().scale(x)
 	.orient("bottom").ticks(5);
 
-var	yAxis = d3.svg.axis().scale(y)
+const	yAxis = d3.svg.axis().scale(y)
 	.orient("left").ticks(5);
 
 // Define the line
-var	valueline = d3.svg.line()
+const	valueline = d3.svg.line()
 	.x(function(d) { return x(d.date); })
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-var	svg = d3.select("body")
+const	svg = d3.select("body")
 	.append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
@@ -217,50 +217,18 @@ d3.csv("data.csv", function(error, data) {
 </script>
 
 <style>
- /* AXES */
-/* ticks */
-.axis line{
-stroke: #706f6f;
-stroke-width: 0.5;
-shape-rendering: crispEdges;
+path { 
+  stroke: steelblue;
+	stroke-width: 2;
+	fill: none;
 }
 
-/* axis contour */
-.axis path {
-stroke: #706f6f;
-stroke-width: 0.7;
-shape-rendering: crispEdges;
-}
-
-/* axis text */
-.axis text {
-fill: #2b2929;
-font-family: Georgia;
-font-size: 120%;
-}
-
-/* LINE CHART */
-path.line-0 {
-    fill: none;
-    stroke: #ed3700;
-}
-
-path.line-1 {
-    fill: none;
-    stroke: #2b2929;
-    stroke-dasharray: 2;
-}
-
-path.line-2 {
-    fill: none;
-    stroke: #9c9c9c;
-    stroke-dasharray: 6;
-}
-
-.serie_label {
-  fill: #2b2929;
-  font-family: Georgia;
-  font-size: 80%;
+.axis path,
+.axis line {
+	fill: none;
+	stroke: grey;
+	stroke-width: 1;
+	shape-rendering: crispEdges;
 }
  </style>
 
