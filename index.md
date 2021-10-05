@@ -61,14 +61,14 @@ function headerScrollFunction(event) {
  
 .bottom-left {
   position: fixed;
-  bottom: 15px;
-  left: 25px;
+  bottom: 18px;
+  left: -10px;
  }
  
  .top-right {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 60px;
+  right: 00px;
  }
  
  .page-header {
