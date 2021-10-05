@@ -1,7 +1,7 @@
 ## Matthew Grady ☕
 
 <img src="./Web Developer_Monochromatic.svg" class="top-right">
-<img src="./Statue of liberty_Monochromatic.svg" class="bottom-left">
+<img src="./Statue of liberty_Monochromatic.svg">
 
 <div id="about"></div>
 
@@ -63,6 +63,19 @@ function headerScrollFunction(event) {
  scroll-snap-align: start;
  }
  
+.row {
+ display: flex;
+}
+
+.row-logo {
+ width: 100px;
+ height: 100px
+}
+
+.row-item {
+
+}
+
 .collapse {
   display: flex;
   justify-content: center;
@@ -144,8 +157,14 @@ function headerScrollFunction(event) {
 9. Cloud
 10. Linux & Windows
 
+<div class="row">
+	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<div class="row-item"> 
 ### 10XTS 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
+	</div>
+</div>
+
 
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -175,7 +194,7 @@ const	valueline = d3.svg.line()
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-const	svg = d3.select("body")
+const	svg = d3.select("#container")
 	.append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
@@ -231,10 +250,10 @@ path {
 
 ### Curiosity Chart
 This is an aggregate count of views of this repository supplied by GitHub API.
-<div id="container" class="svg-container"></div>
+<div id="container" class="curiosity-container"></div>
 
 ### Special Thanks
 
-My Wife, [ManyPixels Vectors](https://www.manypixels.co/gallery), friends, family, co-workers and mentors (you know who you are) who helped me and continue to help me to become a better engineer.
+My Wife, [ManyPixels Vectors](https://www.manypixels.co/gallery), friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 
 
