@@ -189,6 +189,7 @@ I'm currently working with a FinTech company out of Ohio. We are work to provide
 <script>
 
 function findNode (node) {
+	console.log(node);
     for (var i = 0; i < node.childNodes.length; i++) {
       var child = node.childNodes[i];
       findNode(child);
