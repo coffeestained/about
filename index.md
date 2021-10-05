@@ -1,13 +1,13 @@
-## Matthew Grady ☕
-
-<img src="./Web Developer_Monochromatic.svg" class="top-right">
-<img src="./Statue of liberty_Monochromatic.svg">
-
+<div class="row">
+	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<div class="row-item"><h3>Matthew Grady ☕</h3> 
 <div id="about"></div>
 
 In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube, gaming and a wide array of outdoorsy stuff.
 
 Get connected at [LinkedIn](https://linkedin.com/in/matthew-grady-7b752a16)
+	</div>
+</div>
 
 <script>
  
@@ -146,7 +146,9 @@ function headerScrollFunction(event) {
  }
 </style>
 
-### Stuff & Things (But not limited to)
+<div class="row">
+	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<div class="row-item"><h3>Stuff & Things (But not limited to)</h3> 
 1. Agile
 2. Node
 3. Python
@@ -156,6 +158,8 @@ function headerScrollFunction(event) {
 8. MongoDB, Postgres, MySql, MsSql
 9. Cloud
 10. Linux & Windows
+	</div>
+</div>
 
 <div class="row">
 	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
@@ -193,7 +197,7 @@ const	valueline = d3.svg.line()
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-const	svg = d3.select("#container")
+const	svg = d3.select("chart")
 	.append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
@@ -247,12 +251,19 @@ path {
 }
  </style>
 
-### Curiosity Chart
+<div class="row">
+	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<div class="row-item"><h3>Curiosity Chart</h3> 
 This is an aggregate count of views of this repository supplied by GitHub API.
-<div id="container" class="curiosity-container"></div>
+<chart id="container" class="curiosity-container"></chart>
+	</div>
+</div>
 
-### Special Thanks
-
+<div class="row">
+	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<div class="row-item"><h3>Special Thanks</h3> 
 My Wife, [ManyPixels Vectors](https://www.manypixels.co/gallery), friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
+	</div>
+</div>
 
 
