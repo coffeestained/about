@@ -202,7 +202,7 @@ const	valueline = d3.svg.line()
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-const	svg = d3.select("section");
+const	svg = d3.select("#container");
 	
 	console.log(svg);
 	
