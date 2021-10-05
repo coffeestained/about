@@ -190,12 +190,13 @@ I'm currently working with a FinTech company out of Ohio. We are work to provide
 
 function findNode (node) {
 	console.log(node);
-    for (var i = 0; i < node.childNodes.length; i++) {
-      var child = node.childNodes[i];
-      findNode(child);
+    for (var i = 0; i < node.children.length; i++) {
+      var child = node.children[i];
       if (child.className == 'curiosity-container') {
  	return child;
       }
+      findNode(child);
+
     }
 }
 					       
