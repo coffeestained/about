@@ -17,14 +17,10 @@ const header = document.getElementsByTagName("header");
 window.onwheel = function(event) {headerScrollFunction(event)};
  
 function headerScrollFunction(event) {
- 
-   console.log(event.deltaY, document.documentElement.scrollTop);
   if (document.documentElement.scrollTop > 10 && event.deltaY > 0) {
 
    header[0].classList.remove('expand');
    header[0].classList.add('collapse');
-	
-   
 
   } 
  else if (document.documentElement.scrollTop < 10 && event.deltaY < 0) {
