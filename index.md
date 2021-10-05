@@ -20,13 +20,13 @@ window.onwheel = function(event) {headerScrollFunction(event)};
 function headerScrollFunction(event) {
  
    console.log(event.deltaY, document.documentElement.scrollTop);
-  if (document.documentElement.scrollTop > 80) {
+  if (document.documentElement.scrollTop > 40) {
 
    header[0].classList.remove('expand');
    header[0].classList.add('collapse');
 
   } 
- else if (document.documentElement.scrollTop < 80 && event.deltaY < 0) {
+ else if (document.documentElement.scrollTop < 40 && event.deltaY < 0) {
 
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
