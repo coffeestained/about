@@ -164,8 +164,8 @@ function headerScrollFunction(event) {
 
 <div class="row">
 	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
-	<div class="row-item"><h3><img src="./10xts.png" style="max-width: 66px;"></h3> 
-I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
+	<div class="row-item"><h3>10XTS</h3> 
+I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. <a href = "mailto: info@10xts.com"><img src="./10xts.png" style="max-width: 66px;"></a>
 	</div>
 </div>
 
@@ -198,8 +198,11 @@ const	valueline = d3.svg.line()
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-const	svg = d3.select("chart")
-	.append("svg")
+const	svg = d3.select("chart");
+	
+	console.log(svg);
+	
+	svg.append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 	.append("g")
@@ -255,7 +258,7 @@ path {
 <div class="row">
 	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
 	<div class="row-item"><h3>Curiosity Chart</h3> 
-This is an aggregate count of views of this repository supplied by GitHub API.
+This is an aggregate count of views of this repository supplied by GitHub API. 
 <chart id="container" class="curiosity-container"></chart>
 	</div>
 </div>
