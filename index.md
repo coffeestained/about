@@ -70,6 +70,7 @@ function headerScrollFunction(event) {
 
 .row-logo {
  width: 100px;
+ margin-right: 1rem;
 }
 
 .row-item {
