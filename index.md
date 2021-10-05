@@ -1,5 +1,5 @@
 <div class="row">
-	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<img class="row-logo" src="./Watermelon_Monochromatic.svg">
 	<div class="row-item"><h3>Matthew Grady ☕</h3> 
 <div id="about"></div>
 
@@ -147,7 +147,7 @@ function headerScrollFunction(event) {
 </style>
 
 <div class="row">
-	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<img class="row-logo" src="./Data Arranging_Monochromatic.svg">
 	<div class="row-item"><h3>Stuff & Things (But not limited to)</h3> 
 1. Agile
 2. Node
@@ -252,7 +252,7 @@ path {
  </style>
 
 <div class="row">
-	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
 	<div class="row-item"><h3>Curiosity Chart</h3> 
 This is an aggregate count of views of this repository supplied by GitHub API.
 <chart id="container" class="curiosity-container"></chart>
@@ -260,7 +260,7 @@ This is an aggregate count of views of this repository supplied by GitHub API.
 </div>
 
 <div class="row">
-	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<img class="row-logo" src="./Brainstorming session _Monochromatic.svg">
 	<div class="row-item"><h3>Special Thanks</h3> 
 		My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 	</div>
