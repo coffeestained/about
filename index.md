@@ -166,7 +166,8 @@ function headerScrollFunction(event) {
 	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
 	<div class="row-item"><h3>10XTS <a href = "mailto: info@10xts.com"><img src="./10xts.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
-    border: 1px solid #155799;
+    border: 1px solid #155799; 
+    background: rgba(21, 87, 153, .05);
     border-radius: 5px;"></a></h3> 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. 
 	</div>
@@ -201,7 +202,7 @@ const	valueline = d3.svg.line()
 	.y(function(d) { return y(d.close); });
     
 // Adds the svg canvas
-const	svg = d3.select("chart");
+const	svg = d3.select("section");
 	
 	console.log(svg);
 	
@@ -262,7 +263,7 @@ path {
 	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
 	<div class="row-item"><h3>Curiosity Chart</h3> 
 This is an aggregate count of views of this repository supplied by GitHub API. 
-<chart id="container" class="curiosity-container"></chart>
+<section id="container" class="curiosity-container"></section>
 	</div>
 </div>
 
