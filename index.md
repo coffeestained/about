@@ -25,7 +25,7 @@ function headerScrollFunction() {
    header[0].classList.add('collapse');
 
   } 
- else if (document.documentElement.scrollTop == 0) {
+ else if (document.documentElement.scrollTop < 80 && document.documentElement !== 0) {
 
     header[0].classList.remove('collapse');
     header[0].classList.add('expand');
@@ -40,7 +40,6 @@ function headerScrollFunction() {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .5em .6em;
   animation: collapse .5s ease forwards;
  
 }
@@ -119,7 +118,7 @@ function headerScrollFunction() {
 10. Linux & Windows
 
 ### 10XTS 
-I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on untraditional databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
+I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. <a href = "mailto: info@10xts.com">Inquire Here</a>
 
 <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
 <script>
