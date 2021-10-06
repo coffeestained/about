@@ -2,6 +2,10 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
 
 <div class="row">
 	<img class="row-logo" src="./Watermelon_Monochromatic.svg">
@@ -19,7 +23,25 @@ Get connected at <a href="https://linkedin.com/in/matthew-grady-7b752a16">Linked
 </div>
 
 <script>
- 
+const element = document.querySelector("h1");
+
+let animate_enum = ['animate__bounce','animate__pulse','animate__rubberBand','animate__shakeX'
+	'animate__shakeY','animate__swing','animate__tada','animate__jello','animate__heartBeat'];
+let current = animate_enum[Math.floor(Math.random()*animate_enum.length)];
+element.classList.add(current);
+	
+element.addEventListener("mouseover", event => {
+  element.classList.remove(current);
+  let current = animate_enum[Math.floor(Math.random()*animate_enum.length)];
+  element.classList.add(current);
+});
+
+element.addEventListener("mouseout", event => {
+  element.classList.add(current);
+  let current = animate_enum[Math.floor(Math.random()*animate_enum.length)];
+  element.classList.remove(current);
+});
+	
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 
 const header = document.getElementsByTagName("header");
