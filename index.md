@@ -291,7 +291,7 @@ path {
 	
 $.ajax({
 
-    url : 'https://api.countapi.xyz/hit/coffeestained.github.io%2about-this-dev/visits',
+    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
     type : 'GET',
     success : function(data) {              
         alert('Data: '+data);
@@ -304,7 +304,7 @@ $.ajax({
 	
 $.ajax({
 
-    url : 'https://api.github.com/repos/coffeestained%2about-this-dev/traffic/clones',
+    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
     type : 'GET',
     success : function(data) {              
         alert('Data: '+data);
