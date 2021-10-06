@@ -271,9 +271,9 @@ $.ajax({
 		y.domain([0, d3.max(window.sneakyVariable, function(d) { return d.value; })]);
 
 		// Add the valueline path.
-		svg.append("path")	
-			.attr("class", "line")
-			.attr("d", valueline(window.sneakyVariable));
+		//svg.append("path")	
+			//.attr("class", "line")
+			//.attr("d", valueline(window.sneakyVariable));
 
 		// Add the X Axis
 		svg.append("g")		
