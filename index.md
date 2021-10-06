@@ -23,30 +23,7 @@ Get connected at <a href="https://linkedin.com/in/matthew-grady-7b752a16">Linked
 </div>
 
 <script>
-const element = document.querySelector("h1");
-element.classList.add('animate__animated');
 
-window.sneakyAnimationEnum = ['animate__bounce','animate__pulse','animate__rubberBand','animate__shakeX',
-	'animate__shakeY','animate__swing','animate__tada','animate__jello','animate__heartBeat'];
-window.sneakyCurrentAnimation = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
-element.classList.add(window.sneakyCurrentAnimation);
-	
-element.addEventListener("mouseover", event => {
-  element.classList.remove(window.sneakyCurrentAnimation);
-  let current = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
-	window.sneakyCurrentAnimation = current;
-  element.classList.add(current);
-});
-	
-const hoverFriends = document.getElementsByClassName("hover-friends");
-hoverFriends.forEach(element => {
-	element.addEventListener("mouseover", event => {
-	  element.classList.remove(window.sneakyCurrentAnimation);
-	  let current = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
-		window.sneakyCurrentAnimation = current;
-	  element.classList.add(current);
-	});
-});
 	
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 
@@ -339,7 +316,32 @@ $.ajax({
         alert("Request: "+JSON.stringify(request));
     }
 });
+	
+const element = document.querySelector("h1");
+element.classList.add('animate__animated');
 
+window.sneakyAnimationEnum = ['animate__bounce','animate__pulse','animate__rubberBand','animate__shakeX',
+	'animate__shakeY','animate__swing','animate__tada','animate__jello','animate__heartBeat'];
+window.sneakyCurrentAnimation = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
+element.classList.add(window.sneakyCurrentAnimation);
+	
+element.addEventListener("mouseover", event => {
+  element.classList.remove(window.sneakyCurrentAnimation);
+  let current = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
+	window.sneakyCurrentAnimation = current;
+  element.classList.add(current);
+});
+	
+const hoverFriends = document.getElementsByClassName("hover-friends");
+hoverFriends.forEach(element => {
+	element.classList.add('animate__animated');
+	element.addEventListener("mouseover", event => {
+	  element.classList.remove(window.sneakyCurrentAnimation);
+	  let current = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
+		window.sneakyCurrentAnimation = current;
+	  element.classList.add(current);
+	});
+});
 </script>
 
 <style>
