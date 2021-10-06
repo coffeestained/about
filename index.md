@@ -241,14 +241,14 @@ $.ajax({
     type : 'GET',
     success : function(data) { 
 	const past = {value: (data.value-1)/2, superposition: 'The Past'};
-        data = data.append(past);
+        data.push(past);
 	$.ajax({
 
 	    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
 	    type : 'GET',
 	    success : function(data) {              
 		const present = {value: (data.value)/2, superposition: 'The Present'};
-		data = data.append(present);
+		data.push(present);
 
 		data.forEach(function(d) {
 			d.superposition = d.superposition;
