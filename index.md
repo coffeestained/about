@@ -9,7 +9,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 
 <div class="row">
 	<img class="row-logo" src="./Watermelon_Monochromatic.svg">
-	<div class="row-item"><h3>Matthew Grady ☕ <a href = "https://linkedin.com/in/matthew-grady-7b752a16"><img src="./LI-In-Bug.png" style=" float: right; max-width: 66px;
+	<div class="row-item"><h3>Matthew Grady ☕ <a href = "https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends" src="./LI-In-Bug.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
     border: 1px solid #155799; 
     background: rgba(21, 87, 153, .05);
@@ -36,6 +36,16 @@ element.addEventListener("mouseover", event => {
   let current = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
 	window.sneakyCurrentAnimation = current;
   element.classList.add(current);
+});
+	
+const hoverFriends = document.getElementsByClassName("hover-friends");
+hoverFriends.forEach(element => {
+	element.addEventListener("mouseover", event => {
+	  element.classList.remove(window.sneakyCurrentAnimation);
+	  let current = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
+		window.sneakyCurrentAnimation = current;
+	  element.classList.add(current);
+	});
 });
 	
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
