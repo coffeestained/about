@@ -291,7 +291,7 @@ path {
 	
 $.ajax({
 
-    url : 'https://github.com/coffeestained/about-this-dev/traffic/clones',
+    url : 'https://api.github.com/repos/coffeestained/about-this-dev/traffic/clones',
     type : 'GET',
     headers: {
         'accept':'application/vnd.github.v3+json',
@@ -307,7 +307,7 @@ $.ajax({
 	
 $.ajax({
 
-    url : 'https://github.com/coffeestained/about-this-dev/traffic/clones',
+    url : 'https://api.github.com/repos/coffeestained/about-this-dev/traffic/clones',
     type : 'GET',
     headers: {
         'accept':'application/vnd.github.v3+json'
