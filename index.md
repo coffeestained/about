@@ -184,6 +184,13 @@ I'm currently working with a FinTech company out of Ohio. We are work to provide
 	</div>
 </div>
 
+<div class="row">
+	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
+	<div class="row-item"><h3>Curiosity Chart</h3> 
+This is an aggregate count of views of this repository supplied by GitHub API. 
+<section id="curiosity-container" class="curiosity-container"></section>
+	</div>
+</div>
 
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
@@ -271,18 +278,9 @@ path {
  </style>
 
 <div class="row">
-	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
-	<div class="row-item"><h3>Curiosity Chart</h3> 
-This is an aggregate count of views of this repository supplied by GitHub API. 
-
-	</div>
-</div>
-
-<div class="row">
 	<img class="row-logo" src="./Brainstorming session _Monochromatic.svg">
 	<div class="row-item"><h3>Special Thanks</h3> 
 		My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 	</div>
 </div>
 
-<section id="curiosity-container" class="curiosity-container"></section>
