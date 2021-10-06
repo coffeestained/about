@@ -332,7 +332,7 @@ element.addEventListener("mouseover", event => {
   element.classList.add(current);
 });
 	
-const hoverFriends = document.getElementsByClassName("hover-friends");
+const hoverFriends = document.querySelectorAll('img');
 hoverFriends.forEach(element => {
 	element.classList.add('animate__animated');
 	element.addEventListener("mouseover", event => {
