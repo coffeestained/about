@@ -293,10 +293,10 @@ $.ajax({
 			else return 350;
 		      })
 		      .attr("cy", function(d){
-			d.value
+			return d.value
 		      })
 		      .attr("fill", function(d){
-			return d3.select(this.parentNode).datum().category;
+			return '#155799';
 		      });
 	
 	    },
