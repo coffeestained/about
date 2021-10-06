@@ -198,6 +198,7 @@ This is an aggregate count of views of this repository supplied by GitHub API.
 </div>
 
 <script src="https://d3js.org/d3.v3.min.js"></script>
+<script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 	
 // Set the dimensions of the canvas / graph
@@ -232,16 +233,46 @@ var	svg = d3.select("section")
 	.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
  
-// Get the data
-d3.csv("data.csv", function(error, data) {
+const data = [];
+ 	
+$.ajax({
+
+    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
+    type : 'GET',
+    success : function(data) { 
+	const past = {value: (data.value-1)/2, superposition: 'The Past'};
+        data = data.push(past);
+    },
+    error : function(request,error)
+    {
+        alert("Request: "+JSON.stringify(request));
+    }
+});
+	
+$.ajax({
+
+    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
+    type : 'GET',
+    success : function(data) {              
+	const present = {value: (data.value)/2, superposition: 'The Present'};
+	data = data.push(present);
+    },
+    error : function(request,error)
+    {
+        alert("Request: "+JSON.stringify(request));
+    }
+});	
+	
+	// Get the data
+
 	data.forEach(function(d) {
-		d.date = parseDate(d.date);
-		d.close = +d.close;
+		d.superposition = d.superposition;
+		d.value = +d.value;
 	});
  
 	// Scale the range of the data
-	x.domain(d3.extent(data, function(d) { return d.date; }));
-	y.domain([0, d3.max(data, function(d) { return d.close; })]);
+	x.domain(d3.extent(data, function(d) { return d.superposition; }));
+	y.domain([0, d3.max(data, function(d) { return d.value; })]);
  
 	// Add the valueline path.
 	svg.append("path")	
@@ -258,14 +289,14 @@ d3.csv("data.csv", function(error, data) {
 	svg.append("g")		
 		.attr("class", "y axis")
 		.call(yAxis);
- 
-});
+	
+
 
 </script>
 
 <style>
 path { 
-  stroke: steelblue;
+  stroke: #155799;
 	stroke-width: 2;
 	fill: none;
 }
@@ -273,7 +304,7 @@ path {
 .axis path,
 .axis line {
 	fill: none;
-	stroke: grey;
+	stroke: #8ba9c7;
 	stroke-width: 1;
 	shape-rendering: crispEdges;
 }
@@ -286,34 +317,5 @@ path {
 	</div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-	
-$.ajax({
 
-    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
-    type : 'GET',
-    success : function(data) {              
-        alert('Data: '+data);
-    },
-    error : function(request,error)
-    {
-        alert("Request: "+JSON.stringify(request));
-    }
-});
-	
-$.ajax({
 
-    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
-    type : 'GET',
-    success : function(data) {              
-        alert('Data: '+data);
-    },
-    error : function(request,error)
-    {
-        alert("Request: "+JSON.stringify(request));
-    }
-});	
-	
-
-</script>
