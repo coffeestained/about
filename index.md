@@ -293,7 +293,9 @@ $.ajax({
 
     url : 'https://github.com/coffeestained/about-this-dev/traffic/clones',
     type : 'GET',
-    dataType:'json',
+    headers: {
+        'accept':'application/vnd.github.v3+json',
+    },
     success : function(data) {              
         alert('Data: '+data);
     },
@@ -307,7 +309,9 @@ $.ajax({
 
     url : 'https://github.com/coffeestained/about-this-dev/traffic/clones',
     type : 'GET',
-    dataType:'json',
+    headers: {
+        'accept':'application/vnd.github.v3+json'
+    },
     success : function(data) {              
         alert('Data: '+data);
     },
