@@ -33,6 +33,7 @@ element.classList.add(window.sneakyCurrentAnimation);
 element.addEventListener("mouseover", event => {
   element.classList.remove(window.sneakyCurrentAnimation);
   let current = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
+	window.sneakyCurrentAnimation = current;
   element.classList.add(current);
 });
 	
