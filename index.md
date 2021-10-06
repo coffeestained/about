@@ -332,8 +332,9 @@ element.addEventListener("mouseover", event => {
   element.classList.add(current);
 });
 	
-const hoverFriends = document.querySelectorAll('img');
-hoverFriends.forEach(element => {
+window.hoverFriends = document.querySelectorAll('img');
+console.log(hoverFriends);
+window.hoverFriends.forEach(element => {
 	element.classList.add('animate__animated');
 	element.addEventListener("mouseover", event => {
 	  element.classList.remove(window.sneakyCurrentAnimation);
