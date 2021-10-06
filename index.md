@@ -28,7 +28,7 @@ const element = document.querySelector("h1");
 window.sneakyAnimationEnum = ['animate__bounce','animate__pulse','animate__rubberBand','animate__shakeX',
 	'animate__shakeY','animate__swing','animate__tada','animate__jello','animate__heartBeat'];
 window.sneakyCurrentAnimation = window.sneakyAnimationEnum[Math.floor(Math.random()*window.sneakyAnimationEnum.length)];
-element.classList.add(current);
+element.classList.add(window.sneakyCurrentAnimation);
 	
 element.addEventListener("mouseover", event => {
   element.classList.remove(window.sneakyCurrentAnimation);
