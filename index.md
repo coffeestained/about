@@ -210,20 +210,21 @@ var	margin = {top: 30, right: 20, bottom: 30, left: 50},
 var	parseDate = d3.time.format("%d-%b-%y").parse;
  
 // Set the ranges
-var	x = d3.time.scale().range([0, width]);
+var     x = d3.scale.ordinal().rangeRoundBands([0, width], .2);
 var	y = d3.scale.linear().range([height, 0]);
  
 // Define the axes
-var	xAxis = d3.svg.axis().scale(x)
-	.orient("bottom").ticks(5);
+var 	xAxis = d3.svg.axis()
+	.scale(x)
+	.orient("bottom");
  
 var	yAxis = d3.svg.axis().scale(y)
-	.orient("left").ticks(5);
+	.orient("left").ticks(2);
  
 // Define the line
 var	valueline = d3.svg.line()
-	.x(function(d) { return x(d.date); })
-	.y(function(d) { return y(d.close); });
+	.x(function(d) { return x(d.superposition); })
+	.y(function(d) { return y(d.value); });
     
 // Adds the svg canvas
 var	svg = d3.select("section")
