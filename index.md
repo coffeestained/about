@@ -292,7 +292,7 @@ This is an aggregate count of views of this repository supplied by GitHub API.
 
 	</div>
 </div>
-<section id="curiosity-container" class="curiosity-container"></section>
+
 <div class="row">
 	<img class="row-logo" src="./Brainstorming session _Monochromatic.svg">
 	<div class="row-item"><h3>Special Thanks</h3> 
@@ -300,4 +300,4 @@ This is an aggregate count of views of this repository supplied by GitHub API.
 	</div>
 </div>
 
-
+<section id="curiosity-container" class="curiosity-container"></section>
