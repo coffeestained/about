@@ -177,7 +177,7 @@ ul li {
   <li>GIS</li>
   <li>Adobe Creative Cloud, Microsoft Suite</li>
   <li>Coffee</li>
-  <li>MongoDB, Postgres, MySql, MsSql</li>
+  <li>MongoDB, Postgres, MySql, MSSql</li>
   <li>Cloud</li>
 </ul>  
 	</div>
