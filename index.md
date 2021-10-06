@@ -187,6 +187,9 @@ I'm currently working with a FinTech company out of Ohio. We are work to provide
 
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
+	
+const element = document.getElementById('curiosity-container');
+	console.log(element);
 
 // Set the dimensions of the canvas / graph
 var	margin = {top: 30, right: 20, bottom: 30, left: 50},
