@@ -200,9 +200,6 @@ This is an aggregate count of views of this repository supplied by GitHub API.
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 	
-const element = document.getElementById('curiosity-container');
-	console.log(element);
-
 // Set the dimensions of the canvas / graph
 var	margin = {top: 30, right: 20, bottom: 30, left: 50},
 	width = 600 - margin.left - margin.right,
@@ -264,6 +261,18 @@ d3.csv("data.csv", function(error, data) {
  
 });
 
+function httpGet(url)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+	
+let clones = httpGet('https://github.com/coffeestained/about-this-dev/traffic/clones');
+console.log(clones);
+let visitors = httpGet('https://github.com/coffeestained/about-this-dev/traffic/views');
+console.log(visitors);
 </script>
 
 <style>
