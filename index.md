@@ -210,7 +210,7 @@ var	margin = {top: 30, right: 20, bottom: 30, left: 50},
 var	parseDate = d3.time.format("%d-%b-%y").parse;
  
 // Set the ranges
-var     x = d3.scale.ordinal().rangeRoundBands([0, width], .2);
+var     x = d3.scale.ordinal().rangeRoundBands([0, width]);
 var	y = d3.scale.linear().range([height, 0]);
  
 // Define the axes
@@ -281,6 +281,14 @@ $.ajax({
 			.attr("class", "y axis")
 			.call(yAxis);
 	
+		svg.selectAll(".dot")
+		    .data(window.sneakyVariable)
+		  .enter().append("circle") // Uses the enter().append() method
+		    .attr("class", "dot") // Assign a class for styling
+		    .attr("cx", function(d, i) { return xScale(i) })
+		    .attr("cy", function(d) { return yScale(d.y) })
+		    .attr("r", 5);
+	
 	    },
 	    error : function(request,error)
 	    {
@@ -309,6 +317,11 @@ path {
 	stroke: #8ba9c7;
 	stroke-width: 1;
 	shape-rendering: crispEdges;
+}
+	
+.dot {
+    fill: #155799;
+    stroke: #fff;
 }
  </style>
 
