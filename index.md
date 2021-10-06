@@ -289,10 +289,11 @@ $.ajax({
 		      .append("circle")
 		      .attr("r", 3)
 		      .attr("cx", function(d,i){
-			return x(i);
+			if (i == 0) return 175;
+			else return 350;
 		      })
 		      .attr("cy", function(d){
-			return y(d);
+			d.value
 		      })
 		      .attr("fill", function(d){
 			return d3.select(this.parentNode).datum().category;
