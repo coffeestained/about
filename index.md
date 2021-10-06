@@ -291,11 +291,8 @@ path {
 	
 $.ajax({
 
-    url : 'https://api.github.com/repos/coffeestained/about-this-dev/traffic/clones',
+    url : 'https://api.countapi.xyz/hit/coffeestained.github.io%2about-this-dev/visits',
     type : 'GET',
-    headers: {
-        'accept':'application/vnd.github.v3+json',
-    },
     success : function(data) {              
         alert('Data: '+data);
     },
@@ -307,11 +304,8 @@ $.ajax({
 	
 $.ajax({
 
-    url : 'https://api.github.com/repos/coffeestained/about-this-dev/traffic/clones',
+    url : 'https://api.github.com/repos/coffeestained%2about-this-dev/traffic/clones',
     type : 'GET',
-    headers: {
-        'accept':'application/vnd.github.v3+json'
-    },
     success : function(data) {              
         alert('Data: '+data);
     },
