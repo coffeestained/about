@@ -222,9 +222,14 @@ var	yAxis = d3.svg.axis().scale(y)
 	.orient("left").ticks(2);
  
 // Define the line
-var	valueline = d3.svg.line()
-	.x(function(d) { return x(d.superposition); })
-	.y(function(d) { return y(d.value); });
+var     valueline = d3.svg.line()
+	.interpolate("basis")
+	.x(function (d) {
+	    return x(d.superposition);
+	 })
+	 .y(function (d) {
+	    return y(d.value);
+	 });
     
 // Adds the svg canvas
 var	svg = d3.select("section")
