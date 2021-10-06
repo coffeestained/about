@@ -24,6 +24,7 @@ Get connected at <a href="https://linkedin.com/in/matthew-grady-7b752a16">Linked
 
 <script>
 const element = document.querySelector("h1");
+element.classList.add('animate__animated');
 
 window.sneakyAnimationEnum = ['animate__bounce','animate__pulse','animate__rubberBand','animate__shakeX',
 	'animate__shakeY','animate__swing','animate__tada','animate__jello','animate__heartBeat'];
