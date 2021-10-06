@@ -261,18 +261,6 @@ d3.csv("data.csv", function(error, data) {
  
 });
 
-function httpGet(url)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", url, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-	
-let clones = httpGet('https://github.com/coffeestained/about-this-dev/traffic/clones');
-console.log(clones);
-let visitors = httpGet('https://github.com/coffeestained/about-this-dev/traffic/views');
-console.log(visitors);
 </script>
 
 <style>
@@ -298,3 +286,36 @@ path {
 	</div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+	
+$.ajax({
+
+    url : 'https://github.com/coffeestained/about-this-dev/traffic/clones',
+    type : 'GET',
+    dataType:'json',
+    success : function(data) {              
+        alert('Data: '+data);
+    },
+    error : function(request,error)
+    {
+        alert("Request: "+JSON.stringify(request));
+    }
+});
+	
+$.ajax({
+
+    url : 'https://github.com/coffeestained/about-this-dev/traffic/clones',
+    type : 'GET',
+    dataType:'json',
+    success : function(data) {              
+        alert('Data: '+data);
+    },
+    error : function(request,error)
+    {
+        alert("Request: "+JSON.stringify(request));
+    }
+});	
+	
+
+</script>
