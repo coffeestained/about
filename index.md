@@ -241,56 +241,52 @@ $.ajax({
     type : 'GET',
     success : function(data) { 
 	const past = {value: (data.value-1)/2, superposition: 'The Past'};
-        data = data.push(past);
+        data = data.append(past);
+	$.ajax({
+
+	    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
+	    type : 'GET',
+	    success : function(data) {              
+		const present = {value: (data.value)/2, superposition: 'The Present'};
+		data = data.append(present);
+
+		data.forEach(function(d) {
+			d.superposition = d.superposition;
+			d.value = +d.value;
+		});
+
+		// Scale the range of the data
+		x.domain(d3.extent(data, function(d) { return d.superposition; }));
+		y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+		// Add the valueline path.
+		svg.append("path")	
+			.attr("class", "line")
+			.attr("d", valueline(data));
+
+		// Add the X Axis
+		svg.append("g")		
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + height + ")")
+			.call(xAxis);
+
+		// Add the Y Axis
+		svg.append("g")		
+			.attr("class", "y axis")
+			.call(yAxis);
+	
+	    },
+	    error : function(request,error)
+	    {
+		alert("Request: "+JSON.stringify(request));
+	    }
+	});	
     },
     error : function(request,error)
     {
         alert("Request: "+JSON.stringify(request));
     }
 });
-	
-$.ajax({
-
-    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
-    type : 'GET',
-    success : function(data) {              
-	const present = {value: (data.value)/2, superposition: 'The Present'};
-	data = data.push(present);
-    },
-    error : function(request,error)
-    {
-        alert("Request: "+JSON.stringify(request));
-    }
-});	
-	
-	// Get the data
-
-	data.forEach(function(d) {
-		d.superposition = d.superposition;
-		d.value = +d.value;
-	});
- 
-	// Scale the range of the data
-	x.domain(d3.extent(data, function(d) { return d.superposition; }));
-	y.domain([0, d3.max(data, function(d) { return d.value; })]);
- 
-	// Add the valueline path.
-	svg.append("path")	
-		.attr("class", "line")
-		.attr("d", valueline(data));
- 
-	// Add the X Axis
-	svg.append("g")		
-		.attr("class", "x axis")
-		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis);
- 
-	// Add the Y Axis
-	svg.append("g")		
-		.attr("class", "y axis")
-		.call(yAxis);
-	
-
 
 </script>
 
