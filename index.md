@@ -219,7 +219,7 @@ var 	xAxis = d3.svg.axis()
 	.orient("bottom");
  
 var	yAxis = d3.svg.axis().scale(y)
-	.orient("left").ticks(2);
+	.orient("left").ticks(3);
  
 // Define the line
 var     valueline = d3.svg.line()
