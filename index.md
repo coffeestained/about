@@ -233,7 +233,7 @@ var	svg = d3.select("section")
 	.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
  
-const data = [];
+window.sneakyVariable = [];
  	
 $.ajax({
 
@@ -241,28 +241,28 @@ $.ajax({
     type : 'GET',
     success : function(data) { 
 	const past = {value: (data.value-1)/2, superposition: 'The Past'};
-        data.push(past);
+        window.sneakyVariable.push(past);
 	$.ajax({
 
 	    url : 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
 	    type : 'GET',
 	    success : function(data) {              
 		const present = {value: (data.value)/2, superposition: 'The Present'};
-		data.push(present);
+		window.sneakyVariable.push(present);
 
-		data.forEach(function(d) {
+		window.sneakyVariable.forEach(function(d) {
 			d.superposition = d.superposition;
 			d.value = +d.value;
 		});
 
 		// Scale the range of the data
-		x.domain(d3.extent(data, function(d) { return d.superposition; }));
-		y.domain([0, d3.max(data, function(d) { return d.value; })]);
+		x.domain(d3.extent(window.sneakyVariable, function(d) { return d.superposition; }));
+		y.domain([0, d3.max(window.sneakyVariable, function(d) { return d.value; })]);
 
 		// Add the valueline path.
 		svg.append("path")	
 			.attr("class", "line")
-			.attr("d", valueline(data));
+			.attr("d", valueline(window.sneakyVariable));
 
 		// Add the X Axis
 		svg.append("g")		
