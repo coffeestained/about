@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <style>
 .map {
-    height: 600px;
-    width: 270px;
+    width: 600px;
+    height: 270px;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
