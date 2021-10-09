@@ -72,11 +72,11 @@ function headerScrollFunction(event) {
  .page-header:before {
     background: linear-gradient(
 	0deg, rgba(255,255,255,1) 25%, rgba(0,212,255,0.3) 100%);
-    animation: OpacityAnim 60 ease-in-out 0s infinite alternate;
+    animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
 }
 
  .page-header:after {
-    background: linear-gradient(0deg, rgba(255,255,255,1) 19%, rgba(85,48,83,0.75) 100%);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(85,48,83,0.45) 100%);
     animation: OpacityAnim 60s ease-in-out -60s infinite alternate;
 }
 	
@@ -145,6 +145,11 @@ ul li {
     background-size: 85%;
     background-repeat: repeat;
     background-position: 0 0;
+}
+	
+.project-name {
+z-index: 100;
+    position: relative;	
 }
 
 .collapse .project-name {
