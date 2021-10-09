@@ -329,8 +329,7 @@ let map = new ol.Map({
 });
 
 function updateInfo(current_time) {
-  let el = document.getElementById("info");
-  el.innerHTML = `Time / Heure (UTC): ${current_time.toISOString()}`;
+   // No Info Container At This time
 }
 
 function setTime() {
