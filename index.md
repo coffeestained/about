@@ -266,14 +266,23 @@ ul li {
             target: 'map',
             layers: [
                 new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
+                  source: new ol.source.XYZ({
+                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/100/28.538336/-81.379234',
+                    maxZoom: 19
+                  })
+                });
             ],
             view: new ol.View({
-                center: ol.proj.fromLonLat([37.41, 8.82]),
+                center: ol.proj.fromLonLat([-81.379234, 28.538336]),
                 zoom: 4
             })
         });
+            var worldImagery = new ol.layer.Tile({
+  source: new ol.source.XYZ({
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    maxZoom: 19
+  })
+});
         </script>
     </div>
 </div>
