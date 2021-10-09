@@ -151,6 +151,11 @@ ul li {
 z-index: 100;
     position: relative;	
 }
+	
+.page-header a {
+z-index: 100;
+    position: relative;	
+}
 
 .collapse .project-name {
  font-size: 12px;
