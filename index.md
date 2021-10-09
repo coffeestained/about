@@ -280,10 +280,17 @@ ul li {
 			view: new ol.View({
 				center: [ -81.37, 28.53 ],
 				projection: 'EPSG:4326',
-				zoom: 10,
+				zoom: 5,
 				minZoom: 2,
 			}),
 		});
+	        L.tileLayer
+		  .wms("https://geo.weather.gc.ca/geomet?", {
+		    layers: "GDPS.ETA_TT",
+		    version: "1.3.0",
+		    opacity: 0.5
+		  })
+		.addTo(map);
 		</script>
 	</div>
 </div>
