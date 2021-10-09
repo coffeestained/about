@@ -6,6 +6,12 @@
 rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 />
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 
 <div class="row">
 	<img class="row-logo" src="./Watermelon_Monochromatic.svg">
@@ -233,6 +239,14 @@ z-index: 100;
     background: rgba(21, 87, 153, .05);
     border-radius: 5px;"></a></h3> 
 I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases. 
+	</div>
+</div>
+
+<div class="row">
+	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
+	<div class="row-item"><h3>Bits & Bobs</h3> 
+I'll think of something interesting for this piece.
+<div id="mapid"></div>
 	</div>
 </div>
 
