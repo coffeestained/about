@@ -108,6 +108,17 @@ function headerScrollFunction(event) {
     margin-right: 1rem;
 }
     
+.row-logo:after,
+.row-logo:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+    
 .row-logo:before {
     background: linear-gradient(0deg, rgba(255, 255, 255, .4) 25%, rgba(0, 212, 255, 0.3) 100%);
     animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
