@@ -52,7 +52,10 @@ function headerScrollFunction(event) {
  body {
   scroll-snap-type: y mandatory;
  }
- 
+ .page-header {
+    background-image: url(1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg);
+    background-size: 75%;	
+}
  header {
  scroll-snap-align: start;
  }
