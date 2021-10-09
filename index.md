@@ -53,13 +53,36 @@ function headerScrollFunction(event) {
   scroll-snap-type: y mandatory;
  }
  .page-header {
-	background-image: linear-gradient(
-	0deg, rgba(255,255,255,1) 25%, rgba(0,212,255,0.3) 100%),url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
+	background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
     background-size: 85%;
     background-repeat: repeat;
     background-position: 0 0;
     /*adjust s value for speed*/
      animation: animatedBackground 850s linear infinite;
+}
+
+ .page-header:after,
+ .page-headert:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+}
+
+ .page-header:before {
+    background: linear-gradient(
+	0deg, rgba(255,255,255,1) 25%, rgba(0,212,255,0.3) 100%);
+    animation: OpacityAnim 900 ease-in-out 0s infinite alternate;
+}
+
+ .page-header:after {
+    background: linear-gradient(0deg, rgba(255,255,255,1) 19%, rgba(85,48,83,0.75) 100%);
+    animation: OpacityAnim 900 ease-in-out calc(-1 * 900) infinite alternate;
+}
+	
+@keyframes OpacityAnim {
+    0%{opacity: 1.0}
+    100%{opacity: 0.0}
 }
 	
 @keyframes animatedBackground {
