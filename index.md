@@ -49,9 +49,7 @@ function headerScrollFunction(event) {
 
 <style>
  
- body {
-  scroll-snap-type: y mandatory;
- }
+
  .page-header {
 	background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
     background-size: 85%;
@@ -59,6 +57,9 @@ function headerScrollFunction(event) {
     background-position: 0 0;
     /*adjust s value for speed*/
      animation: animatedBackground 850s linear infinite;
+	    z-index: 99;
+	-webkit-box-shadow: 0px 10px 50px 13px #FFFFFF; 
+box-shadow: 0px 10px 50px 13px #FFFFFF;
 }
 
  .page-header:after,
@@ -71,13 +72,13 @@ function headerScrollFunction(event) {
 
  .page-header:before {
     background: linear-gradient(
-	0deg, rgba(255,255,255,1) 25%, rgba(0,212,255,0.3) 100%);
+	0deg, rgba(255,255,255,.4) 25%, rgba(0,212,255,0.3) 100%);
     animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
 }
 
  .page-header:after {
-    background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(85,48,83,0.45) 100%), rgba(0,0,0,.25) url('stars.png') repeat;
-    animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1100s linear infinite;
+    background: linear-gradient(0deg, rgba(85,48,83,0.65) 25%, rgba(85,48,83,0.45) 100%), rgba(0,0,0,.35) url('stars.png') repeat;
+    animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
 }
 	
 @keyframes OpacityAnim {
@@ -94,33 +95,12 @@ function headerScrollFunction(event) {
     background-position: -10000px 0;
   }
 }
- header {
- scroll-snap-align: start;
- }
- 
- #content {
- scroll-snap-align: start;
- }
- 
- #about {
- scroll-snap-align: start;
- }
- 
- #stuff--things-but-not-limited-to {
- scroll-snap-align: start;
- }
- 
- #10xts {
- scroll-snap-align: start;
- }
 
- #curiosity-chart {
- scroll-snap-align: start;
- }
  
 .row {
  display: flex;
  margin-bottom: 50px;
+ scroll-snap-align: start;
 }
 
 .row-logo {
