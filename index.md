@@ -262,43 +262,105 @@ ul li {
 	<div class="row-item">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
 		<script type="text/javascript">
-		var map = new ol.Map({
-			target: 'map',
-			layers: [
-				new ol.layer.Tile({
-					source: new ol.source.XYZ({
-						attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
-						url: 'https://services.arcgisonline.com/arcgis/rest/services/' + 'ESRI_Imagery_World_2D/MapServer/tile/{z}/{y}/{x}',
-						maxZoom: 15,
-						projection: 'EPSG:4326',
-						tileSize: 512, // the tile size supported by the ArcGIS tile service
-						maxResolution: 180 / 512, // Esri's tile grid fits 180 degrees on one 512 px tile
-						wrapX: true,
-					}),
-				}),
-				new ol.layer.Tile({
-				    opacity: 0.4,
-				    source: new ol.source.TileWMS({
-					    url: "https://geo.weather.gc.ca/geomet",
-					    params: { LAYERS: "GDPS.ETA_TT", TILED: true },
-					    transition: 0
-				    })
-			        })
-			],
-			view: new ol.View({
-				center: [ -81.37, 28.53 ],
-				projection: 'EPSG:4326',
-				zoom: 7,
-				minZoom: 2,
-			}),
-		});
-	        L.tileLayer
-		  .wms("https://geo.weather.gc.ca/geomet?", {
-		    layers: "GDPS.ETA_TT",
-		    version: "1.3.0",
-		    opacity: 0.5
-		  })
-		.addTo(map);
+
+			
+			const parser = new DOMParser();
+
+/* Async function used to retrieve start and end time from RADAR_1KM_RRAI layer GetCapabilities document */
+async function getRadarStartEndTime() {
+  let response = await fetch(
+    "https://geo.weather.gc.ca/geomet/?lang=en&service=WMS&request=GetCapabilities&version=1.3.0&LAYERS=RADAR_1KM_RRAI"
+  );
+  let data = await response
+    .text()
+    .then((data) =>
+      parser
+        .parseFromString(data, "text/xml")
+        .getElementsByTagName("Dimension")[0]
+        .innerHTML.split("/")
+    );
+  return [new Date(data[0]), new Date(data[1])];
+}
+
+let frameRate = 1.0; // frames per second
+let animationId = null;
+let startTime = null;
+let endTime = null;
+let current_time = null;
+
+let layers = [
+  new ol.layer.Tile({
+    source: new ol.source.OSM()
+  }),
+  new ol.layer.Image({
+    source: new ol.source.ImageWMS({
+      format: "image/png",
+      url: "https://geo.weather.gc.ca/geomet/",
+      params: { LAYERS: "RADAR_1KM_RRAI", TILED: true },
+      transition: 0
+    })
+  }),
+  new ol.layer.Image({
+    source: new ol.source.ImageWMS({
+      format: "image/png",
+      url: "https://geo.weather.gc.ca/geomet/",
+      params: { LAYERS: "RADAR_COVERAGE_RRAI.INV", TILED: true },
+      transition: 0
+    })
+  })
+];
+
+let map = new ol.Map({
+  target: "map",
+  layers: layers,
+  view: new ol.View({
+    center: ol.proj.fromLonLat([-81.37, 28.53]),
+    zoom: 3
+  })
+});
+
+function updateInfo(current_time) {
+  let el = document.getElementById("info");
+  el.innerHTML = `Time / Heure (UTC): ${current_time.toISOString()}`;
+}
+
+function setTime() {
+  current_time = current_time;
+  if (current_time === null) {
+    current_time = startTime;
+  } else if (current_time >= endTime) {
+    current_time = startTime;
+  } else {
+    current_time = new Date(
+      current_time.setMinutes(current_time.getMinutes() + 10)
+    );
+  }
+  layers[1]
+    .getSource()
+    .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
+  layers[2]
+    .getSource()
+    .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
+  updateInfo(current_time);
+}
+
+getRadarStartEndTime().then((data) => {
+  startTime = data[0];
+  endTime = data[1];
+  setTime();
+});
+
+let stop = function () {
+  if (animationId !== null) {
+    window.clearInterval(animationId);
+    animationId = null;
+  }
+};
+
+let play = function () {
+  stop();
+  animationId = window.setInterval(setTime, 1000 / frameRate);
+};
 		</script>
 	</div>
 </div>
