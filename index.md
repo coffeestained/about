@@ -155,6 +155,9 @@ z-index: 100;
 .page-header a {
 z-index: 100;
     position: relative;	
+    color: rgba(255,255,255,.9);
+    background-color: rgba(0,0,0,.4);
+    border-color: white;	
 }
 
 .collapse .project-name {
