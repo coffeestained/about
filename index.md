@@ -265,8 +265,8 @@ ul li {
         var map = new ol.Map({
             target: 'map',
               layers: [
-                new TileLayer({
-                  source: new XYZ({
+                new ol.layer.Tile({
+                  source: new ol.source.XYZ({
                     attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
                     url:
                       'https://services.arcgisonline.com/arcgis/rest/services/' +
@@ -279,18 +279,13 @@ ul li {
                   }),
                 }),
               ],
-              view: new View({
+              view: new ol.View({
                 center: [28.53, -81.37],
                 projection: 'EPSG:4326',
                 zoom: 2,
                 minZoom: 2,
               }),
         });
-            var worldImagery = new ol.layer.Tile({
-  source: new ol.source.XYZ({
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    maxZoom: 19
-  })
 });
         </script>
     </div>
