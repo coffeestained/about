@@ -264,18 +264,27 @@ ul li {
         <script type="text/javascript">
         var map = new ol.Map({
             target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                  source: new ol.source.XYZ({
-                    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/20/20/20',
-                    maxZoom: 19
-                  })
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([-81.379, 28.538]),
-                zoom: 4
-            })
+              layers: [
+                new TileLayer({
+                  source: new XYZ({
+                    attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
+                    url:
+                      'https://services.arcgisonline.com/arcgis/rest/services/' +
+                      'ESRI_Imagery_World_2D/MapServer/tile/{z}/{y}/{x}',
+                    maxZoom: 15,
+                    projection: 'EPSG:4326',
+                    tileSize: 512, // the tile size supported by the ArcGIS tile service
+                    maxResolution: 180 / 512, // Esri's tile grid fits 180 degrees on one 512 px tile
+                    wrapX: true,
+                  }),
+                }),
+              ],
+              view: new View({
+                center: [28.53, -81.37],
+                projection: 'EPSG:4326',
+                zoom: 2,
+                minZoom: 2,
+              }),
         });
             var worldImagery = new ol.layer.Tile({
   source: new ol.source.XYZ({
