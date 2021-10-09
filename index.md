@@ -263,7 +263,6 @@ ul li {
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
 		<script type="text/javascript">
 
-			
 			const parser = new DOMParser();
 
 /* Async function used to retrieve start and end time from RADAR_1KM_RRAI layer GetCapabilities document */
@@ -289,9 +288,17 @@ let endTime = null;
 let current_time = null;
 
 let layers = [
-  new ol.layer.Tile({
-    source: new ol.source.OSM()
-  }),
+	new ol.layer.Tile({
+		source: new ol.source.XYZ({
+			attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
+			url: 'https://services.arcgisonline.com/arcgis/rest/services/' + 'ESRI_Imagery_World_2D/MapServer/tile/{z}/{y}/{x}',
+			maxZoom: 15,
+			projection: 'EPSG:4326',
+			tileSize: 512, // the tile size supported by the ArcGIS tile service
+			maxResolution: 180 / 512, // Esri's tile grid fits 180 degrees on one 512 px tile
+			wrapX: true,
+		}),
+	}),
   new ol.layer.Image({
     source: new ol.source.ImageWMS({
       format: "image/png",
@@ -311,12 +318,14 @@ let layers = [
 ];
 
 let map = new ol.Map({
-  target: "map",
-  layers: layers,
-  view: new ol.View({
-    center: ol.proj.fromLonLat([-81.37, 28.53]),
-    zoom: 3
-  })
+	target: "map",
+	layers: layers,
+	view: new ol.View({
+		center: [ -81.37, 28.53 ],
+		projection: 'EPSG:4326',
+		zoom: 7,
+		minZoom: 2,
+	}),
 });
 
 function updateInfo(current_time) {
