@@ -280,7 +280,7 @@ ul li {
 			view: new ol.View({
 				center: [ -81.37, 28.53 ],
 				projection: 'EPSG:4326',
-				zoom: 5,
+				zoom: 7,
 				minZoom: 2,
 			}),
 		});
