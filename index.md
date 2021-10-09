@@ -325,7 +325,7 @@ let map = new ol.Map({
 	view: new ol.View({
 		center: [ -81.37, 28.53 ],
 		projection: 'EPSG:4326',
-		zoom: 7,
+		zoom: 6,
 		minZoom: 2,
 	}),
 });
