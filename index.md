@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <style>
 .map {
-    height: 400px;
-    width: 100%;
+    height: 600px;
+    width: 270px;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
@@ -236,7 +236,7 @@ ul li {
     </div>
 </div>
 <div class="row">
-    <img class="row-logo" src="./Spotlight _Monochromatic.svg">
+    <img class="row-logo" src="./America_Monochromatic.svg">
     <div class="row-item">
         <h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
         <script type="text/javascript">
