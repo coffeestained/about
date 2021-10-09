@@ -60,7 +60,7 @@ function headerScrollFunction(event) {
 	    z-index: 99;
 	-webkit-box-shadow: 0px 10px 50px 13px #FFFFFF; 
 box-shadow: 0px 10px 50px 13px #FFFFFF;
-	border-bottom: 4px rgba(255,255,255,.4) solid;
+
 }
 
  .page-header:after,
@@ -75,11 +75,13 @@ box-shadow: 0px 10px 50px 13px #FFFFFF;
     background: linear-gradient(
 	0deg, rgba(255,255,255,.4) 25%, rgba(0,212,255,0.3) 100%);
     animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
+		border-bottom: 4px rgba(255,255,255,.4) solid;
 }
 
  .page-header:after {
     background: linear-gradient(0deg, rgba(85,48,83,0.65) 25%, rgba(85,48,83,0.45) 100%), rgba(0,0,0,.35) url('stars.png') repeat;
     animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
+		border-bottom: 4px rgba(0,0,0,.3) solid;
 }
 	
 @keyframes OpacityAnim {
