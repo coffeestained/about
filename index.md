@@ -62,6 +62,7 @@ function headerScrollFunction(event) {
     bottom: 0;
     left: 0;
     right: 0;
+    mix-blend-mode: hard-light;
 }
 
 .page-header:before {
@@ -230,6 +231,16 @@ ul li {
 }
 </style>
 <div class="row">
+    <img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+    <div class="row-item">
+        <h3>10XTS <a href="mailto: info@10xts.com"><img src="./10xts.png" style=" float: right; max-width: 66px;
+    padding: 5px 15px;
+    border: 1px solid #155799; 
+    background: rgba(21, 87, 153, .05);
+    border-radius: 5px;"></a></h3> I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases.
+    </div>
+</div>
+<div class="row">
     <img class="row-logo" src="./Data Arranging_Monochromatic.svg">
     <div class="row-item">
         <h3>Stuff & Things (But not limited to)</h3>
@@ -244,16 +255,6 @@ ul li {
             <li>MongoDB, Postgres, MySql, MSSql</li>
             <li>Cloud</li>
         </ul>
-    </div>
-</div>
-<div class="row">
-    <img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
-    <div class="row-item">
-        <h3>10XTS <a href="mailto: info@10xts.com"><img src="./10xts.png" style=" float: right; max-width: 66px;
-    padding: 5px 15px;
-    border: 1px solid #155799; 
-    background: rgba(21, 87, 153, .05);
-    border-radius: 5px;"></a></h3> I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases.
     </div>
 </div>
 <div class="row">
