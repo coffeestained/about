@@ -53,8 +53,22 @@ function headerScrollFunction(event) {
   scroll-snap-type: y mandatory;
  }
  .page-header {
-    background-image: url(1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg);
-    background-size: 75%;	
+    background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg');
+    background-size: 75%;
+    background-repeat: repeat;
+    background-position: 0 0;
+    /*adjust s value for speed*/
+     animation: animatedBackground 600s linear infinite;
+}
+	
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+/*use negative width if you want it to flow right to left else and positive for left to right*/
+  to {
+    background-position: -10000px 0;
+  }
 }
  header {
  scroll-snap-align: start;
