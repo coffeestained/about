@@ -54,11 +54,11 @@ function headerScrollFunction(event) {
  }
  .page-header {
     background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
-    background-size: 75%;
+    background-size: 85%;
     background-repeat: repeat;
     background-position: 0 0;
     /*adjust s value for speed*/
-     animation: animatedBackground 600s linear infinite;
+     animation: animatedBackground 850s linear infinite;
 }
 	
 @keyframes animatedBackground {
@@ -118,7 +118,12 @@ ul li {
   justify-content: center;
   align-items: center;
   animation: collapse .5s ease forwards;
- 
+     background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
+    background-size: 85%;
+    background-repeat: repeat;
+    background-position: 0 0;
+    /*adjust s value for speed*/
+     animation: animatedBackground 850s linear infinite;
 }
 
 .collapse .project-name {
@@ -133,6 +138,12 @@ ul li {
  animation: expand .5s ease forwards;
  padding-top: 80px;
  padding-bottom: 80px;
+	    background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
+    background-size: 85%;
+    background-repeat: repeat;
+    background-position: 0 0;
+    /*adjust s value for speed*/
+     animation: animatedBackground 850s linear infinite;
 }
  
 .bottom-left {
