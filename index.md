@@ -346,6 +346,17 @@ $.ajax({
 			return '#155799';
 		      });
 	
+		    // Add the line
+		    svg.append("path")
+		      .datum(data)
+		      .attr("fill", "none")
+		      .attr("stroke", "steelblue")
+		      .attr("stroke-width", 1.5)
+		      .attr("d", d3.line()
+			.x(function(d) { return x(d.superposition) })
+			.y(function(d) { return y(d.value) })
+			)
+	
 	    },
 	    error : function(request,error)
 	    {
