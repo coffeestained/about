@@ -306,7 +306,7 @@ let layers = [
       params: { LAYERS: "RADAR_1KM_RRAI", TILED: true },
       transition: 0
     }),
-    opacity: 5
+    opacity: .5
   }),
   new ol.layer.Image({
     source: new ol.source.ImageWMS({
@@ -315,7 +315,7 @@ let layers = [
       params: { LAYERS: "RADAR_COVERAGE_RRAI.INV", TILED: true },
       transition: 0
     }),
-    opacity: 5
+    opacity: .5
   })
 ];
 
