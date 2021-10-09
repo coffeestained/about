@@ -77,7 +77,7 @@ function headerScrollFunction(event) {
 
  .page-header:after {
     background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(85,48,83,0.45) 100%), black url('stars.png') repeat;;
-    animation: OpacityAnim 60s ease-in-out -60s infinite alternate;
+    animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1100s linear infinit;
 }
 	
 @keyframes OpacityAnim {
