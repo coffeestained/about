@@ -279,9 +279,10 @@ ul li {
 				new ol.layer.Tile({
 				    opacity: 0.4,
 				    source: new ol.source.TileWMS({
-				    url: "https://geo.weather.gc.ca/geomet",
-				    params: { LAYERS: "GDPS.ETA_TT", TILED: true },
-				    transition: 0
+					    url: "https://geo.weather.gc.ca/geomet",
+					    params: { LAYERS: "GDPS.ETA_TT", TILED: true },
+					    transition: 0
+				    })
 			        })
 			],
 			view: new ol.View({
