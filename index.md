@@ -286,7 +286,6 @@ ul li {
                 minZoom: 2,
               }),
         });
-});
         </script>
     </div>
 </div>
