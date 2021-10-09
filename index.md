@@ -270,7 +270,7 @@ ul li {
                     url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/100/28.538336/-81.379234',
                     maxZoom: 19
                   })
-                });
+                })
             ],
             view: new ol.View({
                 center: ol.proj.fromLonLat([-81.379234, 28.538336]),
