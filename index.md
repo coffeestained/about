@@ -60,6 +60,7 @@ function headerScrollFunction(event) {
 	    z-index: 99;
 	-webkit-box-shadow: 0px 10px 50px 13px #FFFFFF; 
 box-shadow: 0px 10px 50px 13px #FFFFFF;
+	border-bottom: 4px rgba(255,255,255,.4) solid;
 }
 
  .page-header:after,
