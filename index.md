@@ -54,7 +54,7 @@ function headerScrollFunction(event) {
  }
  .page-header {
 	background-image: linear-gradient(
-	0deg, rgba(255,255,255,1) 25%, rgba(0,212,255,0.3) 100%),url(1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg) !important;
+	0deg, rgba(255,255,255,1) 25%, rgba(0,212,255,0.3) 100%),url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
     background-size: 85%;
     background-repeat: repeat;
     background-position: 0 0;
