@@ -62,7 +62,7 @@ function headerScrollFunction(event) {
 }
 
  .page-header:after,
- .page-headert:before {
+ .page-header:before {
     content: '';
     display: block;
     position: absolute;
@@ -72,12 +72,12 @@ function headerScrollFunction(event) {
  .page-header:before {
     background: linear-gradient(
 	0deg, rgba(255,255,255,1) 25%, rgba(0,212,255,0.3) 100%);
-    animation: OpacityAnim 900 ease-in-out 0s infinite alternate;
+    animation: OpacityAnim 60 ease-in-out 0s infinite alternate;
 }
 
  .page-header:after {
     background: linear-gradient(0deg, rgba(255,255,255,1) 19%, rgba(85,48,83,0.75) 100%);
-    animation: OpacityAnim 900 ease-in-out calc(-1 * 900) infinite alternate;
+    animation: OpacityAnim 60s ease-in-out -60s infinite alternate;
 }
 	
 @keyframes OpacityAnim {
