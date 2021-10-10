@@ -12,7 +12,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
 <div class="row">
-	<img class="row-logo" src="./Watermelon_Monochromatic.svg">
+	<div class="row-logo" style="background="url('./Watermelon_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Matthew Grady ☕ <a href="https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends" src="./LI-In-Bug.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
@@ -231,7 +231,7 @@ ul li {
 }
 </style>
 <div class="row">
-	<img class="row-logo" src="./Statue of liberty_Monochromatic.svg">
+	<div class="row-logo" style="background="url('./Statue of liberty_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>10XTS <a href="mailto: info@10xts.com"><img src="./10xts.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
@@ -258,7 +258,7 @@ ul li {
 	</div>
 </div>
 <div class="row">
-	<img class="row-logo" src="./America_Monochromatic.svg">
+	<div class="row-logo" style="background="url('./America_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
 		<script type="text/javascript">
@@ -299,24 +299,15 @@ let layers = [
 			wrapX: true,
 		}),
 	}),
-  new ol.layer.Image({
-    source: new ol.source.ImageWMS({
-      format: "image/png",
-      url: "https://geo.weather.gc.ca/geomet/",
-      params: { LAYERS: "RADAR_1KM_RRAI", TILED: true },
-      transition: 0
-    }),
-    opacity: .5
-  }),
-  new ol.layer.Image({
-    source: new ol.source.ImageWMS({
-      format: "image/png",
-      url: "https://geo.weather.gc.ca/geomet/",
-      params: { LAYERS: "RADAR_COVERAGE_RRAI.INV", TILED: true },
-      transition: 0
-    }),
-    opacity: .5
-  })
+    new ol.layer.Image({
+        source: new ol.source.ImageWMS({
+          format: "image/png",
+          url: "https://geo.weather.gc.ca/geomet/",
+          params: { LAYERS: "RADAR_1KM_RRAI", TILED: true },
+          transition: 0
+        }),
+        opacity: .5
+    })
 ];
 
 let map = new ol.Map({
@@ -375,7 +366,7 @@ let play = function () {
 	</div>
 </div>
 <div class="row">
-	<img class="row-logo" src="./Spotlight _Monochromatic.svg">
+	<img class="row-logo" src="./Spotlight _Monochromatic.svg"><div class="row-logo" style="background="url('./Spotlight_Monochromatic.svg');" src="./Statue of liberty_Monochromatic.svg"></div>
 	<div class="row-item">
 		<h3>Curiosity Chart</h3> This is an aggregate count of views of this repository supplied by GitHub API. <section id="curiosity-container" class="curiosity-container"></section>
 	</div>
@@ -384,7 +375,7 @@ let play = function () {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 // Set the dimensions of the canvas / graph
-var margin = {
+const margin = {
 		top: 30,
 		right: 20,
 		bottom: 30,
@@ -393,21 +384,21 @@ var margin = {
 	width = 600 - margin.left - margin.right,
 	height = 270 - margin.top - margin.bottom;
 // Parse the date / time
-var parseDate = d3.time.format("%d-%b-%y").parse;
+const parseDate = d3.time.format("%d-%b-%y").parse;
 // Set the ranges
-var x = d3.scale.ordinal().rangeRoundBands([0, width], 1);
-var y = d3.scale.linear().range([height, 0]);
+const x = d3.scale.ordinal().rangeRoundBands([0, width], 1);
+const y = d3.scale.linear().range([height, 0]);
 // Define the axes
-var xAxis = d3.svg.axis().scale(x).orient("bottom");
-var yAxis = d3.svg.axis().scale(y).orient("left").ticks(3);
+const xAxis = d3.svg.axis().scale(x).orient("bottom");
+const yAxis = d3.svg.axis().scale(y).orient("left").ticks(3);
 // Define the line
-var valueline = d3.svg.line().interpolate("basis").x(function(d) {
+const valueline = d3.svg.line().interpolate("basis").x(function(d) {
 	return x(d.superposition);
 }).y(function(d) {
 	return y(d.value);
 });
 // Adds the svg canvas
-var svg = d3.select("section").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+const svg = d3.select("section").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 window.sneakyVariable = [];
 $.ajax({
 	url: 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
@@ -516,7 +507,7 @@ path {
 }
 </style>
 <div class="row">
-	<img class="row-logo" src="./Brainstorming session _Monochromatic.svg">
+	<div class="row-logo" style="background="url('./Brainstorming session _Monochromatic.svg');" src="./Statue of liberty_Monochromatic.svg"></div>
 	<div class="row-item">
 		<h3>Special Thanks</h3> My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 	</div>
