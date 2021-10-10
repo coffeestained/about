@@ -277,7 +277,6 @@ ul li {
 	</div>
 </div>
 <div class="row map-stuffs" style="width: 100vw ;
-    padding: 0px;
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px;">
