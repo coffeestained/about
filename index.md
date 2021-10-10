@@ -240,6 +240,10 @@ ul li {
 		padding-bottom: 80px;
 	}
 }
+
+.flex-grow {
+ flex-grow: 1;
+}
 </style>
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Statue of liberty_Monochromatic.svg');"></div>
@@ -251,7 +255,7 @@ ul li {
     border-radius: 5px;"></a></h3> I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases.
 	</div>
 </div>
-<div class="row">
+<div class="row flex-grow">
 	<div class="row-logo" style="background-image:url('./Data Arranging_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Stuff & Things (But not limited to)</h3>
@@ -271,7 +275,8 @@ ul li {
 <div class="row" style="width: 100vw;
     padding: 0px;
     margin: 0px;
-    margin-left: calc(50% - 50vw);">
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 50px;">
 	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
