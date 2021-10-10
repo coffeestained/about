@@ -268,7 +268,10 @@ ul li {
 		</ul>
 	</div>
 </div>
-<div class="row">
+<div class="row" style="width: 100vw;
+    padding: 0px;
+    margin: 0px;
+    margin-left: calc(50% - 50vw);">
 	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
