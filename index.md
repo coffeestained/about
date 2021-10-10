@@ -276,7 +276,7 @@ ul li {
 		</ul>
 	</div>
 </div>
-<div class="row wide-stuffs" style="position: absolute;
+<div class="row wide-stuffs" style="    position: absolute;
     left: 0px;
     right: 0px;
     margin: 0px;
@@ -509,8 +509,13 @@ window.hoverFriends.forEach(element => {
 		element.classList.add(current);
 	});
 });
+window.footerElement = document.querySelectorAll('footer.site-footer');
+window.footerElement.forEach(element => {
+	element.classList.add('absolute');
+});
 </script>
 <style>
+.absolute { position: absolute; color: white; }
 path {
 	stroke: #155799;
 	stroke-width: 2;
@@ -563,7 +568,7 @@ path {
 	</div>
 </div>
 
-<div class="row wide-stuffs footer-stuffs" style="position: absolute;
+<div class="row wide-stuffs footer-stuffs" style="    position: absolute;
     left: 0px;
     right: 0px;
     margin: 0px;
