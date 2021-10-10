@@ -105,15 +105,22 @@ function headerScrollFunction(event) {
 }
 
 .row-logo {
-	width: 100px;
 	margin-right: 1rem;
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    margin-right: 1rem;
+    min-width: 100px;
+    max-height: 100px;
+    min-height: 100%;
+    background-size: 100px 100px;
 }
 
 .row-logo:after,
 .row-logo:before {
 	content: '';
 	display: block;
-	position: absolute;
+	position: relative;
 	top: 0;
 	bottom: 0;
 	left: 0;
