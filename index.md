@@ -276,7 +276,7 @@ ul li {
 		</ul>
 	</div>
 </div>
-<div class="row wide-stuffs" style="    position: absolute;
+<div class="row wide-stuffs" style="position: absolute;
     left: 0px;
     right: 0px;
     margin: 0px;
@@ -563,7 +563,7 @@ path {
 	</div>
 </div>
 
-<div class="row wide-stuffs footer-stuffs" style="    position: absolute;
+<div class="row wide-stuffs footer-stuffs" style="position: absolute;
     left: 0px;
     right: 0px;
     margin: 0px;
