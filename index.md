@@ -102,6 +102,7 @@ function headerScrollFunction(event) {
 	display: flex;
 	margin-bottom: 50px;
 	scroll-snap-align: start;
+    z-index;99;
 }
 
 .row-logo {
@@ -138,16 +139,6 @@ function headerScrollFunction(event) {
 	right: 0;
     width: 100px;
     height: 100px;
-}
-
-.row-logo:before {
-	background: linear-gradient(0deg, rgba(255, 255, 255, .4) 25%, rgba(0, 212, 255, 0.3) 100%);
-	animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
-}
-
-.row-logo:after {
-	background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('stars.png') repeat;
-	animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
 }
 
 .row-item {}
