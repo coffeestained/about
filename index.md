@@ -116,7 +116,18 @@ function headerScrollFunction(event) {
     background-size: 100px 100px;
 }
 
-.row-logo:after,
+.row-logo:after {
+	content: '';
+	display: block;
+	position: relative;
+	top: -100px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    width: 100px;
+    height: 100px;
+}
+
 .row-logo:before {
 	content: '';
 	display: block;
@@ -125,6 +136,8 @@ function headerScrollFunction(event) {
 	bottom: 0;
 	left: 0;
 	right: 0;
+    width: 100px;
+    height: 100px;
 }
 
 .row-logo:before {
