@@ -529,9 +529,28 @@ path {
 }
 
 .footer-stuffs {
-    background: var('./Landscape-agriculture.svg');
+    background: url('./Landscape-agriculture.svg');
     background-size: cover;
     height: 400px;
+}
+.footer-stuffs:after,
+.footer-stuffs:before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	mix-blend-mode: hard-light;
+}
+.footer-stuffs:before {
+	background: linear-gradient(0deg, rgba(255, 255, 255, .4) 25%, rgba(0, 212, 255, 0.3) 100%);
+	animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
+}
+.footer-stuffs:after {
+	background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('stars.png') repeat;
+	animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
 }
 </style>
 <div class="row">
