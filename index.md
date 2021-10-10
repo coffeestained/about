@@ -244,7 +244,7 @@ ul li {
 .flex-grow {
  flex-grow: 1;
 }
-.map-stuffs {
+.wide-stuffs {
  padding: 50px;
  background: rgb(203 203 185 / 30%);
 }
@@ -276,7 +276,7 @@ ul li {
 		</ul>
 	</div>
 </div>
-<div class="row map-stuffs" style="width: 100vw ;
+<div class="row wide-stuffs" style="width: 100vw ;
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px;">
@@ -527,6 +527,12 @@ path {
 	fill: #155799;
 	stroke: #fff;
 }
+
+.footer-stuffs {
+    background: var('./Landscape-agriculture.svg');
+    background-size: cover;
+    height: 400px;
+}
 </style>
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
@@ -534,3 +540,11 @@ path {
 		<h3>Special Thanks</h3> My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 	</div>
 </div>
+
+<div class="row wide-stuffs footer-stuffs" style="width: 100vw ;
+    margin: 0px;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 50px;">
+
+</div>
+
