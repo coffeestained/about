@@ -507,10 +507,7 @@ window.hoverFriends.forEach(element => {
 		element.classList.add(current);
 	});
 });
-window.footerElement = document.querySelectorAll('.site-footer');
-window.footerElement.forEach(element => {
-	element.classList.add('absolute');
-});
+
 </script>
 <style>
 .absolute { position: absolute; color: white; }
@@ -559,7 +556,8 @@ path {
 	animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
 }
 
-.site-footer { position: absolute; }
+.site-footer { position: absolute; color: white; } 
+.site-footer-credits { color: white; }
 </style>
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
