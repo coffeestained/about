@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <style>
 .map {
-	width: 600px;
-	height: 270px;
+	width: 100%;
+	height: 500px;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
@@ -244,6 +244,9 @@ ul li {
 .flex-grow {
  flex-grow: 1;
 }
+.map-stuffs {
+ padding: 50px;
+}
 </style>
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Statue of liberty_Monochromatic.svg');"></div>
@@ -255,7 +258,7 @@ ul li {
     border-radius: 5px;"></a></h3> I'm currently working with a FinTech company out of Ohio. We are work to provide regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about launching, managing and securing traditional asset classes on new and exciting databases.
 	</div>
 </div>
-<div class="row flex-grow">
+<div class="row">
 	<div class="row-logo" style="background-image:url('./Data Arranging_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Stuff & Things (But not limited to)</h3>
@@ -278,7 +281,7 @@ ul li {
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px;">
 	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
-	<div class="row-item">
+	<div class="row-item flex-grow map-stuffs">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
 		<script type="text/javascript">
 
