@@ -485,7 +485,7 @@ element.addEventListener("mouseover", event => {
 	window.sneakyCurrentAnimation = current;
 	element.classList.add(current);
 });
-window.hoverFriends = document.querySelectorAll('img');
+window.hoverFriends = document.querySelectorAll('div.row-logo');
 console.log(hoverFriends);
 window.hoverFriends.forEach(element => {
 	element.classList.add('animate__animated');
