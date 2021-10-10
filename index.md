@@ -246,6 +246,7 @@ ul li {
 }
 .map-stuffs {
  padding: 50px;
+ background: rgb(203 203 185 / 30%);
 }
 </style>
 <div class="row">
@@ -275,13 +276,13 @@ ul li {
 		</ul>
 	</div>
 </div>
-<div class="row" style="width: 100vw;
+<div class="row map-stuffs" style="width: 100vw ;
     padding: 0px;
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px;">
 	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
-	<div class="row-item flex-grow map-stuffs">
+	<div class="row-item flex-grow">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
 		<script type="text/javascript">
 
