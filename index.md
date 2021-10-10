@@ -509,7 +509,7 @@ window.hoverFriends.forEach(element => {
 		element.classList.add(current);
 	});
 });
-window.footerElement = document.querySelectorAll('footer.site-footer');
+window.footerElement = document.querySelectorAll('footer');
 window.footerElement.forEach(element => {
 	element.classList.add('absolute');
 });
