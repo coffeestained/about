@@ -12,7 +12,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
 <div class="row">
-	<div class="row-logo" style="background:url('./Watermelon_Monochromatic.svg');"></div>
+	<div class="row-logo" style="background-image:url('./Watermelon_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Matthew Grady ☕ <a href="https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends" src="./LI-In-Bug.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
@@ -238,7 +238,7 @@ ul li {
 }
 </style>
 <div class="row">
-	<div class="row-logo" style="background:url('./Statue of liberty_Monochromatic.svg');"></div>
+	<div class="row-logo" style="background-image:url('./Statue of liberty_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>10XTS <a href="mailto: info@10xts.com"><img src="./10xts.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
@@ -248,7 +248,7 @@ ul li {
 	</div>
 </div>
 <div class="row">
-	<div class="row-logo" style="background:url('./Data Arranging_Monochromatic.svg');"></div>
+	<div class="row-logo" style="background-image:url('./Data Arranging_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Stuff & Things (But not limited to)</h3>
 		<ul>
@@ -265,7 +265,7 @@ ul li {
 	</div>
 </div>
 <div class="row">
-	<div class="row-logo" style="background:url('./America_Monochromatic.svg');"></div>
+	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
 		<script type="text/javascript">
@@ -373,7 +373,7 @@ let play = function () {
 	</div>
 </div>
 <div class="row">
-	<div class="row-logo" style="background:url('./Spotlight _Monochromatic.svg');"></div>
+	<div class="row-logo" style="background-image:url('./Spotlight _Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Curiosity Chart</h3> This is an aggregate count of views of this repository supplied by GitHub API. <section id="curiosity-container" class="curiosity-container"></section>
 	</div>
@@ -514,7 +514,7 @@ path {
 }
 </style>
 <div class="row">
-	<div class="row-logo" style="background:url('./Brainstorming session _Monochromatic.svg');"></div>
+	<div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
 	<div class="row-item">
 		<h3>Special Thanks</h3> My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 	</div>
