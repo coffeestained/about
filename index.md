@@ -73,6 +73,7 @@ function headerScrollFunction(event) {
   width: 42px;
   height: 42px;
   position: absolute;
+  z-index: 99;
   top: -16px;
   left: -108px;
   animation: right linear 30s infinite;
