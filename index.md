@@ -48,7 +48,7 @@ function headerScrollFunction(event) {
     animation: xAxis 60s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
     position: absolute;
     z-index: 99;
-    top: 0px;
+    top: 16.66px;
     left: 100px;
 }
 	
