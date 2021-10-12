@@ -41,6 +41,73 @@ function headerScrollFunction(event) {
 }
 </script>
 <style>
+
+.parachute {
+  margin: 400px auto;
+  width: 400px;
+
+  animation: xAxis 20s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+}
+	
+.parachute__img {
+    animation: yAxis 20s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+}
+
+.parachute__img:before {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 60px;
+      background: url("https://dl.dropboxusercontent.com/s/7xthrrako1qpxy9/parachute.svg")
+        no-repeat;
+      animation: swing ease-in-out 1s infinite alternate;
+      transform-origin: center -20px;
+ }
+
+.plane {
+  background: url("https://dl.dropboxusercontent.com/s/egcs4ohbyrfa39n/aeroplane.svg")
+    no-repeat;
+  width: 108px;
+  height: 108px;
+  position: absolute;
+  top: -16px;
+  left: -108px;
+  animation: right linear 30s infinite;
+}
+
+@keyframes yAxis {
+  50% {
+    animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes xAxis {
+  50% {
+    animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    transform: translateX(200px);
+  }
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+
+@keyframes right {
+  0% {
+    left: -108px;
+  }
+  100% {
+    left: calc(100% + 108px);
+  }
+}
+
 .page-header {
 	background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
 	background-size: 85%;
@@ -249,6 +316,15 @@ ul li {
  background: rgb(203 203 185 / 30%);
 }
 </style>
+
+<div class="parachute">
+  <div class="parachute__img"></div>
+</div>
+
+<div class="plane">
+  
+</div>
+
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Statue of liberty_Monochromatic.svg');"></div>
 	<div class="row-item">
