@@ -85,7 +85,7 @@ function headerScrollFunction(event) {
     transform: translateY(-200px);
   }
   66% {
-    animation-timing-function: cubic-bezier(-1.04, -1.02, -1.42, -6);
+    animation-timing-function: cubic-bezier(0, .2, -1.42, -6);
     transform: translateY(-200px);
   }
 }
@@ -96,7 +96,7 @@ function headerScrollFunction(event) {
     transform: translateX(700px);
   } 
   66% {
-    animation-timing-function: cubic-bezier(-1.6, -1.57, -1.15, -6.64);
+    animation-timing-function: cubic-bezier(0, 0, -1.15, -6.64);
     transform: translateX(700px);
   }
 }
