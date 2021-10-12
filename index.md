@@ -45,7 +45,7 @@ function headerScrollFunction(event) {
 .parachute {
     margin: 200px;
     width: 400px;
-    animation: xAxis 20s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+    animation: xAxis 40s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
     position: absolute;
     z-index: 99;
     top: 0px;
@@ -53,7 +53,7 @@ function headerScrollFunction(event) {
 }
 	
 .parachute__img {
-    animation: yAxis 20s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    animation: yAxis 40s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
 }
 
 .parachute__img:before {
@@ -80,15 +80,23 @@ function headerScrollFunction(event) {
 }
 
 @keyframes yAxis {
-  50% {
+  33% {
     animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+    transform: translateY(-200px);
+  }
+  66% {
+    animation-timing-function: cubic-bezier(-0.04, -0.02, -0.42, -1);
     transform: translateY(-200px);
   }
 }
 
 @keyframes xAxis {
-  50% {
+  33% {
     animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    transform: translateX(700px);
+  } 
+  66% {
+    animation-timing-function: cubic-bezier(-0.6, -0.57, -0.15, -3.64);
     transform: translateX(700px);
   }
 }
