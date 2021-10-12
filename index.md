@@ -70,8 +70,8 @@ function headerScrollFunction(event) {
 .plane {
   background: url("https://dl.dropboxusercontent.com/s/egcs4ohbyrfa39n/aeroplane.svg")
     no-repeat;
-  width: 108px;
-  height: 108px;
+  width: 42px;
+  height: 42px;
   position: absolute;
   top: -16px;
   left: -108px;
