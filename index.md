@@ -89,7 +89,7 @@ function headerScrollFunction(event) {
 @keyframes xAxis {
   50% {
     animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
-    transform: translateX(200px);
+    transform: translateX(700px);
   }
 }
 
