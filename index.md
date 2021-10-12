@@ -59,8 +59,8 @@ function headerScrollFunction(event) {
 .parachute__img:before {
       content: "";
       display: block;
-      width: 60px;
-      height: 60px;
+      width: 15px;
+      height: 15px;
       background: url("https://dl.dropboxusercontent.com/s/7xthrrako1qpxy9/parachute.svg")
         no-repeat;
       animation: swing ease-in-out 1s infinite alternate;
