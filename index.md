@@ -43,10 +43,13 @@ function headerScrollFunction(event) {
 <style>
 
 .parachute {
-  margin: 400px auto;
-  width: 400px;
-
-  animation: xAxis 20s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+    margin: 200px;
+    width: 400px;
+    animation: xAxis 20s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+    position: absolute;
+    z-index: 99;
+    top: 0px;
+    left: 100px;
 }
 	
 .parachute__img {
@@ -102,6 +105,21 @@ function headerScrollFunction(event) {
 @keyframes right {
   0% {
     left: -108px;
+  }	
+  25% {
+    left: calc(25% + 108px);
+  }
+  35% {
+    left: calc(35% + 108px);
+    top: 12px;
+  }
+  50% {
+    left: calc(50% + 108px);
+    top: 12px;
+  }
+  75% {
+    left: calc(75% + 108px);
+    top: 5px;
   }
   100% {
     left: calc(100% + 108px);
