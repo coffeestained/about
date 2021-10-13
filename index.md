@@ -687,6 +687,7 @@ transform: scaleX(-1);
 	      const element = document.getElementById('tractor');
 	      const left = getCssProperty("tractor", "left");
 	      let pixel = Number(left.replace( /^\D+/g, ''));
+	      console.log(pixel, element.style.left);
 	      element.style.left = pixel+1 + 'px';
 	      console.log(tractor, element, left);
 	      if (condition) {
