@@ -615,7 +615,7 @@ window.hoverFriends.forEach(element => {
 </script>
 <style>
 .absolute { position: absolute; color: white; }
-path {
+#curiosity-container > path {
 	stroke: #155799;
 	stroke-width: 2;
 	fill: none;
@@ -669,6 +669,7 @@ path {
 .tractor {
 transform: scaleX(-1);
   left: 0px;
+	position: relative;
 }
 	
 </style>
@@ -690,14 +691,14 @@ transform: scaleX(-1);
 	      console.log(pixel[0])
 	      pixel = Number(pixel[0]);
 	      console.log(pixel, element.style.left);
-	      element.style.left = pixel+1 + 'px';
+	      element.style.left = pixel+.1 + 'px';
 	      console.log(tractor, element, left);
 	      if (condition) {
 		resolve(true);
 		clearInterval(interval);
 	      };
 
-	    }, 1000);
+	    }, 100);
 	  });
 	}
 	
@@ -715,7 +716,7 @@ transform: scaleX(-1);
     margin: 0px;
     margin-left: calc(50% - 50vw);">
 	
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> 
+	<svg  id="tractor" class="tractor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> 
 
 
 	<g style="opacity:0.6;" class="cloud">
@@ -738,7 +739,7 @@ transform: scaleX(-1);
 		<path style="fill:#FFFFFF;" d="M184.705,83.333c0-14.175,11.491-25.667,25.667-25.667c2.139,0,4.185,0.338,6.172,0.832    c6.697-7.233,16.193-11.832,26.828-11.832c20.25,0,36.667,16.416,36.667,36.667H184.705z"/>
 	</g>
 
-  <g id="tractor" class="tractor">
+  <g>
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="100" height="72.535" viewBox="0 0 360.79 261.7">
     <polygon points="283.16 27.17 232.01 27.17 180.86 27.17 138.25 143.09 232.01 143.24 325.77 143.09 283.16 27.17" style="fill: #666"/>
   <polygon points="278.29 34.15 315.77 136.12 232.03 136.25 148.25 136.12 185.73 34.15 278.29 34.15" style="fill: #64b3f5"/>
