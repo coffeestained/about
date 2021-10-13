@@ -685,7 +685,7 @@ transform: scaleX(-1);
 	  return await new Promise(resolve => {
 	    const interval = setInterval(() => {
 	      const element = document.getElementById('tractor');
-	      const left = getCssProperty("my-div", "left");
+	      const left = getCssProperty("tractor", "left");
 	      element.setStyle({left: left+1});
 	      if (condition) {
 		resolve(true);
@@ -697,7 +697,7 @@ transform: scaleX(-1);
 	}
 	
 	function getCssProperty(elmId, property){
-	   var elem = document.getElementById(elmId);
+	   const elem = document.getElementById(elmId);
 	   return window.getComputedStyle(elem,null).getPropertyValue(property);
 	}
 	
