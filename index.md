@@ -684,13 +684,14 @@ transform: scaleX(-1);
 	async function doTractorAnimation(condition) {
 	  return await new Promise(resolve => {
 	    const interval = setInterval(() => {
+	      const element = document.getElementById('tractor');
+	      const left = getCssProperty("my-div", "left");
+	      element.setStyle({left: left+1});
 	      if (condition) {
 		resolve(true);
 		clearInterval(interval);
 	      };
-              const element = document.getElementById('tractor');
-	      const left = getCssProperty("my-div", "left");
-	      element.setStyle({left: left+1});
+
 	    }, 1000);
 	  });
 	}
@@ -699,6 +700,8 @@ transform: scaleX(-1);
 	   var elem = document.getElementById(elmId);
 	   return window.getComputedStyle(elem,null).getPropertyValue(property);
 	}
+	
+	const animationInterval = waitUntil(left == 400)
 </script>
 
 <div class="row wide-stuffs footer-stuffs" style="    position: absolute;
