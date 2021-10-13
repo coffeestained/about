@@ -701,7 +701,7 @@ transform: scaleX(-1);
 	   return window.getComputedStyle(elem,null).getPropertyValue(property);
 	}
 	
-	const animationInterval = doTractorAnimation(left == 400)
+	const animationInterval = doTractorAnimation(false)
 </script>
 
 <div class="row wide-stuffs footer-stuffs" style="    position: absolute;
