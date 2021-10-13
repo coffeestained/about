@@ -669,7 +669,10 @@ window.hoverFriends.forEach(element => {
 .tractor {
 transform: scaleX(-1);
   left: 0px;
+	top:240px;
 	position: relative;
+	width: 125px;
+	height: 125px;
 }
 	
 </style>
