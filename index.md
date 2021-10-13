@@ -686,11 +686,11 @@ transform: scaleX(-1);
 	    const interval = setInterval(() => {
 	      const element = document.getElementById('tractor');
 	      const left = getCssProperty("tractor", "left");
-	      let pixel = left.replace( /^\D+/g, '');
-	      console.log(pixel)
-	      pixel = Number(pixel);
-	      console.log(pixel, element.style.left);
-	      element.style.left = pixel+1 + 'px';
+	      let pixel = left.match(/(\d+)/);
+	      console.log(pixel[0])
+	      pixel = Number(pixel[0]);
+	      console.log(pixel[0], element.style.left);
+	      element.style.left = pixel[0]+1 + 'px';
 	      console.log(tractor, element, left);
 	      if (condition) {
 		resolve(true);
