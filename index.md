@@ -686,7 +686,7 @@ transform: scaleX(-1);
 	  return await new Promise(resolve => {
 	    const interval = setInterval(() => {
 	      const element = document.getElementById('tractor');
-	      const style = window.getComputedStyle(element),
+	      const style = window.getComputedStyle(element);
               const left = style.getPropertyValue('left');
 	      let pixel = left.match(/(\d+)/);
 	      console.log(pixel[0])
