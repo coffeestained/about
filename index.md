@@ -11,8 +11,7 @@
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js?r=10"></script>
+
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Watermelon_Monochromatic.svg');"></div>
 	<div class="row-item">
@@ -612,27 +611,6 @@ window.hoverFriends.forEach(element => {
 		element.classList.add(current);
 	});
 });
-	
-// Cloud animation effect start
-$('.cloud').each( function( index, element ){
-  var cloud = (element);
-TweenLite.set(cloud, {x:"-50vw"});
-TweenMax.to(cloud,  30 + (Math.random() * 50), {x:"50vw", repeat:-1})
-});
-// Cloud animation effect End
-
-// Tyre and tractor bonet animation start
-TweenMax.from("#tyre-1, #tyre-2", 3, {rotation: "360", repeat: -1, transformOrigin: "center center", ease:Linear.easeNone});
-var bonet = new TimelineMax({repeat:-1,delay:0});
-bonet.fromTo("#bonet", 0.2, {y:8, yoyo:true}, {y:0, yoyo:true})
-bonet.from("#bonet", 0.2, {y:0, yoyo:true})
-// Tyre and tractor bonet animation end
-
-// Covert Path in X Y co-ordinates
-  var motionPath = MorphSVGPlugin.pathDataToBezier("#tractorPath",{align:".tractor"});
-  TweenMax.set(".tractor", {transformOrigin:"50% 50%"});
-  TweenMax.to(".tractor", 55,  {bezier:{ type:"cubic", values:motionPath,autoRotate:["x","y","rotation",180,false],ease:Linear.easeNone}, repeat:-1});
-  // Covert Path in X Y co-ordinates
 
 </script>
 <style>
@@ -687,6 +665,12 @@ path {
 	.cloud{
   z-index:1
 }
+	
+.tractor {
+transform: scaleX(-1);
+  left: 0px;
+}
+	
 </style>
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
@@ -694,6 +678,28 @@ path {
 		<h3>Special Thanks</h3> My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
 	</div>
 </div>
+
+<script>
+	
+	async function doTractorAnimation(condition) {
+	  return await new Promise(resolve => {
+	    const interval = setInterval(() => {
+	      if (condition) {
+		resolve(true);
+		clearInterval(interval);
+	      };
+              const element = document.getElementById('tractor');
+	      const left = getCssProperty("my-div", "left");
+	      element.setStyle({left: left+1});
+	    }, 1000);
+	  });
+	}
+	
+	function getCssProperty(elmId, property){
+	   var elem = document.getElementById(elmId);
+	   return window.getComputedStyle(elem,null).getPropertyValue(property);
+	}
+</script>
 
 <div class="row wide-stuffs footer-stuffs" style="    position: absolute;
     left: 0px;
@@ -724,12 +730,7 @@ path {
 		<path style="fill:#FFFFFF;" d="M184.705,83.333c0-14.175,11.491-25.667,25.667-25.667c2.139,0,4.185,0.338,6.172,0.832    c6.697-7.233,16.193-11.832,26.828-11.832c20.25,0,36.667,16.416,36.667,36.667H184.705z"/>
 	</g>
 
-
-	<g>
-		<path style="fill:transparent;" id="tractorPath" d="M511.39,272.76C398.88,273.31,185,439.91,27.5,452.67,73.36,496.14,187.82,579,256,579,391.75,579,502.75,406.32,511.39,272.76Z"/>
-	</g>
-
-  <g class="tractor">
+  <g id="tractor" class="tractor">
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="100" height="72.535" viewBox="0 0 360.79 261.7">
     <polygon points="283.16 27.17 232.01 27.17 180.86 27.17 138.25 143.09 232.01 143.24 325.77 143.09 283.16 27.17" style="fill: #666"/>
   <polygon points="278.29 34.15 315.77 136.12 232.03 136.25 148.25 136.12 185.73 34.15 278.29 34.15" style="fill: #64b3f5"/>
