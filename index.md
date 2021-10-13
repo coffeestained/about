@@ -686,7 +686,7 @@ transform: scaleX(-1);
 	  return await new Promise(resolve => {
 	    const interval = setInterval(() => {
 	      const element = document.getElementById('tractor');
-	      const left = getCssProperty("tractor", "left");
+	      const left = getCssProperty(element, "left");
 	      let pixel = left.match(/(\d+)/);
 	      console.log(pixel[0])
 	      pixel = Number(pixel[0]);
@@ -702,9 +702,8 @@ transform: scaleX(-1);
 	  });
 	}
 	
-	function getCssProperty(elmId, property){
-	   const elem = document.getElementById(elmId);
-	   return window.getComputedStyle(elem,null).getPropertyValue(property);
+	function getCssProperty(element, property){
+	   return window.getComputedStyle(element,null).getPropertyValue(property);
 	}
 	
 	const animationInterval = doTractorAnimation(false)
