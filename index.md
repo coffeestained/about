@@ -690,7 +690,7 @@ transform: scaleX(-1);
               const left = style.getPropertyValue('left');
 	      let pixel = left.match(/(\d+)/);
 	      console.log(pixel[0])
-	      pixel = Number(pixel[0]);
+	      pixel = parseFloat(pixel[0]);
 	      console.log(pixel, element.style.left);
 	      element.style.left = pixel+.1 + 'px';
 	      console.log(tractor, element, left);
