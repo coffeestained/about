@@ -686,7 +686,7 @@ transform: scaleX(-1);
 	    const interval = setInterval(() => {
 	      const element = document.getElementById('tractor');
 	      const left = getCssProperty("tractor", "left");
-	      element.setStyle({left: left+1});
+	      element.style.left = left+1;
 	      if (condition) {
 		resolve(true);
 		clearInterval(interval);
