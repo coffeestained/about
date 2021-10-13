@@ -692,14 +692,14 @@ transform: scaleX(-1);
 	      console.log(pixel[0])
 	      pixel = parseFloat(pixel[0]);
 	      console.log(pixel, element.style.left);
-	      element.style.left = pixel+.1 + 'px';
+	      element.style.left = pixel+.03 + 'px';
 	      console.log(tractor, element, left);
 	      if (condition) {
 		resolve(true);
 		clearInterval(interval);
 	      };
 
-	    }, 100);
+	    }, 33);
 	  });
 	}
 	
