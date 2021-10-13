@@ -12,6 +12,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js?r=10"></script>
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Watermelon_Monochromatic.svg');"></div>
 	<div class="row-item">
