@@ -686,7 +686,7 @@ transform: scaleX(-1);
 	  return await new Promise(resolve => {
 	    const interval = setInterval(() => {
 	      const element = document.getElementById('tractor');
-	      const left = getCssProperty(element, "left");
+	      const left = element.style.left;
 	      let pixel = left.match(/(\d+)/);
 	      console.log(pixel[0])
 	      pixel = Number(pixel[0]);
@@ -715,7 +715,7 @@ transform: scaleX(-1);
     margin: 0px;
     margin-left: calc(50% - 50vw);">
 	
-	<svg  id="tractor" class="tractor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> 
+	<svg  id="tractor" class="tractor" style="left: 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"> 
 
 
 	<g style="opacity:0.6;" class="cloud">
