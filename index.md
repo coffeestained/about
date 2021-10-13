@@ -702,10 +702,6 @@ transform: scaleX(-1);
 	  });
 	}
 	
-	function getCssProperty(element, property){
-	   return window.getComputedStyle(element,null).getPropertyValue(property);
-	}
-	
 	const animationInterval = doTractorAnimation(false)
 </script>
 
