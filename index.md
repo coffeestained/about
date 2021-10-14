@@ -669,8 +669,8 @@ window.hoverFriends.forEach(element => {
 .tractor {
 transform: scaleX(-1);
   left: 0px;
-	top:240px;
-	position: relative;
+	bottom: 0px;
+	position: absolute;
 	width: 125px;
 	height: 125px;
 }
@@ -695,7 +695,7 @@ transform: scaleX(-1);
 	      console.log(pixel[0])
 	      pixel = parseFloat(pixel[0]);
 	      console.log(pixel, element.style.left);
-	      element.style.left = pixel+.03 + 'px';
+	      element.style.left = pixel+.03 + '%';
 	      console.log(tractor, element, left);
 	      if (condition) {
 		resolve(true);
@@ -715,28 +715,7 @@ transform: scaleX(-1);
     margin: 0px;
     margin-left: calc(50% - 50vw);">
 	
-	<svg id="tractor" class="tractor" style="left: 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"> 
-
-
-	<g style="opacity:0.6;" class="cloud">
-		<path style="fill:#FFFFFF;" d="M166.646,141.623c0-10.575,8.573-19.149,19.149-19.149c1.596,0,3.122,0.252,4.604,0.62    c4.997-5.396,12.081-8.827,20.015-8.827c15.108,0,27.355,12.247,27.355,27.355H166.646z"/>
-	</g>
-	<g style="opacity:0.6;" class="cloud">
-		<path style="fill:#FFFFFF;" d="M164.295,65c0-9.442,7.654-17.096,17.096-17.096c1.425,0,2.788,0.225,4.111,0.554    c4.461-4.818,10.786-7.881,17.87-7.881c13.488,0,24.423,10.935,24.423,24.423H164.295z"/>
-	</g>
-	<g style="opacity:0.6;" class="cloud">
-		<path style="fill:#FFFFFF;" d="M400,84.615c0-7.583-6.148-13.731-13.731-13.731c-1.145,0-2.239,0.181-3.302,0.445    c-3.583-3.869-8.663-6.33-14.352-6.33C357.782,65,349,73.782,349,84.615H400z"/>
-	</g>
-
-	<g class="cloud">
-		<path style="fill:#FFFFFF;" d="M180.261,119.675c-2.303,0-4.479,0.453-6.565,1.111c-6.607-9.498-17.568-15.743-30.014-15.743    s-23.407,6.245-30.014,15.743c-2.086-0.658-4.262-1.111-6.565-1.111c-12.121,0-21.948,9.826-21.948,21.948h117.054    C202.208,129.502,192.382,119.675,180.261,119.675z"/>
-	</g>
-	<g class="cloud">
-		<path style="fill:#FFFFFF;" d="M352,99.333c-2.518,0-4.898,0.496-7.179,1.215c-7.225-10.386-19.21-17.215-32.821-17.215    s-25.596,6.829-32.821,17.215c-2.281-0.719-4.661-1.215-7.179-1.215c-13.255,0-24,10.745-24,24h128    C376,110.078,365.255,99.333,352,99.333z"/>
-	</g>
-	<g class="cloud">
-		<path style="fill:#FFFFFF;" d="M184.705,83.333c0-14.175,11.491-25.667,25.667-25.667c2.139,0,4.185,0.338,6.172,0.832    c6.697-7.233,16.193-11.832,26.828-11.832c20.25,0,36.667,16.416,36.667,36.667H184.705z"/>
-	</g>
+	<svg id="tractor" class="tractor" style="left: 50%;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"> 
 
   <g>
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="100" height="72.535" viewBox="0 0 360.79 261.7">
