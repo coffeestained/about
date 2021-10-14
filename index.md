@@ -691,6 +691,7 @@ transform: scaleX(-1);
 	      const element = document.getElementById('tractor');
 	      const style = window.getComputedStyle(element);
               const left = style.getPropertyValue('left');
+	      console.log(left);
 	      let pixel = left.match(/[+-]?\d+(\.\d+)?/g);
 	      console.log(pixel[0])
 	      pixel = parseFloat(pixel[0]);
