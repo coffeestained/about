@@ -4,6 +4,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.min.js" integrity="sha512-/F8YhC3n5OrM9ta9htMD620kH0paKnjDHCHcSvyWumxlqsnkS/XCpYExuMZuXE4K3GE9tDQFBqgXsmkjsjRbDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
 .map {
 	width: 100%;
@@ -666,15 +667,6 @@ window.hoverFriends.forEach(element => {
   z-index:1
 }
 	
-.tractor {
-transform: scaleX(-1);
-  left: 0px;
-	bottom: 0px;
-	position: absolute;
-	width: 125px;
-	height: 125px;
-}
-	
 </style>
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
@@ -716,38 +708,213 @@ transform: scaleX(-1);
     margin: 0px;
     margin-left: calc(50% - 50vw);">
 	
-	<svg id="tractor" class="tractor" style="left: 50%;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"> 
 
-  <g>
-    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="100" height="72.535" viewBox="0 0 360.79 261.7">
-    <polygon points="283.16 27.17 232.01 27.17 180.86 27.17 138.25 143.09 232.01 143.24 325.77 143.09 283.16 27.17" style="fill: #666"/>
-  <polygon points="278.29 34.15 315.77 136.12 232.03 136.25 148.25 136.12 185.73 34.15 278.29 34.15" style="fill: #64b3f5"/>
-  <path d="M199.71,34.15H210l38.41,101.09H238.12Zm18.5,0h40l38.4,101.09h-40Z" style="fill: #e1f1fb"/>
-  <path d="M292.57,18.27H169c-1.57,0-3.56,1.46-2.85,2.85l5.39,10.46c.71,1.38,1.29,2.84,2.84,2.84H287.78c1.55,0,2.19-1.42,2.85-2.84l4.78-10.46C296.07,19.69,294.13,18.27,292.57,18.27Z" style="fill: #ff0"/>
-  <path d="M239.34,132.74H48.78c-12.54,0-6,10-6,22.53v21.44a22.61,22.61,0,0,0,.16,2.62H12.36v13.46H49.44a22.7,22.7,0,0,0,16.13,6.72H339.05L307.25,113l-48.64.48Z" style="fill: #445a64"/>
-  <g>
-    <path d="M20.12,194.71H49.44a27.93,27.93,0,0,0,16.13,4.8H339.06l-5.49-10.64H20.12Z" style="fill: #36464e"/>
-    <path d="M17.08,168.24H3a3.05,3.05,0,0,0-3,3v29.56a3,3,0,0,0,3,3h14a3,3,0,0,0,3-3V171.28A3.05,3.05,0,0,0,17.08,168.24Z" style="fill: #36464e"/>
-  </g>
-  <g id="bonet">
-    <polygon points="86.22 75.91 79.88 75.91 79.88 97.76 86.22 97.76 86.22 75.91" style="fill: #4d4d4d"/>
-    <path d="M91.16,66.14H74.94a2.63,2.63,0,0,0-2.62,2.61v9.62A2.63,2.63,0,0,0,74.94,81H91.16a2.62,2.62,0,0,0,2.61-2.61V68.75A2.62,2.62,0,0,0,91.16,66.14Z" style="fill: #606060"/>
-    <path d="M157.64,85.58,52.74,94.13C32.37,95.79,25.81,116,25.81,138.48V148c0,22.47-1.12,28.82,19.3,28.82H132.6c20.42,0,37.13-18.39,37.13-40.86v-9.5C169.73,104,178,83.92,157.64,85.58Z" style="fill: #ff0"/>
-    <path d="M26.18,129.69c-.25,2.86-.37,5.8-.37,8.78V148c0,22.47-1.12,28.82,19.3,28.82H132.6c20.42,0,37.13-18.39,37.13-40.86v-9.5c0-11,2-21.48,1.62-29.06L55.92,105.22C39.11,106.36,30.14,116.28,26.18,129.69Z" style="fill: #ffd500"/>
-    <path id="chimney" d="M145.68,23.49v120.1a5.62,5.62,0,0,0,5.6,5.6h0a5.61,5.61,0,0,0,5.6-5.6V15.28c0-10.45-11.34-16.71-17.25-15V11.7c3.6-.65,6.08,1.92,6.08,3.86C145.7,18.2,145.68,20.84,145.68,23.49Z" style="fill: #424242"/>
-  </g>
-  <g id="tyre-2">
-    <path d="M283.05,129.07c-2.12.16-4.23.43-6.29.79L275,126.29a2.42,2.42,0,0,0-2.68-1.58l-3.41.88a2.4,2.4,0,0,0-1.58,2.67l.14,4q-3,1-5.9,2.35l-2.63-3a2.39,2.39,0,0,0-3-.87l-3.08,1.69a2.43,2.43,0,0,0-.87,3l1.14,3.85A62.67,62.67,0,0,0,248,143l-3.31-2.27a2.41,2.41,0,0,0-3.11-.1L239,143a2.41,2.41,0,0,0-.1,3.1L241,149.6a62.87,62.87,0,0,0-4,4.88l-3.77-1.38a2.42,2.42,0,0,0-3,.68l-1.89,3a2.42,2.42,0,0,0,.68,3l2.85,2.82q-1.48,2.79-2.7,5.74l-4-.4a2.44,2.44,0,0,0-2.78,1.42l-1.08,3.34a2.42,2.42,0,0,0,1.4,2.77l3.47,2c-.49,2-.89,4.12-1.18,6.23l-4,.6c-1.2.19-2.26.85-2.33,2.06l-.23,3.51c-.08,1.21.9,2,2.06,2.33l3.87,1.11a62.69,62.69,0,0,0,.4,6.32l-3.69,1.58a2.41,2.41,0,0,0-1.75,2.57l.66,3.45a2.41,2.41,0,0,0,2.57,1.75l4,.11a61.5,61.5,0,0,0,2,6l-3.17,2.44a2.4,2.4,0,0,0-1,2.92l1.49,3.18a2.42,2.42,0,0,0,2.93,1.06l3.91-.89c1.05,1.84,2.18,3.63,3.4,5.35l-2.47,3.15a2.42,2.42,0,0,0-.29,3.09l2.24,2.72a2.42,2.42,0,0,0,3.1.29l3.57-1.84A62.94,62.94,0,0,0,246.8,241l-1.61,3.67a2.43,2.43,0,0,0,.48,3.08l2.85,2.07a2.41,2.41,0,0,0,3.07-.49l3-2.67a62.32,62.32,0,0,0,5.56,3.06l-.65,3.94a2.42,2.42,0,0,0,1.23,2.86l3.27,1.3a2.43,2.43,0,0,0,2.86-1.23l2.23-3.33a62.39,62.39,0,0,0,6.16,1.57l.35,4a2.4,2.4,0,0,0,1.9,2.45l3.49.45a2.42,2.42,0,0,0,2.46-1.9l1.35-3.8c1,0,2.08.08,3.13.08s2.14,0,3.2-.08l1.34,3.78a2.42,2.42,0,0,0,2.45,1.91l3.5-.44a2.43,2.43,0,0,0,1.91-2.45l.35-4a62.92,62.92,0,0,0,6.15-1.57l2.23,3.31a2.42,2.42,0,0,0,2.85,1.24l3.27-1.29a2.43,2.43,0,0,0,1.24-2.86l-.64-4c1.9-.93,3.76-2,5.55-3.06l3,2.67a2.42,2.42,0,0,0,3.07.49l2.85-2.07a2.42,2.42,0,0,0,.49-3.07l-1.61-3.69a62.8,62.8,0,0,0,4.61-4.33l3.57,1.84a2.41,2.41,0,0,0,3.09-.29l2.25-2.71a2.43,2.43,0,0,0-.29-3.1l-2.47-3.16c1.21-1.72,2.35-3.51,3.39-5.35l3.91.9a2.41,2.41,0,0,0,2.92-1.06l1.5-3.18a2.41,2.41,0,0,0-1.05-2.93l-3.17-2.44c.75-2,1.4-4,2-6l4-.1a2.42,2.42,0,0,0,2.58-1.74l.66-3.46a2.42,2.42,0,0,0-1.75-2.57l-3.69-1.58c.22-2.08.36-4.19.38-6.32l3.87-1.1a2.43,2.43,0,0,0,2.06-2.33l-.22-3.52c-.07-1.2-1.14-1.87-2.33-2.06l-4-.61q-.45-3.17-1.18-6.23l3.45-2a2.42,2.42,0,0,0,1.42-2.77l-1.09-3.35a2.41,2.41,0,0,0-2.77-1.41l-4,.38c-.81-1.95-1.71-3.87-2.7-5.73l2.85-2.82a2.42,2.42,0,0,0,.68-3l-1.88-3a2.42,2.42,0,0,0-3-.68l-3.77,1.38a63.27,63.27,0,0,0-4-4.89l2.07-3.44a2.4,2.4,0,0,0-.1-3.1l-2.56-2.42a2.41,2.41,0,0,0-3.11.1L327.83,143a60.88,60.88,0,0,0-5.12-3.73l1.14-3.84a2.41,2.41,0,0,0-.86-3l-3.08-1.7a2.43,2.43,0,0,0-3,.87l-2.64,3q-2.86-1.31-5.9-2.34l.15-4a2.41,2.41,0,0,0-1.57-2.68l-3.41-.88a2.42,2.42,0,0,0-2.68,1.58l-1.81,3.58c-2.09-.36-4.22-.63-6.38-.79l-.85-3.92c-.26-1.18-1-2.2-2.2-2.2h-3.52c-1.21,0-1.94,1-2.2,2.2Z" style="fill: #202020"/>
-    <path d="M286,157a34.45,34.45,0,1,0,34.45,34.44A34.44,34.44,0,0,0,286,157Z" style="fill: #ffd500"/>
-  </g>
-  <g id="tyre-1">
-    <path d="M100,157.28c-1.68.13-3.33.34-5,.62l-1.42-2.81a1.9,1.9,0,0,0-2.11-1.24l-2.68.69a1.9,1.9,0,0,0-1.25,2.1l.12,3.16a45.69,45.69,0,0,0-4.64,1.84L81,159.27a1.91,1.91,0,0,0-2.36-.68l-2.42,1.33a1.9,1.9,0,0,0-.69,2.35l.9,3c-1.39.92-2.74,1.9-4,2.95l-2.6-1.79a1.9,1.9,0,0,0-2.45-.08l-2,1.89a1.92,1.92,0,0,0-.08,2.45l1.63,2.72c-1.12,1.22-2.18,2.51-3.18,3.84l-3-1.08a1.91,1.91,0,0,0-2.39.53l-1.49,2.34a1.91,1.91,0,0,0,.53,2.39l2.25,2.23c-.78,1.46-1.49,3-2.13,4.51l-3.13-.31A1.91,1.91,0,0,0,52.24,189l-.86,2.63a1.91,1.91,0,0,0,1.11,2.19l2.73,1.59c-.39,1.61-.7,3.25-.93,4.91l-3.12.48c-.94.14-1.78.67-1.83,1.62l-.18,2.76A1.9,1.9,0,0,0,50.78,207l3,.87a47.87,47.87,0,0,0,.31,5l-2.9,1.25a1.89,1.89,0,0,0-1.38,2l.52,2.72a1.91,1.91,0,0,0,2,1.38l3.16.08q.66,2.43,1.55,4.75L54.61,227a1.89,1.89,0,0,0-.83,2.3L55,231.79a1.9,1.9,0,0,0,2.3.83l3.08-.7c.82,1.45,1.72,2.85,2.68,4.21l-2,2.48a1.9,1.9,0,0,0-.23,2.43l1.76,2.14a1.91,1.91,0,0,0,2.44.23L67.86,242q1.74,1.78,3.64,3.41l-1.27,2.89a1.9,1.9,0,0,0,.37,2.42l2.25,1.63a1.9,1.9,0,0,0,2.41-.37l2.37-2.11A47.52,47.52,0,0,0,82,252.24l-.5,3.1a1.9,1.9,0,0,0,1,2.25l2.58,1a1.9,1.9,0,0,0,2.25-1L89.05,255a48.27,48.27,0,0,0,4.84,1.23l.28,3.14a1.91,1.91,0,0,0,1.5,1.94l2.74.34a1.9,1.9,0,0,0,1.94-1.49l1.06-3c.82,0,1.64.06,2.47.06s1.68,0,2.51-.06l1.06,3a1.89,1.89,0,0,0,1.93,1.49l2.75-.34a1.9,1.9,0,0,0,1.5-1.93l.29-3.15a46.19,46.19,0,0,0,4.83-1.24l1.76,2.61a1.89,1.89,0,0,0,2.24,1l2.58-1a1.92,1.92,0,0,0,1-2.25l-.51-3.11q2.25-1.11,4.37-2.41l2.35,2.1a1.91,1.91,0,0,0,2.42.38l2.24-1.62a1.9,1.9,0,0,0,.39-2.42l-1.27-2.91a48.65,48.65,0,0,0,3.63-3.41l2.81,1.45a1.9,1.9,0,0,0,2.44-.23L147,241a1.92,1.92,0,0,0-.23-2.44l-1.95-2.49a49.81,49.81,0,0,0,2.67-4.21l3.07.71a1.91,1.91,0,0,0,2.31-.83l1.18-2.51a1.9,1.9,0,0,0-.82-2.3L150.67,225q.89-2.33,1.55-4.75l3.14-.08a1.91,1.91,0,0,0,2-1.37l.52-2.73a1.9,1.9,0,0,0-1.37-2l-2.92-1.25c.19-1.63.29-3.29.32-5l3-.86c.92-.27,1.67-.89,1.61-1.84l-.16-2.76a1.92,1.92,0,0,0-1.84-1.63l-3.13-.48c-.23-1.66-.54-3.3-.93-4.91l2.73-1.58a1.92,1.92,0,0,0,1.11-2.19l-.85-2.63a1.93,1.93,0,0,0-2.19-1.11l-3.14.3c-.64-1.54-1.34-3-2.12-4.51l2.23-2.21a1.91,1.91,0,0,0,.54-2.39l-1.48-2.34a1.9,1.9,0,0,0-2.39-.54l-3,1.08q-1.5-2-3.18-3.84l1.62-2.71a1.91,1.91,0,0,0-.07-2.45l-2-1.89a1.9,1.9,0,0,0-2.45.07l-2.61,1.79q-1.95-1.56-4-2.94l.89-3a1.89,1.89,0,0,0-.67-2.35l-2.43-1.34a1.9,1.9,0,0,0-2.35.68l-2.08,2.37a49.38,49.38,0,0,0-4.65-1.84l.12-3.14a1.9,1.9,0,0,0-1.24-2.11l-2.68-.69a1.9,1.9,0,0,0-2.11,1.24l-1.43,2.82a48.61,48.61,0,0,0-5-.62l-.68-3.09c-.2-.93-.78-1.73-1.73-1.73h-2.77c-1,0-1.53.81-1.73,1.73Z" style="fill: #202020"/>
-    <path d="M102.39,179.27a27.12,27.12,0,1,0,27.12,27.12A27.12,27.12,0,0,0,102.39,179.27Z" style="fill: #ffd500"/>
-  </g>
-  <path d="M321.66,109.53H257.2l-47.82,48.14,7.13,3.09L258.87,119l60.49-.63,36.9,33.18s4.83-4.84,4.51-5.55S321.66,109.53,321.66,109.53Z" style="fill: #ff0"/>
-    </g>A
 
-</svg>
+</div>
+<style>
+	.rocket {
+  position: absolute;
+  top: 20%;
+  width: 80px;
+  left: calc(50% - 60px);
+  .rocket-body {
+    width: 80px;
+    left: calc(50% - 50px);
+    animation: bounce 0.5s infinite;
+    .body {
+      background-color: $lightgrey;
+      height: 180px;
+      left: calc(50% - 50px);
+      border-top-right-radius: 100%;
+      border-top-left-radius: 100%;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      border-top: 5px solid $white;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: calc(50% - 24px);
+      width: 48px;
+      height: 13px;
+      background-color: $darkgrey;
+      bottom: -13px;
+      border-bottom-right-radius: 60%;
+      border-bottom-left-radius: 60%;
+    }
+  }
+  .window {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: $darkred;
+    left: calc(50% - 25px);
+    top: 40px;
+    border: 5px solid $midgrey;
+  }
+  .fin {
+    position: absolute;
+    z-index: -100;
+    height: 55px;
+    width: 50px;
+    background-color: $darkred;
+  }
+  .fin-left {
+    left: -30px;
+    top: calc(100% - 55px);
+    border-top-left-radius: 80%;
+    border-bottom-left-radius: 20%;
+  }
+  .fin-right {
+    right: -30px;
+    top: calc(100% - 55px);
+    border-top-right-radius: 80%;
+    border-bottom-right-radius: 20%;
+  }
+  .exhaust-flame {
+    position: absolute;
+    top: 90%;
+    width: 28px;
+    background: linear-gradient(to bottom, transparent 10%, $white 100%);
+    height: 150px;
+    left: calc(50% - 14px);
+    animation: exhaust 0.2s infinite;
+  }
+  .exhaust-fumes li {
+    width: 60px;
+    height: 60px;
+    background-color: $white;
+    list-style: none;
+    position: absolute;
+    border-radius: 100%;
+    &:first-child {
+      width: 200px;
+      height: 200px;
+      bottom: -300px;
+      animation: fumes 5s infinite;
+    }
+    &:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      left: -120px;
+      top: 260px;
+      animation: fumes 3.2s infinite;
+    }
+    &:nth-child(3) {
+      width: 120px;
+      height: 120px;
+      left: -40px;
+      top: 330px;
+      animation: fumes 3s 1s infinite;
+    }
+    &:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      left: -170px;
+      animation: fumes 4s 2s infinite;
+      top: 380px;
+    }
+    &:nth-child(5) {
+      width: 130px;
+      height: 130px;
+      left: -120px;
+      top: 350px;
+      animation: fumes 5s infinite;
+    }
+    &:nth-child(6) {
+      width: 200px;
+      height: 200px;
+      left: -60px;
+      top: 280px;
+      animation: fumes2 10s infinite;
+    }
+    &:nth-child(7) {
+      width: 100px;
+      height: 100px;
+      left: -100px;
+      top: 320px;
+    }
+    &:nth-child(8) {
+      width: 110px;
+      height: 110px;
+      left: 70px;
+      top: 340px;
+    }
+    &:nth-child(9) {
+      width: 90px;
+      height: 90px;
+      left: 200px;
+      top: 380px;
+      animation: fumes 20s infinite;
+    }
+  }
+}
 
+@keyframes fumes {
+  50% {
+    transform: scale(1.5);
+    background-color: transparent;
+  }
+  51% {
+    transform: scale(0.8);
+  }
+  100% {
+    background-color: $white;
+    transform: scale(1)
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(0px, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0px, -4px, 0);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0);
+  }
+}
+
+@keyframes exhaust {
+  0% {
+    background: linear-gradient(to bottom, transparent 10%, $white 100%);
+  }
+  50% {
+    background: linear-gradient(to bottom, transparent 8%, $white 100%);
+  }
+  75% {
+    background: linear-gradient(to bottom, transparent 12%, $white 100%);
+  }
+}
+
+@keyframes fumes2 {
+  50% {
+    transform: scale(1.1);
+  }
+}
+</style>
+<div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px; right: 0px;">
+  <div class="rocket">
+    <div class="rocket-body">
+      <div class="body"></div>
+      <div class="fin fin-left"></div>
+      <div class="fin fin-right"></div>
+      <div class="window"></div>
+    </div>
+    <div class="exhaust-flame"></div>
+    <ul class="exhaust-fumes">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
 </div>
 
