@@ -695,14 +695,14 @@ transform: scaleX(-1);
 	      console.log(pixel[0])
 	      pixel = parseFloat(pixel[0]);
 	      console.log(pixel, element.style.left);
-	      element.style.left = pixel+.03 + '%';
+	      element.style.left = pixel+.0003 + '%';
 	      console.log(tractor, element, left);
 	      if (condition) {
 		resolve(true);
 		clearInterval(interval);
 	      };
 
-	    }, 33);
+	    }, 3333);
 	  });
 	}
 	
