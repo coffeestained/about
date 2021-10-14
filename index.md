@@ -677,29 +677,6 @@ window.hoverFriends.forEach(element => {
 
 <script>
 	
-	async function doTractorAnimation(condition) {
-	  return await new Promise(resolve => {
-	    const interval = setInterval(() => {
-	      const element = document.getElementById('tractor');
-	      const style = window.getComputedStyle(element);
-              const left = style.getPropertyValue('left');
-	      console.log(left);
-	      let pixel = left.match(/[+-]?\d+(\.\d+)?/g);
-	      console.log(pixel[0])
-	      pixel = parseFloat(pixel[0]);
-	      console.log(pixel, element.style.left);
-	      element.style.left = pixel+.0003 + '%';
-	      console.log(tractor, element, left);
-	      if (condition) {
-		resolve(true);
-		clearInterval(interval);
-	      };
-
-	    }, 3333);
-	  });
-	}
-	
-	const animationInterval = doTractorAnimation(false)
 </script>
 
 <div class="row wide-stuffs footer-stuffs" style="    position: absolute;
