@@ -692,7 +692,7 @@ window.hoverFriends.forEach(element => {
 <style>
 .rocket {
 position: absolute;
-    top: -100px;
+    top: -500px;
     width: 40px;
     left: 100px;
     z-index: 200;
@@ -754,7 +754,7 @@ position: absolute;
 }
  .rocket .exhaust-flame {
 	 position: absolute;
-	 top: 90%;
+	 top: 10%;
 	 width: 28px;
 	 background: linear-gradient(to bottom, transparent 10%, #f5f5f5 100%);
 	 height: 150px;
