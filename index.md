@@ -41,14 +41,7 @@ function headerScrollFunction(event) {
 	} 
 }
 
-let direction = 'down';
-setInterval(() => {
-	const rocket = document.getElementById('rocket');
-	console.log(rocket.style.top);
-	const px = parseInt(rocket.style.top, 10);
-	console.log(px);
-	//rocket.style.top = top + 'px';
-}, 100);
+
 </script>
 <style>
 
@@ -900,4 +893,13 @@ position: absolute;
     </ul>
   </div>
 </div>
-
+<script>
+	let direction = 'down';
+setInterval(() => {
+	const rocket = document.getElementById('rocket');
+	console.log(rocket.style.top);
+	const px = parseInt(rocket.style.top, 10);
+	console.log(px);
+	//rocket.style.top = top + 'px';
+}, 100);
+</script>
