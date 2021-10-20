@@ -26,12 +26,12 @@
 <script>
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 const header = document.getElementsByTagName("header");
-const rocket = document.getElementById('rocket');
 window.onwheel = function(event) {
 	headerScrollFunction(event)
 };
 
 function headerScrollFunction(event) {
+	const rocket = document.getElementById('rocket');
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
@@ -872,7 +872,7 @@ position: absolute;
  
 </style>
 <div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px; right: 0px;">
-  <div class="rocket">
+  <div id="rocket" class="rocket">
     <div class="rocket-body">
       <div class="body"></div>
       <div class="fin fin-left"></div>
