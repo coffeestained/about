@@ -735,17 +735,17 @@ position: absolute;
 	 position: absolute;
 	 z-index: -100;
 	 height: 55px;
-	 width: 50px;
+	 width: 25px;
 	 background-color: #a75248;
 }
  .rocket .fin-left {
-	 left: -30px;
+	 left: -20px;
 	 top: calc(100% - 55px);
 	 border-top-left-radius: 80%;
 	 border-bottom-left-radius: 20%;
 }
  .rocket .fin-right {
-	 right: -30px;
+	 right: -20px;
 	 top: calc(100% - 55px);
 	 border-top-right-radius: 80%;
 	 border-bottom-right-radius: 20%;
