@@ -41,10 +41,15 @@ function headerScrollFunction(event) {
 		window.scrollTo(0, 0);
 	} 
 	console.log(rocket, document.documentElement.scrollTop);
-	let top = (document.documentElement.scrollTop - 100);
-	if (top > 500) top = 500;
-	rocket.style.top = top + 'px';
+
 }
+
+let direction = 'down';
+setInterval(() => {
+	const px = parseInt(rocket.style.top, 10);
+	console.log(px);
+	//rocket.style.top = top + 'px';
+}, 100);
 </script>
 <style>
 
@@ -707,7 +712,7 @@ position: absolute;
 }
  .rocket .rocket-body .body {
 	 background-color: #dadada;
-	 height: 180px;
+	 height: 380px;
 	 left: calc(50% - 50px);
 	 border-top-right-radius: 100%;
 	 border-top-left-radius: 100%;
