@@ -26,6 +26,7 @@
 <script>
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 const header = document.getElementsByTagName("header");
+const rocket = document.getElementById('rocket');
 window.onwheel = function(event) {
 	headerScrollFunction(event)
 };
@@ -38,7 +39,8 @@ function headerScrollFunction(event) {
 		header[0].classList.remove('collapse');
 		header[0].classList.add('expand');
 		window.scrollTo(0, 0);
-	}
+	} 
+	console.log(rocket, document.documentElement.scrollTop);
 }
 </script>
 <style>
