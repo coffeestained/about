@@ -696,7 +696,7 @@ position: absolute;
     z-index: 200;
 }
  .rocket .rocket-body {
-	 width: 80px;
+	 width: 40px;
 	 left: calc(50% - 50px);
 	 animation: bounce 0.5s infinite;
 }
