@@ -41,7 +41,7 @@ function headerScrollFunction(event) {
 		window.scrollTo(0, 0);
 	} 
 	console.log(rocket, document.documentElement.scrollTop);
-	rocket.style.bottom = document.documentElement.scrollTop + 'px';
+	rocket.style.top = (document.documentElement.scrollTop - 100) + 'px';
 }
 </script>
 <style>
@@ -693,7 +693,7 @@ window.hoverFriends.forEach(element => {
 <style>
 .rocket {
 position: absolute;
-    bottom: 0px;
+    top: -100px;
     width: 40px;
     left: 100px;
     z-index: 200;
