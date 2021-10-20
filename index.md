@@ -41,6 +41,7 @@ function headerScrollFunction(event) {
 		window.scrollTo(0, 0);
 	} 
 	console.log(rocket, document.documentElement.scrollTop);
+	rocket.style.bottom = document.documentElement.scrollTop + 'px';
 }
 </script>
 <style>
