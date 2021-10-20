@@ -31,7 +31,6 @@ window.onwheel = function(event) {
 };
 
 function headerScrollFunction(event) {
-	const rocket = document.getElementById('rocket');
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
@@ -40,12 +39,11 @@ function headerScrollFunction(event) {
 		header[0].classList.add('expand');
 		window.scrollTo(0, 0);
 	} 
-	console.log(rocket, document.documentElement.scrollTop);
-
 }
 
 let direction = 'down';
 setInterval(() => {
+	const rocket = document.getElementById('rocket');
 	const px = parseInt(rocket.style.top, 10);
 	console.log(px);
 	//rocket.style.top = top + 'px';
