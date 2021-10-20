@@ -723,11 +723,11 @@ position: absolute;
 }
  .rocket .window {
 	 position: absolute;
-	 width: 40px;
-	 height: 40px;
+	 width: 20px;
+	 height: 20px;
 	 border-radius: 100%;
 	 background-color: #a75248;
-	 left: calc(50% - 25px);
+	 left: calc(50% - 10px);
 	 top: 40px;
 	 border: 5px solid #b4b2b2;
 }
