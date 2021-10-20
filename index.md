@@ -31,6 +31,7 @@ window.onwheel = function(event) {
 };
 
 function headerScrollFunction(event) {
+	const rocket = document.getElementById('rocket');
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
@@ -39,9 +40,11 @@ function headerScrollFunction(event) {
 		header[0].classList.add('expand');
 		window.scrollTo(0, 0);
 	} 
+	console.log(rocket, document.documentElement.scrollTop);
+	let top = (document.documentElement.scrollTop - 380);
+	if (top > 500) top = 500;
+	rocket.style.top = top + 'px';
 }
-
-
 </script>
 <style>
 
@@ -692,7 +695,7 @@ window.hoverFriends.forEach(element => {
 <style>
 .rocket {
 position: absolute;
-    top: -500px;
+    top: -380px;
     width: 40px;
     left: 100px;
     z-index: 200;
@@ -704,7 +707,7 @@ position: absolute;
 }
  .rocket .rocket-body .body {
 	 background-color: #dadada;
-	 height: 380px;
+	 height: 180px;
 	 left: calc(50% - 50px);
 	 border-top-right-radius: 100%;
 	 border-top-left-radius: 100%;
@@ -754,7 +757,7 @@ position: absolute;
 }
  .rocket .exhaust-flame {
 	 position: absolute;
-	 top: 10%;
+	 top: 90%;
 	 width: 28px;
 	 background: linear-gradient(to bottom, transparent 10%, #f5f5f5 100%);
 	 height: 150px;
@@ -893,13 +896,3 @@ position: absolute;
     </ul>
   </div>
 </div>
-<script>
-	let direction = 'down';
-setInterval(() => {
-	const rocket = document.getElementById('rocket');
-	console.log(rocket.style.top);
-	const px = parseInt(rocket.style.top, 10);
-	console.log(px);
-	//rocket.style.top = top + 'px';
-}, 100);
-</script>
