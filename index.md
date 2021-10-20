@@ -689,10 +689,11 @@ window.hoverFriends.forEach(element => {
 </div>
 <style>
 .rocket {
-	 position: absolute;
-	 top: 20%;
-	 width: 80px;
-	 left: calc(50% - 60px);
+position: absolute;
+    bottom: 0px;
+    width: 40px;
+    left: 100px;
+    z-index: 200;
 }
  .rocket .rocket-body {
 	 width: 80px;
