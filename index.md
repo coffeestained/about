@@ -41,7 +41,9 @@ function headerScrollFunction(event) {
 		window.scrollTo(0, 0);
 	} 
 	console.log(rocket, document.documentElement.scrollTop);
-	rocket.style.top = (document.documentElement.scrollTop - 100) + 'px';
+	let top = (document.documentElement.scrollTop - 100);
+	if (top > 300) top = 300;
+	rocket.style.top = top + 'px';
 }
 </script>
 <style>
