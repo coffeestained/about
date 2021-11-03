@@ -70,6 +70,7 @@ const animateRocket = function(direction = 1) {
     let top = parseInt(rocket.style.top);
     if (direction === 1) {
 	top++;
+	console.log(top);
 	rocket.style.top = top + 'px';
 	if (top === -500) {
 		animateRocket(0)
@@ -78,6 +79,7 @@ const animateRocket = function(direction = 1) {
 	}
     } else {
 	top--;
+	console.log(top);
 	rocket.style.top = top + 'px';
 	if (top === 800) {
 		animateRocket(1)
