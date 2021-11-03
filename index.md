@@ -46,6 +46,9 @@
 	</div>
 </div>
 <script>
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
 const header = document.getElementsByTagName("header");
 window.onwheel = function(event) {
@@ -65,9 +68,10 @@ function headerScrollFunction(event) {
 
 }
 	
-const animateRocket = function(direction = 1) {
+const animateRocket = async function(direction = 1) {
     const rocket = document.getElementById('rocket');
     let top = parseInt(rocket.style.top);
+    await sleep(1000);
     if (direction === 1) {
 	top++;
 	console.log(top);
