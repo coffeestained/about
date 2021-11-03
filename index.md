@@ -73,7 +73,7 @@ const animateRocket = async function(direction = 1) {
     let top = parseInt(rocket.style.top);
     await sleep(1000);
     if (direction === 1) {
-	top++;
+	top--;
 	console.log(top);
 	rocket.style.top = top + 'px';
 	if (top < -500) {
@@ -82,7 +82,7 @@ const animateRocket = async function(direction = 1) {
 		animateRocket(1)
 	}
     } else {
-	top--;
+	top++;
 	console.log(top);
 	rocket.style.top = top + 'px';
 	if (top > 810) {
