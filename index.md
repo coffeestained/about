@@ -31,7 +31,7 @@ window.onwheel = function(event) {
 };
 
 function headerScrollFunction(event) {
-	const rocket = document.getElementById('rocket');
+
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
@@ -40,11 +40,32 @@ function headerScrollFunction(event) {
 		header[0].classList.add('expand');
 		window.scrollTo(0, 0);
 	} 
-	console.log(rocket, document.documentElement.scrollTop);
-	let top = (document.documentElement.scrollTop - 500);
-	if (top > 800) top = 800;
-	rocket.style.top = top + 'px';
+
 }
+	
+const animateRocket = function(direction = 1) {
+    const rocket = document.getElementById('rocket');
+    let top = parseInt(rocket.style.top);
+    if (direction === 1) {
+	top++;
+	rocket.style.top = top + 'px';
+	if (top === -500) {
+		animateRocket(0)
+	} else {
+		animateRocket(1)
+	}
+    } else {
+	top--;
+	rocket.style.top = top + 'px';
+	if (top === 800) {
+		animateRocket(1)
+	} else {
+		animateRocket(0)
+	}
+    }
+};
+
+animateRocket(1); 
 </script>
 <style>
 
@@ -875,7 +896,7 @@ position: absolute;
  
 </style>
 <div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket">
+  <div id="rocket" class="rocket" style="top: 850px">
     <div class="rocket-body">
       <div class="body"></div>
       <div class="fin fin-left"></div>
