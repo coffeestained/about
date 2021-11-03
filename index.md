@@ -346,7 +346,7 @@ ul li {
 }
 .wide-stuffs {
  padding: 50px;
- background: rgb(203 203 185 / 30%);
+ background: rgb(240, 240, 233);
 }
 </style>
 
@@ -385,7 +385,7 @@ ul li {
 		</ul>
 	</div>
 </div>
-<div class="row wide-stuffs" style="width: 100vw;
+<div class="row wide-stuffs" style="width: 100vw; z-index: 101; position: relative;
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px;">
