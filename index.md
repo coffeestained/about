@@ -79,18 +79,20 @@ const animateRocket = async function(direction = 1) {
 	console.log(top);
 	rocket.style.top = top + 'px';
 	if (top < -500) {
-		setTimeout(animateRocket(0), 5555);
+		await sleep(5555);
+		animateRocket(0);
 	} else {
-		animateRocket(1)
+		animateRocket(1);
 	}
     } else {
 	top++;
 	console.log(top);
 	rocket.style.top = top + 'px';
 	if (top > 810) {
-		setTimeout(animateRocket(1), 5555);
+		await sleep(5555);
+		animateRocket(1);
 	} else {
-		animateRocket(0)
+		animateRocket(0);
 	}
     }
 };
