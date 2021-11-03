@@ -71,9 +71,11 @@ function headerScrollFunction(event) {
 const animateRocket = async function(direction = 1) {
     const rocket = document.getElementById('rocket');
     let top = parseInt(rocket.style.top);
-    await sleep(50);
+    await sleep(1);
     if (direction === 1) {
-	top--;
+	if (top > 700) top--;
+	else if (top > 300) top = top - 3
+	else if (top > 100) top = top - 5
 	console.log(top);
 	rocket.style.top = top + 'px';
 	if (top < -500) {
