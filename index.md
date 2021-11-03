@@ -4,6 +4,28 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
+<div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px;">
+  <div id="rocket" class="rocket" style="top: 850px">
+    <div class="rocket-body">
+      <div class="body"></div>
+      <div class="fin fin-left"></div>
+      <div class="fin fin-right"></div>
+      <div class="window"></div>
+    </div>
+    <div class="exhaust-flame"></div>
+    <ul class="exhaust-fumes">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div>
 <style>
 .map {
 	width: 100%;
@@ -895,25 +917,3 @@ position: absolute;
 }
  
 </style>
-<div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket" style="top: 850px">
-    <div class="rocket-body">
-      <div class="body"></div>
-      <div class="fin fin-left"></div>
-      <div class="fin fin-right"></div>
-      <div class="window"></div>
-    </div>
-    <div class="exhaust-flame"></div>
-    <ul class="exhaust-fumes">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
-</div>
