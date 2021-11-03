@@ -42,7 +42,7 @@ function headerScrollFunction(event) {
 	} 
 	console.log(rocket, document.documentElement.scrollTop);
 	let top = (document.documentElement.scrollTop - 380);
-	if (top > 500) top = 500;
+	if (top > 850) top = 850;
 	rocket.style.top = top + 'px';
 }
 </script>
@@ -874,7 +874,7 @@ position: absolute;
 }
  
 </style>
-<div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px; right: 0px;">
+<div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px;">
   <div id="rocket" class="rocket">
     <div class="rocket-body">
       <div class="body"></div>
