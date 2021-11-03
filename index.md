@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <div style="z-index:100; position: fixed; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket" style="top: 850px">
+  <div id="rocket" class="rocket" style="top: 810px">
     <div class="rocket-body">
       <div class="body"></div>
       <div class="fin fin-left"></div>
@@ -72,7 +72,7 @@ const animateRocket = function(direction = 1) {
 	top++;
 	console.log(top);
 	rocket.style.top = top + 'px';
-	if (top === -500) {
+	if (top < -500) {
 		animateRocket(0)
 	} else {
 		animateRocket(1)
@@ -81,7 +81,7 @@ const animateRocket = function(direction = 1) {
 	top--;
 	console.log(top);
 	rocket.style.top = top + 'px';
-	if (top === 800) {
+	if (top > 810) {
 		animateRocket(1)
 	} else {
 		animateRocket(0)
