@@ -71,7 +71,7 @@ function headerScrollFunction(event) {
 const animateRocket = async function(direction = 1) {
     const rocket = document.getElementById('rocket');
     let top = parseInt(rocket.style.top);
-    await sleep(1000);
+    await sleep(50);
     if (direction === 1) {
 	top--;
 	console.log(top);
