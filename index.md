@@ -875,7 +875,7 @@ position: absolute;
  
 </style>
 <div style="z-index:100; position: relative; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket" style="bottom: 0px">
+  <div id="rocket" class="rocket" style="bottom: -200px">
     <div class="rocket-body">
       <div class="body"></div>
       <div class="fin fin-left"></div>
