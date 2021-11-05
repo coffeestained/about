@@ -905,7 +905,7 @@ const animateRocket = async function(direction = 1) {
     if (direction === 1) {
 	if (bottom > 700) bottom - 3;
 	else if (bottom > 300) bottom = bottom - 2;
-	else bottom = bottom--;
+	else bottom = bottom - 1;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
 	if (bottom < 0) {
