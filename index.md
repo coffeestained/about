@@ -696,9 +696,8 @@ window.hoverFriends.forEach(element => {
 <style>
 .rocket {
 position: absolute;
-    top: -380px;
     width: 40px;
-    left: 100px;
+    left: -200px;
     z-index: 200;
 }
  .rocket .rocket-body {
@@ -904,9 +903,9 @@ const animateRocket = async function(direction = 1) {
     let bottom = parseInt(rocket.style.bottom);
     await sleep(1);
     if (direction === 1) {
-	if (bottom > 700) bottom--;
+	if (bottom > 700) bottom - 3;
 	else if (bottom > 300) bottom = bottom - 2;
-	else bottom = bottom - 3;
+	else bottom = bottom--;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
 	if (bottom < 0) {
@@ -916,10 +915,12 @@ const animateRocket = async function(direction = 1) {
 		animateRocket(1);
 	}
     } else {
-	bottom++;
+	if (bottom > 700) bottom++;
+	else if (bottom > 300) bottom = bottom + 2;
+	else bottom = bottom + 3;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
-	if (bottom > 810) {
+	if (bottom > 2010) {
 		await sleep(5555);
 		animateRocket(1);
 	} else {
