@@ -883,7 +883,7 @@ position: absolute;
       <div class="window"></div>
     </div>
     <div class="exhaust-flame"></div>
-    <ul class="exhaust-fumes">
+<!--     <ul class="exhaust-fumes">
       <li></li>
       <li></li>
       <li></li>
@@ -893,7 +893,7 @@ position: absolute;
       <li></li>
       <li></li>
       <li></li>
-    </ul>
+    </ul> -->
   </div>
 </div>
 <script>
@@ -908,7 +908,7 @@ const animateRocket = async function(direction = 1) {
 	else bottom = bottom - 1;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
-	if (bottom < 0) {
+	if (bottom < -200) {
 		await sleep(5555);
 		animateRocket(0);
 	} else {
@@ -920,7 +920,7 @@ const animateRocket = async function(direction = 1) {
 	else bottom = bottom + 1;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
-	if (bottom > 2010) {
+	if (bottom > 3010) {
 		await sleep(5555);
 		animateRocket(1);
 	} else {
