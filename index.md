@@ -876,7 +876,7 @@ position: absolute;
  
 </style>
 <div style="z-index:100; position: relative; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket" style="top: 0px">
+  <div id="rocket" class="rocket" style="bottom: 0px">
     <div class="rocket-body">
       <div class="body"></div>
       <div class="fin fin-left"></div>
@@ -901,25 +901,25 @@ position: absolute;
 		
 const animateRocket = async function(direction = 1) {
     const rocket = document.getElementById('rocket');
-    let top = parseInt(rocket.style.top);
+    let bottom = parseInt(rocket.style.bottom);
     await sleep(1);
     if (direction === 1) {
-	if (top > 700) top--;
-	else if (top > 300) top = top - 2;
-	else top = top - 3;
-	console.log(top);
-	rocket.style.top = top + 'px';
-	if (top < 0) {
+	if (bottom > 700) bottom--;
+	else if (bottom > 300) bottom = bottom - 2;
+	else bottom = bottom - 3;
+	console.log(bottom);
+	rocket.style.bottom = bottom + 'px';
+	if (bottom < 0) {
 		await sleep(5555);
 		animateRocket(0);
 	} else {
 		animateRocket(1);
 	}
     } else {
-	top++;
-	console.log(top);
-	rocket.style.top = top + 'px';
-	if (top > 810) {
+	bottom++;
+	console.log(bottom);
+	rocket.style.bottom = bottom + 'px';
+	if (bottom > 810) {
 		await sleep(5555);
 		animateRocket(1);
 	} else {
