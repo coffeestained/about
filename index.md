@@ -903,7 +903,7 @@ const animateRocket = async function(direction = 1) {
     let bottom = parseInt(rocket.style.bottom);
     await sleep(1);
     if (direction === 1) {
-	if (bottom > 700) bottom - 3;
+	if (bottom > 700) bottom = bottom - 3;
 	else if (bottom > 300) bottom = bottom - 2;
 	else bottom = bottom - 1;
 	console.log(bottom);
@@ -915,7 +915,7 @@ const animateRocket = async function(direction = 1) {
 		animateRocket(1);
 	}
     } else {
-	if (bottom > 700) bottom + 3;
+	if (bottom > 700) bottom = bottom + 3;
 	else if (bottom > 300) bottom = bottom + 2;
 	else bottom = bottom + 1;
 	console.log(bottom);
