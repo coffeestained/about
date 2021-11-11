@@ -987,7 +987,7 @@ transform: rotate(-2deg) scaleY(0.92);
  
 </style>
 <div style="z-index:100; position: relative; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket" style="bottom: -350px: transform: scale(.5);">
+  <div id="rocket" class="rocket" style="bottom: -350px; transform: scale(.5);">
     <div class="rocket-body">
       <div class="body"></div>
       <div class="fin fin-left"></div>
