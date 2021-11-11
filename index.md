@@ -7,8 +7,30 @@
 
 <style>
 .map {
+	position: relative;
 	width: 100%;
 	height: 500px;
+}
+.mapControls {
+position: absolute;
+    width: 150px;
+    margin: 15px;
+    padding: 5px;
+    right: 0px;
+    background: white;
+    z-index: 999;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
+box-shadow: 0px 0px 17px -8px #000000;
+}
+.mapControls > .button {
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+}
+.mapControls > .button:hover {
+	background-color: #e0e0e0;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
@@ -393,7 +415,11 @@ ul li {
 	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
 	<div class="row-item flex-grow">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map">
-		<div> </div>
+		<div class="mapControls">
+			<div class="button">Radar</div>
+			<div class="button">Clouds</div>
+			<div class="button">Roads</div>
+		</div>
 		</div>
 		<script type="text/javascript">
 
