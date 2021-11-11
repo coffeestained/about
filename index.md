@@ -1023,7 +1023,7 @@ const animateRocket = async function(direction = 1) {
     const flame = document.getElementById('flame');
     flame.classList.add('container'); 
     const scaleFactor = Math.abs(bottom) / 3210;
-    const transformAmount = if (scaleFactor < .5) return .5 else return scaleFactor;
+    const transformAmount = scaleFactor < .5 ? .5 : scaleFactor;
     rocket.style.transform = `scale(${transformAmount})`;
     await sleep(1);
     if (direction === 1) {
