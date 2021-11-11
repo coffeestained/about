@@ -872,6 +872,114 @@ position: absolute;
 		 transform: scale(1.1);
 	}
 }
+	
+	
+.container {
+	margin: 0 auto;
+	width: 60px;
+	height: 60px;
+	top: 13%;
+	transform-origin: center top;
+	animation-name: flicker;
+	animation-duration: 3ms;
+	animation-delay: 200ms;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+.flame {
+	bottom: 0;
+	position: absolute;
+	border-bottom-right-radius: 50%;
+	border-bottom-left-radius: 50%;
+	border-top-left-radius: 50%;
+	transform: rotate(135deg) scale(1.5, 1.5);
+  -moz-transform: rotate(135deg) scale(1.5, 1.5);
+  -webkit-transform: rotate(135deg) scale(1.5, 1.5);
+  -o-transform: rotate(135deg) scale(1.5, 1.5);
+}
+.yellow {
+	left: 15px;
+	width: 30px;
+	height: 30px;
+	background: gold;
+	box-shadow: 0px 0px 9px 4px gold;
+}
+.orange {
+	left: 10px;
+	width: 40px;
+	height: 40px;
+	background: orange;
+	box-shadow: 0px 0px 9px 4px orange;
+}
+.red {
+	left: 5px;
+	top: 20px;
+	width: 50px;
+	height: 50px;
+	background: OrangeRed;
+	border: 1px solid OrangeRed;
+	box-shadow: 0px 0px 5px 4px OrangeRed;
+}
+.white {
+	left: 15px;
+	top: 20px;
+	width: 30px;
+	height: 30px;
+	background: white;
+	box-shadow: 0px 0px 9px 4px white;
+}
+.circle {
+	border-radius: 50%;
+	position: absolute;
+}
+.blue {
+	width: 10px;
+	height: 10px;
+	left: 25px;
+	top: 5px;
+	background: SlateBlue;
+	box-shadow: 0px 0px 15px 10px #4fc1e9;
+}
+.black {
+	width: 40px;
+	height: 40px;
+	left: 10px;
+	top: -30px;
+	background: #ddd;
+	border: 1px solid #282A3A;
+	box-shadow: 0px 0px 10px 10px #282A3A;
+}
+ @keyframes flicker {
+ 0% {
+transform: rotate(-1deg);
+   -moz-transform: rotate(-1deg);
+   -webkit-transform: rotate(-1deg);
+}
+ 20% {
+transform: rotate(1deg);
+   -moz-transform: rotate(1deg);
+   -webkit-transform: rotate(1deg);
+}
+ 40% {
+transform: rotate(-1deg);
+   -moz-transform: rotate(-1deg);
+   -webkit-transform: rotate(-1deg);
+}
+ 60% {
+transform: rotate(1deg) scaleY(1.04);
+}
+ 80% {
+transform: rotate(-2deg) scaleY(0.92);
+   -moz-transform: rotate(-2deg) scaleY(0.92);
+   -webkit-transform: rotate(-2deg) scaleY(0.92);
+}
+ 100% {
+   transform: rotate(1deg);
+   -webkit-transform: rotate(1deg);
+   -moz-transform: rotate(1deg);
+   }
+}
  
 </style>
 <div style="z-index:100; position: relative; bottom: 0px; top: 0px; left: 0px;">
@@ -882,7 +990,14 @@ position: absolute;
       <div class="fin fin-right"></div>
       <div class="window"></div>
     </div>
-    <div class="exhaust-flame"></div>
+         <div id="flame" class="container">
+	    <div class="red flame"></div>
+	    <div class="orange flame"></div>
+	    <div class="yellow flame"></div>
+	    <div class="white flame"></div>
+	    <div class="blue circle"></div>
+	    <div class="black circle"></div>
+	  </div>
 <!--     <ul class="exhaust-fumes">
       <li></li>
       <li></li>
