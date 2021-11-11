@@ -398,7 +398,7 @@ ul li {
 			const parser = new DOMParser();
 
 /* Async function used to retrieve start and end time from RADAR_1KM_RRAI layer GetCapabilities document */
-async function getRadarStartEndTime() {
+async function getData() {
   let response = await fetch(
     "https://geo.weather.gc.ca/geomet/?lang=en&service=WMS&request=GetCapabilities&version=1.3.0&LAYERS=RADAR_1KM_RRAI"
   );
@@ -410,14 +410,8 @@ async function getRadarStartEndTime() {
         .getElementsByTagName("Dimension")[0]
         .innerHTML.split("/")
     );
-  return [new Date(data[0]), new Date(data[1])];
+  return data;
 }
-
-let frameRate = 1.0; // frames per second
-let animationId = null;
-let startTime = null;
-let endTime = null;
-let current_time = null;
 
 let layers = [
 	new ol.layer.Tile({
@@ -457,43 +451,14 @@ function updateInfo(current_time) {
    // No Info Container At This time
 }
 
-function setTime() {
-  current_time = current_time;
-  if (current_time === null) {
-    current_time = startTime;
-  } else if (current_time >= endTime) {
-    current_time = startTime;
-  } else {
-    current_time = new Date(
-      current_time.setMinutes(current_time.getMinutes() + 10)
-    );
-  }
+function updateLayers() {
   layers[1]
     .getSource()
     .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
   layers[2]
     .getSource()
     .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
-  updateInfo(current_time);
 }
-
-getRadarStartEndTime().then((data) => {
-  startTime = data[0];
-  endTime = data[1];
-  setTime();
-});
-
-let stop = function () {
-  if (animationId !== null) {
-    window.clearInterval(animationId);
-    animationId = null;
-  }
-};
-
-let play = function () {
-  stop();
-  animationId = window.setInterval(setTime, 1000 / frameRate);
-};
 		</script>
 	</div>
 </div>
