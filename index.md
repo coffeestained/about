@@ -994,7 +994,7 @@ transform: rotate(-2deg) scaleY(0.92);
       <div class="fin fin-right"></div>
       <div class="window"></div>
     </div>
-         <div id="flame" class="container">
+         <div style="height: 60px;" id="flame" class="container">
 	    <div class="red flame"></div>
 	    <div class="orange flame"></div>
 	    <div class="yellow flame"></div>
@@ -1034,7 +1034,7 @@ const animateRocket = async function(direction = 1) {
 	rocket.style.bottom = bottom + 'px';
 	if (bottom < -200) {
 		flame.classList.remove('container'); 
-		await sleep(1000);
+		await sleep(15000);
 		animateRocket(0);
 	} else {
 		animateRocket(1);
@@ -1046,7 +1046,7 @@ const animateRocket = async function(direction = 1) {
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
 	if (bottom > 3010) {
-		await sleep(15555);
+		await sleep(1055);
 		animateRocket(1);
 	} else {
 		animateRocket(0);
