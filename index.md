@@ -392,7 +392,9 @@ ul li {
     margin-bottom: 50px;">
 	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
 	<div class="row-item flex-grow">
-		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map"></div>
+		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map">
+		<div> </div>
+		</div>
 		<script type="text/javascript">
 
 			const parser = new DOMParser();
