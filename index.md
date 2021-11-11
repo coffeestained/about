@@ -877,10 +877,12 @@ position: absolute;
 	
 	
 .container {
+	position: relative;
+	left: -35px;
+	top: -5px;
 	margin: 0 auto;
 	width: 40px;
 	height: 60px;
-	top: 13%;
 	transform-origin: center top;
 	animation-name: flicker;
 	animation-duration: 3ms;
@@ -889,7 +891,7 @@ position: absolute;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 }
-.flame {
+.container .flame {
 	bottom: 0;
 	position: absolute;
 	border-bottom-right-radius: 50%;
@@ -900,21 +902,21 @@ position: absolute;
   -webkit-transform: rotate(135deg) scale(1.5, 1.5);
   -o-transform: rotate(135deg) scale(1.5, 1.5);
 }
-.yellow {
+.container .yellow {
 	left: 15px;
 	width: 20px;
 	height: 30px;
 	background: gold;
 	box-shadow: 0px 0px 9px 4px gold;
 }
-.orange {
+.container .orange {
 	left: 10px;
 	width: 30px;
 	height: 40px;
 	background: orange;
 	box-shadow: 0px 0px 9px 4px orange;
 }
-.red {
+.container .red {
 	left: 5px;
 	top: 20px;
 	width: 40px;
@@ -923,7 +925,7 @@ position: absolute;
 	border: 1px solid OrangeRed;
 	box-shadow: 0px 0px 5px 4px OrangeRed;
 }
-.white {
+.container .white {
 	left: 15px;
 	top: 20px;
 	width: 20px;
@@ -931,11 +933,11 @@ position: absolute;
 	background: white;
 	box-shadow: 0px 0px 9px 4px white;
 }
-.circle {
+.container .circle {
 	border-radius: 50%;
 	position: absolute;
 }
-.blue {
+.container .blue {
 	width: 10px;
 	height: 10px;
 	left: 25px;
@@ -943,7 +945,7 @@ position: absolute;
 	background: SlateBlue;
 	box-shadow: 0px 0px 15px 10px #4fc1e9;
 }
-.black {
+.container .black {
 	width: 30px;
 	height: 40px;
 	left: 10px;
@@ -1018,6 +1020,11 @@ transform: rotate(-2deg) scaleY(0.92);
 const animateRocket = async function(direction = 1) {
     const rocket = document.getElementById('rocket');
     let bottom = parseInt(rocket.style.bottom);
+    const flame = document.getElementById('flame');
+    flame.classList.add('container'); 
+    const scaleFactor = Math.abs(bottom) / 3210;
+    const transformAmount = if (scaleFactor < .5) return .5 else return scaleFactor;
+    rocket.style.transform = `scale(${transformAmount})`;
     await sleep(1);
     if (direction === 1) {
 	if (bottom > 700) bottom = bottom - 3;
@@ -1026,7 +1033,8 @@ const animateRocket = async function(direction = 1) {
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
 	if (bottom < -200) {
-		await sleep(5555);
+		flame.classList.remove('container'); 
+		await sleep(1000);
 		animateRocket(0);
 	} else {
 		animateRocket(1);
@@ -1038,7 +1046,7 @@ const animateRocket = async function(direction = 1) {
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
 	if (bottom > 3010) {
-		await sleep(5555);
+		await sleep(15555);
 		animateRocket(1);
 	} else {
 		animateRocket(0);
