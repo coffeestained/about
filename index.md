@@ -987,7 +987,7 @@ transform: rotate(-2deg) scaleY(0.92);
  
 </style>
 <div style="z-index:100; position: relative; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket" style="bottom: -200px">
+  <div id="rocket" class="rocket" style="bottom: -350px: transform: scale(.5);">
     <div class="rocket-body">
       <div class="body"></div>
       <div class="fin fin-left"></div>
@@ -1022,7 +1022,7 @@ const animateRocket = async function(direction = 1) {
     let bottom = parseInt(rocket.style.bottom);
     const flame = document.getElementById('flame');
     flame.classList.add('container'); 
-    const scaleFactor = Math.abs(bottom) / 3210;
+    const scaleFactor = Math.abs(bottom) / 3160;
     const transformAmount = scaleFactor < .5 ? .5 : scaleFactor;
     rocket.style.transform = `scale(${transformAmount})`;
     await sleep(1);
@@ -1032,7 +1032,7 @@ const animateRocket = async function(direction = 1) {
 	else bottom = bottom - 1;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
-	if (bottom < -200) {
+	if (bottom < -350) {
 		flame.classList.remove('container'); 
 		await sleep(15000);
 		animateRocket(0);
@@ -1045,7 +1045,7 @@ const animateRocket = async function(direction = 1) {
 	else bottom = bottom + 1;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
-	if (bottom > 3010) {
+	if (bottom > 2810) {
 		await sleep(1055);
 		animateRocket(1);
 	} else {
