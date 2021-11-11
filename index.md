@@ -702,6 +702,8 @@ position: absolute;
 }
  .rocket .rocket-body {
 	 width: 40px;
+	position:relative;
+	z-index: 99;
 	 left: calc(50% - 50px);
 	 animation: bounce 0.5s infinite;
 }
@@ -876,7 +878,7 @@ position: absolute;
 	
 .container {
 	margin: 0 auto;
-	width: 60px;
+	width: 40px;
 	height: 60px;
 	top: 13%;
 	transform-origin: center top;
@@ -900,14 +902,14 @@ position: absolute;
 }
 .yellow {
 	left: 15px;
-	width: 30px;
+	width: 20px;
 	height: 30px;
 	background: gold;
 	box-shadow: 0px 0px 9px 4px gold;
 }
 .orange {
 	left: 10px;
-	width: 40px;
+	width: 30px;
 	height: 40px;
 	background: orange;
 	box-shadow: 0px 0px 9px 4px orange;
@@ -915,7 +917,7 @@ position: absolute;
 .red {
 	left: 5px;
 	top: 20px;
-	width: 50px;
+	width: 40px;
 	height: 50px;
 	background: OrangeRed;
 	border: 1px solid OrangeRed;
@@ -924,7 +926,7 @@ position: absolute;
 .white {
 	left: 15px;
 	top: 20px;
-	width: 30px;
+	width: 20px;
 	height: 30px;
 	background: white;
 	box-shadow: 0px 0px 9px 4px white;
@@ -942,7 +944,7 @@ position: absolute;
 	box-shadow: 0px 0px 15px 10px #4fc1e9;
 }
 .black {
-	width: 40px;
+	width: 30px;
 	height: 40px;
 	left: 10px;
 	top: -30px;
