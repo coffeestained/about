@@ -14,8 +14,9 @@
 .mapControls {
 position: absolute;
     width: 150px;
-    margin: 15px;
+    margin: .5em;
     padding: 5px;
+	top: .5em;
     right: 0px;
     background: white;
     z-index: 999;
@@ -24,6 +25,15 @@ position: absolute;
 	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
 box-shadow: 0px 0px 17px -8px #000000;
 }
+	
+.ol-control {
+	    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
+box-shadow: 0px 0px 17px -8px #000000;
+	    background: white;
+}
+	
 .mapControls > .button {
 	width: 100%;
 	text-align: center;
@@ -1017,7 +1027,7 @@ const animateRocket = async function(direction = 1) {
     const rocketBody = document.getElementById('rocketBody');
     flame.classList.add('container'); 
     rocketBody.classList.add('rocketBounce'); 
-    const scaleFactor = Math.abs(bottom) / 3160;
+    const scaleFactor = Math.abs(bottom) / 3460;
     const transformAmount = scaleFactor < .4 ? .4 : scaleFactor;
     rocket.style.transform = `scale(${transformAmount})`;
     await sleep(1);
@@ -1027,7 +1037,7 @@ const animateRocket = async function(direction = 1) {
 	else bottom = bottom - 1;
 	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
-	if (bottom < -350) {
+	if (bottom < -650) {
 		flame.classList.remove('container'); 
 		rocketBody.classList.remove('rocketBounce'); 
 		await sleep(15000);
