@@ -483,15 +483,12 @@ let layers = [
 			wrapX: true,
 		}),
 	}),
-    new ol.layer.Image({
-        source: new ol.source.ImageWMS({
-          format: "image/png",
-          url: "https://geo.weather.gc.ca/geomet/",
-          params: { LAYERS: "RADAR_1KM_RRAI", TILED: true },
-          transition: 0
+<!--     new ol.layer.Tile({
+        source: new ol.source.XYZ({
+          url: "https://maps.openweathermap.org/maps/2.0/radar/12/-81.381844/28.548580?appid="
         }),
-        opacity: .5
-    })
+        opacity: 1
+    }) -->
 ];
 
 let map = new ol.Map({
@@ -517,6 +514,42 @@ function updateLayers() {
     .getSource()
     .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
 }
+	const latitude = 39.74;
+const longitude = -104.84;
+const startDate = new Date(Date.now()).toLocaleDateString();
+const numDays = 5;
+const units = 'e';		
+const soapURL = 'https://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php';
+const xmlData = 
+  `<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+  <Body>
+      <NDFDgenByDay xmlns="https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl">
+          <latitude>${latitude}</latitude>
+          <longitude>${longitude}</longitude>
+          <startDate>${startDate}</startDate>
+          <numDays>${numDays}</numDays>
+          <Unit>${units}</Unit>
+          <format>12 hourly</format>
+      </NDFDgenByDay>
+  </Body>
+  </Envelope>`
+			
+async function getRadar() {
+  let response = await fetch(
+    soapURL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/xml' },
+    body: xmlData
+  }
+  );
+  let data = await response
+    .then((data) =>
+	console.log(data);
+    );
+  return data;
+}
+			
+getRadar().then(response => console.log(response));
 		</script>
 	</div>
 </div>
