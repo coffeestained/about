@@ -34,6 +34,16 @@ box-shadow: 0px 0px 17px -8px #000000;
 	    background: white;
 }
 	
+.ol-control button {
+background: white;
+	
+}
+	
+	.ol-control button:hover {
+background: #e0e0e0;
+	
+}
+	
 .mapControls > .button {
 	width: 100%;
 	text-align: center;
