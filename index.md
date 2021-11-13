@@ -4,6 +4,8 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
+
 
 <style>
 .map {
@@ -49,7 +51,7 @@ background: white;
 	
 	.ol-control button:hover {
 background: #e0e0e0;
-	color: black;
+	color: #606c71;
 }
 	
 .mapControls > .button {
@@ -444,9 +446,9 @@ ul li {
 	<div class="row-item flex-grow">
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map">
 		<div class="mapControls">
-			<div class="button">Radar</div>
-			<div class="button">Clouds</div>
-			<div class="button">Roads</div>
+			<div class="button"><i class="fas fa-satellite-dish"></i> Radar</div>
+			<div class="button">Clouds <i class="fas fa-cloud"></i></div>
+			<div class="button"><i class="fas fa-road"></i> Roads</div>
 		</div>
 		</div>
 		<script type="text/javascript">
