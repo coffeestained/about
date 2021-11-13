@@ -508,7 +508,8 @@ function updateLayers() {
     .getSource()
     .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
 }
-	const latitude = 39.74;
+
+const latitude = 39.74;
 const longitude = -104.84;
 const startDate = new Date(Date.now()).toLocaleDateString();
 const numDays = 5;
@@ -538,7 +539,7 @@ async function getRadar() {
   );
   let data = await response
     .then((data) =>
-	console.log(data);
+	console.log(data)
     );
   return data;
 }
