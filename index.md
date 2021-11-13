@@ -483,12 +483,6 @@ let layers = [
 			wrapX: true,
 		}),
 	}),
-<!--     new ol.layer.Tile({
-        source: new ol.source.XYZ({
-          url: "https://maps.openweathermap.org/maps/2.0/radar/12/-81.381844/28.548580?appid="
-        }),
-        opacity: 1
-    }) -->
 ];
 
 let map = new ol.Map({
