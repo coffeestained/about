@@ -34,14 +34,22 @@ box-shadow: 0px 0px 17px -8px #000000;
 	    background: white;
 }
 	
+.ol-control:hover {
+		    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
+box-shadow: 0px 0px 17px -8px #000000;
+	    background: white;
+}
+	
 .ol-control button {
 background: white;
-	
+	color: black;
 }
 	
 	.ol-control button:hover {
 background: #e0e0e0;
-	
+	color: black;
 }
 	
 .mapControls > .button {
