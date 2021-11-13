@@ -658,7 +658,6 @@ element.addEventListener("mouseover", event => {
 	element.classList.add(current);
 });
 window.hoverFriends = document.querySelectorAll('div.row-logo');
-console.log(hoverFriends);
 window.hoverFriends.forEach(element => {
 	element.classList.add('animate__animated');
 	element.addEventListener("mouseover", event => {
@@ -1083,7 +1082,6 @@ const animateRocket = async function(direction = 1) {
 	if (bottom > 700) bottom = bottom - 3;
 	else if (bottom > 300) bottom = bottom - 2;
 	else bottom = bottom - 1;
-	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
 	if (bottom < -650) {
 		flame.classList.remove('container'); 
@@ -1097,7 +1095,6 @@ const animateRocket = async function(direction = 1) {
 	if (bottom > 700) bottom = bottom + 3;
 	else if (bottom > 300) bottom = bottom + 2;
 	else bottom = bottom + 1;
-	console.log(bottom);
 	rocket.style.bottom = bottom + 'px';
 	if (bottom > 2810) {
 		await sleep(1055);
