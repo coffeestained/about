@@ -255,7 +255,10 @@ function headerScrollFunction(event) {
 	display: flex;
 	margin-bottom: 50px;
 	scroll-snap-align: start;
-    z-index;99;
+font-size: 15px;
+    font-family: Arial Black;
+    line-height: 3;
+	color: black;
 }
 
 .row-logo {
