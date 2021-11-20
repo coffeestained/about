@@ -36,7 +36,8 @@ box-shadow: 0px 0px 17px -8px #000000;
 	    background: white;
 }
 	
-.ol-control:hover {
+.ol-control
+	{
 		    border-radius: 5px;
     border: 1px solid #e0e0e0;
 	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
@@ -61,6 +62,7 @@ background: #e0e0e0;
 }
 .mapControls > .button:hover {
 	background-color: #e0e0e0;
+	color: #606c71;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
