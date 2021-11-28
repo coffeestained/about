@@ -145,13 +145,9 @@ window.onwheel = function(event) {
 function headerScrollFunction(event) {
 	const headerControls = document.getElementById('headerControls');
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
-		headerControls.classList.remove('controlsExpanded');
-		headerControls.classList.add('controlsCollapsed');
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
 	} else if(document.documentElement.scrollTop < 10 && event.deltaY < 0) {
-		headerControls.classList.remove('controlsCollapsed');
-		headerControls.classList.add('controlsExpanded');
 		header[0].classList.remove('collapse');
 		header[0].classList.add('expand');
 		window.scrollTo(0, 0);
