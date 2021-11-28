@@ -156,7 +156,7 @@ function headerScrollFunction(event) {
 	} else if(document.documentElement.scrollTop < 10 && event.deltaY < 0) {
 		header[0].classList.remove('collapse');
 		header[0].classList.add('expand');
-		window.scrollTo(0, 0);
+		window.scrollTo(({ top: 0, behavior: 'smooth' });
 	} 
 
 }
