@@ -33,22 +33,20 @@
 }
 
 .controlsExpanded  {
-	animation: expand .5s ease forwards, animatedBackground 850s linear infinite;
-    padding-top: 120px;
-    padding-bottom: 120px;
     background-size: 85%;
     background-repeat: repeat;
     background-position: 0 0;
+    padding: 153px 15px;
 }
 
 .controlsCollapsed  {
 	display: flex;
     justify-content: center;
     align-items: center;
-    animation: collapse .5s ease forwards, animatedBackground 850s linear infinite;
     background-size: 85%;
     background-repeat: repeat;
     background-position: 0 0;
+	padding: 15px 15px;
 }
 
 .headerControls > .button {
