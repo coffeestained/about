@@ -46,7 +46,7 @@
     background-size: 85%;
     background-repeat: repeat;
     background-position: 0 0;
-	padding: 15px 15px;
+	padding: 11px 15px;
 }
 
 .headerControls > .button {
