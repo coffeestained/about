@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
 <div class="headerControls">
-	<div class="button"><i class="fas fa-satellite-dish"></i> Dark</div>
+	<div class="button"><i class="fas fa-sun"></i></div>
 	<input type="range" id="dayNightSlider" name="dayNightSlider"
 	min="1" max="10">
-	<div class="button"><i class="fas fa-road"></i> Light</div>
+	<div class="button"><i class="fas fa-moon"></i></div>
 </div>
 
 <script>
