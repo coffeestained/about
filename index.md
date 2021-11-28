@@ -752,7 +752,7 @@ window.hoverFriends.forEach(element => {
 .rocket {
 position: absolute;
     width: 40px;
-    left: 300px;
+    left: 150px;
     z-index: 200;
 }
  .rocket .rocket-body {
@@ -1088,7 +1088,7 @@ const animateRocket = async function(direction = 1) {
 	else if (bottom > -(document.body.offsetHeight/2)) bottom = bottom - 2;
 	else bottom = bottom - 1;
 	rocket.style.bottom = bottom + 'px';
-	if (bottom < -document.body.offsetHeight) {
+	if (bottom < -(document.body.offsetHeight-300)) {
 		flame.classList.remove('container'); 
 		rocketBody.classList.remove('rocketBounce'); 
 		await sleep(15000);
