@@ -20,7 +20,6 @@
 <style>
 
 .headerControls {
-	position: fixed;
     padding: 5px;
     top: 0px;
     right: 0px;
