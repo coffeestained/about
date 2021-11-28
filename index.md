@@ -6,8 +6,38 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
+<div class="mapControls">
+	<div class="button"><i class="fas fa-satellite-dish"></i> Radar</div>
+	<div class="button">Clouds <i class="fas fa-cloud"></i></div>
+	<div class="button"><i class="fas fa-road"></i> Roads</div>
+</div>
+
 
 <style>
+.headerControls {
+	position: relative;
+    width: 150px;
+    margin: .5em;
+    padding: 5px;
+	top: -4em;
+    right: 0px;
+    background: white;
+    z-index: 999;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
+box-shadow: 0px 0px 17px -8px #000000;
+}
+
+.headerControls > .button {
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+}
+.headerControls > .button:hover {
+	background-color: #e0e0e0;
+	color: #606c71;
+}
 .map {
 	position: relative;
 	width: 100%;
@@ -26,6 +56,16 @@ position: absolute;
     border: 1px solid #e0e0e0;
 	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
 box-shadow: 0px 0px 17px -8px #000000;
+}
+
+.mapControls > .button {
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+}
+.mapControls > .button:hover {
+	background-color: #e0e0e0;
+	color: #606c71;
 }
 	
 .ol-control {
@@ -55,15 +95,7 @@ background: #e0e0e0;
 	color: #606c71;
 }
 	
-.mapControls > .button {
-	width: 100%;
-	text-align: center;
-	padding: 5px;
-}
-.mapControls > .button:hover {
-	background-color: #e0e0e0;
-	color: #606c71;
-}
+
 </style>
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
 
