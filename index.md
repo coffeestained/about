@@ -20,6 +20,7 @@
 <style>
 
 .headerControls {
+	position: fixed;
     padding: 5px;
     top: 0px;
     right: 0px;
@@ -29,12 +30,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-	width: 100vw;
-    z-index: 101;
-    position: relative;
-    margin: 0px;
-    margin-left: calc(50% - 50vw);
-    margin-bottom: 50px;
 }
 
 .controlsExpanded  {
@@ -151,12 +146,16 @@ window.onwheel = function(event) {
 function headerScrollFunction(event) {
 	const headerControls = document.getElementById('headerControls');
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
+		headerControls.classList.remove('controlsExpanded');
+		headerControls.classList.add('controlsCollapsed');
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
 	} else if(document.documentElement.scrollTop < 10 && event.deltaY < 0) {
+		headerControls.classList.remove('controlsCollapsed');
+		headerControls.classList.add('controlsExpanded');
 		header[0].classList.remove('collapse');
 		header[0].classList.add('expand');
-		window.scrollTo({ top: 0, behavior: 'smooth' });
+		window.scrollTo(0, 0);
 	} 
 
 }
