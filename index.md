@@ -1084,11 +1084,11 @@ const animateRocket = async function(direction = 1) {
     rocket.style.transform = `scale(${transformAmount})`;
     await sleep(1);
     if (direction === 1) {
-	if (bottom > 700) bottom = bottom - 3;
-	else if (bottom > -(document.body.offsetHeight/2)) bottom = bottom - 2;
+	if (bottom > -(document.body.offsetHeight/3)) bottom = bottom - 3;
+	else if (bottom > -(document.body.offsetHeight/5)) bottom = bottom - 2;
 	else bottom = bottom - 1;
 	rocket.style.bottom = bottom + 'px';
-	if (bottom < -(document.body.offsetHeight-300)) {
+	if (bottom < -(document.body.offsetHeight-350)) {
 		flame.classList.remove('container'); 
 		rocketBody.classList.remove('rocketBounce'); 
 		await sleep(15000);
@@ -1097,8 +1097,8 @@ const animateRocket = async function(direction = 1) {
 		animateRocket(1);
 	}
     } else {
-	if (bottom > 700) bottom = bottom + 3;
-	else if (bottom > -(document.body.offsetHeight/2)) bottom = bottom + 2;
+	if (bottom > -(document.body.offsetHeight/3)) bottom = bottom + 3;
+	else if (bottom > -(document.body.offsetHeight/5)) bottom = bottom + 2;
 	else bottom = bottom + 1;
 	rocket.style.bottom = bottom + 'px';
 	if (bottom > 400) {
