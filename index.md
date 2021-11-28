@@ -1101,7 +1101,7 @@ const animateRocket = async function(direction = 1) {
 	else if (bottom > -(document.body.offsetHeight/5)) bottom = bottom + 2;
 	else bottom = bottom + 1;
 	rocket.style.bottom = bottom + 'px';
-	if (bottom > 400) {
+	if (bottom > 800) {
 		await sleep(1055);
 		animateRocket(1);
 	} else {
