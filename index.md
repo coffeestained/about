@@ -6,20 +6,63 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
-<div class="mapControls">
-	<div class="button"><i class="fas fa-satellite-dish"></i> Radar</div>
-	<div class="button">Clouds <i class="fas fa-cloud"></i></div>
-	<div class="button"><i class="fas fa-road"></i> Roads</div>
+<script>
+	// Header Stuff
+	let dragging = false;
+let knobOffset = 0;
+
+let track = document.getElementById('track'),
+    knob = document.getElementById('knob'),
+
+    trackWidth = track.offsetWidth,
+    trackLeft = track.offsetLeft,
+    trackRight = trackLeft + trackWidth,
+
+    knobWidth = knob.offsetWidth,
+    maxRight = trackWidth - knobWidth; // relatively to track
+
+knob.addEventListener('mousedown', function(e) {
+    // knob offset relatively to track
+    knobOffset = e.clientX - knob.offsetLeft;
+    dragging = true;
+});
+
+window.addEventListener('mouseup', function(e) {
+    dragging = false;
+})
+
+window.addEventListener('mousemove', function(e) {
+  if (dragging) {
+      // current knob offset, relative to track
+      let offset = e.clientX - trackLeft - knobOffset;
+      if(offset < 0) {
+        offset = 0;
+      } else if(offset > maxRight) {
+        offset = maxRight;
+      }
+        
+      knob.style.left = offset + "px"
+  }
+});
+</script>
+<div class="headerControls">
+	<div class="button"><i class="fas fa-satellite-dish"></i> Dark</div>
+	<div id='track'>
+		<div id="knob"></div>
+	  </div>
+	<div class="button"><i class="fas fa-road"></i> Light</div>
 </div>
 
 
 <style>
+	#track {width: 200px;height: 5px; margin:100px; background: rgb(143, 195, 230)}
+#knob {height: 10px; width: 40px; background: black;position: relative; }
 .headerControls {
 	position: relative;
     width: 150px;
     margin: .5em;
     padding: 5px;
-	top: -4em;
+	top: -6em;
     right: 0px;
     background: white;
     z-index: 999;
@@ -27,10 +70,11 @@
     border: 1px solid #e0e0e0;
 	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
 box-shadow: 0px 0px 17px -8px #000000;
+display: flex;
+justify-content: space-around;
 }
 
 .headerControls > .button {
-	width: 100%;
 	text-align: center;
 	padding: 5px;
 }
