@@ -8,59 +8,17 @@
 
 <div class="headerControls">
 	<div class="button"><i class="fas fa-satellite-dish"></i> Dark</div>
-	<div id='track'>
-		<div id="knob"></div>
-	  </div>
+	<input type="range" id="dayNightSlider" name="dayNightSlider"
+	min="1" max="10">
 	<div class="button"><i class="fas fa-road"></i> Light</div>
 </div>
 
 <script>
-	// Header Stuff
-	let dragging = false;
-let knobOffset = 0;
 
-let track = document.getElementById('track'),
-    knob = document.getElementById('knob'),
-
-    trackWidth = track.offsetWidth,
-    trackLeft = track.offsetLeft,
-    trackRight = trackLeft + trackWidth,
-
-    knobWidth = knob.offsetWidth,
-    maxRight = trackWidth - knobWidth; // relatively to track
-
-knob.addEventListener('mousedown', function(e) {
-    // Replay Session feature ??? XD
-    // knob offset relatively to track
-    knobOffset = e.clientX - knob.offsetLeft;
-	console.log(e)
-    dragging = true;
-});
-
-window.addEventListener('mouseup', function(e) {
-    dragging = false;
-})
-
-window.addEventListener('mousemove', function(e) {
-  // Replay Session feature ??? XD
-  if (dragging) {
-	  console.log(e)
-      // current knob offset, relative to track
-      let offset = e.clientX - trackLeft - knobOffset;
-      if(offset < 0) {
-        offset = 0;
-      } else if(offset > maxRight) {
-        offset = maxRight;
-      }
-        
-      knob.style.left = offset + "px"
-  }
-});
 </script>
 
 <style>
-	#track {width: 200px; height: 5px; background: rgb(143, 195, 230)}
-#knob {height: 10px; width: 40px; background: black;position: relative; }
+
 .headerControls {
 	position: relative;
     margin: .5em;
