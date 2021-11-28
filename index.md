@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
-<div class="headerControls">
+<div id="headerControls" class="headerControls">
 	<div class="button sun"><i class="fas fa-sun"></i></div>
 	<input type="range" id="dayNightSlider" name="dayNightSlider"
 	min="1" max="10">
@@ -131,11 +131,15 @@ window.onwheel = function(event) {
 };
 
 function headerScrollFunction(event) {
-
+	const headerControls = document.getElementById('headerControls');
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
+		headerControls.classList.remove('expand');
+		headerControls.classList.add('collapse');
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
 	} else if(document.documentElement.scrollTop < 10 && event.deltaY < 0) {
+		headerControls.classList.remove('collapse');
+		headerControls.classList.add('expand');
 		header[0].classList.remove('collapse');
 		header[0].classList.add('expand');
 		window.scrollTo(0, 0);
