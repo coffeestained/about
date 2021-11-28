@@ -258,7 +258,7 @@ function headerScrollFunction(event) {
 	margin-bottom: 50px;
 	scroll-snap-align: start;
 font-size: 15px;
-    font-family: Arial Black;
+    font-family: Arial;
     line-height: 3;
 	color: black;
 }
