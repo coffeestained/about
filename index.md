@@ -33,6 +33,7 @@ knob.addEventListener('mousedown', function(e) {
     // Replay Session feature ??? XD
     // knob offset relatively to track
     knobOffset = e.clientX - knob.offsetLeft;
+	console.log(e)
     dragging = true;
 });
 
