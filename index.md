@@ -20,20 +20,35 @@
 <style>
 
 .headerControls {
-	position: relative;
-    margin: .5em;
+	position: fixed;
     padding: 5px;
-	top: -4em;
+    top: 0px;
     right: 0px;
-    background: white;
     z-index: 999;
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
-box-shadow: 0px 0px 17px -8px #000000;
-display: flex;
-justify-content: center;
-align-items: center;
+    -webkit-box-shadow: 0px 0px 17px -8px #000000;
+    box-shadow: 0px 0px 17px -8px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controlsExpanded  {
+	animation: expand .5s ease forwards, animatedBackground 850s linear infinite;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background-size: 85%;
+    background-repeat: repeat;
+    background-position: 0 0;
+}
+
+.controlsCollapsed  {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: collapse .5s ease forwards, animatedBackground 850s linear infinite;
+    background-size: 85%;
+    background-repeat: repeat;
+    background-position: 0 0;
 }
 
 .headerControls > .button {
@@ -133,13 +148,13 @@ window.onwheel = function(event) {
 function headerScrollFunction(event) {
 	const headerControls = document.getElementById('headerControls');
 	if(document.documentElement.scrollTop > 10 && event.deltaY > 0) {
-		headerControls.classList.remove('expand');
-		headerControls.classList.add('collapse');
+		headerControls.classList.remove('controlsExpanded');
+		headerControls.classList.add('controlsCollapsed');
 		header[0].classList.remove('expand');
 		header[0].classList.add('collapse');
 	} else if(document.documentElement.scrollTop < 10 && event.deltaY < 0) {
-		headerControls.classList.remove('collapse');
-		headerControls.classList.add('expand');
+		headerControls.classList.remove('controlsCollapsed');
+		headerControls.classList.add('controlsExpanded');
 		header[0].classList.remove('collapse');
 		header[0].classList.add('expand');
 		window.scrollTo(0, 0);
