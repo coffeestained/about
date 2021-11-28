@@ -30,19 +30,18 @@ let track = document.getElementById('track'),
     maxRight = trackWidth - knobWidth; // relatively to track
 
 knob.addEventListener('mousedown', function(e) {
-	console.log(e)
+    // Replay Session feature ??? XD
     // knob offset relatively to track
     knobOffset = e.clientX - knob.offsetLeft;
     dragging = true;
 });
 
 window.addEventListener('mouseup', function(e) {
-	console.log(e)
     dragging = false;
 })
 
 window.addEventListener('mousemove', function(e) {
-	console.log(e)
+  // Replay Session feature ??? XD
   if (dragging) {
 	  console.log(e)
       // current knob offset, relative to track
