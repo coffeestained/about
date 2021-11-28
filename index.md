@@ -752,7 +752,7 @@ window.hoverFriends.forEach(element => {
 .rocket {
 position: absolute;
     width: 40px;
-    left: -300px;
+    left: 300px;
     z-index: 200;
 }
  .rocket .rocket-body {
@@ -1041,8 +1041,8 @@ transform: rotate(-2deg) scaleY(0.92);
 }
  
 </style>
-<div style="z-index:100; position: relative; bottom: 0px; top: 0px; left: 0px;">
-  <div id="rocket" class="rocket" style="bottom: -350px; transform: scale(.5);">
+<div style="z-index:100; position: absolute; bottom: 0px; top: 0px; left: 0px;">
+  <div id="rocket" class="rocket" style="bottom: 1000px; transform: scale(.5);">
     <div id="rocketBody" class="rocket-body rocketBounce">
       <div class="body"></div>
       <div class="fin fin-left"></div>
@@ -1079,16 +1079,16 @@ const animateRocket = async function(direction = 1) {
     const rocketBody = document.getElementById('rocketBody');
     flame.classList.add('container'); 
     rocketBody.classList.add('rocketBounce'); 
-    const scaleFactor = Math.abs(bottom) / 3460;
+    const scaleFactor = Math.abs(bottom) / document.body.offsetHeight;
     const transformAmount = scaleFactor < .4 ? .4 : scaleFactor;
     rocket.style.transform = `scale(${transformAmount})`;
     await sleep(1);
     if (direction === 1) {
 	if (bottom > 700) bottom = bottom - 3;
-	else if (bottom > 300) bottom = bottom - 2;
+	else if (bottom > -(document.body.offsetHeight/2)) bottom = bottom - 2;
 	else bottom = bottom - 1;
 	rocket.style.bottom = bottom + 'px';
-	if (bottom < -650) {
+	if (bottom < -document.body.offsetHeight) {
 		flame.classList.remove('container'); 
 		rocketBody.classList.remove('rocketBounce'); 
 		await sleep(15000);
@@ -1098,10 +1098,10 @@ const animateRocket = async function(direction = 1) {
 	}
     } else {
 	if (bottom > 700) bottom = bottom + 3;
-	else if (bottom > 300) bottom = bottom + 2;
+	else if (bottom > -(document.body.offsetHeight/2)) bottom = bottom + 2;
 	else bottom = bottom + 1;
 	rocket.style.bottom = bottom + 'px';
-	if (bottom > 2810) {
+	if (bottom > 400) {
 		await sleep(1055);
 		animateRocket(1);
 	} else {
