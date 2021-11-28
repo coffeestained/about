@@ -55,11 +55,10 @@ window.addEventListener('mousemove', function(e) {
 </script>
 
 <style>
-	#track {width: 200px;height: 5px; margin:100px; background: rgb(143, 195, 230)}
+	#track {width: 200px; height: 5px; background: rgb(143, 195, 230)}
 #knob {height: 10px; width: 40px; background: black;position: relative; }
 .headerControls {
 	position: relative;
-    width: 150px;
     margin: .5em;
     padding: 5px;
 	top: -6em;
@@ -72,6 +71,7 @@ window.addEventListener('mousemove', function(e) {
 box-shadow: 0px 0px 17px -8px #000000;
 display: flex;
 justify-content: space-around;
+align-items: center;
 }
 
 .headerControls > .button {
