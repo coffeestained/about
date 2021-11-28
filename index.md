@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
 <div class="headerControls">
-	<div class="button"><i class="fas fa-sun"></i></div>
+	<div class="button sun"><i class="fas fa-sun"></i></div>
 	<input type="range" id="dayNightSlider" name="dayNightSlider"
 	min="1" max="10">
-	<div class="button"><i class="fas fa-moon"></i></div>
+	<div class="button moon"><i class="fas fa-moon"></i></div>
 </div>
 
 <script>
@@ -23,7 +23,7 @@
 	position: relative;
     margin: .5em;
     padding: 5px;
-	top: -6em;
+	top: -4em;
     right: 0px;
     background: white;
     z-index: 999;
@@ -32,17 +32,21 @@
 	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
 box-shadow: 0px 0px 17px -8px #000000;
 display: flex;
-justify-content: space-around;
+justify-content: center;
 align-items: center;
 }
 
 .headerControls > .button {
-	text-align: center;
-	padding: 5px;
+
 }
 .headerControls > .button:hover {
-	background-color: #e0e0e0;
-	color: #606c71;
+
+}
+.headerControls .sun {
+	color: gold;
+}
+.headerControls .moon {
+	color: darkslategrey
 }
 .map {
 	position: relative;
