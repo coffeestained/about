@@ -29,6 +29,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+	width: 100vw;
+    z-index: 101;
+    position: relative;
+    margin: 0px;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 50px;
 }
 
 .controlsExpanded  {
