@@ -6,6 +6,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
+<div class="headerControls">
+	<div class="button"><i class="fas fa-satellite-dish"></i> Dark</div>
+	<div id='track'>
+		<div id="knob"></div>
+	  </div>
+	<div class="button"><i class="fas fa-road"></i> Light</div>
+</div>
+
 <script>
 	// Header Stuff
 	let dragging = false;
@@ -45,14 +53,6 @@ window.addEventListener('mousemove', function(e) {
   }
 });
 </script>
-<div class="headerControls">
-	<div class="button"><i class="fas fa-satellite-dish"></i> Dark</div>
-	<div id='track'>
-		<div id="knob"></div>
-	  </div>
-	<div class="button"><i class="fas fa-road"></i> Light</div>
-</div>
-
 
 <style>
 	#track {width: 200px;height: 5px; margin:100px; background: rgb(143, 195, 230)}
