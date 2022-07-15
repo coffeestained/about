@@ -803,7 +803,7 @@ window.hoverFriends.forEach(element => {
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
 	<div class="row-item">
-		<h3>Special Thanks</h3> My Wife, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers and mentors who have helped me and continue to help me to become a better engineer.
+		<h3>Special Thanks</h3> My Wife, the open-source community,<a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers, colleagues and mentors who have helped me and continue to help me to become a better engineer & architect.
 	</div>
 </div>
 
