@@ -44,7 +44,7 @@
 		}
 	}, 1000);
 	
-	resetTimeControl() {
+	function resetTimeControl() {
 		overrideTimeOfDay = false;
 	}
 </script>
