@@ -17,16 +17,16 @@
 <script>
 
 	function changeTimeOfDay(value) {
-	     if (value == 5) {
+	     if (value == 50) {
 		 document.documentElement.style
 	         .setProperty('--one-opacity', 0);
 	         document.documentElement.style
 	         .setProperty('--ten-opacity', 1);
 	     } else {
 		 document.documentElement.style
-	         .setProperty('--one-opacity', value / 10);
+	         .setProperty('--one-opacity', value / 100);
 	         document.documentElement.style
-	         .setProperty('--ten-opacity', value / 10);
+	         .setProperty('--ten-opacity', value / 100);
 	     }
 
 	     console.log(value)
@@ -819,7 +819,7 @@ window.hoverFriends.forEach(element => {
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
 	<div class="row-item">
-		<h3>Special Thanks</h3> My Wife, the open-source community,<a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, friends, family, co-workers, colleagues and mentors who have helped me and continue to help me to become a better engineer & architect.
+		<h3>Special Thanks</h3> My Wife, the open-source community, <a href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my parents, my friends, my family, my co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better engineer & architect, but a better person.
 	</div>
 </div>
 
