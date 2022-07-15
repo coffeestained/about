@@ -18,6 +18,19 @@
 </script>
 
 <style>
+	
+:root {
+    --one-opacity: 0;
+    --two-opacity: .1;
+    --three-opacity: .2;
+    --four-opacity: .3;
+    --five-opacity: .4;
+    --six-opacity: .55;
+    --seven-opacity: .7;
+    --eight-opacity: .8;
+    --nine-opacity: .9;
+    --ten-opacity: 1;
+}
 
 .headerControls {
 	position: fixed;
@@ -293,11 +306,11 @@ function headerScrollFunction(event) {
 
 @keyframes OpacityAnim {
 	0% {
-		opacity: 1.0
+		opacity: var(--ten-opacity);
 	}
 
 	100% {
-		opacity: 0.0
+		opacity: var(--one-opacity);
 	}
 }
 
