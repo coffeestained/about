@@ -16,19 +16,15 @@
 
 <script>
 
+	let overrideTimeOfDay = false;
 	function changeTimeOfDay(value) {
 	     if (value == 50) {
-		 document.documentElement.style
-	         .setProperty('--one-opacity', 0);
-	         document.documentElement.style
-	         .setProperty('--ten-opacity', 1);
+		overrideTimeOfDay = false;
 	     } else {
-		 document.documentElement.style
-	         .setProperty('--one-opacity', value / 100);
-	         document.documentElement.style
-	         .setProperty('--ten-opacity', value / 100);
+		overrideTimeOfDay = true;
+		document.documentElement.style
+		 .setProperty('--timeOfDayOpacity', value / 100);
 	     }
-
 	     console.log(value)
 	}
 	
@@ -37,13 +33,15 @@
 	let direction = 'ascending';
 
 	window.setInterval(function(){
-		if (direction == 'ascending') ticker++;
-	        else ticker--;
-		if (ticker == 0) direction = 'ascending';
-		if (ticker == 100) direction = 'descending';
-		document.documentElement.style
-	         .setProperty('--timeOfDayOpacity', ticker / 100);
-		console.log(ticker)
+		if (!overrideTimeOfDay) {
+			if (direction == 'ascending') ticker++;
+			else ticker--;
+			if (ticker == 0) direction = 'ascending';
+			if (ticker == 100) direction = 'descending';
+			document.documentElement.style
+			 .setProperty('--timeOfDayOpacity', ticker / 100);
+			console.log(ticker)
+		}
 	}, 1000);
 </script>
 
