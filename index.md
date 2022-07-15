@@ -10,14 +10,26 @@
 	<div class="button sun"><i class="fas fa-sun"></i></div>
 	<input type="range" id="dayNightSlider" name="dayNightSlider"  oninput="changeTimeOfDay(this.value)"
   onchange="changeTimeOfDay(this.value)"
-	min="1" max="10">
+	min="1" max="10" value="5">
 	<div class="button moon"><i class="fas fa-moon"></i></div>
 </div>
 
 <script>
 
 	function changeTimeOfDay(value) {
-		console.log(value)
+	     if (value == 5) {
+		 document.documentElement.style
+	         .setProperty('--one-opacity', 0);
+	         document.documentElement.style
+	         .setProperty('--ten-opacity', 1);
+	     } else {
+		 document.documentElement.style
+	         .setProperty('--one-opacity', value);
+	         document.documentElement.style
+	         .setProperty('--ten-opacity', value);
+	     }
+
+	     console.log(value)
 	}
 </script>
 
