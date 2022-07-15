@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
-<div id="headerControls" class="headerControls tooltip">
+<div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
 	<div class="button sun"><i class="fas fa-sun"></i></div>
 	<input type="range" id="dayNightSlider" name="dayNightSlider"  oninput="changeTimeOfDay(this.value)"
   onchange="changeTimeOfDay(this.value)"
@@ -16,7 +16,6 @@
 </div>
 
 <script>
-
 	let overrideTimeOfDay = false;
 	function changeTimeOfDay(value) {
 	     if (value == 50) {
@@ -44,6 +43,10 @@
 			console.log(ticker)
 		}
 	}, 1000);
+	
+	resetTimeControl() {
+		overrideTimeOfDay = false;
+	}
 </script>
 
 <style>
