@@ -12,7 +12,7 @@
   onchange="changeTimeOfDay(this.value)"
 	min="1" max="100" value="50">
 	<div class="button moon"><i class="fas fa-moon"></i></div>
-	<span class="tooltiptext">Double Click to Reset</span>
+	<span class="tooltiptext tooltip-bottom">Double Click to Reset</span>
 </div>
 
 <script>
@@ -107,6 +107,12 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+	
+.tooltip-bottom {
+	top: 135%;
+    left: 50%;
+    margin-left: -60px;	
 }
 
 .headerControls {
