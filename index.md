@@ -6,12 +6,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
-<div id="headerControls" class="headerControls">
+<div id="headerControls" class="headerControls tooltip">
 	<div class="button sun"><i class="fas fa-sun"></i></div>
 	<input type="range" id="dayNightSlider" name="dayNightSlider"  oninput="changeTimeOfDay(this.value)"
   onchange="changeTimeOfDay(this.value)"
 	min="1" max="100" value="50">
 	<div class="button moon"><i class="fas fa-moon"></i></div>
+	<span class="tooltiptext">Double Click to Reset</span>
 </div>
 
 <script>
