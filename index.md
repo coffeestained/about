@@ -92,7 +92,7 @@
 }
 
 /* Tooltip arrow */
-.tooltip .tooltiptext::after {
+.tooltip .tooltiptext::before {
   content: "";
   position: absolute;
   top: 100%;
@@ -100,7 +100,7 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: transparent transparent #555 transparent;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
