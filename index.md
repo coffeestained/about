@@ -40,7 +40,9 @@
 		if (direction == 'ascending') ticker++;
 	        else ticker--;
 		if (ticker == 0) direction = 'ascending';
-		if (ticker == 60) direction = 'descending';
+		if (ticker == 100) direction = 'descending';
+		document.documentElement.style
+	         .setProperty('--timeOfDayOpacity', ticker / 100);
 		console.log(ticker)
 	}, 1000);
 </script>
@@ -58,6 +60,7 @@
     --eight-opacity: .8;
     --nine-opacity: .9;
     --ten-opacity: 1;
+    --timeOfDayOpacity: 0;
 }
 
 .headerControls {
@@ -328,8 +331,9 @@ function headerScrollFunction(event) {
 
 .page-header:after {
 	background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('stars.png') repeat;
-	animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
+	animation: animatedBackground 1200s linear infinite;
 	border-bottom: 4px rgba(0, 0, 0, .3) solid;
+	opacity: var(--timeOfDayOpacity);
 }
 
 @keyframes OpacityAnim {
