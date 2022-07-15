@@ -24,9 +24,9 @@
 	         .setProperty('--ten-opacity', 1);
 	     } else {
 		 document.documentElement.style
-	         .setProperty('--one-opacity', value);
+	         .setProperty('--one-opacity', value / 10);
 	         document.documentElement.style
-	         .setProperty('--ten-opacity', value);
+	         .setProperty('--ten-opacity', value / 10);
 	     }
 
 	     console.log(value)
