@@ -31,6 +31,18 @@
 
 	     console.log(value)
 	}
+	
+	// Ticker Display (displaying time)
+	let ticker = 0;
+	let direction = 'ascending';
+
+	window.setInterval(function(){
+		if (direction == 'ascending') ticker++;
+	        else ticker--;
+		if (ticker == 0) direction = 'ascending';
+		if (ticker == 60) direction = 'descending';
+		console.log(ticker)
+	}, 1000);
 </script>
 
 <style>
