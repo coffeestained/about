@@ -555,6 +555,7 @@
                 <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> Zoning Data</div>
             </div>
         </div>
+        <p>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></p>
         <script
             src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
         <link rel="stylesheet"
@@ -638,30 +639,30 @@
                 let sources = [];
                 if (mapType == 'topo') {
                     sources.push(new ol.layer.Tile({
-                        title: 'OSM',
-                        type: 'base',
-                        visible: true,
-                        source: new ol.source.XYZ({
-                            url: 'https://{a|b|c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+                        source: new ol.source.OSM({
+                            url: 'https://a.tile.opentopomap.org/12/1098/1611.png'
                         })
                     }));
+                    document.getElementByIdD('map-attribution').innerHTML = ' and Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)';
                 } else if (mapType == 'city') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
                     }));
+                    document.getElementByIdD('map-attribution').innerHTML = '.';
                 } else if (mapType == 'zoning') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
                     }));
+                    document.getElementByIdD('map-attribution').innerHTML = '.';
                 } else {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
                     }));
+                    document.getElementByIdD('map-attribution').innerHTML = '.';
                 }
                 map.setLayers(sources);
                 console.log(map)
             }
-
         </script>
     </div>
 </div>
