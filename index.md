@@ -643,7 +643,7 @@
                         params: {'layers': 'DRG', 'TILED': true},
                     });
 
-                    const wmsLayer = new ol.layer.TileLayer({
+                    const wmsLayer = new ol.layer.Tile({
                         source: wmsSource,
                     });
                     
