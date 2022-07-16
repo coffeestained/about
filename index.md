@@ -555,9 +555,9 @@ ul li {
 		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. 
 		<div id="map" class="map">
 			<div class="mapControls">
-				<div class="button"><i class="fas fa-satellite-dish"></i> Radar</div>
-				<div class="button">Clouds <i class="fas fa-cloud"></i></div>
-				<div class="button"><i class="fas fa-road"></i> Roads</div>
+				<div><input type="checkbox"> Topographic Data</div>
+				<div><input type="checkbox"> Road Data</div>
+				<div><input type="checkbox"> Zoning Data</div>
 			</div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
