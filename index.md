@@ -633,6 +633,10 @@
                 })
             });
 
+            function changeMap(map) {
+                console.log(map)
+            }
+
         </script>
     </div>
 </div>
