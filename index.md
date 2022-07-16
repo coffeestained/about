@@ -627,7 +627,7 @@ ul li {
 				  })
 				],
 				view: new ol.View({
-				  center: ol.proj.fromLonLat([500.0000305175781,290.00006103515625]),
+				  center: ol.proj.fromLonLat([-81.26560360730048,28.81392793719928]),
 				  zoom: 4
 				})
 			});
@@ -639,8 +639,6 @@ ul li {
 			    var lat = coords[1];
 			    var lon = coords[0];
 			    var locTxt = "Latitude: " + lat + " Longitude: " + lon;
-			    // coords is a div in HTML below the map to display
-			    document.getElementById('coords').innerHTML = locTxt;
 			});
 		</script>
 	</div>
