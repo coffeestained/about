@@ -15,6 +15,9 @@
 </div>
 
 <script>
+    document.documentElement.style
+        .setProperty('overflow', 'hidden auto');
+        
     let overrideTimeOfDay = false;
     function changeTimeOfDay(value) {
         if (value == 50) {
@@ -23,8 +26,6 @@
             overrideTimeOfDay = true;
             document.documentElement.style
                 .setProperty('--timeOfDayOpacity', value / 100);
-            document.documentElement.style
-                .setProperty('overflow', 'hidden auto');
         }
     }
 
