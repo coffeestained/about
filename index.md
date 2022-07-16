@@ -639,90 +639,19 @@
                 let sources = [];
                 if (mapType == 'topo') {
                     sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://c.tile.opentopomap.org/13/2195/3225.png'
-                            })
-                        })
+                        new TileLayer({
+                            source: new XYZ({
+                                attributions:
+                                'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                                'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
+                                url:
+                                'https://server.arcgisonline.com/ArcGIS/rest/services/' +
+                                'World_Topo_Map/MapServer/tile/1/-81.26560360730048/28.81392793719928',
+                            }),
+                        }),
                     );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://a.tile.opentopomap.org/13/2195/3226.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://b.tile.opentopomap.org/13/2194/3225.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://a.tile.opentopomap.org/13/2196/3225.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://c.tile.opentopomap.org/13/2194/3226.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://b.tile.opentopomap.org/13/2196/3226.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://b.tile.opentopomap.org/13/2195/3224.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://b.tile.opentopomap.org/13/2195/3227.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://a.tile.opentopomap.org/13/2194/3224.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://c.tile.opentopomap.org/13/2196/3224.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://a.tile.opentopomap.org/13/2194/3227.png'
-                            })
-                        })
-                    );
-                    sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                url: 'https://c.tile.opentopomap.org/13/2196/3227.png'
-                            })
-                        })
-                    );
-                    document.getElementById('map-attribution').innerHTML = ' and Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)';
+                    document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                                'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
                 } else if (mapType == 'city') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
