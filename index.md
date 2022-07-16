@@ -24,7 +24,6 @@
 		document.documentElement.style
 		 .setProperty('--timeOfDayOpacity', value / 100);
 	     }
-	     console.log(value)
 	}
 	
 	// Ticker Display (displaying time)
@@ -40,7 +39,6 @@
 			document.documentElement.style
 			 .setProperty('--timeOfDayOpacity', ticker / 100);
 			document.getElementById('dayNightSlider').value = ticker;
-			console.log(ticker)
 		}
 	}, 1000);
 	
