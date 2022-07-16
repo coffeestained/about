@@ -819,6 +819,7 @@
     .footer-stuffs:after {
         background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('stars.png') repeat;
         animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
+        opacity: var(--timeOfDayOpacity);
     }
 
     .site-footer {
@@ -848,7 +849,7 @@
 
 </script>
 
-<div class="row wide-stuffs footer-stuffs" style="    position: absolute;
+<div class="row wide-stuffs footer-stuffs" style="position: absolute;
     left: 0px;
     right: 0px;
     margin: 0px;
@@ -1210,17 +1211,6 @@
             <div class="blue circle"></div>
             <div class="black circle"></div>
         </div>
-        <!--     <ul class="exhaust-fumes">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul> -->
     </div>
 </div>
 <script>
