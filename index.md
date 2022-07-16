@@ -40,12 +40,15 @@
 			if (ticker == 100) direction = 'descending';
 			document.documentElement.style
 			 .setProperty('--timeOfDayOpacity', ticker / 100);
+			document.getElementById('dayNightSlider').value = ticker / 100;
 			console.log(ticker)
 		}
 	}, 1000);
 	
 	function resetTimeControl() {
-		document.getElementById('dayNightSlider').value = 50;;
+		document.documentElement.style
+			.setProperty('--timeOfDayOpacity', 0);
+		document.getElementById('dayNightSlider').value = 0;
 		overrideTimeOfDay = false;
 	}
 </script>
