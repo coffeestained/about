@@ -17,7 +17,7 @@
 <script>
     document.documentElement.style
         .setProperty('overflow', 'hidden auto');
-        
+
     let overrideTimeOfDay = false;
     function changeTimeOfDay(value) {
         if (value == 50) {
@@ -527,19 +527,21 @@
     <div class="row-item">
         <h3>Stuff & Things (But not limited to)</h3>
         <ul>
-            <li>Agile</li>
-            <li>Node</li>
-            <li>Python</li>
-            <li>Angular</li>
-            <li>GIS</li>
+            <li>Unix, Linux and Windows</li>
+            <li>Agile Teams</li>
+            <li>Node, Python, C#</li>
+            <li>HTML, JS, CSS, SCSS</li>
+            <li>Angular, Django, GIS</li>
+            <li>GIS, D3</li>
             <li>Adobe Creative Cloud, Microsoft Suite</li>
-            <li>Coffee</li>
             <li>MongoDB, Postgres, MySql, MSSql</li>
+            <li>Distributed Ledgers/Databases/Contracts</li>
             <li>Cloud</li>
+            <li>Coffee & Tea Logistics, Production and Consumption</li>
         </ul>
     </div>
 </div>
-<div class="row wide-stuffs" style="width: 100vw; z-index: 101; position: relative;
+<div class="row wide-stuffs" style="width: 100vw; z-index: 0; position: relative;
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px;">
@@ -548,9 +550,9 @@
         <h3>Bits & Bobs</h3> I'll think of something interesting for this piece.
         <div id="map" class="map">
             <div class="mapControls">
-                <div><input type="checkbox"> Topographic Data</div>
-                <div><input type="checkbox"> Road Data</div>
-                <div><input type="checkbox"> Zoning Data</div>
+                <div><input type="radio" name="mapType" /> Topographic Data</div>
+                <div><input type="radio" name="mapType" /> Road Data</div>
+                <div><input type="radio" name="mapType" /> Zoning Data</div>
             </div>
         </div>
         <script
