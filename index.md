@@ -23,10 +23,8 @@
             overrideTimeOfDay = true;
             document.documentElement.style
                 .setProperty('--timeOfDayOpacity', value / 100);
-                document.documentElement.style
-                .setProperty('overflow', 'hidden');
-                document.documentElement.style
-                .setProperty('overflow-y', 'auto');
+            document.documentElement.style
+                .setProperty('overflow', 'hidden auto');
         }
     }
 
