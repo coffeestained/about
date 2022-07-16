@@ -629,18 +629,10 @@ ul li {
 				],
 				view: new ol.View({
 				  center: ol.proj.fromLonLat([-81.26560360730048,28.81392793719928]),
-				  zoom: 4
+				  zoom: 16
 				})
 			});
-			map.on('click', function(evt){
-			    console.info(evt.pixel);
-			    console.info(map.getPixelFromCoordinate(evt.coordinate));
-			    console.info(ol.proj.toLonLat(evt.coordinate));
-			    var coords = ol.proj.toLonLat(evt.coordinate);
-			    var lat = coords[1];
-			    var lon = coords[0];
-			    var locTxt = "Latitude: " + lat + " Longitude: " + lon;
-			});
+	
 		</script>
 	</div>
 </div>
