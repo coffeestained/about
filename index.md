@@ -3,7 +3,6 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/css/ol.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
 
 <div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
@@ -163,66 +162,8 @@
 .headerControls .moon {
 	color: darkslategrey
 }
-.map {
-	position: relative;
-	width: 100%;
-	height: 500px;
-}
-.mapControls {
-position: absolute;
-    width: 150px;
-    margin: .5em;
-    padding: 5px;
-	top: .5em;
-    right: 0px;
-    background: white;
-    z-index: 999;
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
-box-shadow: 0px 0px 17px -8px #000000;
-}
-
-.mapControls > .button {
-	width: 100%;
-	text-align: center;
-	padding: 5px;
-}
-.mapControls > .button:hover {
-	background-color: #e0e0e0;
-	color: #606c71;
-}
-	
-.ol-control {
-	    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
-box-shadow: 0px 0px 17px -8px #000000;
-	    background: white;
-}
-	
-.ol-control
-	{
-		    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-	-webkit-box-shadow: 0px 0px 17px -8px #000000; 
-box-shadow: 0px 0px 17px -8px #000000;
-	    background: white;
-}
-	
-.ol-control button {
-background: white;
-	color: black;
-}
-	
-	.ol-control button:hover {
-background: #e0e0e0;
-	color: #606c71;
-}
-	
 
 </style>
-<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.8.1/build/ol.js"></script>
 
 <div class="row">
 	<div class="row-logo" style="background-image:url('./Watermelon_Monochromatic.svg');"></div>
@@ -619,6 +560,66 @@ ul li {
 				<div class="button"><i class="fas fa-road"></i> Roads</div>
 			</div>
 		</div>
+		<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css">
+		<style>
+		.map {
+			position: relative;
+			width: 100%;
+			height: 500px;
+		}
+		.mapControls {
+		    position: absolute;
+		    width: 150px;
+		    margin: .5em;
+		    padding: 5px;
+		    top: .5em;
+		    right: 0px;
+		    background: white;
+		    z-index: 999;
+		    border-radius: 5px;
+		    border: 1px solid #e0e0e0;
+			-webkit-box-shadow: 0px 0px 17px -8px #000000; 
+		box-shadow: 0px 0px 17px -8px #000000;
+		}
+
+		.mapControls > .button {
+			width: 100%;
+			text-align: center;
+			padding: 5px;
+		}
+		.mapControls > .button:hover {
+			background-color: #e0e0e0;
+			color: #606c71;
+		}
+
+		.ol-control {
+			    border-radius: 5px;
+		    border: 1px solid #e0e0e0;
+			-webkit-box-shadow: 0px 0px 17px -8px #000000; 
+		box-shadow: 0px 0px 17px -8px #000000;
+			    background: white;
+		}
+
+		.ol-control
+			{
+				    border-radius: 5px;
+		    border: 1px solid #e0e0e0;
+			-webkit-box-shadow: 0px 0px 17px -8px #000000; 
+		box-shadow: 0px 0px 17px -8px #000000;
+			    background: white;
+		}
+
+		.ol-control button {
+		background: white;
+			color: black;
+		}
+
+			.ol-control button:hover {
+		background: #e0e0e0;
+			color: #606c71;
+		}
+		</style>
 		<script type="text/javascript">
 
 		      var popup = new ol.Overlay({
