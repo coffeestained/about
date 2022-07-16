@@ -565,6 +565,7 @@ ul li {
 			position: relative;
 			width: 100%;
 			height: 500px;
+			z-index: 0;
 		}
 		.mapControls {
 		    position: absolute;
