@@ -620,21 +620,20 @@ ul li {
 			color: #606c71;
 		}
 		</style>
-		    <div id="map" class="map"></div>
-		    <script type="text/javascript">
-		      var map = new ol.Map({
-			target: 'map',
-			layers: [
-			  new ol.layer.Tile({
-			    source: new ol.source.OSM()
-			  })
-			],
-			view: new ol.View({
-			  center: ol.proj.fromLonLat([37.41, 8.82]),
-			  zoom: 4
-			})
-		      });
-		    </script>
+		<script type="text/javascript">
+			var map = new ol.Map({
+				target: 'map',
+				layers: [
+				  new ol.layer.Tile({
+				    source: new ol.source.OSM()
+				  })
+				],
+				view: new ol.View({
+				  center: ol.proj.fromLonLat([37.41, 8.82]),
+				  zoom: 4
+				})
+			});
+		</script>
 	</div>
 </div>
 <div class="row">
