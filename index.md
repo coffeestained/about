@@ -630,13 +630,13 @@
                     zoom: 16
                 })
             });
-            
+
             generateMap('city')
             console.log(map)
 
-            function generateMap(map) {
+            function generateMap(mapType) {
                 let sources = [];
-                if (map == 'topo') {
+                if (mapType == 'topo') {
                     sources.push(new ol.layer.Tile({
                         title: 'OSM',
                         type: 'base',
@@ -645,11 +645,11 @@
                             url: 'https://{a|b|c}.tile.opentopomap.org/{z}/{x}/{y}.png'
                         })
                     }));
-                } else if (map == 'city') {
+                } else if (mapType == 'city') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
                     }));
-                } else if (map == 'zoning') {
+                } else if (mapType == 'zoning') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
                     }));
