@@ -40,7 +40,7 @@
 			if (ticker == 100) direction = 'descending';
 			document.documentElement.style
 			 .setProperty('--timeOfDayOpacity', ticker / 100);
-			document.getElementById('dayNightSlider').value = ticker / 100;
+			document.getElementById('dayNightSlider').value = ticker;
 			console.log(ticker)
 		}
 	}, 1000);
