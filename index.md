@@ -10,7 +10,7 @@
 	<div class="button sun"><i class="fas fa-sun"></i></div>
 	<input type="range" id="dayNightSlider" name="dayNightSlider"  oninput="changeTimeOfDay(this.value)"
   onchange="changeTimeOfDay(this.value)"
-	min="1" max="100" value="50">
+	min="1" max="100" value="0">
 	<div class="button moon"><i class="fas fa-moon"></i></div>
 	<span class="tooltiptext tooltip-bottom">Double Click to Reset</span>
 </div>
