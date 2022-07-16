@@ -45,6 +45,7 @@
 	}, 1000);
 	
 	function resetTimeControl() {
+		document.getElementById('dayNightSlider').value = 50;;
 		overrideTimeOfDay = false;
 	}
 </script>
