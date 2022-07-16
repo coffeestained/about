@@ -611,107 +611,41 @@ ul li {
     margin-bottom: 50px;">
 	<div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
 	<div class="row-item flex-grow">
-		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. <div id="map" class="map">
-		<div class="mapControls">
-			<div class="button"><i class="fas fa-satellite-dish"></i> Radar</div>
-			<div class="button">Clouds <i class="fas fa-cloud"></i></div>
-			<div class="button"><i class="fas fa-road"></i> Roads</div>
-		</div>
+		<h3>Bits & Bobs</h3> I'll think of something interesting for this piece. 
+		<div id="map" class="map">
+			<div class="mapControls">
+				<div class="button"><i class="fas fa-satellite-dish"></i> Radar</div>
+				<div class="button">Clouds <i class="fas fa-cloud"></i></div>
+				<div class="button"><i class="fas fa-road"></i> Roads</div>
+			</div>
 		</div>
 		<script type="text/javascript">
 
-			const parser = new DOMParser();
+		      var popup = new ol.Overlay({
+			element: document.getElementById('map')
+		      });
 
-/* Async function used to retrieve start and end time from RADAR_1KM_RRAI layer GetCapabilities document */
-async function getData() {
-  let response = await fetch(
-    "https://geo.weather.gc.ca/geomet/?lang=en&service=WMS&request=GetCapabilities&version=1.3.0&LAYERS=RADAR_1KM_RRAI"
-  );
-  let data = await response
-    .text()
-    .then((data) =>
-      parser
-        .parseFromString(data, "text/xml")
-        .getElementsByTagName("Dimension")[0]
-        .innerHTML.split("/")
-    );
-  return data;
-}
+		      var osmLayer = new ol.layer.Tile({
+			source: new ol.source.OSM()
+		      });
 
-let layers = [
-	new ol.layer.Tile({
-		source: new ol.source.XYZ({
-			attributions: 'Copyright:© 2013 ESRI, i-cubed, GeoEye',
-			url: 'https://services.arcgisonline.com/arcgis/rest/services/' + 'ESRI_Imagery_World_2D/MapServer/tile/{z}/{y}/{x}',
-			maxZoom: 15,
-			projection: 'EPSG:4326',
-			tileSize: 512, // the tile size supported by the ArcGIS tile service
-			maxResolution: 180 / 512, // Esri's tile grid fits 180 degrees on one 512 px tile
-			wrapX: true,
-		}),
-	}),
-];
+		      var ol3_sprint_location = ol.proj.transform([-1.20472, 52.93646], 'EPSG:4326', 'EPSG:3857');
 
-let map = new ol.Map({
-	target: "map",
-	layers: layers,
-	view: new ol.View({
-		center: [ -81.37, 28.53 ],
-		projection: 'EPSG:4326',
-		zoom: 6,
-		minZoom: 2,
-	}),
-});
+		      var view = new ol.View({
+			center: ol3_sprint_location,
+			zoom: 16
+		      });
 
-function updateInfo(current_time) {
-   // No Info Container At This time
-}
+		      var map = new ol.Map({
+			target: 'map'
+		      });
 
-function updateLayers() {
-  layers[1]
-    .getSource()
-    .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
-  layers[2]
-    .getSource()
-    .updateParams({ TIME: current_time.toISOString().split(".")[0] + "Z" });
-}
+		      map.addLayer(osmLayer);
+		      map.setView(view);
 
-const latitude = 39.74;
-const longitude = -104.84;
-const startDate = new Date(Date.now()).toLocaleDateString();
-const numDays = 5;
-const units = 'e';		
-const soapURL = 'https://graphical.weather.gov/xml/SOAP_server/ndfdXMLserver.php';
-const xmlData = 
-  `<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
-  <Body>
-      <NDFDgenByDay xmlns="https://graphical.weather.gov/xml/DWMLgen/wsdl/ndfdXML.wsdl">
-          <latitude>${latitude}</latitude>
-          <longitude>${longitude}</longitude>
-          <startDate>${startDate}</startDate>
-          <numDays>${numDays}</numDays>
-          <Unit>${units}</Unit>
-          <format>12 hourly</format>
-      </NDFDgenByDay>
-  </Body>
-  </Envelope>`
-			
-async function getRadar() {
-  let response = await fetch(
-    soapURL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/xml' },
-    body: xmlData
-  }
-  );
-  let data = await response
-    .then((data) =>
-	console.log(data)
-    );
-  return data;
-}
-			
-getRadar().then(response => console.log(response));
+		      map.addOverlay(popup);
+		      popup.setPosition(ol3_sprint_location);
+
 		</script>
 	</div>
 </div>
