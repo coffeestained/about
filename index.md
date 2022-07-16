@@ -640,7 +640,7 @@
                 if (mapType == 'topo') {
                     const layers = [
                         new ol.layer.Tile({
-                            source: new OSM(),
+                            source: new ol.source.OSM(),
                         }),
                         new ol.layer.Tile({
                             extent: [-13884991, 2870341, -7455066, 6338219],
