@@ -639,8 +639,8 @@
                 let sources = [];
                 if (mapType == 'topo') {
                     sources.push(
-                        new TileLayer({
-                            source: new XYZ({
+                        new ol.layer.TileLayer({
+                            source: new ol.layer.XYZ({
                                 attributions:
                                 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
