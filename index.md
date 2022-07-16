@@ -639,7 +639,7 @@
                 let sources = [];
                 if (mapType == 'topo') {
                     sources.push(
-                        new ol.layer.TileLayer({
+                        new ol.layer.Tile({
                             source: new ol.source.XYZ({
                                 attributions:
                                 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
