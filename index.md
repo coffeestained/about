@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -98,7 +99,7 @@
     .tooltip .tooltiptext::before {
         content: "";
         position: absolute;
-        top: 100%;
+        top: 0%;
         left: 50%;
         margin-left: -5px;
         border-width: 5px;
@@ -113,7 +114,7 @@
     }
 
     .tooltip-bottom {
-        top: 135%;
+        top: 50%;
         left: 50%;
         margin-left: -60px;
     }
@@ -329,7 +330,7 @@
     }
 
     .page-header:after {
-        background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('stars.png') repeat;
+        background: linear-gradient(0deg, rgb(81 89 57 / 65%) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url(stars.png) repeat;
         animation: animatedBackground 1200s linear infinite;
         border-bottom: 4px rgba(0, 0, 0, .3) solid;
         opacity: var(--timeOfDayOpacity);
@@ -364,6 +365,7 @@
         font-family: Arial;
         line-height: 3;
         color: black;
+        z-index: 0;
     }
 
     .row-logo {
