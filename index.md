@@ -643,17 +643,17 @@
                             url: 'https://a.tile.opentopomap.org/12/1098/1611.png'
                         })
                     }));
-                    document.getElementByIdD('map-attribution').innerHTML = ' and Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)';
+                    document.getElementById('map-attribution').innerHTML = ' and Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)';
                 } else if (mapType == 'city') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
                     }));
-                    document.getElementByIdD('map-attribution').innerHTML = '.';
+                    document.getElementById('map-attribution').innerHTML = '.';
                 } else if (mapType == 'zoning') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
                     }));
-                    document.getElementByIdD('map-attribution').innerHTML = '.';
+                    document.getElementById('map-attribution').innerHTML = '.';
                 } else {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
