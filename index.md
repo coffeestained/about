@@ -646,7 +646,7 @@
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
                                 url:
                                 'https://server.arcgisonline.com/ArcGIS/rest/services/' +
-                                'World_Topo_Map/MapServer/tile/1/-81.26560360730048/28.81392793719928',
+                                'World_Topo_Map/MapServer/tile/12/1618/1097',
                             }),
                         }),
                     );
