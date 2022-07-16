@@ -550,9 +550,9 @@
         <h3>Bits & Bobs</h3> I'll think of something interesting for this piece.
         <div id="map" class="map">
             <div class="mapControls">
-                <div><input type="radio" name="mapType" onchange="changeMap('topo');" /> Topographic Data</div>
-                <div><input type="radio" name="mapType" onchange="changeMap('city');"/> Road Data</div>
-                <div><input type="radio" name="mapType" onchange="changeMap('zoning');"/> Zoning Data</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Data</div>
+                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('city');"/> City Data</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> Zoning Data</div>
             </div>
         </div>
         <script
@@ -623,17 +623,42 @@
             var map = new ol.Map({
                 target: 'map',
                 layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM()
-                    })
+ 
                 ],
                 view: new ol.View({
                     center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
                     zoom: 16
                 })
             });
+            
+            generateMap('city')
+            console.log(map)
 
-            function changeMap(map) {
+            function generateMap(map) {
+                let sources = [];
+                if (map == 'topo') {
+                    sources.push(new ol.layer.Tile({
+                        title: 'OSM',
+                        type: 'base',
+                        visible: true,
+                        source: new ol.source.XYZ({
+                            url: 'https://{a|b|c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+                        })
+                    }));
+                } else if (map == 'city') {
+                    sources.push(new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    }));
+                } else if (map == 'zoning') {
+                    sources.push(new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    }));
+                } else {
+                    sources.push(new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    }));
+                }
+                map.setLayers(sources);
                 console.log(map)
             }
 
