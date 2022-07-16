@@ -550,9 +550,9 @@
         <h3>Bits & Bobs</h3> I'll think of something interesting for this piece.
         <div id="map" class="map">
             <div class="mapControls">
-                <div><input type="radio" name="mapType" /> Topographic Data</div>
-                <div><input type="radio" name="mapType" /> Road Data</div>
-                <div><input type="radio" name="mapType" /> Zoning Data</div>
+                <div><input type="radio" name="mapType" onchange="changeMap('topo');" /> Topographic Data</div>
+                <div><input type="radio" name="mapType" onchange="changeMap('city');"/> Road Data</div>
+                <div><input type="radio" name="mapType" onchange="changeMap('zoning');"/> Zoning Data</div>
             </div>
         </div>
         <script
