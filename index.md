@@ -620,34 +620,21 @@ ul li {
 			color: #606c71;
 		}
 		</style>
-		<script type="text/javascript">
-
-		      var popup = new ol.Overlay({
-			element: document.getElementById('map')
-		      });
-
-		      var osmLayer = new ol.layer.Tile({
-			source: new ol.source.OSM()
-		      });
-
-		      var ol3_sprint_location = ol.proj.transform([-1.20472, 52.93646], 'EPSG:4326', 'EPSG:3857');
-
-		      var view = new ol.View({
-			center: ol3_sprint_location,
-			zoom: 16
-		      });
-
+		    <div id="map" class="map"></div>
+		    <script type="text/javascript">
 		      var map = new ol.Map({
-			target: 'map'
+			target: 'map',
+			layers: [
+			  new ol.layer.Tile({
+			    source: new ol.source.OSM()
+			  })
+			],
+			view: new ol.View({
+			  center: ol.proj.fromLonLat([37.41, 8.82]),
+			  zoom: 4
+			})
 		      });
-
-		      map.addLayer(osmLayer);
-		      map.setView(view);
-
-		      map.addOverlay(popup);
-		      popup.setPosition(ol3_sprint_location);
-
-		</script>
+		    </script>
 	</div>
 </div>
 <div class="row">
