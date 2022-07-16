@@ -638,8 +638,8 @@
             function generateMap(mapType) {
                 let sources = [];
                 if (mapType == 'topo') {
-                    sources.push(
-                        new ol.layer.WMS("USA Topo Maps", "http://terraservice.net/ogcmap.ashx", 
+                    sources.push(new ol.layer.Tile({
+                        source: new ol.source.WMS("USA Topo Maps", "http://terraservice.net/ogcmap.ashx", 
                             { 
                                 layers: "DRG" 
                             }, 
@@ -648,7 +648,7 @@
                                 isBaseLayer: false 
                             }
                         )
-                    );
+                    }));
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
                 } else if (mapType == 'city') {
