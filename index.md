@@ -638,16 +638,18 @@
             function generateMap(mapType) {
                 let sources = [];
                 if (mapType == 'topo') {
-                    const wmsSource = new ol.source.TileWMS({
-                        url: 'http://terraservice.net/ogcmap.ashx',
-                        params: {'layers': 'DRG', 'TILED': true},
-                    });
-
-                    const wmsLayer = new ol.layer.Tile({
-                        source: wmsSource,
-                    });
-                    
-                    sources.push(wmsLayer);
+                    const layers = [
+                        new ol.layer.Tile({
+                            source: new OSM(),
+                        }),
+                        new ol.layer.Tile({
+                            extent: [-13884991, 2870341, -7455066, 6338219],
+                            source: new ol.source.TileArcGISRest({
+                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer',
+                            }),
+                        }),
+                    ];
+                    layers.forEach((layer) => sources.push(layer));
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
                 } else if (mapType == 'city') {
