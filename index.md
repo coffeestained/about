@@ -640,7 +640,7 @@
                 if (mapType == 'topo') {
                     sources.push(
                         new ol.layer.TileLayer({
-                            source: new ol.layer.XYZ({
+                            source: new ol.source.XYZ({
                                 attributions:
                                 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
