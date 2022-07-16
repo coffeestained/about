@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -24,6 +23,10 @@
             overrideTimeOfDay = true;
             document.documentElement.style
                 .setProperty('--timeOfDayOpacity', value / 100);
+                document.documentElement.style
+                .setProperty('overflow', 'hidden');
+                document.documentElement.style
+                .setProperty('overflow-y', 'auto');
         }
     }
 
@@ -325,7 +328,6 @@
 
     .page-header:before {
         background: linear-gradient(0deg, rgba(255, 255, 255, .4) 25%, rgba(0, 212, 255, 0.3) 100%);
-        animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
         border-bottom: 4px rgba(255, 255, 255, .4) solid;
     }
 
@@ -334,16 +336,6 @@
         animation: animatedBackground 1200s linear infinite;
         border-bottom: 4px rgba(0, 0, 0, .3) solid;
         opacity: var(--timeOfDayOpacity);
-    }
-
-    @keyframes OpacityAnim {
-        0% {
-            opacity: var(--ten-opacity);
-        }
-
-        100% {
-            opacity: var(--one-opacity);
-        }
     }
 
     @keyframes animatedBackground {
@@ -812,13 +804,12 @@
 
     .footer-stuffs:before {
         background: linear-gradient(0deg, rgba(255, 255, 255, .4) 25%, rgba(0, 212, 255, 0.95) 100%);
-        animation: OpacityAnim 60s ease-in-out 0s infinite alternate;
         mix-blend-mode: initial;
     }
 
     .footer-stuffs:after {
         background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('stars.png') repeat;
-        animation: OpacityAnim 60s ease-in-out -60s infinite alternate, animatedBackground 1200s linear infinite;
+        animation: animatedBackground 1200s linear infinite;
         opacity: var(--timeOfDayOpacity);
     }
 
