@@ -638,17 +638,16 @@
             function generateMap(mapType) {
                 let sources = [];
                 if (mapType == 'topo') {
-                    sources.push(new ol.layer.Tile({
-                        source: new ol.source.WMS("USA Topo Maps", "http://terraservice.net/ogcmap.ashx", 
-                            { 
-                                layers: "DRG" 
-                            }, 
-                            { 
-                                opacity: 0.5, 
-                                isBaseLayer: false 
-                            }
-                        )
-                    }));
+                    const wmsSource = new ol.source.TileWMS({
+                        url: 'http://terraservice.net/ogcmap.ashx',
+                        params: {'layers': 'DRG', 'TILED': true},
+                    });
+
+                    const wmsLayer = new ol.layer.TileLayer({
+                        source: wmsSource,
+                    });
+                    
+                    sources.push(wmsLayer);
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
                 } else if (mapType == 'city') {
