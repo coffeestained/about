@@ -555,7 +555,7 @@
                 <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> Zoning Data</div>
             </div>
         </div>
-        <p>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></p>
+        <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
         <script
             src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
         <link rel="stylesheet"
@@ -638,11 +638,90 @@
             function generateMap(mapType) {
                 let sources = [];
                 if (mapType == 'topo') {
-                    sources.push(new ol.layer.Tile({
-                        source: new ol.source.OSM({
-                            url: 'https://a.tile.opentopomap.org/12/1098/1611.png'
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://c.tile.opentopomap.org/13/2195/3225.png'
+                            })
                         })
-                    }));
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://a.tile.opentopomap.org/13/2195/3226.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://b.tile.opentopomap.org/13/2194/3225.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://a.tile.opentopomap.org/13/2196/3225.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://c.tile.opentopomap.org/13/2194/3226.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://b.tile.opentopomap.org/13/2196/3226.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://b.tile.opentopomap.org/13/2195/3224.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://b.tile.opentopomap.org/13/2195/3227.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://a.tile.opentopomap.org/13/2194/3224.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://c.tile.opentopomap.org/13/2196/3224.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://a.tile.opentopomap.org/13/2194/3227.png'
+                            })
+                        })
+                    );
+                    sources.push(
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                url: 'https://c.tile.opentopomap.org/13/2196/3227.png'
+                            })
+                        })
+                    );
                     document.getElementById('map-attribution').innerHTML = ' and Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)';
                 } else if (mapType == 'city') {
                     sources.push(new ol.layer.Tile({
