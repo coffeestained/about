@@ -639,16 +639,15 @@
                 let sources = [];
                 if (mapType == 'topo') {
                     sources.push(
-                        new ol.layer.Tile({
-                            source: new ol.source.XYZ({
-                                attributions:
-                                'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                                'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
-                                url:
-                                'https://server.arcgisonline.com/ArcGIS/rest/services/' +
-                                'World_Topo_Map/MapServer/tile/12/1618/1097',
-                            }),
-                        }),
+                        new ol.layer.WMS("USA Topo Maps", "http://terraservice.net/ogcmap.ashx", 
+                            { 
+                                layers: "DRG" 
+                            }, 
+                            { 
+                                opacity: 0.5, 
+                                isBaseLayer: false 
+                            }
+                        )
                     );
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
