@@ -558,11 +558,11 @@
             <div><input type="radio" name="mapType" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
             <div id="interactive-options">
 
-                <input type="radio" name="county-congressional" onchange="addShapeFileLayer('assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
-                <i class="fa-brands fa-school"></i> County Congressional Zoning
+                <input type="radio" name="county-congressional" onchange="addShapeFileLayer('.assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
+                <i class="fa-solid fa-landmark-flag"></i> County Congressional Zoning
 
-                <input type="radio" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
-                <i class="fa-brands fa-school"></i> School Zoning TODO
+                <input type="radio" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('.assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
+                <i class="fa-solid fa-school"></i> School Zoning TODO
 
             </div>
         
@@ -776,7 +776,8 @@
         }
 
         function addShapeFileLayer(url) {
-            shp("url").then(function(geojson){
+            console.log(url, shp)
+            shp(url).then(function(geojson){
                 //do something with your geojson
                 console.log(geojson)
             });
