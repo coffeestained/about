@@ -576,8 +576,17 @@
 
             .searchMap {
                 position: absolute;
-                top: 20px;
-                right: 20px;
+                /* width: 150px; */
+                margin: .5em;
+                padding: 5px;
+                top: .5em;
+                left: 0px;
+                background: rgba(255,255,255,.6);
+                z-index: 999;
+                border-radius: 5px;
+                /* border: 1px solid #e0e0e0; */
+                /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
+                /* box-shadow: 0px 0px 17px -8px #000000; */
             }
             #geocode-input,
             #geocode-button {
@@ -644,7 +653,6 @@
         <script type="text/javascript">
             var map = new ol.Map({
                 target: 'map',
-                controls: new ol.controls.defaultControls().extend([new RotateNorthControl()]),
                 layers: [
  
                 ],
