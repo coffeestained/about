@@ -556,8 +556,9 @@
             <div><input type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
             <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
             <div><input type="radio" name="mapType" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('interactive', 'school-zoning');"/> 
-                <li><i class="fa-brands fa-school"></i> School Zoning TODO</li>
+            <div id="interactive-options">
+                <input type="radio" name="mapType" onchange="generateMap('interactive', 'school-zoning');"/> 
+                <i class="fa-brands fa-school"></i> School Zoning TODO
             </div>
         
         </div>
@@ -628,6 +629,21 @@
             color: #606c71;
         }
 
+        #interactive-options-active {
+            margin-left: .5em;
+            width: auto;
+            height: auto;
+            opacity: 1;
+        }
+
+        #interactive-options {
+            opacity: 0;
+            height: 0px;
+            width: 0px;
+            transition: opacity 2s, height 1s, height 1s;
+
+        }
+
         .ol-control {
             border-radius: 5px;
             border: 1px solid #e0e0e0;
@@ -670,6 +686,7 @@
         // mayType: string ENUM[topo,navigation,satellite,city,zoning]
         function generateMap(mapType) {
             let sources = [];
+            document.getElementById('interactive-options').classList.remove('interactive-options-active');
             if (mapType == 'topo') {
                 const layers = [
                     new ol.layer.Tile({
@@ -726,6 +743,7 @@
                 }));
                 document.getElementById('map-attribution').innerHTML = '.';
             } else if (mapType == 'interactive') {
+                document.getElementById('interactive-options').classList.add('interactive-options-active');
                 const layers = [
                     new ol.layer.Tile({
                         extent: [-13884991, 2870341, -7455066, 6338219],
