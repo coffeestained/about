@@ -559,7 +559,7 @@
             <div id="interactive-options">
 
                 <div>
-                    <input type="radio" name="county-congressional" onchange="addShapeFileLayer('.assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
+                    <input type="radio" name="county-congressional" onchange="addShapeFileLayer('assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
                     <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning
                 </div>
 
@@ -567,7 +567,7 @@
                     <input type="radio" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
                     <i class="fa-solid fa-school"></i> School Zoning TODO
                 </div>
-                
+
             </div>
         
         </div>
