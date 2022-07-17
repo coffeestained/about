@@ -790,29 +790,24 @@
                 }),
             });
 
+            const source = new ol.source.Vector();
+
             const checkbox = document.getElementById(id).checked;
             console.log(checkbox)
             if (checkbox) {
+                const newLayer = new ol.layer.Vector({
+                        title: id,
+                        source: source,
+                        style: style,
+                })
                 shp(url).then(function(geojson){
-                    //do something with your geojson
-                    const vectorSource= new ol.source.Vector({
-                        features: (new ol.format.GeoJSON()).readFeatures(geojson)
-                    });
-                    const vectorLayer = new ol.layer.Vector({
-                        background: '#1a2b39',
-                        source: vectorSource,
-                        zIndex: 3,
-                        opacity: .5,
-                        name: id,
-                        style: function (feature) {
-                            const color = feature.get('COLOR') || '#eeeeee';
-                            style.getFill().setColor(color);
-                            console.log(style)
-                            return style;
-                        },
-                    });
-                    console.log(map, vectorLayer)
-                    const layerAdded = map.addLayer(vectorLayer);
+                    source.addFeatures(
+                        new ol.format.GeoJSON().readFeatures(geojson, {
+                            dataProjection: 'EPSG:4326',
+                            featureProjection: map.getView().getProjection()
+                        })
+                    );
+                    const layerAdded = map.addLayer(newLayer);
                     console.log(geojson, layerAdded)
                 });
             } else {
