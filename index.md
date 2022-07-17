@@ -550,9 +550,9 @@
         <h3>Bits & Bobs</h3> Explore strange new worlds.
         <div id="map" class="map">
             <div class="mapControls">
-                <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> World Navigation Map</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> Navigation Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
-                <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Satellite Map</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
                 <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('city');"/> City Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> City Zoning Map</div>
             </div>
@@ -641,12 +641,19 @@
                 let sources = [];
                 if (mapType == 'topo') {
                     const layers = [
-                        new ol.layer.Tile({
+                    new ol.layer.Tile({
                             extent: [-13884991, 2870341, -7455066, 6338219],
                             source: new ol.source.TileArcGISRest({
                                 url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
                             }),
                         }),
+                        new ol.layer.Tile({
+                            extent: [-13884991, 2870341, -7455066, 6338219],
+                            source: new ol.source.TileArcGISRest({
+                                url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
+                            }),
+                        }),
+                        
                     ];
                     layers.forEach((layer) => sources.push(layer));
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
@@ -657,6 +664,18 @@
                             extent: [-13884991, 2870341, -7455066, 6338219],
                             source: new ol.source.TileArcGISRest({
                                 url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer',
+                            }),
+                        }),
+                    ];
+                    layers.forEach((layer) => sources.push(layer));
+                    document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                                'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
+                } else if (mapType == 'satellite') {
+                    const layers = [
+                        new ol.layer.Tile({
+                            extent: [-13884991, 2870341, -7455066, 6338219],
+                            source: new ol.source.TileArcGISRest({
+                                url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/3',
                             }),
                         }),
                     ];
