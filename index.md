@@ -802,6 +802,7 @@
             if (checkbox) {
                 const newLayer = new ol.layer.Vector({
                         title: id,
+                        name: id,
                         source: source,
                         style: style,
                         zIndex: 3,
