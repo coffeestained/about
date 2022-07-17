@@ -681,6 +681,8 @@
         }
     </style>
     <script type="text/javascript">
+        import VectorLayer from 'ol/layer/Vector';
+
         var map = new ol.Map({
             target: 'map',
             layers: [],
@@ -789,8 +791,9 @@
                     const vectorSource= new ol.source.Vector({
                         features: (new ol.format.GeoJSON()).readFeatures(geojson)
                     });
-                    const vectorLayer = new ol.layer.VectorLayer({
+                    const vectorLayer = new VectorLayer({
                         source: vectorSource,
+                        title: id
                     });
                     map.addLayer(vectorLayer);
                     console.log(geojson, vectorLayer)
