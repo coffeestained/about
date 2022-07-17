@@ -682,7 +682,7 @@
     </style>
     <script type="text/javascript">
         
-        var map = new ol.Map({
+        const map = new ol.Map({
             target: 'map',
             layers: [],
             view: new ol.View({
@@ -794,7 +794,7 @@
                     const vectorLayer = new ol.layer.Vector({
                         background: '#1a2b39',
                         source: vectorSource,
-                        zIndex: 2,
+                        zIndex: 3,
                         opacity: .5,
                         name: id,
                         style: function (feature) {
@@ -803,8 +803,8 @@
                             return style;
                         },
                     });
-                    map.addLayer(vectorLayer);
-                    console.log(geojson, vectorLayer)
+                    const layerAdded = map.addLayer(vectorLayer);
+                    console.log(geojson, layerAdded)
                 });
             } else {
                 const layersToRemove = [];
