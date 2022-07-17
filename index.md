@@ -792,7 +792,9 @@
                         features: (new ol.format.GeoJSON()).readFeatures(geojson)
                     });
                     const vectorLayer = new ol.layer.Vector({
-                        source: vectorSource
+                        source: vectorSource,
+                        zIndex: 2,
+                        opacity: .5,
                     });
                     map.addLayer(vectorLayer);
                     console.log(geojson, vectorLayer)
