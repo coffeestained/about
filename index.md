@@ -725,7 +725,7 @@
 
             // Event S
             map.on('singleclick', function (event) {
-                console.log(event, event.keys())
+                console.log(event.zoom)
                 console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event.coordinate}`)
                 console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
             });
