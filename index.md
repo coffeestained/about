@@ -681,7 +681,6 @@
         }
     </style>
     <script type="text/javascript">
-        import VectorLayer from 'ol/layer/Vector';
         
         var map = new ol.Map({
             target: 'map',
