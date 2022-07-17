@@ -549,12 +549,16 @@
     <div class="row-item flex-grow">
         <h3>Bits & Bobs</h3> Explore strange new worlds.
         <div id="map" class="map">
-            <div class="mapControls">
+            <div class="mapType">
                 <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> Navigation Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
                 <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> Republic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> Republic Interactive Map</div>
+            </div>
+            <div class="searchMap">
+                <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by " size="50" />
+                <button id="geocode-button">Find</button>
             </div>
         </div>
         <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
@@ -570,28 +574,43 @@
                 z-index: 0;
             }
 
-            .mapControls {
+            .searchMap {
                 position: absolute;
-                width: 150px;
+                top: 20px;
+                right: 20px;
+            }
+            #geocode-input,
+            #geocode-button {
+                font-size: 16px;
+                margin: 0 2px 0 0;
+                padding: 4px 8px;
+            }
+            #geocode-input {
+                width: 300px;
+            }
+
+            .mapType {
+                position: absolute;
+                /* width: 150px; */
                 margin: .5em;
                 padding: 5px;
                 top: .5em;
                 right: 0px;
-                background: white;
+                background: rgba(255,255,255,.6);
                 z-index: 999;
                 border-radius: 5px;
-                border: 1px solid #e0e0e0;
-                -webkit-box-shadow: 0px 0px 17px -8px #000000;
-                box-shadow: 0px 0px 17px -8px #000000;
+                /* border: 1px solid #e0e0e0; */
+                /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
+                /* box-shadow: 0px 0px 17px -8px #000000; */
             }
 
-            .mapControls>.button {
+            .mapType>.button {
                 width: 100%;
                 text-align: center;
                 padding: 5px;
             }
 
-            .mapControls>.button:hover {
+            .mapType>.button:hover {
                 background-color: #e0e0e0;
                 color: #606c71;
             }
@@ -625,6 +644,7 @@
         <script type="text/javascript">
             var map = new ol.Map({
                 target: 'map',
+                controls: new ol.controls.defaultControls().extend([new RotateNorthControl()]),
                 layers: [
  
                 ],
