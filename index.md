@@ -795,14 +795,21 @@
                         source: vectorSource,
                         zIndex: 2,
                         opacity: .5,
+                        name: id,
                     });
                     map.addLayer(vectorLayer);
                     console.log(geojson, vectorLayer)
                 });
             } else {
+                const layersToRemove = [];
                 const layers = map.getLayers();
-                console.log(layers);
-                layers.forEach((each) => console.log(each));
+                layers.forEach((layer) => {
+                    if (layer.get('name') != undefined && layer.get('name') === id) {
+                        layersToRemove.push(layer);
+                    }
+                });
+                layersToRemove.forEach((layer) => map.removeLayer(layer));
+                console.log(layersToRemove)
             }
             console.log(url, shp)
 
