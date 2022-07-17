@@ -646,12 +646,14 @@
                             source: new ol.source.TileArcGISRest({
                                 url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
                             }),
+                            zIndex: 1,
                         }),
                         new ol.layer.Tile({
                             extent: [-13884991, 2870341, -7455066, 6338219],
                             source: new ol.source.TileArcGISRest({
                                 url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
                             }),
+                            zIndex: 2,
                             opacity: .1,
                         }),
                         
@@ -666,6 +668,7 @@
                             source: new ol.source.TileArcGISRest({
                                 url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer',
                             }),
+                            zIndex: 1,
                         }),
                     ];
                     layers.forEach((layer) => sources.push(layer));
@@ -676,8 +679,9 @@
                         new ol.layer.Tile({
                             extent: [-13884991, 2870341, -7455066, 6338219],
                             source: new ol.source.TileArcGISRest({
-                                url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/3',
+                                url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
                             }),
+                            zIndex: 1,
                         }),
                     ];
                     layers.forEach((layer) => sources.push(layer));
@@ -685,17 +689,20 @@
                                 'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
                 } else if (mapType == 'city') {
                     sources.push(new ol.layer.Tile({
-                        source: new ol.source.OSM()
+                        source: new ol.source.OSM(),
+                        zIndex: 1,
                     }));
                     document.getElementById('map-attribution').innerHTML = '.';
                 } else if (mapType == 'zoning') {
                     sources.push(new ol.layer.Tile({
-                        source: new ol.source.OSM()
+                        source: new ol.source.OSM(),
+                        zIndex: 1,
                     }));
                     document.getElementById('map-attribution').innerHTML = '.';
                 } else {
                     sources.push(new ol.layer.Tile({
-                        source: new ol.source.OSM()
+                        source: new ol.source.OSM(),
+                        zIndex: 1,
                     }));
                     document.getElementByIdD('map-attribution').innerHTML = '.';
                 }
