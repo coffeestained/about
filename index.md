@@ -680,9 +680,9 @@
             color: #606c71;
         }
     </style>
-    <script type="module">
+    <script type="text/javascript">
         import VectorLayer from 'ol/layer/Vector';
-
+        
         var map = new ol.Map({
             target: 'map',
             layers: [],
@@ -791,9 +791,8 @@
                     const vectorSource= new ol.source.Vector({
                         features: (new ol.format.GeoJSON()).readFeatures(geojson)
                     });
-                    const vectorLayer = new VectorLayer({
-                        source: vectorSource,
-                        title: id
+                    const vectorLayer = new ol.layer.Vector({
+                        source: vectorSource
                     });
                     map.addLayer(vectorLayer);
                     console.log(geojson, vectorLayer)
