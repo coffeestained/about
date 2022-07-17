@@ -551,11 +551,15 @@
     </div>
     <div id="map" class="map">
         <div class="mapType">
-            <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
-            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
+            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('interactive', 'school-zoning');"/> 
+                <li><i class="fa-brands fa-school"></i> School Zoning TODO</li>
+            </div>
+        
         </div>
         <div class="searchMap">
             <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
@@ -594,6 +598,7 @@
         #geocode-input-submit {
             position: relative;
             top: .2em;
+            cursor: pointer;
         }
 
         .mapType {
@@ -612,13 +617,13 @@
             /* box-shadow: 0px 0px 17px -8px #000000; */
         }
 
-        .mapType>.button {
+        .mapType > .button {
             width: 100%;
             text-align: center;
             padding: 5px;
         }
 
-        .mapType>.button:hover {
+        .mapType > .button:hover {
             background-color: #e0e0e0;
             color: #606c71;
         }
@@ -652,12 +657,10 @@
     <script type="text/javascript">
         var map = new ol.Map({
             target: 'map',
-            layers: [
-
-            ],
+            layers: [],
             view: new ol.View({
                 center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
-                zoom: 16
+                zoom: 16,
             })
         });
 
@@ -748,7 +751,6 @@
                 document.getElementById('map-attribution').innerHTML = '.';
             }
             map.setLayers(sources);
-            console.log(map)
         }
 
         // long: FLOAT EPSG:4326 Long
@@ -763,9 +765,8 @@
 
         // Event S
         map.on('singleclick', function (event) {
-            console.log(event.zoom)
-            console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event.coordinate}`)
-            console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
+            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate RAW ${event.coordinate}`)
+            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
         });
     </script>
 </div>
