@@ -629,7 +629,7 @@
             color: #606c71;
         }
 
-        #interactive-options-active {
+        .interactive-options-active {
             margin-left: .5em;
             width: auto;
             height: auto;
