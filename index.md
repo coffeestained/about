@@ -554,7 +554,7 @@
                 <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
                 <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> Republic Map</div>
-                <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> City Zoning Map</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> Republic Interactive Map</div>
             </div>
         </div>
         <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
@@ -717,13 +717,13 @@
             // lat: FLOAT EPSG:4326 Lat
             // zoom: FLOAT (furthest) 1-16 (closest)
             function setView(long, lat, zoom) {
-
                 map.setView(new ol.View({
                     center: ol.proj.fromLonLat([long, lat]),
                     zoom: zoom
-                });)
+                }));
             }
 
+            // Event S
             map.on('singleclick', function (event) {
                 console.log(event, event.keys())
                 console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event.coordinate}`)
