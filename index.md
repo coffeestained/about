@@ -584,6 +584,7 @@
             background: rgba(255,255,255,.6);
             z-index: 999;
             border-radius: 5px;
+            line-height: 1;
         }
         
         #geocode-input {
@@ -592,7 +593,6 @@
         }
         #geocode-input-submit {
             position: relative;
-            right: 1.5em;
             top: .2em;
         }
 
@@ -663,7 +663,6 @@
 
         setView(-81.25626560360730048, 28.81392793719928, 16);
         generateMap('interactive');
-        console.log(map)
 
         // mayType: string ENUM[topo,navigation,satellite,city,zoning]
         function generateMap(mapType) {
@@ -724,11 +723,18 @@
                 }));
                 document.getElementById('map-attribution').innerHTML = '.';
             } else if (mapType == 'interactive') {
-                sources.push(new ol.layer.Tile({
-                    source: new ol.source.OSM(),
-                    zIndex: 1,
-                }));
-                document.getElementById('map-attribution').innerHTML = '.';
+                const layers = [
+                    new ol.layer.Tile({
+                        extent: [-13884991, 2870341, -7455066, 6338219],
+                        source: new ol.source.TileArcGISRest({
+                            url: 'https://services.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer',
+                        }),
+                        zIndex: 1,
+                    }),
+                ];
+                layers.forEach((layer) => sources.push(layer));
+                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                            'rest/services/Reference/World_Boundaries_and_Places/MapServer">ArcGIS</a>';
             } else {
                 sources.push(new ol.layer.Tile({
                     source: new ol.source.OSM(),
