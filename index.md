@@ -559,7 +559,7 @@
         </div>
         <div class="searchMap">
             <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by " size="50" />
-            <button id="geocode-button"><i class="fa-solid fa-magnifying-glass-location"></i></button>
+            <i id="geocode-input-submit"  class="fa-solid fa-magnifying-glass-location"></i>
         </div>
     </div>
     <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
@@ -585,10 +585,12 @@
             z-index: 999;
             border-radius: 5px;
         }
+        
         #geocode-input,
-        #geocode-button {
-            font-size: 10px;
-            padding: .5em;
+        #geocode-input-submit {
+            position: relative;
+            right: 2em;
+            cursor: pointer;
         }
         #geocode-input {
             width: 300px;
