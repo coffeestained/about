@@ -807,7 +807,7 @@
                             featureProjection: map.getView().getProjection()
                         })
                     );
-                    const layerAdded = map.addLayer(newLayer);
+                    const layerAdded = map.setLayers(map.getLayers().push(newLayer));
                     console.log(geojson, layerAdded)
                 });
             } else {
