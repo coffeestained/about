@@ -544,216 +544,217 @@
 <div class="row wide-stuffs" style="width: 100vw; z-index: 0; position: relative;
     margin: 0px;
     margin-left: calc(50% - 50vw);
-    margin-bottom: 50px;">
+    margin-bottom: 50px; flex-wrap: wrap;">
     <div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
     <div class="row-item flex-grow">
         <h3>Bits & Bobs</h3> Explore strange new worlds.
-        <div id="map" class="map">
-            <div class="mapType">
-                <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> Navigation Map</div>
-                <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
-                <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
-                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> Republic Map</div>
-                <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> Republic Interactive Map</div>
-            </div>
-            <div class="searchMap">
-                <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by " size="50" />
-                <button id="geocode-button"><i class="fa-solid fa-magnifying-glass-location"></i></button>
-            </div>
-        </div>
-        <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
-        <script
-            src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css">
-        <style>
-            .map {
-                position: relative;
-                width: 100%;
-                height: 500px;
-                z-index: 0;
-            }
-
-            .searchMap {
-                position: absolute;
-                padding: 5px;
-                top: .5em;
-                left: 42px;
-                background: rgba(255,255,255,.6);
-                z-index: 999;
-                border-radius: 5px;
-            }
-            #geocode-input,
-            #geocode-button {
-                font-size: 10px;
-                padding: .5em;
-            }
-            #geocode-input {
-                width: 300px;
-            }
-
-            .mapType {
-                position: absolute;
-                /* width: 150px; */
-                margin: .5em;
-                padding: 5px;
-                top: .5em;
-                right: 0px;
-                background: rgba(255,255,255,.6);
-                z-index: 999;
-                border-radius: 5px;
-                font-size: 10px;
-                /* border: 1px solid #e0e0e0; */
-                /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
-                /* box-shadow: 0px 0px 17px -8px #000000; */
-            }
-
-            .mapType>.button {
-                width: 100%;
-                text-align: center;
-                padding: 5px;
-            }
-
-            .mapType>.button:hover {
-                background-color: #e0e0e0;
-                color: #606c71;
-            }
-
-            .ol-control {
-                border-radius: 5px;
-                border: 1px solid #e0e0e0;
-                -webkit-box-shadow: 0px 0px 17px -8px #000000;
-                box-shadow: 0px 0px 17px -8px #000000;
-                background: white;
-            }
-
-            .ol-control {
-                border-radius: 5px;
-                border: 1px solid #e0e0e0;
-                -webkit-box-shadow: 0px 0px 17px -8px #000000;
-                box-shadow: 0px 0px 17px -8px #000000;
-                background: white;
-            }
-
-            .ol-control button {
-                background: white;
-                color: black;
-            }
-
-            .ol-control button:hover {
-                background: #e0e0e0;
-                color: #606c71;
-            }
-        </style>
-        <script type="text/javascript">
-            var map = new ol.Map({
-                target: 'map',
-                layers: [
- 
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
-                    zoom: 16
-                })
-            });
-
-            setView(-81.25626560360730048, 28.81392793719928, 16);
-            generateMap('interactive');
-            console.log(map)
-
-            // mayType: string ENUM[topo,navigation,satellite,city,zoning]
-            function generateMap(mapType) {
-                let sources = [];
-                if (mapType == 'topo') {
-                    const layers = [
-                        new ol.layer.Tile({
-                            extent: [-13884991, 2870341, -7455066, 6338219],
-                            source: new ol.source.TileArcGISRest({
-                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
-                            }),
-                            zIndex: 1,
-                        }),
-                        new ol.layer.Tile({
-                            extent: [-13884991, 2870341, -7455066, 6338219],
-                            source: new ol.source.TileArcGISRest({
-                                url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
-                            }),
-                            zIndex: 2,
-                            opacity: .1,
-                        }),
-                    ];
-                    setView(-83.43186678985587,35.65270715586668,8);
-                    layers.forEach((layer) => sources.push(layer));
-                    document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                                'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
-                } else if (mapType == 'navigation') {
-                    const layers = [
-                        new ol.layer.Tile({
-                            extent: [-13884991, 2870341, -7455066, 6338219],
-                            source: new ol.source.TileArcGISRest({
-                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer',
-                            }),
-                            zIndex: 1,
-                        }),
-                    ];
-                    setView(-83.43186678985587,35.65270715586668,8);
-                    layers.forEach((layer) => sources.push(layer));
-                    document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                                'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
-                } else if (mapType == 'satellite') {
-                    const layers = [
-                        new ol.layer.Tile({
-                            extent: [-13884991, 2870341, -7455066, 6338219],
-                            source: new ol.source.TileArcGISRest({
-                                url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
-                            }),
-                            zIndex: 1,
-                        }),
-                    ];
-                    layers.forEach((layer) => sources.push(layer));
-                    document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                                'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
-                } else if (mapType == 'republic') {
-                    sources.push(new ol.layer.Tile({
-                        source: new ol.source.OSM(),
-                        zIndex: 1,
-                    }));
-                    document.getElementById('map-attribution').innerHTML = '.';
-                } else if (mapType == 'interactive') {
-                    sources.push(new ol.layer.Tile({
-                        source: new ol.source.OSM(),
-                        zIndex: 1,
-                    }));
-                    document.getElementById('map-attribution').innerHTML = '.';
-                } else {
-                    sources.push(new ol.layer.Tile({
-                        source: new ol.source.OSM(),
-                        zIndex: 1,
-                    }));
-                    document.getElementById('map-attribution').innerHTML = '.';
-                }
-                map.setLayers(sources);
-                console.log(map)
-            }
-
-            // long: FLOAT EPSG:4326 Long
-            // lat: FLOAT EPSG:4326 Lat
-            // zoom: FLOAT (furthest) 1-16 (closest)
-            function setView(long, lat, zoom) {
-                map.setView(new ol.View({
-                    center: ol.proj.fromLonLat([long, lat]),
-                    zoom: zoom
-                }));
-            }
-
-            // Event S
-            map.on('singleclick', function (event) {
-                console.log(event.zoom)
-                console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event.coordinate}`)
-                console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
-            });
-        </script>
     </div>
+    <div id="map" class="map">
+        <div class="mapType">
+            <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> Navigation Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
+            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> Republic Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> Republic Interactive Map</div>
+        </div>
+        <div class="searchMap">
+            <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by " size="50" />
+            <button id="geocode-button"><i class="fa-solid fa-magnifying-glass-location"></i></button>
+        </div>
+    </div>
+    <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
+    <script
+        src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css">
+    <style>
+        .map {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            z-index: 0;
+            margin: 1.5em;
+        }
+
+        .searchMap {
+            position: absolute;
+            padding: 5px;
+            top: .5em;
+            left: 42px;
+            background: rgba(255,255,255,.6);
+            z-index: 999;
+            border-radius: 5px;
+        }
+        #geocode-input,
+        #geocode-button {
+            font-size: 10px;
+            padding: .5em;
+        }
+        #geocode-input {
+            width: 300px;
+        }
+
+        .mapType {
+            position: absolute;
+            /* width: 150px; */
+            margin: .5em;
+            padding: 5px;
+            top: .5em;
+            right: 0px;
+            background: rgba(255,255,255,.6);
+            z-index: 999;
+            border-radius: 5px;
+            font-size: 10px;
+            /* border: 1px solid #e0e0e0; */
+            /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
+            /* box-shadow: 0px 0px 17px -8px #000000; */
+        }
+
+        .mapType>.button {
+            width: 100%;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .mapType>.button:hover {
+            background-color: #e0e0e0;
+            color: #606c71;
+        }
+
+        .ol-control {
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+            -webkit-box-shadow: 0px 0px 17px -8px #000000;
+            box-shadow: 0px 0px 17px -8px #000000;
+            background: white;
+        }
+
+        .ol-control {
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+            -webkit-box-shadow: 0px 0px 17px -8px #000000;
+            box-shadow: 0px 0px 17px -8px #000000;
+            background: white;
+        }
+
+        .ol-control button {
+            background: white;
+            color: black;
+        }
+
+        .ol-control button:hover {
+            background: #e0e0e0;
+            color: #606c71;
+        }
+    </style>
+    <script type="text/javascript">
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
+                zoom: 16
+            })
+        });
+
+        setView(-81.25626560360730048, 28.81392793719928, 16);
+        generateMap('interactive');
+        console.log(map)
+
+        // mayType: string ENUM[topo,navigation,satellite,city,zoning]
+        function generateMap(mapType) {
+            let sources = [];
+            if (mapType == 'topo') {
+                const layers = [
+                    new ol.layer.Tile({
+                        extent: [-13884991, 2870341, -7455066, 6338219],
+                        source: new ol.source.TileArcGISRest({
+                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
+                        }),
+                        zIndex: 1,
+                    }),
+                    new ol.layer.Tile({
+                        extent: [-13884991, 2870341, -7455066, 6338219],
+                        source: new ol.source.TileArcGISRest({
+                            url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
+                        }),
+                        zIndex: 2,
+                        opacity: .1,
+                    }),
+                ];
+                setView(-83.43186678985587,35.65270715586668,8);
+                layers.forEach((layer) => sources.push(layer));
+                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                            'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
+            } else if (mapType == 'navigation') {
+                const layers = [
+                    new ol.layer.Tile({
+                        extent: [-13884991, 2870341, -7455066, 6338219],
+                        source: new ol.source.TileArcGISRest({
+                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer',
+                        }),
+                        zIndex: 1,
+                    }),
+                ];
+                setView(-83.43186678985587,35.65270715586668,8);
+                layers.forEach((layer) => sources.push(layer));
+                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                            'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
+            } else if (mapType == 'satellite') {
+                const layers = [
+                    new ol.layer.Tile({
+                        extent: [-13884991, 2870341, -7455066, 6338219],
+                        source: new ol.source.TileArcGISRest({
+                            url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
+                        }),
+                        zIndex: 1,
+                    }),
+                ];
+                layers.forEach((layer) => sources.push(layer));
+                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                            'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
+            } else if (mapType == 'republic') {
+                sources.push(new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    zIndex: 1,
+                }));
+                document.getElementById('map-attribution').innerHTML = '.';
+            } else if (mapType == 'interactive') {
+                sources.push(new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    zIndex: 1,
+                }));
+                document.getElementById('map-attribution').innerHTML = '.';
+            } else {
+                sources.push(new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                    zIndex: 1,
+                }));
+                document.getElementById('map-attribution').innerHTML = '.';
+            }
+            map.setLayers(sources);
+            console.log(map)
+        }
+
+        // long: FLOAT EPSG:4326 Long
+        // lat: FLOAT EPSG:4326 Lat
+        // zoom: FLOAT (furthest) 1-16 (closest)
+        function setView(long, lat, zoom) {
+            map.setView(new ol.View({
+                center: ol.proj.fromLonLat([long, lat]),
+                zoom: zoom
+            }));
+        }
+
+        // Event S
+        map.on('singleclick', function (event) {
+            console.log(event.zoom)
+            console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event.coordinate}`)
+            console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
+        });
+    </script>
 </div>
 <div class="row">
     <div class="row-logo" style="background-image:url('./Spotlight _Monochromatic.svg');"></div>
