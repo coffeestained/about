@@ -709,6 +709,11 @@
                 map.setLayers(sources);
                 console.log(map)
             }
+
+            map.on('singleclick', function (event) {
+                console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event}`)
+                console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
+            });
         </script>
     </div>
 </div>
