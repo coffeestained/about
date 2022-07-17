@@ -554,17 +554,17 @@
             <div><input type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
             <div><input type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
             <div><input type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
-            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
+            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
             <div id="interactive-options">
 
                 <div>
-                    <input type="checkbox" name="county-congressional" onchange="addShapeFileLayer("{{ 'assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp' | relative_url }}");"/> 
+                    <input type="checkbox" name="county-congressional" onchange="addShapeFileLayer("{{ 'assets/cb_2021_us_county_within_cd116_500k.shp' | relative_url }}");"/> 
                     <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning
                 </div>
 
                 <div>
-                    <input type="checkbox" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer("{{ 'assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp' | relative_url }}");"/>
+                    <input type="checkbox" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer("{{ 'assets/cb_2021_us_county_within_cd116_500k.shp' | relative_url }}");"/>
                     <i class="fa-solid fa-school"></i> School Zoning TODO
                 </div>
 
