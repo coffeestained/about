@@ -551,11 +551,11 @@
     </div>
     <div id="map" class="map">
         <div class="mapType">
-            <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> Navigation Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
-            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> Republic Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> Republic Interactive Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
+            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
+            <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
         </div>
         <div class="searchMap">
             <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by Wolfram|Alpha) " size="50" />
