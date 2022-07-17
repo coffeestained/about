@@ -680,7 +680,7 @@
             color: #606c71;
         }
     </style>
-    <script type="text/javascript">
+    <script type="module">
         import VectorLayer from 'ol/layer/Vector';
 
         var map = new ol.Map({
