@@ -563,7 +563,7 @@
         
         </div>
         <div class="searchMap">
-            <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
+            <input id="geocode-input" type="text" placeholder="Enter anything (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
             <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
         </div>
     </div>
@@ -630,17 +630,18 @@
         }
 
         .interactive-options-active {
-            margin-left: .5em;
-            width: auto;
-            height: auto;
-            opacity: 1;
+            margin-left: .5em !important;
+            width: auto !important;
+            height: auto !important;
+            opacity: 1 !important;
         }
 
         #interactive-options {
             opacity: 0;
             height: 0px;
             width: 0px;
-            transition: opacity 2s, height 1s, height 1s;
+            margin-left: 0px;
+            transition: opacity 2s, height 1s, height 1s, margin-left 1.5s;
 
         }
 
