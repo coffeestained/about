@@ -789,7 +789,7 @@
                     color: '#eeeeee',
                 }),
             });
-            
+
             const checkbox = document.getElementById(id).checked;
             console.log(checkbox)
             if (checkbox) {
@@ -807,6 +807,7 @@
                         style: function (feature) {
                             const color = feature.get('COLOR') || '#eeeeee';
                             style.getFill().setColor(color);
+                            console.log(style)
                             return style;
                         },
                     });
