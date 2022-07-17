@@ -645,6 +645,8 @@
             opacity: 0;
             height: 0px;
             margin-left: 0px;
+            display: flex;
+            flex-direction: column;
             transition: opacity 2s, height 1s, margin-left .5s;
         }
 
