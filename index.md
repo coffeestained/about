@@ -559,12 +559,12 @@
             <div id="interactive-options">
 
                 <div>
-                    <input type="checkbox" name="county-congressional" onchange="addShapeFileLayer('https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/> 
+                    <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/> 
                     <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning
                 </div>
 
                 <div>
-                    <input type="checkbox" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/> 
+                    <input type="checkbox" id="school-zoning" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('school-zoning', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/> 
                     <i class="fa-solid fa-school"></i> School Zoning TODO
                 </div>
 
@@ -781,15 +781,25 @@
             map.setLayers(sources);
         }
 
-        function addShapeFileLayer(url) {
-            console.log(url, shp)
-            shp(url).then(function(geojson){
-                //do something with your geojson
-                var vectorLayerJSON_2 = new ol.source.Vector({
-                    features: (new ol.format.GeoJSON()).readFeatures(geojson)
+        function addShapeFileLayer(id, url) {
+            const checkbox = document.getElementById(id).checked;
+            if (checkbox) {
+                shp(url).then(function(geojson){
+                    //do something with your geojson
+                    const vectorSource= new ol.source.Vector({
+                        features: (new ol.format.GeoJSON()).readFeatures(geojson)
+                    });
+                    const vectorLayer = new ol.layer.VectorLayer({
+                        source: vectorSource,
+                    });
+                    map.addLayer(vectorLayer);
+                    console.log(geojson, vectorLayer)
                 });
-                console.log(geojson, vectorLayerJSON_2)
-            });
+            } else {
+                console.log(map.getLayers());
+            }
+            console.log(url, shp)
+
         }
 
         // long: FLOAT EPSG:4326 Long
