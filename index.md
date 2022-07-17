@@ -547,12 +547,14 @@
     margin-bottom: 50px;">
     <div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
     <div class="row-item flex-grow">
-        <h3>Bits & Bobs</h3> I'll think of something interesting for this piece.
+        <h3>Bits & Bobs</h3> Explore strange new worlds.
         <div id="map" class="map">
             <div class="mapControls">
-                <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Data</div>
-                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('city');"/> City Data</div>
-                <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> Zoning Data</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> World Navigation Map</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Satellite Map</div>
+                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('city');"/> City Map</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> City Zoning Map</div>
             </div>
         </div>
         <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
@@ -638,6 +640,21 @@
             function generateMap(mapType) {
                 let sources = [];
                 if (mapType == 'topo') {
+                    const layers = [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM(),
+                        }),
+                        new ol.layer.Tile({
+                            extent: [-13884991, 2870341, -7455066, 6338219],
+                            source: new ol.source.TileArcGISRest({
+                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer',
+                            }),
+                        }),
+                    ];
+                    layers.forEach((layer) => sources.push(layer));
+                    document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
+                                'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
+                } else if (mapType == 'navigation') {
                     const layers = [
                         new ol.layer.Tile({
                             source: new ol.source.OSM(),
