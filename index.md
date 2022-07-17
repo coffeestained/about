@@ -553,7 +553,7 @@
                 <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> Navigation Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
-                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('city');"/> Republic Map</div>
+                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> Republic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> City Zoning Map</div>
             </div>
         </div>
@@ -690,7 +690,7 @@
                     layers.forEach((layer) => sources.push(layer));
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
-                } else if (mapType == 'city') {
+                } else if (mapType == 'republic') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM(),
                         zIndex: 1,
@@ -717,14 +717,15 @@
             // lat: FLOAT EPSG:4326 Lat
             // zoom: FLOAT (furthest) 1-16 (closest)
             function setView(long, lat, zoom) {
-                new ol.View({
+
+                map.setView(new ol.View({
                     center: ol.proj.fromLonLat([long, lat]),
                     zoom: zoom
-                })
+                });)
             }
 
             map.on('singleclick', function (event) {
-                console.log(event)
+                console.log(event, event.keys())
                 console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event.coordinate}`)
                 console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
             });
