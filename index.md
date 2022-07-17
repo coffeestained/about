@@ -792,10 +792,16 @@
                         features: (new ol.format.GeoJSON()).readFeatures(geojson)
                     });
                     const vectorLayer = new ol.layer.Vector({
+                        background: '#1a2b39',
                         source: vectorSource,
                         zIndex: 2,
                         opacity: .5,
                         name: id,
+                        style: function (feature) {
+                            const color = feature.get('COLOR') || '#eeeeee';
+                            style.getFill().setColor(color);
+                            return style;
+                        },
                     });
                     map.addLayer(vectorLayer);
                     console.log(geojson, vectorLayer)
