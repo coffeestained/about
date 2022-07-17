@@ -558,7 +558,7 @@
             <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
         </div>
         <div class="searchMap">
-            <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by Wolfram|Alpha) " size="50" />
+            <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
             <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
         </div>
     </div>
@@ -729,8 +729,13 @@
                         source: new ol.source.TileArcGISRest({
                             url: 'https://services.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer',
                         }),
-                        zIndex: 1,
+                        zIndex: 2,
+                        opacity: .5,
                     }),
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM(),
+                        zIndex: 1,
+                    })
                 ];
                 layers.forEach((layer) => sources.push(layer));
                 document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
