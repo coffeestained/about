@@ -558,7 +558,7 @@
             <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> Republic Interactive Map</div>
         </div>
         <div class="searchMap">
-            <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by " size="50" />
+            <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by Wolfram|Alpha) " size="50" />
             <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
         </div>
     </div>
@@ -593,10 +593,7 @@
         #geocode-input-submit {
             position: relative;
             right: 1.5em;
-            top: .1em;
-        }
-        #geocode-input {
-            width: 300px;
+            top: .2em;
         }
 
         .mapType {
