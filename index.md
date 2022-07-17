@@ -799,6 +799,8 @@
                         title: id,
                         source: source,
                         style: style,
+                        zIndex: 3,
+                        opacity: .5,
                 })
                 shp(url).then(function(geojson){
                     source.addFeatures(
