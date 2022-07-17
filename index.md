@@ -641,7 +641,7 @@
                 let sources = [];
                 if (mapType == 'topo') {
                     const layers = [
-                    new ol.layer.Tile({
+                        new ol.layer.Tile({
                             extent: [-13884991, 2870341, -7455066, 6338219],
                             source: new ol.source.TileArcGISRest({
                                 url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
@@ -652,6 +652,7 @@
                             source: new ol.source.TileArcGISRest({
                                 url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
                             }),
+                            opacity: .1,
                         }),
                         
                     ];
