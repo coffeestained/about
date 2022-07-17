@@ -673,6 +673,7 @@
                             zIndex: 1,
                         }),
                     ];
+                    setView(-83.43186678985587,35.65270715586668,8);
                     layers.forEach((layer) => sources.push(layer));
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
@@ -717,13 +718,14 @@
             // zoom: FLOAT (furthest) 1-16 (closest)
             function setView(long, lat, zoom) {
                 new ol.View({
-                    center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
-                    zoom: 16
+                    center: ol.proj.fromLonLat([long, lat]),
+                    zoom: zoom
                 })
             }
 
             map.on('singleclick', function (event) {
-                console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${JSON.stringify(event)}`)
+                console.log(event)
+                console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event.coordinate}`)
                 console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
             });
         </script>
