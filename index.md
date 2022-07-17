@@ -785,7 +785,10 @@
             console.log(url, shp)
             shp(url).then(function(geojson){
                 //do something with your geojson
-                console.log(geojson)
+                var vectorLayerJSON_2 = new ol.source.Vector({
+                    features: (new ol.format.GeoJSON()).readFeatures(geojson)
+                });
+                console.log(geojson, vectorLayerJSON_2)
             });
         }
 
