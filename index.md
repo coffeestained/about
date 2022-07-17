@@ -553,7 +553,7 @@
                 <div><input type="radio" name="mapType" onchange="generateMap('navigation');" /> Navigation Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
-                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('city');"/> City Map</div>
+                <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('city');"/> Republic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> City Zoning Map</div>
             </div>
         </div>
@@ -634,9 +634,11 @@
                 })
             });
 
-            generateMap('city')
+            setView(-81.25626560360730048, 28.81392793719928, 16);
+            generateMap('city');
             console.log(map)
 
+            // mayType: string ENUM[topo,navigation,satellite,city,zoning]
             function generateMap(mapType) {
                 let sources = [];
                 if (mapType == 'topo') {
@@ -656,8 +658,8 @@
                             zIndex: 2,
                             opacity: .1,
                         }),
-                        
                     ];
+                    setView(-83.43186678985587,35.65270715586668,8);
                     layers.forEach((layer) => sources.push(layer));
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                                 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
@@ -710,8 +712,18 @@
                 console.log(map)
             }
 
+            // long: FLOAT EPSG:4326 Long
+            // lat: FLOAT EPSG:4326 Lat
+            // zoom: FLOAT (furthest) 1-16 (closest)
+            function setView(long, lat, zoom) {
+                new ol.View({
+                    center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
+                    zoom: 16
+                })
+            }
+
             map.on('singleclick', function (event) {
-                console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${event}`)
+                console.log(`${new Date()} DEBUG Maps ClickEvent RAW ${JSON.stringify(event)}`)
                 console.log(`${new Date()} DEBUG Maps ClickEvent EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
             });
         </script>
