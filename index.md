@@ -559,12 +559,12 @@
             <div id="interactive-options">
 
                 <div>
-                    <input type="checkbox" name="county-congressional" onchange="addShapeFileLayer('./docs/assets/cb_2021_us_county_within_cd116_500k.zip');"/> 
+                    <input type="checkbox" name="county-congressional" onchange="addShapeFileLayer('assets/cb_2021_us_county_within_cd116_500k.zip');"/> 
                     <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning
                 </div>
 
                 <div>
-                    <input type="checkbox" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('./docs/assets/cb_2021_us_county_within_cd116_500k.zip');"/> 
+                    <input type="checkbox" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('assets/cb_2021_us_county_within_cd116_500k.zip');"/> 
                     <i class="fa-solid fa-school"></i> School Zoning TODO
                 </div>
 
