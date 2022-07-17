@@ -783,6 +783,13 @@
         }
 
         function addShapeFileLayer(id, url) {
+
+            const style = new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: '#eeeeee',
+                }),
+            });
+            
             const checkbox = document.getElementById(id).checked;
             console.log(checkbox)
             if (checkbox) {
