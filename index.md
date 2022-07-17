@@ -557,8 +557,13 @@
             <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
             <div><input type="radio" name="mapType" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
             <div id="interactive-options">
-                <input type="radio" name="mapType" onchange="generateMap('interactive', 'school-zoning');"/> 
+
+                <input type="radio" name="county-congressional" onchange="addShapeFileLayer('assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
+                <i class="fa-brands fa-school"></i> County Congressional Zoning
+
+                <input type="radio" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('assets/interactive-map/shapefiles/cb_2021_us_county_within_cd116_500k.shp');"/> 
                 <i class="fa-brands fa-school"></i> School Zoning TODO
+
             </div>
         
         </div>
@@ -572,6 +577,7 @@
         src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css">
+    <script src="https://cdn.jsdelivr.net/npm/shpjs@4.0.3/dist/shp.js"></script>
     <style>
         .map {
             position: relative;
@@ -630,8 +636,7 @@
         }
 
         .interactive-options-active {
-            margin-left: .5em !important;
-            width: auto !important;
+            margin-left: 1.5em !important;
             height: auto !important;
             opacity: 1 !important;
         }
@@ -639,10 +644,8 @@
         #interactive-options {
             opacity: 0;
             height: 0px;
-            width: 0px;
             margin-left: 0px;
-            transition: opacity 2s, height 1s, height 1s, margin-left 1.5s;
-
+            transition: opacity 2s, height 1s, margin-left .5s;
         }
 
         .ol-control {
@@ -770,6 +773,13 @@
                 document.getElementById('map-attribution').innerHTML = '.';
             }
             map.setLayers(sources);
+        }
+
+        function addShapeFileLayer(url) {
+            shp("url").then(function(geojson){
+                //do something with your geojson
+                console.log(geojson)
+            });
         }
 
         // long: FLOAT EPSG:4326 Long
