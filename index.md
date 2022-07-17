@@ -647,7 +647,7 @@
                         new ol.layer.Tile({
                             extent: [-13884991, 2870341, -7455066, 6338219],
                             source: new ol.source.TileArcGISRest({
-                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/DeLorme_World_Base_Map/MapServer',
+                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Topo_Map/MapServer',
                             }),
                         }),
                     ];
@@ -668,7 +668,7 @@
                     ];
                     layers.forEach((layer) => sources.push(layer));
                     document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                                'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
+                                'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
                 } else if (mapType == 'city') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM()
