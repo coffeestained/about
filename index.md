@@ -788,6 +788,11 @@
                 fill: new ol.style.Fill({
                     color: '#eeeeee',
                 }),
+                stroke: new ol.style.Stroke({
+                    color: [0, 0, 0, 0.6],
+                    width: 2,
+                    lineDash: [4,8]
+                }),
             });
 
             const source = new ol.source.Vector();
