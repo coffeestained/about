@@ -803,6 +803,7 @@
                             return style;
                         },
                     });
+                    console.log(map, vectorLayer)
                     const layerAdded = map.addLayer(vectorLayer);
                     console.log(geojson, layerAdded)
                 });
