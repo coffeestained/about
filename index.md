@@ -558,7 +558,7 @@
             </div>
             <div class="searchMap">
                 <input id="geocode-input" type="text" placeholder="Enter any thing on the planet (Powered by " size="50" />
-                <button id="geocode-button">Find</button>
+                <button id="geocode-button"><i class="fa-solid fa-magnifying-glass-location"></i></button>
             </div>
         </div>
         <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
@@ -576,23 +576,17 @@
 
             .searchMap {
                 position: absolute;
-                /* width: 150px; */
-                margin: .5em;
                 padding: 5px;
                 top: .5em;
-                left: 0px;
+                left: 42px;
                 background: rgba(255,255,255,.6);
                 z-index: 999;
                 border-radius: 5px;
-                /* border: 1px solid #e0e0e0; */
-                /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
-                /* box-shadow: 0px 0px 17px -8px #000000; */
             }
             #geocode-input,
             #geocode-button {
-                font-size: 16px;
-                margin: 0 2px 0 0;
-                padding: 4px 8px;
+                font-size: 10px;
+                padding: .5em;
             }
             #geocode-input {
                 width: 300px;
@@ -608,6 +602,7 @@
                 background: rgba(255,255,255,.6);
                 z-index: 999;
                 border-radius: 5px;
+                font-size: 10px;
                 /* border: 1px solid #e0e0e0; */
                 /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
                 /* box-shadow: 0px 0px 17px -8px #000000; */
