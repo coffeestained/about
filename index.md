@@ -798,7 +798,9 @@
                     console.log(geojson, vectorLayer)
                 });
             } else {
-                console.log(map.getLayers());
+                const layers = map.getLayers();
+                console.log(layers);
+                layers.forEach((each) => console.log(each));
             }
             console.log(url, shp)
 
