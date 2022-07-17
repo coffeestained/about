@@ -647,7 +647,7 @@
                         new ol.layer.Tile({
                             extent: [-13884991, 2870341, -7455066, 6338219],
                             source: new ol.source.TileArcGISRest({
-                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Topo_Map/MapServer',
+                                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
                             }),
                         }),
                     ];
