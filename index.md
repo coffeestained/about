@@ -554,7 +554,7 @@
                 <div><input type="radio" name="mapType" onchange="generateMap('topo');" /> Topographic Map</div>
                 <div><input type="radio" name="mapType" onchange="generateMap('satellite');" /> Satellite Map</div>
                 <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('republic');"/> Republic Map</div>
-                <div><input type="radio" name="mapType" onchange="generateMap('zoning');"/> Republic Interactive Map</div>
+                <div><input type="radio" name="mapType" onchange="generateMap('interactive');"/> Republic Interactive Map</div>
             </div>
         </div>
         <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
@@ -635,7 +635,7 @@
             });
 
             setView(-81.25626560360730048, 28.81392793719928, 16);
-            generateMap('city');
+            generateMap('interactive');
             console.log(map)
 
             // mayType: string ENUM[topo,navigation,satellite,city,zoning]
@@ -696,7 +696,7 @@
                         zIndex: 1,
                     }));
                     document.getElementById('map-attribution').innerHTML = '.';
-                } else if (mapType == 'zoning') {
+                } else if (mapType == 'interactive') {
                     sources.push(new ol.layer.Tile({
                         source: new ol.source.OSM(),
                         zIndex: 1,
@@ -707,7 +707,7 @@
                         source: new ol.source.OSM(),
                         zIndex: 1,
                     }));
-                    document.getElementByIdD('map-attribution').innerHTML = '.';
+                    document.getElementById('map-attribution').innerHTML = '.';
                 }
                 map.setLayers(sources);
                 console.log(map)
