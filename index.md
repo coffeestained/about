@@ -784,6 +784,7 @@
 
         function addShapeFileLayer(id, url) {
             const checkbox = document.getElementById(id).checked;
+            console.log(checkbox)
             if (checkbox) {
                 shp(url).then(function(geojson){
                     //do something with your geojson
