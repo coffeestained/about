@@ -597,7 +597,7 @@
             margin: 1.5em;
         }
 
-        .tooltip {
+        .map-tooltip {
             position: relative;
             padding: 5px;
             background: rgba(255,255,255,.6);
@@ -706,7 +706,7 @@
             })
         });
 
-        const tooltip = document.getElementById('tooltip');
+        const tooltip = document.getElementById('map-tooltip');
         const overlay = new ol.Overlay({
             element: tooltip,
             offset: [10, 0],
