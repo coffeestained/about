@@ -1,6 +1,6 @@
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -161,10 +161,10 @@
 </style>
 
 <div class="row">
-    <div class="row-logo" style="background-image:url('./Watermelon_Monochromatic.svg');"></div>
+    <div class="row-logo" style="background-image:url('assets/Watermelon_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Matthew Grady ☕ <a href="https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends"
-                    src="./LI-In-Bug.png" style=" float: right; max-width: 66px;
+                    src="assets/LI-In-Bug.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
     border: 1px solid #155799;
     background: rgba(21, 87, 153, .05);
@@ -302,7 +302,7 @@
     }
 
     .page-header {
-        background-image: url('1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
+        background-image: url('assets/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
         background-size: 85%;
         background-repeat: repeat;
         background-position: 0 0;
@@ -331,7 +331,7 @@
     }
 
     .page-header:after {
-        background: linear-gradient(0deg, rgb(81 89 57 / 65%) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url(stars.png) repeat;
+        background: linear-gradient(0deg, rgb(81 89 57 / 65%) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('assets/stars.png') repeat;
         animation: animatedBackground 1200s linear infinite;
         border-bottom: 4px rgba(0, 0, 0, .3) solid;
         opacity: var(--timeOfDayOpacity);
@@ -511,9 +511,9 @@
 </div>
 
 <div class="row">
-    <div class="row-logo" style="background-image:url('./Statue of liberty_Monochromatic.svg');"></div>
+    <div class="row-logo" style="background-image:url('assets/Statue of liberty_Monochromatic.svg');"></div>
     <div class="row-item">
-        <h3>10XTS <a href="mailto: info@10xts.com"><img src="./10xts.png" style=" float: right; max-width: 66px;
+        <h3>10XTS <a href="mailto: info@10xts.com"><img src="assets/10xts.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
     border: 1px solid #155799;
     background: rgba(21, 87, 153, .05);
@@ -523,7 +523,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="row-logo" style="background-image:url('./Data Arranging_Monochromatic.svg');"></div>
+    <div class="row-logo" style="background-image:url('assets/Data Arranging_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Stuff & Things (But not limited to)</h3>
         <ul>
@@ -545,7 +545,7 @@
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px; flex-wrap: wrap;">
-    <div class="row-logo" style="background-image:url('./America_Monochromatic.svg');"></div>
+    <div class="row-logo" style="background-image:url('assets/America_Monochromatic.svg');"></div>
     <div class="row-item flex-grow">
         <h3>Bits & Bobs</h3> Explore strange new worlds.
     </div>
@@ -580,7 +580,7 @@
             <input id="geocode-input" type="text" placeholder="Enter anything (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
             <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
         </div>
-        <div id="tooltip" class="tooltip"></div>
+        <div id="map-tooltip" class="map-tooltip"></div>
     </div>
     <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
     <script
@@ -771,14 +771,6 @@
                 document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                             'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
             } else if (mapType == 'republic') {
-                sources.push(new ol.layer.Tile({
-                    source: new ol.source.OSM(),
-                    zIndex: 1,
-                }));
-                setView(-81.25626560360730048, 28.81392793719928, 8);
-                document.getElementById('map-attribution').innerHTML = '.';
-            } else if (mapType == 'interactive') {
-                document.getElementById('interactive-options').classList.add('interactive-options-active');
                 const layers = [
                     new ol.layer.Tile({
                         extent: [-13884991, 2870341, -7455066, 6338219],
@@ -795,19 +787,35 @@
                         zIndex: 2,
                         opacity: .1,
                     }),
+                ];
+                layers.forEach((layer) => sources.push(layer));
+                setView(-81.25626560360730048, 28.81392793719928, 8);
+                document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGER Team and all private and public workers of the involved in making these datasets possible.';
+            } else if (mapType == 'interactive') {
+                document.getElementById('interactive-options').classList.add('interactive-options-active');
+                const layers = [
                     new ol.layer.Tile({
                         extent: [-13884991, 2870341, -7455066, 6338219],
                         source: new ol.source.TileArcGISRest({
-                            url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Current/MapServer',
+                            url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/Basemaps/CommunityTIGER/MapServer',
                         }),
-                        zIndex: 3,
+                        zIndex: 1,
                         opacity: 1,
+                        style: new ol.style.Style({
+                            stroke: new ol.style.Stroke({
+                                color: [0, 0, 0, 0.6],
+                                width: 2,
+                                lineDash: [4,8]
+                            }),
+                            fill: new ol.style.Fill({
+                                color: 'rgba(122,122,122,.777)'
+                            }),
+                        })
                     }),
                 ];
-                console.log(layers[0])
                 layers.forEach((layer) => sources.push(layer));
                 setView(-81.25626560360730048, 28.81392793719928, 8);
-                document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGERWeb Team and all private and public workers of the involved in making these datasets possible.';;
+                document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGER Team and all private and public workers of the involved in making these datasets possible.';
             } else {
                 sources.push(new ol.layer.Tile({
                     source: new ol.source.OSM(),
@@ -816,9 +824,10 @@
                 document.getElementById('map-attribution').innerHTML = '.';
             }
 
+                        // ENABLE AFTER FIXING INTERACTIVE LAYERS
             // Add and then apply Tooltip Overlay Function
-            map.addOverlay(overlay);
-            map.on('pointermove', displayTooltip);
+            //map.addOverlay(overlay);
+            //map.on('pointermove', displayTooltip);
 
             // Apply BaseLayers To Map
             map.setLayers(sources);
@@ -914,7 +923,7 @@
     </script>
 </div>
 <div class="row">
-    <div class="row-logo" style="background-image:url('./Spotlight _Monochromatic.svg');"></div>
+    <div class="row-logo" style="background-image:url('assets/Spotlight _Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Curiosity Chart</h3> This is an aggregate count of views of this repository supplied by GitHub API. <section
             id="curiosity-container" class="curiosity-container"></section>
@@ -1063,7 +1072,7 @@
     }
 
     .footer-stuffs {
-        background: url('./Landscape-agriculture.svg');
+        background: url('assets/Landscape-agriculture.svg');
         background-size: cover;
         height: 400px;
     }
@@ -1086,7 +1095,7 @@
     }
 
     .footer-stuffs:after {
-        background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('stars.png') repeat;
+        background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('assets/stars.png') repeat;
         animation: animatedBackground 1200s linear infinite;
         opacity: var(--timeOfDayOpacity);
     }
@@ -1105,7 +1114,7 @@
     }
 </style>
 <div class="row">
-    <div class="row-logo" style="background-image:url('./Brainstorming session _Monochromatic.svg');"></div>
+    <div class="row-logo" style="background-image:url('assets/Brainstorming session _Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Special Thanks</h3> My Wife, the open-source community, <a
             href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my parents, my friends, my family, my
