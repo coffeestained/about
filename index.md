@@ -166,7 +166,7 @@
         <h3>Matthew Grady ☕ <a href="https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends"
                     src="./LI-In-Bug.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
-    border: 1px solid #155799; 
+    border: 1px solid #155799;
     background: rgba(21, 87, 153, .05);
     border-radius: 5px; max-height: 29.06px;"></a></h3>
         <div id="about"></div> In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube,
@@ -515,7 +515,7 @@
     <div class="row-item">
         <h3>10XTS <a href="mailto: info@10xts.com"><img src="./10xts.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
-    border: 1px solid #155799; 
+    border: 1px solid #155799;
     background: rgba(21, 87, 153, .05);
     border-radius: 5px;"></a></h3> I'm currently working with a FinTech company out of Ohio. We are work to provide
         regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about
@@ -559,22 +559,28 @@
             <div id="interactive-options">
 
                 <div>
-                    <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/> 
-                    <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning
+                    <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
+                    <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning TODO
                 </div>
 
                 <div>
-                    <input type="checkbox" id="school-zoning" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('school-zoning', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/> 
-                    <i class="fa-solid fa-school"></i> School Zoning TODO
+                    <input type="checkbox" id="school-zoning" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('school-zoning', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
+                    <i class="fa-solid fa-school"></i> School Districts with Stats TODO
+                </div>
+
+                <div>
+                    <input type="checkbox" id="trails-blazers" name="trail-blazers" disabled="disabled" onchange="addShapeFileLayer('trail-blazers', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
+                    <i class="fa-solid fa-tree-large"></i> Trail Blazers TODO
                 </div>
 
             </div>
-        
+
         </div>
         <div class="searchMap">
             <input id="geocode-input" type="text" placeholder="Enter anything (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
             <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
         </div>
+        <div id="tooltip" class="tooltip"></div>
     </div>
     <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
     <script
@@ -591,6 +597,15 @@
             margin: 1.5em;
         }
 
+        .tooltip {
+            position: relative;
+            padding: 5px;
+            background: rgba(255,255,255,.6);
+            color: black;
+            white-space: nowrap;
+            font: 10px Arial;
+        }
+
         .searchMap {
             position: absolute;
             padding: 5px;
@@ -601,7 +616,7 @@
             border-radius: 5px;
             line-height: 1;
         }
-        
+
         #geocode-input {
             font-size: 10px;
             padding: .5em;
@@ -681,7 +696,7 @@
         }
     </style>
     <script type="text/javascript">
-        
+
         const map = new ol.Map({
             target: 'map',
             layers: [],
@@ -689,6 +704,13 @@
                 center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
                 zoom: 16,
             })
+        });
+
+        const tooltip = document.getElementById('tooltip');
+        const overlay = new ol.Overlay({
+            element: tooltip,
+            offset: [10, 0],
+            positioning: 'bottom-left'
         });
 
         setView(-81.25626560360730048, 28.81392793719928, 16);
@@ -744,6 +766,7 @@
                         zIndex: 1,
                     }),
                 ];
+                setView(-81.25626560360730048, 28.81392793719928, 12);
                 layers.forEach((layer) => sources.push(layer));
                 document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
                             'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
@@ -752,6 +775,7 @@
                     source: new ol.source.OSM(),
                     zIndex: 1,
                 }));
+                setView(-81.25626560360730048, 28.81392793719928, 8);
                 document.getElementById('map-attribution').innerHTML = '.';
             } else if (mapType == 'interactive') {
                 document.getElementById('interactive-options').classList.add('interactive-options-active');
@@ -759,19 +783,31 @@
                     new ol.layer.Tile({
                         extent: [-13884991, 2870341, -7455066, 6338219],
                         source: new ol.source.TileArcGISRest({
-                            url: 'https://services.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer',
+                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
                         }),
-                        zIndex: 2,
-                        opacity: .5,
+                        zIndex: 1,
                     }),
                     new ol.layer.Tile({
-                        source: new ol.source.OSM(),
-                        zIndex: 1,
-                    })
+                        extent: [-13884991, 2870341, -7455066, 6338219],
+                        source: new ol.source.TileArcGISRest({
+                            url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
+                        }),
+                        zIndex: 2,
+                        opacity: .1,
+                    }),
+                    new ol.layer.Tile({
+                        extent: [-13884991, 2870341, -7455066, 6338219],
+                        source: new ol.source.TileArcGISRest({
+                            url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Current/MapServer',
+                        }),
+                        zIndex: 3,
+                        opacity: 1,
+                    }),
                 ];
+                console.log(layers[0])
                 layers.forEach((layer) => sources.push(layer));
-                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                            'rest/services/Reference/World_Boundaries_and_Places/MapServer">ArcGIS</a>';
+                setView(-81.25626560360730048, 28.81392793719928, 8);
+                document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGERWeb Team and all private and public workers of the involved in making these datasets possible.';;
             } else {
                 sources.push(new ol.layer.Tile({
                     source: new ol.source.OSM(),
@@ -779,15 +815,25 @@
                 }));
                 document.getElementById('map-attribution').innerHTML = '.';
             }
+
+            // Add and then apply Tooltip Overlay Function
+            map.addOverlay(overlay);
+            map.on('pointermove', displayTooltip);
+
+            // Apply BaseLayers To Map
             map.setLayers(sources);
+
+            var tileLayers = map.getLayers().getArray().filter(function(layer){
+                console.log(layer)
+                return layer.getSource() && layer.getSource().getTileGrid
+              });
+            console.log(tileLayers)
+
         }
 
         function addShapeFileLayer(id, url) {
 
             const style = new ol.style.Style({
-                fill: new ol.style.Fill({
-                    color: '#eeeeee',
-                }),
                 stroke: new ol.style.Stroke({
                     color: [0, 0, 0, 0.6],
                     width: 2,
@@ -798,7 +844,7 @@
             const source = new ol.source.Vector();
 
             const checkbox = document.getElementById(id).checked;
-            console.log(checkbox)
+
             if (checkbox) {
                 const newLayer = new ol.layer.Vector({
                         title: id,
@@ -806,7 +852,7 @@
                         source: source,
                         style: style,
                         zIndex: 3,
-                        opacity: .5,
+                        opacity: .8,
                 })
                 shp(url).then(function(geojson){
                     source.addFeatures(
@@ -817,9 +863,7 @@
                     );
                     const finalLayers = map.getLayers();
                     finalLayers.push(newLayer);
-                    console.log(finalLayers)
                     const layerAdded = map.setLayers(finalLayers);
-                    console.log(geojson, layerAdded)
                 });
             } else {
                 const layersToRemove = [];
@@ -830,10 +874,8 @@
                     }
                 });
                 layersToRemove.forEach((layer) => map.removeLayer(layer));
-                console.log(layersToRemove)
             }
-            console.log(url, shp)
-
+            document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch and all private and public workers of the involved in making these datasets possible.';
         }
 
         // long: FLOAT EPSG:4326 Long
@@ -846,7 +888,25 @@
             }));
         }
 
-        // Event S
+        function displayTooltip(event) {
+            const pixel = event.pixel;
+            const feature = map.forEachFeatureAtPixel(pixel, function(feature) {
+                return feature;
+            });
+            console.log('feature layers', feature)
+            const layer = map.forEachLayerAtPixel(pixel, function(layer) {
+                return layer;
+            });
+            console.log('tooltip layers', layer)
+            const tooltipContent = feature || layer ?
+                `<br>${feature ? feature.get('something') : ''} <br> ${layer ? layer.get('something') : ''}` : 'No Data Found <br>';
+            overlay.setPosition(event.coordinate);
+            tooltip.innerHTML = tooltipContent;
+
+            tooltip.style.display = feature || layer ? '' : '';
+        };
+
+        // Event Click Listener
         map.on('singleclick', function (event) {
             console.log(`${new Date()} DEBUG Maps ClickEventCoordinate RAW ${event.coordinate}`)
             console.log(`${new Date()} DEBUG Maps ClickEventCoordinate EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
@@ -921,7 +981,7 @@
                         return d.value;
                     })]);
                     // Add the valueline path.
-                    //svg.append("path")	
+                    //svg.append("path")
                     //.attr("class", "line")
                     //.attr("d", valueline(window.sneakyVariable));
                     // Add the X Axis
@@ -1462,5 +1522,5 @@
         }
     };
 
-    animateRocket(0); 
+    animateRocket(0);
 </script>

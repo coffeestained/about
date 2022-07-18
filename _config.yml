@@ -1,3 +1,23 @@
 theme: jekyll-theme-cayman
-baseurl: "about-this-dev" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme
+baseurl: "/about-this-dev"
+url: ""
+exclude:
+- README.md
+- Gemfile
+- Gemfile.lock
+- node_modules
+- gulpfile.js
+- package.json
+- _site
+- src
+- vendor
+- CNAME
+- LICENSE
+- Rakefile
+- old
+- vendor/bundle/
+- index.md.html
+

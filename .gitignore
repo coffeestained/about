@@ -1,0 +1,10 @@
+vendor/**
+.jekyll-cache
+node_modules
+_site
+src
+vendor
+CNAME
+Rakefile
+old
+index.md.html
