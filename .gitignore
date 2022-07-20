@@ -7,4 +7,4 @@ vendor
 CNAME
 Rakefile
 old
-index.md.html
+*.md.html
