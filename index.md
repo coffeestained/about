@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     type="text/css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
     <div class="button sun"><i class="fas fa-sun"></i></div>
@@ -163,7 +164,8 @@
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Watermelon_Monochromatic.svg');"></div>
     <div class="row-item">
-        <h3>Matthew Grady ☕ <a href="https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends"
+        <h3 style="position: relative;">Matthew Grady ☕
+            <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends"
                     src="assets/LI-In-Bug.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
     border: 1px solid #155799;
@@ -359,8 +361,14 @@
         z-index: 0;
     }
 
+    .row-item { flex: 1; text-align: left; }
+
+    .row-item > h3 {
+        padding-right: 115px;
+    }
+
     .row-logo {
-        margin-right: 1rem;
+        margin-right: 15rem;
         width: 100px;
         height: 100px;
         max-width: 100px;
@@ -513,7 +521,8 @@
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Statue of liberty_Monochromatic.svg');"></div>
     <div class="row-item">
-        <h3>10XTS <a href="mailto: info@10xts.com"><img src="assets/10xts.png" style=" float: right; max-width: 66px;
+        <h3 style="position: relative;">10XTS
+            <a style="position: absolute; right: 0px;" href="mailto: info@10xts.com"><img src="assets/10xts.png" style=" float: right; max-width: 66px;
     padding: 5px 15px;
     border: 1px solid #155799;
     background: rgba(21, 87, 153, .05);
@@ -526,7 +535,7 @@
     <div class="row-logo" style="background-image:url('assets/Data Arranging_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Stuff & Things (But not limited to)</h3>
-        <ul>
+        <ul style="list-style-position: inside; padding: 0px;">
             <li>Unix, Linux and Windows</li>
             <li>Agile Teams</li>
             <li>Node, Python, C#</li>
@@ -549,526 +558,144 @@
     <div class="row-item flex-grow">
         <h3>Bits & Bobs</h3> Explore strange new worlds.
     </div>
-    <div id="map" class="map">
-        <div class="mapType">
-            <div><input type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
-            <div><input type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
-            <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
-            <div id="interactive-options">
-
-                <div>
-                    <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
-                    <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning TODO
-                </div>
-
-                <div>
-                    <input type="checkbox" id="school-zoning" name="school-zoning" disabled="disabled" onchange="addShapeFileLayer('school-zoning', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
-                    <i class="fa-solid fa-school"></i> School Districts with Stats TODO
-                </div>
-
-                <div>
-                    <input type="checkbox" id="trails-blazers" name="trail-blazers" disabled="disabled" onchange="addShapeFileLayer('trail-blazers', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
-                    <i class="fa-solid fa-tree-large"></i> Trail Blazers TODO
-                </div>
-
-            </div>
-
-        </div>
-        <div class="searchMap">
-            <input id="geocode-input" type="text" placeholder="Enter anything (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
-            <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
-        </div>
-        <div id="map-tooltip" class="map-tooltip"></div>
-    </div>
-    <small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
-    <script
-        src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css">
-    <script src="https://cdn.jsdelivr.net/npm/shpjs@4.0.3/dist/shp.js"></script>
-    <style>
-        .map {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            z-index: 0;
-            margin: 1.5em;
-        }
-
-        .map-tooltip {
-            position: relative;
-            padding: 5px;
-            background: rgba(255,255,255,.6);
-            color: black;
-            white-space: nowrap;
-            font: 10px Arial;
-        }
-
-        .searchMap {
-            position: absolute;
-            padding: 5px;
-            top: .5em;
-            left: 42px;
-            background: rgba(255,255,255,.6);
-            z-index: 999;
-            border-radius: 5px;
-            line-height: 1;
-        }
-
-        #geocode-input {
-            font-size: 10px;
-            padding: .5em;
-        }
-        #geocode-input-submit {
-            position: relative;
-            top: .2em;
-            cursor: pointer;
-        }
-
-        .mapType {
-            position: absolute;
-            /* width: 150px; */
-            margin: .5em;
-            padding: 5px;
-            top: .5em;
-            right: 0px;
-            background: rgba(255,255,255,.6);
-            z-index: 999;
-            border-radius: 5px;
-            font-size: 10px;
-            /* border: 1px solid #e0e0e0; */
-            /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
-            /* box-shadow: 0px 0px 17px -8px #000000; */
-        }
-
-        .mapType > .button {
-            width: 100%;
-            text-align: center;
-            padding: 5px;
-        }
-
-        .mapType > .button:hover {
-            background-color: #e0e0e0;
-            color: #606c71;
-        }
-
-        .interactive-options-active {
-            margin-left: 1.5em !important;
-            height: auto !important;
-            opacity: 1 !important;
-        }
-
-        #interactive-options {
-            opacity: 0;
-            height: 0px;
-            margin-left: 0px;
-            display: flex;
-            flex-direction: column;
-            transition: opacity 2s, height 1s, margin-left .5s;
-        }
-
-        .ol-control {
-            border-radius: 5px;
-            border: 1px solid #e0e0e0;
-            -webkit-box-shadow: 0px 0px 17px -8px #000000;
-            box-shadow: 0px 0px 17px -8px #000000;
-            background: white;
-        }
-
-        .ol-control {
-            border-radius: 5px;
-            border: 1px solid #e0e0e0;
-            -webkit-box-shadow: 0px 0px 17px -8px #000000;
-            box-shadow: 0px 0px 17px -8px #000000;
-            background: white;
-        }
-
-        .ol-control button {
-            background: white;
-            color: black;
-        }
-
-        .ol-control button:hover {
-            background: #e0e0e0;
-            color: #606c71;
-        }
-    </style>
-    <script type="text/javascript">
-
-        const map = new ol.Map({
-            target: 'map',
-            layers: [],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
-                zoom: 16,
-            })
-        });
-
-        const tooltip = document.getElementById('map-tooltip');
-        const overlay = new ol.Overlay({
-            element: tooltip,
-            offset: [10, 0],
-            positioning: 'bottom-left'
-        });
-
-        setView(-81.25626560360730048, 28.81392793719928, 16);
-        generateMap('interactive');
-
-        // mayType: string ENUM[topo,navigation,satellite,city,zoning]
-        function generateMap(mapType) {
-            let sources = [];
-            document.getElementById('interactive-options').classList.remove('interactive-options-active');
-            if (mapType == 'topo') {
-                const layers = [
-                    new ol.layer.Tile({
-                        extent: [-13884991, 2870341, -7455066, 6338219],
-                        source: new ol.source.TileArcGISRest({
-                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
-                        }),
-                        zIndex: 1,
-                    }),
-                    new ol.layer.Tile({
-                        extent: [-13884991, 2870341, -7455066, 6338219],
-                        source: new ol.source.TileArcGISRest({
-                            url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
-                        }),
-                        zIndex: 2,
-                        opacity: .1,
-                    }),
-                ];
-                setView(-83.43186678985587,35.65270715586668,8);
-                layers.forEach((layer) => sources.push(layer));
-                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                            'rest/services/World_Topo_Map/MapServer">ArcGIS</a>';
-            } else if (mapType == 'navigation') {
-                const layers = [
-                    new ol.layer.Tile({
-                        extent: [-13884991, 2870341, -7455066, 6338219],
-                        source: new ol.source.TileArcGISRest({
-                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer',
-                        }),
-                        zIndex: 1,
-                    }),
-                ];
-                setView(-83.43186678985587,35.65270715586668,8);
-                layers.forEach((layer) => sources.push(layer));
-                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                            'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
-            } else if (mapType == 'satellite') {
-                const layers = [
-                    new ol.layer.Tile({
-                        extent: [-13884991, 2870341, -7455066, 6338219],
-                        source: new ol.source.TileArcGISRest({
-                            url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
-                        }),
-                        zIndex: 1,
-                    }),
-                ];
-                setView(-81.25626560360730048, 28.81392793719928, 12);
-                layers.forEach((layer) => sources.push(layer));
-                document.getElementById('map-attribution').innerHTML = '. Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                            'rest/services/World_Navigation_Charts/MapServer">ArcGIS</a>';
-            } else if (mapType == 'republic') {
-                const layers = [
-                    new ol.layer.Tile({
-                        extent: [-13884991, 2870341, -7455066, 6338219],
-                        source: new ol.source.TileArcGISRest({
-                            url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
-                        }),
-                        zIndex: 1,
-                    }),
-                    new ol.layer.Tile({
-                        extent: [-13884991, 2870341, -7455066, 6338219],
-                        source: new ol.source.TileArcGISRest({
-                            url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
-                        }),
-                        zIndex: 2,
-                        opacity: .1,
-                    }),
-                ];
-                layers.forEach((layer) => sources.push(layer));
-                setView(-81.25626560360730048, 28.81392793719928, 8);
-                document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGER Team and all private and public workers of the involved in making these datasets possible.';
-            } else if (mapType == 'interactive') {
-                document.getElementById('interactive-options').classList.add('interactive-options-active');
-                const layers = [
-                    new ol.layer.Tile({
-                        extent: [-13884991, 2870341, -7455066, 6338219],
-                        source: new ol.source.TileArcGISRest({
-                            url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/Basemaps/CommunityTIGER/MapServer',
-                        }),
-                        zIndex: 1,
-                        opacity: 1,
-                        style: new ol.style.Style({
-                            stroke: new ol.style.Stroke({
-                                color: [0, 0, 0, 0.6],
-                                width: 2,
-                                lineDash: [4,8]
-                            }),
-                            fill: new ol.style.Fill({
-                                color: 'rgba(122,122,122,.777)'
-                            }),
-                        })
-                    }),
-                ];
-                layers.forEach((layer) => sources.push(layer));
-                setView(-81.25626560360730048, 28.81392793719928, 8);
-                document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGER Team and all private and public workers of the involved in making these datasets possible.';
-            } else {
-                sources.push(new ol.layer.Tile({
-                    source: new ol.source.OSM(),
-                    zIndex: 1,
-                }));
-                document.getElementById('map-attribution').innerHTML = '.';
-            }
-
-                        // ENABLE AFTER FIXING INTERACTIVE LAYERS
-            // Add and then apply Tooltip Overlay Function
-            //map.addOverlay(overlay);
-            //map.on('pointermove', displayTooltip);
-
-            // Apply BaseLayers To Map
-            map.setLayers(sources);
-
-            var tileLayers = map.getLayers().getArray().filter(function(layer){
-                console.log(layer)
-                return layer.getSource() && layer.getSource().getTileGrid
-              });
-            console.log(tileLayers)
-
-        }
-
-        function addShapeFileLayer(id, url) {
-
-            const style = new ol.style.Style({
-                stroke: new ol.style.Stroke({
-                    color: [0, 0, 0, 0.6],
-                    width: 2,
-                    lineDash: [4,8]
-                }),
-            });
-
-            const source = new ol.source.Vector();
-
-            const checkbox = document.getElementById(id).checked;
-
-            if (checkbox) {
-                const newLayer = new ol.layer.Vector({
-                        title: id,
-                        name: id,
-                        source: source,
-                        style: style,
-                        zIndex: 3,
-                        opacity: .8,
-                })
-                shp(url).then(function(geojson){
-                    source.addFeatures(
-                        new ol.format.GeoJSON().readFeatures(geojson, {
-                            dataProjection: 'EPSG:4326',
-                            featureProjection: map.getView().getProjection()
-                        })
-                    );
-                    const finalLayers = map.getLayers();
-                    finalLayers.push(newLayer);
-                    const layerAdded = map.setLayers(finalLayers);
-                });
-            } else {
-                const layersToRemove = [];
-                const layers = map.getLayers();
-                layers.forEach((layer) => {
-                    if (layer.get('name') != undefined && layer.get('name') === id) {
-                        layersToRemove.push(layer);
-                    }
-                });
-                layersToRemove.forEach((layer) => map.removeLayer(layer));
-            }
-            document.getElementById('map-attribution').innerHTML = ' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch and all private and public workers of the involved in making these datasets possible.';
-        }
-
-        // long: FLOAT EPSG:4326 Long
-        // lat: FLOAT EPSG:4326 Lat
-        // zoom: FLOAT (furthest) 1-16 (closest)
-        function setView(long, lat, zoom) {
-            map.setView(new ol.View({
-                center: ol.proj.fromLonLat([long, lat]),
-                zoom: zoom
-            }));
-        }
-
-        function displayTooltip(event) {
-            const pixel = event.pixel;
-            const feature = map.forEachFeatureAtPixel(pixel, function(feature) {
-                return feature;
-            });
-            console.log('feature layers', feature)
-            const layer = map.forEachLayerAtPixel(pixel, function(layer) {
-                return layer;
-            });
-            console.log('tooltip layers', layer)
-            const tooltipContent = feature || layer ?
-                `<br>${feature ? feature.get('something') : ''} <br> ${layer ? layer.get('something') : ''}` : 'No Data Found <br>';
-            overlay.setPosition(event.coordinate);
-            tooltip.innerHTML = tooltipContent;
-
-            tooltip.style.display = feature || layer ? '' : '';
-        };
-
-        // Event Click Listener
-        map.on('singleclick', function (event) {
-            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate RAW ${event.coordinate}`)
-            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
-        });
-    </script>
+    {% include_relative map.md %}
 </div>
-<div class="row">
+<div class="row wide-stuffs" style="width: 100vw;
+    z-index: 0;
+    position: relative;
+    margin: 0px;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 50px;
+    flex-wrap: wrap;">
     <div class="row-logo" style="background-image:url('assets/Spotlight _Monochromatic.svg');"></div>
-    <div class="row-item">
-        <h3>Curiosity Chart</h3> This is an aggregate count of views of this repository supplied by GitHub API. <section
-            id="curiosity-container" class="curiosity-container"></section>
+    <div class="row-item" style="flex: 1;">
+        <h3>Curiosity Chart</h3> Check out this D3 Sandbox.
     </div>
+    {% include_relative d3.md %}
 </div>
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     // Set the dimensions of the canvas / graph
-    const margin = {
-        top: 30,
-        right: 20,
-        bottom: 30,
-        left: 50
-    },
-        width = 600 - margin.left - margin.right,
-        height = 270 - margin.top - margin.bottom;
-    // Parse the date / time
-    const parseDate = d3.time.format("%d-%b-%y").parse;
-    // Set the ranges
-    const x = d3.scale.ordinal().rangeRoundBands([0, width], 1);
-    const y = d3.scale.linear().range([height, 0]);
-    // Define the axes
-    const xAxis = d3.svg.axis().scale(x).orient("bottom");
-    const yAxis = d3.svg.axis().scale(y).orient("left").ticks(3);
-    // Define the line
-    const valueline = d3.svg.line().interpolate("basis").x(function (d) {
-        return x(d.superposition);
-    }).y(function (d) {
-        return y(d.value);
-    });
-    // Adds the svg canvas
-    const svg = d3.select("section").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    window.sneakyVariable = [];
-    $.ajax({
-        url: 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
-        type: 'GET',
-        success: function (data) {
-            const past = {
-                value: (data.value - 1) / 2,
-                superposition: 'The Past'
-            };
-            window.sneakyVariable.push(past);
-            $.ajax({
-                url: 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
-                type: 'GET',
-                success: function (data) {
-                    const present = {
-                        value: (data.value) / 2,
-                        superposition: 'The Present'
-                    };
-                    window.sneakyVariable.push(present);
-                    window.sneakyVariable.forEach(function (d) {
-                        d.superposition = d.superposition;
-                        d.value = +d.value;
-                    });
-                    // Scale the range of the data
-                    x.domain(d3.extent(window.sneakyVariable, function (d) {
-                        return d.superposition;
-                    }));
-                    y.domain([0, d3.max(window.sneakyVariable, function (d) {
-                        return d.value;
-                    })]);
-                    // Add the valueline path.
-                    //svg.append("path")
-                    //.attr("class", "line")
-                    //.attr("d", valueline(window.sneakyVariable));
-                    // Add the X Axis
-                    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
-                    // Add the Y Axis
-                    svg.append("g").attr("class", "y axis").call(yAxis);
-                    svg.selectAll(".dot").data(window.sneakyVariable, function (d) {
-                        return d.value
-                    }).enter().append("circle").attr("r", 3).attr("cx", function (d, i) {
-                        if (i == 0) return 175;
-                        else return 350;
-                    }).attr("cy", function (d) {
-                        return d.value
-                    }).attr("fill", function (d) {
-                        return '#155799';
-                    });
-                    // Add the line
-                    svg.append("path").datum(data).attr("fill", "none").attr("stroke", "steelblue").attr("stroke-width", 1.5).attr("d", d3.svg.line().x(function (d) {
-                        return x(d.superposition)
-                    }).y(function (d) {
-                        return y(d.value)
-                    }))
-                },
-                error: function (request, error) {
-                    alert("Request: " + JSON.stringify(request));
-                }
-            });
+    initChart();
+
+    function initChart() {
+        const margin = {
+            top: 30,
+            right: 20,
+            bottom: 30,
+            left: 50
         },
-        error: function (request, error) {
-            alert("Request: " + JSON.stringify(request));
-        }
-    });
-    const element = document.querySelector("h1");
-    element.classList.add('animate__animated');
-    window.sneakyAnimationEnum = ['animate__bounce', 'animate__pulse', 'animate__rubberBand', 'animate__shakeX', 'animate__shakeY', 'animate__swing', 'animate__tada', 'animate__jello', 'animate__heartBeat'];
-    window.sneakyCurrentAnimation = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
-    element.classList.add(window.sneakyCurrentAnimation);
-    element.addEventListener("mouseover", event => {
-        element.classList.remove(window.sneakyCurrentAnimation);
-        let current = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
-        window.sneakyCurrentAnimation = current;
-        element.classList.add(current);
-    });
-    window.hoverFriends = document.querySelectorAll('div.row-logo');
-    window.hoverFriends.forEach(element => {
+            width = 600 - margin.left - margin.right,
+            height = 270 - margin.top - margin.bottom;
+        // Parse the date / time
+        const parseDate = d3.timeFormat("%d-%b-%y").parse;
+        // Set the ranges
+        const x = d3.scaleBand()
+            .rangeRound([0, width])
+            .padding(1);
+        const y = d3.scaleLinear().range([height, 0]);
+        // Define the axes
+        const xAxis = d3.axisBottom(x).tickFormat(function(d){ return d.x;});
+        const yAxis = d3.axisLeft(y);
+        // Define the line
+        const valueline = d3.line().curve(d3.curveBasis).x(function (d) {
+            return x(d.superposition);
+        }).y(function (d) {
+            return y(d.value);
+        });
+        // Adds the svg canvas
+        const svg = d3.select("section").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        window.sneakyVariable = [];
+        $.ajax({
+            url: 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
+            type: 'GET',
+            success: function (data) {
+                const past = {
+                    value: (data.value - 1) / 2,
+                    superposition: 'The Past'
+                };
+                window.sneakyVariable.push(past);
+                $.ajax({
+                    url: 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
+                    type: 'GET',
+                    success: function (data) {
+                        const present = {
+                            value: (data.value) / 2,
+                            superposition: 'The Present'
+                        };
+                        window.sneakyVariable.push(present);
+                        window.sneakyVariable.forEach(function (d) {
+                            d.superposition = d.superposition;
+                            d.value = +d.value;
+                        });
+                        // Scale the range of the data
+                        x.domain(d3.extent(window.sneakyVariable, function (d) {
+                            return d.superposition;
+                        }));
+                        y.domain([0, d3.max(window.sneakyVariable, function (d) {
+                            return d.value;
+                        })]);
+                        // Add the valueline path.
+                        //svg.append("path")
+                        //.attr("class", "line")
+                        //.attr("d", valueline(window.sneakyVariable));
+                        // Add the X Axis
+                        svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
+                        // Add the Y Axis
+                        svg.append("g").attr("class", "y axis").call(yAxis);
+                        svg.selectAll(".dot").data(window.sneakyVariable, function (d) {
+                            return d.value
+                        }).enter().append("circle").attr("r", 3).attr("cx", function (d, i) {
+                            if (i == 0) return 175;
+                            else return 350;
+                        }).attr("cy", function (d) {
+                            return d.value
+                        }).attr("fill", function (d) {
+                            return '#155799';
+                        });
+                        // Add the line
+                        svg.append("path").datum(data).attr("fill", "none").attr("stroke", "steelblue").attr("stroke-width", 1.5).attr("d", d3.line().x(function (d) {
+                            return x(d.superposition)
+                        }).y(function (d) {
+                            return y(d.value)
+                        }))
+                    },
+                    error: function (request, error) {
+                        alert("Request: " + JSON.stringify(request));
+                    }
+                });
+            },
+            error: function (request, error) {
+                alert("Request: " + JSON.stringify(request));
+            }
+        });
+        const element = document.querySelector("h1");
         element.classList.add('animate__animated');
+        window.sneakyAnimationEnum = ['animate__bounce', 'animate__pulse', 'animate__rubberBand', 'animate__shakeX', 'animate__shakeY', 'animate__swing', 'animate__tada', 'animate__jello', 'animate__heartBeat'];
+        window.sneakyCurrentAnimation = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
+        element.classList.add(window.sneakyCurrentAnimation);
         element.addEventListener("mouseover", event => {
             element.classList.remove(window.sneakyCurrentAnimation);
             let current = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
             window.sneakyCurrentAnimation = current;
             element.classList.add(current);
         });
-    });
+        window.hoverFriends = document.querySelectorAll('div.row-logo');
+        window.hoverFriends.forEach(element => {
+            element.classList.add('animate__animated');
+            element.addEventListener("mouseover", event => {
+                element.classList.remove(window.sneakyCurrentAnimation);
+                let current = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
+                window.sneakyCurrentAnimation = current;
+                element.classList.add(current);
+            });
+        });
 
+    }
 </script>
 <style>
     .absolute {
         position: absolute;
         color: white;
-    }
-
-    #curiosity-container>path {
-        stroke: #155799;
-        stroke-width: 2;
-        fill: none;
-    }
-
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: #8ba9c7;
-        stroke-width: 1;
-        shape-rendering: crispEdges;
-    }
-
-    .dot {
-        fill: #155799;
-        stroke: #fff;
     }
 
     .footer-stuffs {
@@ -1492,44 +1119,45 @@
     </div>
 </div>
 <script>
-
-    const animateRocket = async function (direction = 1) {
+    const scrollableHeight = document.getElementById('content').scrollHeight;
+    const animateRocket = async function (direction = 1, scrollableHeight) {
         const rocket = document.getElementById('rocket');
         let bottom = parseInt(rocket.style.bottom);
         const flame = document.getElementById('flame');
         const rocketBody = document.getElementById('rocketBody');
         flame.classList.add('container');
         rocketBody.classList.add('rocketBounce');
-        const scaleFactor = Math.abs(bottom) / document.body.offsetHeight;
+        const scaleFactor = Math.abs(bottom) / scrollableHeight;
         const transformAmount = scaleFactor < .4 ? .4 : scaleFactor;
         rocket.style.transform = `scale(${transformAmount})`;
         await sleep(1);
         if (direction === 1) {
-            if (bottom > -(document.body.offsetHeight / 3)) bottom = bottom - 3;
-            else if (bottom > -(document.body.offsetHeight / 5)) bottom = bottom - 2;
+            if (bottom > -(scrollableHeight / 3)) bottom = bottom - 3;
+            else if (bottom > -(scrollableHeight / 5)) bottom = bottom - 2;
             else bottom = bottom - 1;
             rocket.style.bottom = bottom + 'px';
-            if (bottom < -(document.body.offsetHeight - 350)) {
+            if (bottom < -(scrollableHeight - 350)) {
                 flame.classList.remove('container');
                 rocketBody.classList.remove('rocketBounce');
                 await sleep(15000);
-                animateRocket(0);
+                animateRocket(0, scrollableHeight);
             } else {
-                animateRocket(1);
+                animateRocket(1, scrollableHeight);
             }
         } else {
-            if (bottom > -(document.body.offsetHeight / 3)) bottom = bottom + 3;
-            else if (bottom > -(document.body.offsetHeight / 5)) bottom = bottom + 2;
+            if (bottom > -(scrollableHeight / 3)) bottom = bottom + 3;
+            else if (bottom > -(scrollableHeight / 5)) bottom = bottom + 2;
             else bottom = bottom + 1;
             rocket.style.bottom = bottom + 'px';
             if (bottom > 800) {
                 await sleep(4444);
-                animateRocket(1);
+                animateRocket(1, scrollableHeight);
             } else {
-                animateRocket(0);
+                animateRocket(0 , scrollableHeight);
             }
         }
     };
 
-    animateRocket(0);
+    console.log(scrollableHeight)
+    animateRocket(0, scrollableHeight);
 </script>
