@@ -2,14 +2,16 @@
 <script src="https://unpkg.com/topojson@3"></script>
 <script src="https://unpkg.com/d3-delaunay@4"></script>
 <script src="https://unpkg.com/d3-geo-voronoi@1"></script>
-<svg height="600" style="width: 100%; display: block;">
-    <!-- must be in this order for drawing -->
-    <g id="basemap"></g>
-    <g id="flights"></g>
-    <g id="airports"></g>
-    <g id="voronoi"></g>
-    <text id="tooltipD3" style="display: none;"></text>
-</svg>
+<div style="width: 100%; display: block; overflow-x: auto;">
+    <svg height="600" width="1280">
+        <!-- must be in this order for drawing -->
+        <g id="basemap"></g>
+        <g id="flights"></g>
+        <g id="airports"></g>
+        <g id="voronoi"></g>
+        <text id="tooltipD3" style="display: none;"></text>
+    </svg>
+</div>
 <script>
     const urls = {
         // source: https://observablehq.com/@mbostock/u-s-airports-voronoi

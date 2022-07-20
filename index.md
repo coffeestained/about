@@ -136,7 +136,7 @@
     }
 
     .controlsExpanded {
-        background-size: 85%;
+        background-size: 100%;
         background-repeat: repeat;
         background-position: 0 0;
         padding: 153px 15px;
@@ -536,7 +536,7 @@
     <div class="row-item">
         <h3>Stuff & Things (But not limited to)</h3>
         <ul style="list-style-position: inside; padding: 0px;">
-            <li>Unix, Linux and Windows</li>
+            <li>Linux, MacOS and Windows</li>
             <li>Agile Teams</li>
             <li>Node, Python, C#</li>
             <li>HTML, JS, CSS, SCSS</li>
