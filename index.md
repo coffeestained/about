@@ -69,6 +69,10 @@
         --timeOfDayOpacity: 0;
     }
 
+    .project-name {
+        font-size: 3.25rem;
+    }
+
     /* Tooltip container */
     .tooltip {
         position: relative;
@@ -136,7 +140,7 @@
     }
 
     .controlsExpanded {
-        background-size: 100%;
+        background-size: 130%;
         background-repeat: repeat;
         background-position: 0 0;
         padding: 153px 15px;
@@ -146,7 +150,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-size: 100%;
+        background-size: 130%;
         background-repeat: repeat;
         background-position: 0 0;
         padding: 11px 15px;
@@ -305,7 +309,7 @@
 
     .page-header {
         background-image: url('assets/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
-        background-size: 100%;
+        background-size: 130%;
         background-repeat: repeat;
         background-position: 0 0;
         /*adjust s value for speed*/
@@ -412,7 +416,7 @@
         justify-content: center;
         align-items: center;
         animation: collapse .5s ease forwards, animatedBackground 850s linear infinite;
-        background-size: 100%;
+        background-size: 130%;
         background-repeat: repeat;
         background-position: 0 0;
     }
@@ -442,7 +446,7 @@
         animation: expand .5s ease forwards, animatedBackground 850s linear infinite;
         padding-top: 80px;
         padding-bottom: 80px;
-        background-size: 100%;
+        background-size: 130%;
         background-repeat: repeat;
         background-position: 0 0;
     }
