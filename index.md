@@ -442,7 +442,7 @@
         animation: expand .5s ease forwards, animatedBackground 850s linear infinite;
         padding-top: 80px;
         padding-bottom: 80px;
-        background-size: 85%;
+        background-size: 100%;
         background-repeat: repeat;
         background-position: 0 0;
     }
