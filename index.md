@@ -71,6 +71,9 @@
 
     .project-name {
         font-size: 3.25rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     /* Tooltip container */
