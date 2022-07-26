@@ -1165,6 +1165,5 @@
         }
     };
 
-    console.log(scrollableHeight)
     animateRocket(0, scrollableHeight);
 </script>

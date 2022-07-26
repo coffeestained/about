@@ -396,7 +396,7 @@
         });
         console.log('tooltip layers', layer)
         const tooltipContent = feature || layer ?
-            `<br>${feature ? feature.get('something') : ''} <br> ${layer ? layer.get('something') : ''}` : 'No Data Found <br>';
+            `<br>${feature ? feature.get('something') || 'Nothing' : ''} ${layer ? 'Coming Soon' : ''}` : 'No Data Found <br>';
         overlay.setPosition(event.coordinate);
         tooltip.innerHTML = tooltipContent;
 
