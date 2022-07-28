@@ -78,11 +78,7 @@ function realTimeChartMulti() {
     // append the svg
     svg = selection.append('svg')
       .attr('width', svgWidth)
-      .attr('height', svgHeight)
-      .style('border', function (d) {
-        if (border) return '1px solid lightgray';
-        return null;
-      });
+      .attr('height', svgHeight);
 
     // create main group and translate
     var main = svg.append('g')
@@ -160,7 +156,7 @@ function realTimeChartMulti() {
 
     // define main chart scales
     x = d3.scaleTime().range([0, width]);
-    y = d3.scaleOrdinal().domain(yDomain).range([height, 0], 1);
+    y = d3.scalePoint().domain(yDomain).range([0, height]).padding(.5);
 
     // define main chart axis
     xAxis = d3.axisBottom();
@@ -192,7 +188,7 @@ function realTimeChartMulti() {
 
     // define nav chart scales
     xNav = d3.scaleTime().range([0, widthNav]);
-    yNav = d3.scaleOrdinal().domain(yDomain).range([heightNav, 0], 1);
+    yNav = d3.scalePoint().domain(yDomain).range([heightNav, 0], 1).padding(.5);;
 
     // define nav axis
     var xAxisNav = d3.axisBottom();
@@ -203,18 +199,14 @@ function realTimeChartMulti() {
     // first, the full time domain
     var endTime = new Date(ts);
     var startTime = new Date(endTime.getTime() - maxSeconds * 1000);
-    var interval = endTime.getTime() - startTime.getTime();
 
     // then the viewport time domain (what's visible in the main chart and the viewport in the nav chart)
     var endTimeViewport = new Date(ts);
     var startTimeViewport = new Date(endTime.getTime() - width / pixelsPerSecond * 1000);
-    var intervalViewport = endTimeViewport.getTime() - startTimeViewport.getTime();
-    var offsetViewport = startTimeViewport.getTime() - startTime.getTime();
 
     // set the scale domains for main and nav charts
     x.domain([startTimeViewport, endTimeViewport]);
     xNav.domain([startTime, endTime]);
-    console.log(startTime,endTime)
 
     // update axis with modified scale
     xAxis.scale(x)(xAxisG);
@@ -222,41 +214,38 @@ function realTimeChartMulti() {
     xAxisNav.scale(xNav)(xAxisGNav);
 
     // create brush (moveable, changable rectangle that determines the time domain of main chart)
-    console.log('brush', xNav.range(),)
     var viewport = d3.brushX()
       .extent([ [xNav.range()[0],0], [xNav.range()[1],40] ])
-      .on('brush', function () {
-        console.log('brushing')
+      .on('start', function () {
+        halted = true;
+      }).on('brush', function () {
         // get the current time extent of viewport
         var extent = d3.event.selection
-        console.log(extent, startTimeViewport, endTimeViewport)
-        startTimeViewport = extent[0];
-        endTimeViewport = extent[1];
 
-        // compute viewport extent in milliseconds
-        intervalViewport = endTimeViewport.getTime() - startTimeViewport.getTime();
-        offsetViewport = startTimeViewport.getTime() - startTime.getTime();
+        let xMinSelection = extent[0];
+        let xMaxSelection = extent[1];
 
-        // handle invisible viewport
-        if (intervalViewport === 0) {
-          intervalViewport = maxSeconds * 1000;
-          offsetViewport = 0;
-        }
+        let xMax =  xNav.range()[1];
+
+        let xSelectionMin = endTimeViewport.getTime() - ((1 - (xMinSelection / xMax)) * (endTimeViewport.getTime() - startTimeViewport.getTime()));
+        let xSelectionMax = endTimeViewport.getTime() - ((1 - (xMaxSelection / xMax)) * (endTimeViewport.getTime() - startTimeViewport.getTime()));
+
+        let calculatedViewportDomain = [xSelectionMin, xSelectionMax];
 
         // update the x domain of the main chart
-        // CHECK
-        x.domain(viewport.empty() ? xNav.domain() : extent);
+        const result = x.domain(calculatedViewportDomain);
 
         // update the x axis of the main chart
-        xAxis.scale(x)(xAxisG);
+        xAxis.scale(result)(xAxisG);
 
         // update display
         refresh();
+      })
+      .on('end', function () {
+        halted = false;
       });
 
-      console.log('after brush')
     // create group and assign to brush
-
     var viewportG = nav.append('g')
       .attr('class', 'viewport')
       .call(viewport)
@@ -519,12 +508,11 @@ function realTimeChartMulti() {
     yDomain = _;
     if (svg) {
       // update the y ordinal scale
-      y = d3.scaleOrdinal().domain(yDomain).range([0, height], 1);
+      y = d3.scalePoint().domain(yDomain).range([0, height]).padding(.5);;
       // update the y axis
       yAxis.scale(y)(yAxisG);
       // update the y ordinal scale for the nav chart
-      console.log(height, heightNav, yAxisG)
-      yNav = d3.scaleOrdinal().domain(yDomain).range([0, heightNav], 1);
+      yNav = d3.scalePoint().domain(yDomain).range([0, heightNav], 1).padding(.5);;
     }
     return chart;
   };

@@ -18,6 +18,7 @@
 <script>
     document.documentElement.style
         .setProperty('overflow', 'hidden auto');
+    document.documentElement.id = 'deep';
 
     let overrideTimeOfDay = false;
     function changeTimeOfDay(value) {
@@ -563,7 +564,7 @@
     margin-bottom: 50px; flex-wrap: wrap;">
     <div class="row-logo" style="background-image:url('assets/America_Monochromatic.svg');"></div>
     <div class="row-item flex-grow">
-        <h3>Bits & Bobs</h3> Explore strange new worlds.
+        <h3>Bits & Bobs</h3> Explore strange new worlds using OpenLayers.
     </div>
     {% include_relative map.md %}
 </div>
@@ -576,7 +577,7 @@
     flex-wrap: wrap;">
     <div class="row-logo" style="background-image:url('assets/Spotlight _Monochromatic.svg');"></div>
     <div class="row-item" style="flex: 1;">
-        <h3>Curiosity Chart</h3> Check out this D3 Sandbox.
+        <h3>Curiosity Chart</h3> Check out this D3 sandbox.
     </div>
     {% include_relative d3.md %}
 </div>
