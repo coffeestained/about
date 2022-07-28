@@ -80,6 +80,12 @@ function realTimeChartMulti() {
       .attr('width', svgWidth)
       .attr('height', svgHeight);
 
+    // Ill find a better way to handle this necessary component
+    let tooltip = document.getElementById('tooltipD3');
+    if (!tooltip) svg.append("text").attr("id", "tooltipD3").style("display", "none");
+
+    const tooltipD3 = d3.select("text#tooltipD3");
+
     // create main group and translate
     var main = svg.append('g')
       .attr('transform', 'translate (' + margin.left + ',' + marginTop + ')');
@@ -298,6 +304,31 @@ function realTimeChartMulti() {
           var type = d.type || 'circle';
           var node = document.createElementNS('http://www.w3.org/2000/svg', type);
           return node;
+        })
+        .on("mouseover", function(d){
+          console.log(d, this)
+          // make tooltip take up space but keep it invisible
+          tooltipD3.style("display", null);
+          tooltipD3.style("visibility", "hidden");
+
+          // set default tooltip positioning
+          tooltipD3.attr("text-anchor", "middle");
+          tooltipD3.attr("x", this.getAttribute("x"));
+          tooltipD3.attr("y", this.getAttribute("y"));
+
+          // set the tooltip text
+          tooltipD3.text(d.tooltip);
+
+          // double check if the anchor needs to be changed
+          let bbox = tooltipD3.node().getBBox();
+
+          if (bbox.x <= 0) {
+            tooltipD3.attr("text-anchor", "start");
+          } else if (bbox.x + bbox.width >= width) {
+            tooltipD3.attr("text-anchor", "end");
+          }
+
+          tooltipD3.style("visibility", "visible");
         })
         .attr('class', 'bar')
         .attr('id', function () {
