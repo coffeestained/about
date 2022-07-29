@@ -46,6 +46,8 @@ function realTimeChartMulti() {
     yAxis,
     svg;
 
+  const initTime = new Date();
+
   // create the chart
   var chart = function (s) {
     selection = s;
@@ -79,12 +81,6 @@ function realTimeChartMulti() {
     svg = selection.append('svg')
       .attr('width', svgWidth)
       .attr('height', svgHeight);
-
-    // Ill find a better way to handle this necessary component
-    let tooltip = document.getElementById('tooltipD3');
-    if (!tooltip) svg.append("text").attr("id", "tooltipD3").style("display", "none");
-
-    const tooltipD3 = d3.select("text#tooltipD3");
 
     // create main group and translate
     var main = svg.append('g')
@@ -262,6 +258,42 @@ function realTimeChartMulti() {
 
     // initial invocation; update display
     data = [];
+
+    // Make tooltip if needed
+    let tooltip = document.getElementById('tooltipD3');
+
+    let div;
+    if (!tooltip) {
+      // create a tooltip
+      div = d3.select("#chartDiv")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .attr('id', 'tooltipD3')
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px")
+        .style("position", "absolute")
+        .style("text-shadow", 'none')
+    }
+    tooltip = document.getElementById('tooltipD3');
+
+    const mouseover = function(event,d) {
+      div.style("opacity", 1)
+    }
+    const mousemove = function(event,d) {
+      console.log(div, d, event)
+      div
+        .html(event.tooltip)
+        .style("left", ( this.getAttribute("x")) + "px")
+        .style("top", ( this.getAttribute("y")) + "px")
+    }
+    const mouseleave = function(d) {
+      div.style("opacity", 0)
+    }
+
     refresh();
 
     // function to refresh the viz upon changes of the time domain
@@ -305,31 +337,9 @@ function realTimeChartMulti() {
           var node = document.createElementNS('http://www.w3.org/2000/svg', type);
           return node;
         })
-        .on("mouseover", function(d){
-          console.log(d, this)
-          // make tooltip take up space but keep it invisible
-          tooltipD3.style("display", null);
-          tooltipD3.style("visibility", "hidden");
-
-          // set default tooltip positioning
-          tooltipD3.attr("text-anchor", "middle");
-          tooltipD3.attr("x", this.getAttribute("x"));
-          tooltipD3.attr("y", this.getAttribute("y"));
-
-          // set the tooltip text
-          tooltipD3.text(d.tooltip);
-
-          // double check if the anchor needs to be changed
-          let bbox = tooltipD3.node().getBBox();
-
-          if (bbox.x <= 0) {
-            tooltipD3.attr("text-anchor", "start");
-          } else if (bbox.x + bbox.width >= width) {
-            tooltipD3.attr("text-anchor", "end");
-          }
-
-          tooltipD3.style("visibility", "visible");
-        })
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
         .attr('class', 'bar')
         .attr('id', function () {
           return 'bar-' + barId++;
@@ -456,6 +466,10 @@ function realTimeChartMulti() {
 
       // compute new nav extents
       endTime = new Date();
+
+      // Update Elapsed
+      document.getElementById('elapsed').innerHTML = endTime.getTime() - initTime.getTime() + 'ms';
+
       startTime = new Date(endTime.getTime() - maxSeconds * 1000);
 
       // compute new viewport extents
