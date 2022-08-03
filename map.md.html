@@ -94,7 +94,7 @@
     }
 
     #geocode-input {
-        font-size: 10px;
+        font-size: 11px;
         padding: .5em;
     }
     #geocode-input-submit {
@@ -113,7 +113,7 @@
         background: rgba(255,255,255,.6);
         z-index: 999;
         border-radius: 5px;
-        font-size: 10px;
+        font-size: 11px;
         /* border: 1px solid #e0e0e0; */
         /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
         /* box-shadow: 0px 0px 17px -8px #000000; */
