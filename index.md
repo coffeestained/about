@@ -274,14 +274,13 @@
                     border-radius: 5px; max-height: 29.06px;">
             </a>
         </h3>
-        <div id="about"> In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube,
+        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ). In my free time, I like to enjoy time with my Wife, friends. I enjoy activities such as Twitch/YouTube, code tinkering (this very page is a good example),
         gaming and a wide array of outdoorsy stuff. Get connected at <a
             href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>.</div>
     </div>
 </div>
 <script>
 
-    document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
     const header = document.getElementsByTagName("header");
     window.onwheel = function (event) {
         headerScrollFunction(event)
