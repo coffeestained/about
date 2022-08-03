@@ -258,7 +258,7 @@
     }
 </style>
 
-<div class="row">
+<div class="row" id="first-row">
     <div class="row-logo" style="background-image:url('assets/Watermelon_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3 style="position: relative;">Matthew Grady ☕
@@ -286,21 +286,26 @@
         headerScrollFunction(event)
     };
 
-    function headerScrollFunction(event) {
+    async function headerScrollFunction(event) {
         const headerControls = document.getElementById('headerControls');
-        if (document.documentElement.scrollTop > 10 && event.deltaY > 0) {
+        console.log(document.documentElement.scrollTop, event.deltaY)
+        if (document.documentElement.scrollTop > 10 && document.documentElement.scrollTop < 200 && event.deltaY > 0) {
             headerControls.classList.remove('controlsExpanded');
             headerControls.classList.add('controlsCollapsed');
             header[0].classList.remove('expand');
             header[0].classList.add('collapse');
-        } else if (document.documentElement.scrollTop < 10 && event.deltaY < 0) {
+            $("#first-row").animate({ scrollTop: 0 }, "fast");
+
+        } else if (document.documentElement.scrollTop === 0 && event.deltaY < 0) {
+
             headerControls.classList.remove('controlsCollapsed');
             headerControls.classList.add('controlsExpanded');
             header[0].classList.remove('collapse');
             header[0].classList.add('expand');
-            window.scrollTo(0, 0);
+            document.getElementById('skip-to-content').scrollIntoView({
+                behavior: 'smooth'
+            });
         }
-
     }
 </script>
 <style>
@@ -570,6 +575,10 @@
         top: 0px;
         padding-top: 80px;
         padding-bottom: 80px;
+    }
+
+    .main-content {
+        padding: 8rem 6rem 2rem 6rem;
     }
 
     .main-content h1,
