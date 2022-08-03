@@ -54,7 +54,7 @@
             Search Map Using Wolfram Alpha
         </label>
         <input id="geocode-input" type="text" placeholder="Enter anything (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
-        <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
+        <i tabindex="0" id="geocode-input-submit" role="button" aria-label="Search Wolfram Alpha" title="Search Wolfram Alpha" class="fa-solid fa-magnifying-glass-location"></i>
     </div>
     <div id="map-tooltip" class="map-tooltip"></div>
 </div>

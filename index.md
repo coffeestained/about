@@ -777,7 +777,7 @@
     <div class="row-logo" style="background-image:url('assets/Web Developer_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Final Thoughts</h3>
-            In 2018, Section 508 was officially updated to include new requirements that reflect technological developments. These requirements alongside the requirements of the ADA and WCAG 2.0 directly benefits users who have accessibility needs due to disabilities. It represents a crucial tool with which to build a better and more inclusive web. This page attempts to integrate these concepts.
+            In 2018, Section 508 was officially updated to include new requirements that reflect technological developments. These requirements alongside the requirements of the ADA and WCAG 2.0 directly benefit users who have accessibility needs due to disabilities. They then represent crucial tools with which we can build a better and more inclusive web. This page attempts to integrate these concepts.
     </div>
 </div>
 
