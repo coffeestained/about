@@ -1,23 +1,47 @@
 <div id="map" class="map">
     <div class="mapType">
-        <div><input type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
-        <div><input type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
-        <div><input type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
-        <div><input type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
-        <div><input type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
+        <label for="navigation" class="hide-element">
+            Navigation Map
+        </label>
+        <div><input id="navigation" type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
+        <label for="topo" class="hide-element">
+            Topographic Map
+        </label>
+        <div><input id="topo" type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
+        <label for="satellite" class="hide-element">
+            Satellite Map
+        </label>
+        <div><input id="satellite" type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
+        <label for="republic" class="hide-element">
+            Republic Map
+        </label>
+        <div><input id="republic" type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
+        <label for="interactive" class="hide-element">
+            Interactive Map
+        </label>
+        <div><input id="interactive" type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
         <div id="interactive-options">
 
             <div>
+                <label for="county-congressional" class="hide-element">
+                    County Congressional Map Option
+                </label>
                 <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
                 <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning TODO
             </div>
 
             <div>
+                <label for="school-zoning" class="hide-element">
+                    School Districts with Stats Map Option
+                </label>
                 <input type="checkbox" id="school-zoning" name="school-zoning" onchange="addFeatureLayer('school-zoning', 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/School/MapServer/0');"/>
                 <i class="fa-solid fa-school"></i> School Districts with Stats TODO
             </div>
 
             <div>
+                <label for="trails-blazers" class="hide-element">
+                    Trail Blazers Map Option
+                </label>
                 <input type="checkbox" id="trails-blazers" name="trail-blazers" disabled="disabled" onchange="addShapeFileLayer('trail-blazers', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
                 <i class="fa-solid fa-tree-large"></i> Trail Blazers TODO
             </div>
@@ -26,6 +50,9 @@
 
     </div>
     <div class="searchMap">
+        <label for="geocode-input" class="hide-element">
+            Search Map Using Wolfram Alpha
+        </label>
         <input id="geocode-input" type="text" placeholder="Enter anything (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
         <i id="geocode-input-submit" class="fa-solid fa-magnifying-glass-location"></i>
     </div>
@@ -396,7 +423,7 @@
         });
         console.log('tooltip layers', layer)
         const tooltipContent = feature || layer ?
-            `<br>${feature ? feature.get('something') || 'Nothing' : ''} ${layer ? 'Coming Soon' : ''}` : 'No Data Found <br>';
+            `<br>${feature ? feature.get('something') : ''} <br> ${layer ? layer.get('something') : ''}` : 'No Data Found <br>';
         overlay.setPosition(event.coordinate);
         tooltip.innerHTML = tooltipContent;
 

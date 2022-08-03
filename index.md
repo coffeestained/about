@@ -10,7 +10,26 @@
     type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<!-- ACCESIBILITY SECTION <3 -->
+<style>
+    .hide-element {
+        border: 0;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        clip; rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+</style>
+
 <div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
+    <label for="dayNightSlider" class="hide-element">
+            Day / Night Slider
+    </label>
     <div class="button sun"><i class="fas fa-sun"></i></div>
     <input type="range" id="dayNightSlider" name="dayNightSlider" oninput="changeTimeOfDay(this.value)"
         onchange="changeTimeOfDay(this.value)" min="1" max="100" value="0">
@@ -177,12 +196,16 @@
     <div class="row-logo" style="background-image:url('assets/Watermelon_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3 style="position: relative;">Matthew Grady ☕
-            <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-7b752a16"><img class="hover-friends"
-                    src="assets/LI-In-Bug.png" style=" float: right; max-width: 66px;
-    padding: 5px 15px;
-    border: 1px solid #155799;
-    background: rgba(21, 87, 153, .05);
-    border-radius: 5px; max-height: 29.06px;"></a></h3>
+            <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-7b752a16">
+                <img class="hover-friends"
+                    src="assets/LI-In-Bug.png" alt="Linked In Hyperlink Image" style="
+                    float: right; max-width: 66px;
+                    padding: 5px 15px;
+                    border: 1px solid #155799;
+                    background: rgba(21, 87, 153, .05);
+                    border-radius: 5px; max-height: 29.06px;">
+            </a>
+        </h3>
         <div id="about"></div> In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube,
         gaming and a wide array of outdoorsy stuff. Get connected at <a
             href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>
@@ -534,11 +557,14 @@
     <div class="row-logo" style="background-image:url('assets/Statue of liberty_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3 style="position: relative;">10XTS
-            <a style="position: absolute; right: 0px;" href="mailto: info@10xts.com"><img src="assets/10xts.png" style=" float: right; max-width: 66px;
+            <a style="position: absolute; right: 0px;" href="mailto: info@10xts.com">
+                <img src="assets/10xts.png" alt="Mail to 10XTS Hyperlink Image" style=" float: right; max-width: 66px;
     padding: 5px 15px;
     border: 1px solid #155799;
     background: rgba(21, 87, 153, .05);
-    border-radius: 5px;"></a></h3> I'm currently working with a FinTech company out of Ohio. We are work to provide
+    border-radius: 5px;">
+            </a>
+        </h3> I'm currently working with a FinTech company out of Ohio. We are work to provide
         regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about
         launching, managing and securing traditional asset classes on new and exciting databases.
     </div>
