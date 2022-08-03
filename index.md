@@ -52,7 +52,7 @@
                 speakData.pitch = 1; // From 0 to 2
                 speakData.text = element_speech;
                 speakData.lang = 'en';
-                speakData.voice = voices[4];
+                speakData.voice = voices[2];
 
                 // pass the SpeechSynthesisUtterance to speechSynthesis.speak to start speaking
                 await speechSynthesis.speak(speakData);
@@ -648,7 +648,7 @@
         </h3>
         <div id="employment">
             I'm currently working with a FinTech company out of Ohio. We are working to provide
-            regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about
+            regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to learn more about
             launching, managing and securing traditional asset classes on new and exciting databases.
         </div>
     </div>
