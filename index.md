@@ -189,7 +189,7 @@
         </h3>
         <div id="about"></div> In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube,
         gaming and a wide array of outdoorsy stuff. Get connected at <a
-            href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>. Section 508 of the Rehabilitation Act of 1973 requires federal agencies to provide software and website accessibility to people with disabilities. I may not be a federal angency, but I think it's really important to spend time making your website as accessible as possible. Please reach out of I'm missing anything.
+            href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>.
     </div>
 </div>
 <script>
