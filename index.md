@@ -10,6 +10,22 @@
     type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<!-- ACCESIBILITY SECTION <3 -->
+<style>
+    .hide-element {
+        border: 0;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        clip; rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+</style>
+<!-- End Accessibility -->
+
 <div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
     <div class="button sun"><i class="fas fa-sun" role="presentation"></i></div>
     <label for="dayNightSlider" class="hide-element">
