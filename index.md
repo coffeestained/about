@@ -264,7 +264,7 @@
         <h3 style="position: relative;">Matthew Grady ☕
             <i class="fa-solid fa-volume-high tts" role="button" title="Introduction text-to-speech." tabindex="0"
                 aria-label="Introduction text-to-speech." onclick="speak('about')"></i>
-            <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-7b752a16">
+            <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-orlando">
                 <img class="hover-friends"
                     src="assets/LI-In-Bug.png" alt="Linked In Hyperlink Image" style="
                     float: right; max-width: 66px;
@@ -274,9 +274,9 @@
                     border-radius: 5px; max-height: 29.06px;">
             </a>
         </h3>
-        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ). In my free time, I like to enjoy time with my Wife, friends. I enjoy activities such as Twitch/YouTube, code tinkering (this very page is a good example),
+        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ). In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering (this very page is a good example),
         gaming and a wide array of outdoorsy stuff. Get connected at <a
-            href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>.</div>
+            href="https://linkedin.com/in/matthew-grady-orlando">LinkedIn</a>.</div>
     </div>
 </div>
 <script>
