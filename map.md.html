@@ -3,23 +3,23 @@
         <label for="navigation" class="hide-element">
             Navigation Map
         </label>
-        <div><input id="navigation" type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting"></i> Navigation Map</div>
+        <div><input id="navigation" type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting" role="presentation"></i> Navigation Map</div>
         <label for="topo" class="hide-element">
             Topographic Map
         </label>
-        <div><input id="topo" type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain"></i> Topographic Map</div>
+        <div><input id="topo" type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain" role="presentation"></i> Topographic Map</div>
         <label for="satellite" class="hide-element">
             Satellite Map
         </label>
-        <div><input id="satellite" type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite"></i> Satellite Map</div>
+        <div><input id="satellite" type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite" role="presentation"></i> Satellite Map</div>
         <label for="republic" class="hide-element">
             Republic Map
         </label>
-        <div><input id="republic" type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic"></i> Republic Map</div>
+        <div><input id="republic" type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic" role="presentation"></i> Republic Map</div>
         <label for="interactive" class="hide-element">
             Interactive Map
         </label>
-        <div><input id="interactive" type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic"></i> Republic Interactive Map</div>
+        <div><input id="interactive" type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic" role="presentation"></i> Republic Interactive Map</div>
         <div id="interactive-options">
 
             <div>
@@ -27,7 +27,7 @@
                     County Congressional Map Option
                 </label>
                 <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
-                <i class="fa-solid fa-scale-unbalanced"></i> County Congressional Zoning TODO
+                <i class="fa-solid fa-scale-unbalanced" role="presentation"></i> County Congressional Zoning TODO
             </div>
 
             <div>
@@ -35,7 +35,7 @@
                     School Districts with Stats Map Option
                 </label>
                 <input type="checkbox" id="school-zoning" name="school-zoning" onchange="addFeatureLayer('school-zoning', 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/School/MapServer/0');"/>
-                <i class="fa-solid fa-school"></i> School Districts with Stats TODO
+                <i class="fa-solid fa-school" role="presentation"></i> School Districts with Stats TODO
             </div>
 
             <div>
@@ -43,7 +43,7 @@
                     Trail Blazers Map Option
                 </label>
                 <input type="checkbox" id="trails-blazers" name="trail-blazers" disabled="disabled" onchange="addShapeFileLayer('trail-blazers', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
-                <i class="fa-solid fa-tree-large"></i> Trail Blazers TODO
+                <i class="fa-solid fa-tree-large" role="presentation"></i> Trail Blazers TODO
             </div>
 
         </div>

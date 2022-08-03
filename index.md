@@ -11,10 +11,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
-    <div class="button sun"><i class="fas fa-sun"></i></div>
+    <div class="button sun"><i class="fas fa-sun" role="presentation"></i></div>
+    <label for="dayNightSlider" class="hide-element">
+        Day Night Slider
+    </label>
     <input type="range" id="dayNightSlider" name="dayNightSlider" oninput="changeTimeOfDay(this.value)"
         onchange="changeTimeOfDay(this.value)" min="1" max="100" value="0">
-    <div class="button moon"><i class="fas fa-moon"></i></div>
+    <div class="button moon"><i class="fas fa-moon" role="presentation"></i></div>
     <span class="tooltiptext tooltip-bottom">Double Click to Reset</span>
 </div>
 
