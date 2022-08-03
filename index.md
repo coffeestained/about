@@ -233,6 +233,29 @@
     .headerControls .moon {
         color: darkslategrey
     }
+
+    .site-footer-owner a, .site-footer-credits a {
+        text-align: center;
+        text-decoration: underline;
+    }
+    .site-footer-owner a, .site-footer-credits a {
+        background: linear-gradient(to right, #4a4acf, #527087 , #9ec2cf, #7f6da8, #2525da);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rainbow_animation 6s ease-in-out infinite;
+        background-size: 400% 100%;
+    }
+
+    @keyframes rainbow_animation {
+        0%,100% {
+            background-position: 0 0;
+        }
+
+        50% {
+            background-position: 100% 0;
+        }
+    }
 </style>
 
 <div class="row">
