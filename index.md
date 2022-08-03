@@ -135,6 +135,7 @@
 
     .headerControls {
         position: fixed;
+        opacity: 1;
         padding: 5px;
         top: 0px;
         right: 0px;
@@ -150,7 +151,7 @@
         background-size: 130%;
         background-repeat: repeat;
         background-position: 0 0;
-        padding: 150px 15px;
+        padding: 143px 15px;
     }
 
     .controlsCollapsed {
