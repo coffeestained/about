@@ -725,17 +725,17 @@
   .alpha {
     height: 10px;
     width: 10px;
-    background: #188977;
+    background: #00FAF8;
   }
   .numeric {
     height: 10px;
     width: 10px;
-    background: #39A96B;
+    background: #F500C4;
   }
   .other {
     height: 10px;
     width: 10px;
-    background: #BFE1B0;
+    background: #FFD10D;
   }
     .axis text {
       font: 10px sans-serif;
@@ -861,9 +861,9 @@
             // Define color scale
             this.color = {
               keypress: {
-                alpha: '#188977',
-                numeric: '#39A96B',
-                other: '#BFE1B0',
+                alpha: '#00FAF8',
+                numeric: '#F500C4',
+                other: '#FFD10D',
               },
               default: '#000'
             }
@@ -889,7 +889,7 @@
                     return "alpha";
                 }
                 else if (!isNaN(character)) {
-                    return "numberic";
+                    return "numeric";
                 } else{
                     return "other";
                 }

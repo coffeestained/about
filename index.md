@@ -23,7 +23,50 @@
         position: absolute;
         width: 1px;
     }
+    i.fa-solid.fa-volume-high.tts {
+        font-size: 14px;
+        opacity: 0px;
+    }
 </style>
+<script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // Init Accessibility if available
+    if ('speechSynthesis' in window) {
+        const speakData = new SpeechSynthesisUtterance();
+        window.speechSynthesis.onvoiceschanged = async function() {
+            const voices = window.speechSynthesis.getVoices();
+            const elements = document.getElementsByClassName('tts');
+            Array.from(elements).forEach((element) => element.style.opacity = 1 );
+            window.speak = async function (text) {
+                speechSynthesis.cancel();
+                const element_speech = document.getElementById(text).innerText;
+
+                // create a SpeechSynthesisUtterance to configure the how text to be spoken
+                const speakData = new SpeechSynthesisUtterance();
+
+                speakData.volume = 1; // From 0 to 1
+                speakData.rate = 1; // From 0.1 to 10
+                speakData.pitch = 1; // From 0 to 2
+                speakData.text = element_speech;
+                speakData.lang = 'en';
+                speakData.voice = voices[4];
+
+                // pass the SpeechSynthesisUtterance to speechSynthesis.speak to start speaking
+                await speechSynthesis.speak(speakData);
+
+            }
+        };
+        // TODO TTS Options only load if speechSynthesis available
+    } else {
+        console.log(' Text-to-speech not supported. ');
+    }
+
+
+
+</script>
 <!-- End Accessibility -->
 
 <div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
@@ -196,6 +239,8 @@
     <div class="row-logo" style="background-image:url('assets/Watermelon_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3 style="position: relative;">Matthew Grady ☕
+            <i class="fa-solid fa-volume-high tts" role="button" title="Introduction text-to-speech." tabindex="0"
+                aria-label="Introduction text-to-speech." onclick="speak('about')"></i>
             <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-7b752a16">
                 <img class="hover-friends"
                     src="assets/LI-In-Bug.png" alt="Linked In Hyperlink Image" style="
@@ -206,15 +251,13 @@
                     border-radius: 5px; max-height: 29.06px;">
             </a>
         </h3>
-        <div id="about"></div> In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube,
+        <div id="about"> In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube,
         gaming and a wide array of outdoorsy stuff. Get connected at <a
-            href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>.
+            href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>.</div>
     </div>
 </div>
 <script>
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
+
     document.getElementById("about").innerHTML = "Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ).";
     const header = document.getElementsByTagName("header");
     window.onwheel = function (event) {
@@ -562,6 +605,8 @@
     <div class="row-logo" style="background-image:url('assets/Statue of liberty_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3 style="position: relative;">10XTS
+            <i class="fa-solid fa-volume-high tts" role="button" title="Employment information text-to-speech." tabindex="0"
+            aria-label="Employment information text-to-speech." onclick="speak('employment')"></i>
             <a style="position: absolute; right: 0px;" href="mailto: info@10xts.com">
                 <img src="assets/10xts.png" alt="Mail to 10XTS Hyperlink Image" style=" float: right; max-width: 66px;
     padding: 5px 15px;
@@ -569,16 +614,23 @@
     background: rgba(21, 87, 153, .05);
     border-radius: 5px;">
             </a>
-        </h3> I'm currently working with a FinTech company out of Ohio. We are work to provide
-        regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about
-        launching, managing and securing traditional asset classes on new and exciting databases.
+        </h3>
+        <div id="employment">
+            I'm currently working with a FinTech company out of Ohio. We are working to provide
+            regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to more about
+            launching, managing and securing traditional asset classes on new and exciting databases.
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Data Arranging_Monochromatic.svg');"></div>
     <div class="row-item">
-        <h3>Stuff & Things (But not limited to)</h3>
-        <ul style="list-style-position: inside; padding: 0px;">
+        <h3>Stuff & Things (But not limited to)
+
+            <i class="fa-solid fa-volume-high tts" role="button" title="Listen to Job Skills" tabindex="0"
+            aria-label="Listen to Job Skills" onclick="speak('jobSkills')"></i>
+        </h3>
+        <ul id="jobSkills" style="list-style-position: inside; padding: 0px;">
             <li>Linux, MacOS and Windows</li>
             <li>Agile Teams</li>
             <li>Node, Python, C#</li>
@@ -599,7 +651,13 @@
     margin-bottom: 50px; flex-wrap: wrap;">
     <div class="row-logo" style="background-image:url('assets/America_Monochromatic.svg');"></div>
     <div class="row-item flex-grow">
-        <h3>Bits & Bobs</h3> Explore strange new worlds using OpenLayers.
+        <h3>Bits & Bobs
+            <i class="fa-solid fa-volume-high tts" role="button" title="OpenLayers mapping text-to-speech." tabindex="0"
+            aria-label="OpenLayers mapping text-to-speech." onclick="speak('bobs')"></i>
+        </h3>
+        <div id="bobs">
+            Explore strange new worlds using OpenLayers.
+        </div>
     </div>
     {% include_relative map.md %}
 </div>
@@ -612,7 +670,13 @@
     flex-wrap: wrap;">
     <div class="row-logo" style="background-image:url('assets/Spotlight _Monochromatic.svg');"></div>
     <div class="row-item" style="flex: 1;">
-        <h3>Curiosity Chart</h3> Check out this D3 sandbox.
+        <h3>Curiosity Chart
+            <i class="fa-solid fa-volume-high tts" role="button" title="D3 charting text-to-speech." tabindex="0"
+            aria-label="D3 charting text-to-speech." onclick="speak('d3')"></i>
+        </h3>
+        <div id="d3">
+            Check out this D3 sandbox.
+        </div>
     </div>
     {% include_relative d3.md %}
 </div>
@@ -786,17 +850,28 @@
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Brainstorming session _Monochromatic.svg');"></div>
     <div class="row-item">
-        <h3>Special Thanks</h3> My Wife, the open-source community, <a
+        <h3>Special Thanks
+            <i class="fa-solid fa-volume-high tts" role="button" title="Special thanks text-to-speech." tabindex="0"
+            aria-label="Special thanks text-to-speech." onclick="speak('special')"></i>
+        </h3>
+        <div id="special">
+            My Wife, the open-source community, <a
             href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my parents, my friends, my family, my
-        co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better
-        engineer & architect, but a better person.
+            co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better
+            engineer & architect, but a better person.
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Web Developer_Monochromatic.svg');"></div>
     <div class="row-item">
-        <h3>Final Thoughts</h3>
-            In 2018, Section 508 was officially updated to include new requirements that reflect technological developments. These requirements alongside the requirements of the ADA and WCAG 2.0 directly benefit users who have accessibility needs due to disabilities. They then represent crucial tools with which we can build a better and more inclusive web. This page attempts to integrate these concepts.
+        <h3>Final Thoughts
+            <i class="fa-solid fa-volume-high tts" role="button" title="Accessibility text-to-speech." tabindex="0"
+            aria-label="Accessibility text-to-speech." onclick="speak('accessibility')"></i>
+        </h3>
+        <div id="accessibility">
+            This page is WCAG 2.1 Level AA compliant. In 2018, Section 508 was officially updated to include new requirements that reflect technological developments. These requirements alongside the requirements of the ADA and WCAG 2.0 directly benefit users who have accessibility needs due to disabilities. They then represent crucial tools with which we can build a better and more inclusive web. This page attempts to integrate these concepts.
+        </div>
     </div>
 </div>
 
@@ -1169,6 +1244,9 @@
     </div>
 </div>
 <script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     const scrollableHeight = document.getElementById('content').scrollHeight;
     const animateRocket = async function (direction = 1, scrollableHeight) {
         const rocket = document.getElementById('rocket');
