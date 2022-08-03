@@ -10,26 +10,7 @@
     type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!-- ACCESIBILITY SECTION <3 -->
-<style>
-    .hide-element {
-        border: 0;
-        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-        clip; rect(1px, 1px, 1px, 1px);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-    }
-
-</style>
-
 <div id="headerControls" class="headerControls tooltip" ondblclick="resetTimeControl()">
-    <label for="dayNightSlider" class="hide-element">
-            Day / Night Slider
-    </label>
     <div class="button sun"><i class="fas fa-sun"></i></div>
     <input type="range" id="dayNightSlider" name="dayNightSlider" oninput="changeTimeOfDay(this.value)"
         onchange="changeTimeOfDay(this.value)" min="1" max="100" value="0">
@@ -208,7 +189,7 @@
         </h3>
         <div id="about"></div> In my free time, I like to enjoy time with my Wife, friends. Or watching Twitch/YouTube,
         gaming and a wide array of outdoorsy stuff. Get connected at <a
-            href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>
+            href="https://linkedin.com/in/matthew-grady-7b752a16">LinkedIn</a>. Section 508 of the Rehabilitation Act of 1973 requires federal agencies to provide software and website accessibility to people with disabilities. I may not be a federal angency, but I think it's really important to spend time making your website as accessible as possible. Please reach out of I'm missing anything.
     </div>
 </div>
 <script>
@@ -453,6 +434,11 @@
     }
 
     .project-name {
+        z-index: 100;
+        position: relative;
+    }
+
+    .project-tagline {
         z-index: 100;
         position: relative;
     }
@@ -785,6 +771,13 @@
             href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my parents, my friends, my family, my
         co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better
         engineer & architect, but a better person.
+    </div>
+</div>
+<div class="row">
+    <div class="row-logo" style="background-image:url('assets/Web Developer_Monochromatic.svg');"></div>
+    <div class="row-item">
+        <h3>Final Thoughts</h3>
+            In 2018, Section 508 was officially updated to include new requirements that reflect technological developments. These requirements alongside the requirements of the ADA and WCAG 2.0 directly benefits users who have accessibility needs due to disabilities. It represents a crucial tool with which to build a better and more inclusive web. This page attempts to integrate these concepts.
     </div>
 </div>
 
