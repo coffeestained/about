@@ -151,7 +151,7 @@
         background-size: 130%;
         background-repeat: repeat;
         background-position: 0 0;
-        padding: 143px 15px;
+        padding: 154px 15px;
     }
 
     .controlsCollapsed {
