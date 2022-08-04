@@ -17,14 +17,14 @@
         </label>
         <div><input id="republic" type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic" role="presentation"></i> Republic Map</div>
         <label for="interactive" class="hide-element">
-            Interactive Map
+            Advanced Interactive Map
         </label>
         <div><input id="interactive" type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic" role="presentation"></i> Republic Interactive Map</div>
         <div id="interactive-options">
 
             <div>
                 <label for="county-congressional" class="hide-element">
-                    County Congressional Map Option
+                    Congressional Districts
                 </label>
                 <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
                 <i class="fa-solid fa-scale-unbalanced" role="presentation"></i> County Congressional Zoning TODO
@@ -32,7 +32,7 @@
 
             <div>
                 <label for="school-zoning" class="hide-element">
-                    School Districts with Stats Map Option
+                    School Districts
                 </label>
                 <input type="checkbox" id="school-zoning" name="school-zoning" onchange="addFeatureLayer('school-zoning', 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/School/MapServer/0');"/>
                 <i class="fa-solid fa-school" role="presentation"></i> School Districts with Stats TODO
@@ -40,7 +40,7 @@
 
             <div>
                 <label for="trails-blazers" class="hide-element">
-                    Trail Blazers Map Option
+                    Trail Blazers (Hiking)
                 </label>
                 <input type="checkbox" id="trails-blazers" name="trail-blazers" disabled="disabled" onchange="addShapeFileLayer('trail-blazers', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
                 <i class="fa-solid fa-tree-large" role="presentation"></i> Trail Blazers TODO
@@ -173,13 +173,19 @@
 </style>
 <script type="text/javascript">
 
+    const view = new ol.View({
+        center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
+        zoom: 16,
+    });
+
     const map = new ol.Map({
         target: 'map',
         layers: [],
         view: new ol.View({
             center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
             zoom: 16,
-        })
+        }),
+        controls: ol.control.defaults(),
     });
 
     const tooltip = document.getElementById('map-tooltip');
@@ -278,7 +284,10 @@
                 new ol.layer.Tile({
                     extent: ol.proj.get("EPSG:3857").getExtent(),
                     source: new ol.source.TileArcGISRest({
-                        url: 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer',
+                        url: 'https://gis.sanfordfl.gov/server/rest/services/Parcel_Base/MapServer/',
+                        params: {
+                            layers: 'show:0',
+                        }
                     }),
                     zIndex: 2,
                     opacity: 1,
@@ -291,17 +300,23 @@
                         fill: new ol.style.Fill({
                             color: 'rgba(122,122,122,.777)'
                         }),
-                    })
+                    }),
                 }),
             ];
             layers.forEach((layer) => sources.push(layer));
-            setView(-81.25626560360730048, 28.81392793719928, 8);
+            setView(-81.25626560360730048, 28.81392793719928, 12);
         } else {
             sources.push(new ol.layer.Tile({
                 source: new ol.source.OSM(),
                 zIndex: 1,
             }));
         }
+
+        // Event Click Listener
+        map.on('singleclick', function (event) {
+            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate RAW ${event.coordinate}`)
+            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
+        });
 
         // ENABLE AFTER FIXING INTERACTIVE LAYERS
         // Add and then apply Tooltip Overlay Function
@@ -430,10 +445,6 @@
         tooltip.style.display = feature || layer ? '' : '';
     };
 
-    // Event Click Listener
-    map.on('singleclick', function (event) {
-        console.log(`${new Date()} DEBUG Maps ClickEventCoordinate RAW ${event.coordinate}`)
-        console.log(`${new Date()} DEBUG Maps ClickEventCoordinate EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
-    });
+
 </script>
 
