@@ -191,7 +191,7 @@
 
     setView(-81.25626560360730048, 28.81392793719928, 16);
     generateMap('interactive');
-    setAttribution(' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGER Team and all private and public workers of the involved in making these datasets possible. Some data is Copyright:(c) 2014 Esri. Thank you ArcGIS. Thank you OpenLayers. A final thank you to the open source community and all other tinkerers who develop with geodata.')
+    setAttribution(' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGER Team and all private and public workers of the involved in making these datasets possible. Some data is Copyright:(c) 2014 Esri. Thank you ArcGIS. A final thank you to the open source community and all other tinkerers who develop with geodata.')
 
     function setAttribution(value) {
         document.getElementById('map-attribution').innerHTML = value;

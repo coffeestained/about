@@ -10,6 +10,70 @@
     type="text/css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<!-- Localization SECTION <3 -->
+<div id="localization" class="localization">
+    <select onchange="changeLocalization(this)" id="localization-select" class="form-select " aria-label="Select Language" title="Select Language" tabindex="0">
+
+    </select>
+</div>
+<style>
+    .localization {
+        position: fixed;
+        top: 334px;
+        left: 0px;
+        border-radius: 0px;
+        z-index: 999;
+        color: white;
+    }
+    .localization select {
+        background-color: transparent;
+        border-radius: 0px;
+        -webkit-box-shadow: 0px 0px 17px -8px #000000;
+        box-shadow: 0px 0px 17px -8px #000000;
+        border-color: transparent;
+        padding: .175rem 2.25rem .175rem .75rem;
+    }
+</style>
+<script type="module">
+    import { get_localization } from './assets/localization.js';
+
+    // Set Localization Object to Window
+    window.localization = get_localization();
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    $(document).ready(function(){
+
+        const select = document.getElementById('localization-select');
+
+        window.localization.options.forEach((option) => {
+            Object.keys(option).forEach((key) => {
+                const opt = document.createElement('option');
+                    opt.value = key;
+                    opt.innerHTML = option[key];
+                select.appendChild(opt);
+            });
+        });
+
+    });
+
+</script>
+<script>
+    function changeLocalization(locale) {
+        const localization = window.localization;
+        Object.keys(localization[locale.value]).forEach((key) => {
+            const element = document.getElementById(key);
+            element.innerHTML = localization[locale.value][key];
+            window.voice_lang = localization[locale.value]['voice_lang'];
+            window.voice_number = localization[locale.value]['voice_number'];
+        });
+    }
+</script>
+
+<!-- End Localization -->
+
 <!-- ACCESIBILITY SECTION <3 -->
 <style>
     .hide-element {
@@ -39,6 +103,7 @@
         window.speechSynthesis.onvoiceschanged = async function() {
             const voices = window.speechSynthesis.getVoices();
             const elements = document.getElementsByClassName('tts');
+            window.voice_lang = 'en-US';
             Array.from(elements).forEach((element) => element.style.opacity = 1 );
             window.speak = async function (text) {
                 speechSynthesis.cancel();
@@ -51,11 +116,23 @@
                 speakData.rate = 1; // From 0.1 to 10
                 speakData.pitch = 1; // From 0 to 2
                 speakData.text = element_speech;
-                speakData.lang = 'en';
-                speakData.voice = voices[2];
+                speakData.lang = window.voice_lang;
+                speakData.voice = voices[window.voice_number];
 
-                // pass the SpeechSynthesisUtterance to speechSynthesis.speak to start speaking
-                await speechSynthesis.speak(speakData);
+                // something to fix long strings from breaking
+                let myTimeout;
+
+                function myTimer() {
+                    window.speechSynthesis.pause();
+                    window.speechSynthesis.resume();
+                    myTimeout = setTimeout(myTimer, 10000);
+                }
+
+                window.speechSynthesis.cancel();
+                myTimeout = setTimeout(myTimer, 10000);
+
+                speakData.onend = function() { clearTimeout(myTimeout); }
+                window.speechSynthesis.speak(speakData);
 
             }
         };
@@ -77,7 +154,7 @@
     <input type="range" id="dayNightSlider" name="dayNightSlider" oninput="changeTimeOfDay(this.value)"
         onchange="changeTimeOfDay(this.value)" min="1" max="100" value="0">
     <div class="button moon"><i class="fas fa-moon" role="presentation"></i></div>
-    <span class="tooltiptext tooltip-bottom">Double Click to Reset</span>
+    <span id="double-click" class="tooltiptext tooltip-bottom hidden">Double Click to Reset</span>
 </div>
 
 <script>
@@ -87,13 +164,11 @@
 
     let overrideTimeOfDay = false;
     function changeTimeOfDay(value) {
-        if (value == 50) {
-            overrideTimeOfDay = false;
-        } else {
-            overrideTimeOfDay = true;
-            document.documentElement.style
-                .setProperty('--timeOfDayOpacity', value / 100);
-        }
+        document.getElementById('double-click').classList.remove('hidden');
+        overrideTimeOfDay = true;
+        document.documentElement.style
+            .setProperty('--timeOfDayOpacity', value / 100);
+
     }
 
     // Ticker Display (displaying time)
@@ -113,6 +188,8 @@
     }, 1000);
 
     function resetTimeControl() {
+        document.getElementById('double-click').classList.add('hidden');
+        ticker = 0;
         document.documentElement.style
             .setProperty('--timeOfDayOpacity', 0);
         document.getElementById('dayNightSlider').value = 0;
@@ -133,6 +210,10 @@
         --nine-opacity: .9;
         --ten-opacity: 1;
         --timeOfDayOpacity: 0;
+    }
+
+    .hidden {
+        opacity: 0 !important;
     }
 
     .project-name {
@@ -156,17 +237,13 @@
         width: 120px;
         color: darkslategrey;
         text-align: center;
-        padding: 5px 0;
+        padding: 30px 0px;
         border-radius: 6px;
-
-        /* Position the tooltip text */
         position: absolute;
         z-index: 1;
-        bottom: 125%;
+        bottom: 0px;
         left: 50%;
         margin-left: -60px;
-
-        /* Fade in tooltip */
         opacity: 0;
         transition: opacity 0.3s;
     }
@@ -178,6 +255,7 @@
         top: 0%;
         left: 50%;
         margin-left: -5px;
+        margin-top: 20px;
         border-width: 5px;
         border-style: solid;
         border-color: transparent transparent #555 transparent;
@@ -224,6 +302,23 @@
         background-repeat: repeat;
         background-position: 0 0;
         padding: 11px 15px;
+    }
+
+    .collapse .project-tagline {
+        display: none;
+    }
+
+    .collapse:not(.show) {
+        display: block;
+        height: 44px;
+    }
+
+    .collapse:not(.show) .project-name {
+        margin-top: 12px;
+    }
+
+    .tooltip {
+        border-color: transparent;
     }
 
     .headerControls .sun {
@@ -288,16 +383,14 @@
 
     async function headerScrollFunction(event) {
         const headerControls = document.getElementById('headerControls');
-        console.log(document.documentElement.scrollTop, event.deltaY)
         if (document.documentElement.scrollTop > 10 && document.documentElement.scrollTop < 200 && event.deltaY > 0) {
             headerControls.classList.remove('controlsExpanded');
             headerControls.classList.add('controlsCollapsed');
             header[0].classList.remove('expand');
             header[0].classList.add('collapse');
             $("#first-row").animate({ scrollTop: 0 }, "fast");
-
+            document.getElementById('localization').style.top = '44px';
         } else if (document.documentElement.scrollTop === 0 && event.deltaY < 0) {
-
             headerControls.classList.remove('controlsCollapsed');
             headerControls.classList.add('controlsExpanded');
             header[0].classList.remove('collapse');
@@ -305,6 +398,7 @@
             document.getElementById('skip-to-content').scrollIntoView({
                 behavior: 'smooth'
             });
+            document.getElementById('localization').style.top = '334px';
         }
     }
 </script>
@@ -1318,4 +1412,10 @@
     };
 
     animateRocket(0, scrollableHeight);
+</script>
+
+<script>
+    $(document).ready(function(){
+        $(this).scrollTop(0);
+    });
 </script>
