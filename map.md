@@ -1,69 +1,3 @@
-<div id="map" class="map">
-    <div class="mapType">
-        <label for="navigation" class="hide-element">
-            Navigation Map
-        </label>
-        <div><input id="navigation" type="radio" name="mapType" onchange="generateMap('navigation', null);" /> <i class="fa-solid fa-compass-drafting" role="presentation"></i> Navigation Map</div>
-        <label for="topo" class="hide-element">
-            Topographic Map
-        </label>
-        <div><input id="topo" type="radio" name="mapType" onchange="generateMap('topo', null);" /> <i class="fa-solid fa-mountain" role="presentation"></i> Topographic Map</div>
-        <label for="satellite" class="hide-element">
-            Satellite Map
-        </label>
-        <div><input id="satellite" type="radio" name="mapType" onchange="generateMap('satellite', null);" /> <i class="fa-solid fa-satellite" role="presentation"></i> Satellite Map</div>
-        <label for="republic" class="hide-element">
-            Republic Map
-        </label>
-        <div><input id="republic" type="radio" name="mapType" onchange="generateMap('republic', null);"/> <i class="fa-brands fa-old-republic" role="presentation"></i> Republic Map</div>
-        <label for="interactive" class="hide-element">
-            Advanced Interactive Map
-        </label>
-        <div><input id="interactive" type="radio" name="mapType" checked="checked" onchange="generateMap('interactive', null);"/> <i class="fa-brands fa-galactic-republic" role="presentation"></i> Republic Interactive Map</div>
-        <div id="interactive-options">
-
-            <div>
-                <label for="county-congressional" class="hide-element">
-                    Congressional Districts
-                </label>
-                <input type="checkbox" id="county-congressional" name="county-congressional" onchange="addShapeFileLayer('county-congressional', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
-                <i class="fa-solid fa-scale-unbalanced" role="presentation"></i> County Congressional Zoning TODO
-            </div>
-
-            <div>
-                <label for="school-zoning" class="hide-element">
-                    School Districts
-                </label>
-                <input type="checkbox" id="school-zoning" name="school-zoning" onchange="addFeatureLayer('school-zoning', 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/School/MapServer/0');"/>
-                <i class="fa-solid fa-school" role="presentation"></i> School Districts with Stats TODO
-            </div>
-
-            <div>
-                <label for="trails-blazers" class="hide-element">
-                    Trail Blazers (Hiking)
-                </label>
-                <input type="checkbox" id="trails-blazers" name="trail-blazers" disabled="disabled" onchange="addShapeFileLayer('trail-blazers', 'https://coffeestained.github.io/about-this-dev/assets/cb_2021_us_county_within_cd116_500k');"/>
-                <i class="fa-solid fa-tree-large" role="presentation"></i> Trail Blazers TODO
-            </div>
-
-        </div>
-
-    </div>
-    <div class="searchMap">
-        <label for="geocode-input" class="hide-element">
-            Search Map Using Wolfram Alpha
-        </label>
-        <input id="geocode-input" type="text" placeholder="Enter anything (Powered by Wolfram|Alpha) (Coming Soon?) " size="50" />
-        <i tabindex="0" id="geocode-input-submit" role="button" aria-label="Search Wolfram Alpha" title="Search Wolfram Alpha" class="fa-solid fa-magnifying-glass-location"></i>
-    </div>
-    <div id="map-tooltip" class="map-tooltip"></div>
-</div>
-<small>Attribution: Thanks to OpenLayers<span id="map-attribution"></span></small>
-<script
-    src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
-<link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css">
-<script src="https://cdn.jsdelivr.net/npm/shpjs@4.0.3/dist/shp.js"></script>
 <style>
     .map {
         position: relative;
@@ -72,379 +6,998 @@
         z-index: 0;
         margin: 1.5em;
     }
-
-    .map-tooltip {
-        position: relative;
-        padding: 5px;
-        background: rgba(255,255,255,.6);
-        color: black;
-        white-space: nowrap;
-        font: 10px Arial;
-    }
-
-    .searchMap {
-        position: absolute;
-        padding: 5px;
-        top: .5em;
-        left: 42px;
-        background: rgba(255,255,255,.6);
-        z-index: 999;
-        border-radius: 5px;
-        line-height: 1;
-    }
-
-    #geocode-input {
-        font-size: 11px;
-        padding: .5em;
-    }
-    #geocode-input-submit {
-        position: relative;
-        top: .2em;
-        cursor: pointer;
-    }
-
-    .mapType {
-        position: absolute;
-        /* width: 150px; */
-        margin: .5em;
-        padding: 5px;
-        top: .5em;
-        right: 0px;
-        background: rgba(255,255,255,.6);
-        z-index: 999;
-        border-radius: 5px;
-        font-size: 11px;
-        /* border: 1px solid #e0e0e0; */
-        /* -webkit-box-shadow: 0px 0px 17px -8px #000000; */
-        /* box-shadow: 0px 0px 17px -8px #000000; */
-    }
-
-    .mapType > .button {
-        width: 100%;
-        text-align: center;
-        padding: 5px;
-    }
-
-    .mapType > .button:hover {
-        background-color: #e0e0e0;
-        color: #606c71;
-    }
-
-    .interactive-options-active {
-        margin-left: 1.5em !important;
-        height: auto !important;
-        opacity: 1 !important;
-    }
-
-    #interactive-options {
-        opacity: 0;
-        height: 0px;
-        margin-left: 0px;
-        display: flex;
-        flex-direction: column;
-        transition: opacity 2s, height 1s, margin-left .5s;
-    }
-
-    .ol-control {
-        border-radius: 5px;
-        border: 1px solid #e0e0e0;
-        -webkit-box-shadow: 0px 0px 17px -8px #000000;
-        box-shadow: 0px 0px 17px -8px #000000;
-        background: white;
-    }
-
-    .ol-control {
-        border-radius: 5px;
-        border: 1px solid #e0e0e0;
-        -webkit-box-shadow: 0px 0px 17px -8px #000000;
-        box-shadow: 0px 0px 17px -8px #000000;
-        background: white;
-    }
-
-    .ol-control button {
-        background: white;
-        color: black;
-    }
-
-    .ol-control button:hover {
-        background: #e0e0e0;
-        color: #606c71;
-    }
 </style>
-<script type="text/javascript">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
+  <script defer src="https://js.arcgis.com/4.24/"></script>
 
-    const view = new ol.View({
-        center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
-        zoom: 16,
-    });
+  <script defer >
 
-    const map = new ol.Map({
-        target: 'map',
-        layers: [],
-        view: new ol.View({
-            center: ol.proj.fromLonLat([-81.26560360730048, 28.81392793719928]),
-            zoom: 16,
-        }),
-        controls: ol.control.defaults(),
-    });
+    (async () => {
+        await sleep(2000)
+        require([
+            "esri/config",
+            "esri/core/reactiveUtils",
+            "esri/WebMap",
+            "esri/Map",
+            "esri/Basemap",
+            "esri/views/MapView",
+            "esri/layers/MapImageLayer",
+            "esri/layers/BaseTileLayer",
+            "esri/layers/TileLayer",
+            "esri/layers/FeatureLayer",
+            "esri/widgets/Popup",
+            "esri/renderers/support/jsonUtils",
+            ],
+        function (
+            esriConfig,
+            reactiveUtils,
+            WebMap,
+            Map,
+            Basemap,
+            MapView,
+            MapImageLayer,
+            BaseTileLayer,
+            TileLayer,
+            FeatureLayer,
+            Popup,
+            rendererJsonUtils,
+            ) {
 
-    const tooltip = document.getElementById('map-tooltip');
-    const overlay = new ol.Overlay({
-        element: tooltip,
-        offset: [10, 0],
-        positioning: 'bottom-left'
-    });
+            // TODO Change to Unique Value Per Field
+            const new_renderer = rendererJsonUtils.fromJSON(
+            {
+                "type": "uniqueValue",
+                "field1": "ZONECODE",
+                "field2": null,
+                "field3": null,
+                "defaultSymbol": null,
+                "defaultLabel": null,
+                "uniqueValueInfos": [
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                190,
+                                239,
+                                71,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "AG",
+                        "label": "Agriculture",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                239,
+                                99,
+                                99,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "GC2",
+                        "label": "General Commercial",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                152,
+                                127,
+                                239,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "MI2",
+                        "label": "Medium Industrial",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                239,
+                                175,
+                                155,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "SR2",
+                        "label": "Mobile Home",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                204,
+                                127,
+                                239,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "RMOI",
+                        "label": "Multi-Fam. Res./Office/Institutional",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                238,
+                                164,
+                                99,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "MR2",
+                        "label": "Multi-Fam. Residential 15DU/ac.",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                147,
+                                113,
+                                78,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "MR3",
+                        "label": "Multi-Fam. Residential 20DU/ac.",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                239,
+                                202,
+                                169,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "MR1",
+                        "label": "Multi-Fam. Residential 8DU/ac.",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                234,
+                                51,
+                                162,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "PRO",
+                        "label": "Parks, Recreation and Open Space",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                239,
+                                189,
+                                71,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "PD",
+                        "label": "Planned Development",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                252,
+                                197,
+                                239,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "RC1",
+                        "label": "Restricted Commercial",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                155,
+                                239,
+                                223,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "RI1",
+                        "label": "Restricted Industrial",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                239,
+                                236,
+                                197,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "SR1AA",
+                        "label": "Single Fam. Residential 10,000 sq. ft Lots",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                168,
+                                158,
+                                10,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "SR1",
+                        "label": "Single Fam. Residential 6,000 sq. ft Lots",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                239,
+                                231,
+                                113,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "SR1A",
+                        "label": "Single Fam. Residential 7,500 sq. ft Lots",
+                        "description": ""
+                    },
+                    {
+                        "symbol": {
+                            "type": "esriSFS",
+                            "style": "esriSFSSolid",
+                            "color": [
+                                185,
+                                169,
+                                239,
+                                50
+                            ],
+                            "outline": {
+                                "type": "esriSLS",
+                                "style": "esriSLSSolid",
+                                "color": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                "width": 0.40000000000000002
+                            }
+                        },
+                        "value": "SC3",
+                        "label": "Special Commercial",
+                        "description": ""
+                    }
+                ],
+                "fieldDelimiter": ","
+            }
+            );
 
-    setView(-81.25626560360730048, 28.81392793719928, 16);
-    generateMap('interactive');
-    setAttribution(' and the U.S. Department of Commerce, U.S. Census Bureau, Geography Division, Geographic Customer Services Branch, the TIGER Team and all private and public workers of the involved in making these datasets possible. Some data is Copyright:(c) 2014 Esri. Thank you ArcGIS. A final thank you to the open source community and all other tinkerers who develop with geodata.')
-
-    function setAttribution(value) {
-        document.getElementById('map-attribution').innerHTML = value;
-    }
-
-    // mayType: string ENUM[topo,navigation,satellite,city,zoning]
-    function generateMap(mapType) {
-        let sources = [];
-        document.getElementById('interactive-options').classList.remove('interactive-options-active');
-        if (mapType == 'topo') {
-            const layers = [
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
-                    }),
-                    zIndex: 1,
-                }),
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
-                    }),
-                    zIndex: 2,
-                    opacity: .1,
-                }),
-            ];
-            setView(-83.43186678985587,35.65270715586668,8);
-            layers.forEach((layer) => sources.push(layer));
-        } else if (mapType == 'navigation') {
-            const layers = [
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Specialty/World_Navigation_Charts/MapServer',
-                    }),
-                    zIndex: 1,
-                }),
-            ];
-            setView(-83.43186678985587,35.65270715586668,8);
-            layers.forEach((layer) => sources.push(layer));
-        } else if (mapType == 'satellite') {
-            const layers = [
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
-                    }),
-                    zIndex: 1,
-                }),
-            ];
-            setView(-81.25626560360730048, 28.81392793719928, 12);
-            layers.forEach((layer) => sources.push(layer));
-        } else if (mapType == 'republic') {
-            const layers = [
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
-                    }),
-                    zIndex: 1,
-                }),
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer',
-                    }),
-                    zIndex: 2,
-                    opacity: .1,
-                }),
-            ];
-            layers.forEach((layer) => sources.push(layer));
-            setView(-81.25626560360730048, 28.81392793719928, 8);
-        } else if (mapType == 'interactive') {
-            document.getElementById('interactive-options').classList.add('interactive-options-active');
-            const layers = [
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer',
-                    }),
-                    zIndex: 1,
-                }),
-                new ol.layer.Tile({
-                    extent: ol.proj.get("EPSG:3857").getExtent(),
-                    source: new ol.source.TileArcGISRest({
-                        url: 'https://gis.sanfordfl.gov/server/rest/services/Parcel_Base/MapServer/',
-                        params: {
-                            layers: 'show:0',
-                        }
-                    }),
-                    zIndex: 2,
-                    opacity: 1,
-                    style: new ol.style.Style({
-                        stroke: new ol.style.Stroke({
-                            color: [0, 0, 0, 0.6],
-                            width: 2,
-                            lineDash: [4,8]
-                        }),
-                        fill: new ol.style.Fill({
-                            color: 'rgba(122,122,122,.777)'
-                        }),
-                    }),
-                }),
-            ];
-            layers.forEach((layer) => sources.push(layer));
-            setView(-81.25626560360730048, 28.81392793719928, 12);
-        } else {
-            sources.push(new ol.layer.Tile({
-                source: new ol.source.OSM(),
-                zIndex: 1,
-            }));
-        }
-
-        // Event Click Listener
-        map.on('singleclick', function (event) {
-            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate RAW ${event.coordinate}`)
-            console.log(`${new Date()} DEBUG Maps ClickEventCoordinate EPSG:3857,EPSG:4326 ${ol.proj.transform(event.coordinate, 'EPSG:3857', 'EPSG:4326')}`);
-        });
-
-        // ENABLE AFTER FIXING INTERACTIVE LAYERS
-        // Add and then apply Tooltip Overlay Function
-        map.addOverlay(overlay);
-        map.on('pointermove', displayTooltip);
-
-        // Apply BaseLayers To Map
-        map.setLayers(sources);
-
-    }
-
-    // Add FeatureLayer Function
-    function addFeatureLayer(id, url) {
-
-        const style = new ol.style.Style({
-            stroke: new ol.style.Stroke({
-                color: [0, 0, 0, 0.6],
-                width: 2,
-                lineDash: [4,8]
-            }),
-        });
-
-        const source = new ol.source.Vector();
-
-        const checkbox = document.getElementById(id).checked;
-
-        if (checkbox) {
-            const newLayer = new ol.layer.Vector({
-                title: id,
-                name: id,
-                source: new ol.source.Vector({
-                    url: url,
-                    format: new ol.format.EsriJSON()
-                }),
-                style: style,
-                zIndex: 3,
-                opacity: .8,
-            })
-            const finalLayers = map.getLayers();
-            finalLayers.push(newLayer);
-            const layerAdded = map.setLayers(finalLayers);
-        } else {
-            const layersToRemove = [];
-            const layers = map.getLayers();
-            layers.forEach((layer) => {
-                if (layer.get('name') != undefined && layer.get('name') === id) {
-                    layersToRemove.push(layer);
-                }
-            });
-            layersToRemove.forEach((layer) => map.removeLayer(layer));
-        }
-    }
-
-    // Add ShapeFile Layer Function
-    function addShapeFileLayer(id, url) {
-
-        const style = new ol.style.Style({
-            stroke: new ol.style.Stroke({
-                color: [0, 0, 0, 0.6],
-                width: 2,
-                lineDash: [4,8]
-            }),
-        });
-
-        const source = new ol.source.Vector();
-
-        const checkbox = document.getElementById(id).checked;
-
-        if (checkbox) {
-            const newLayer = new ol.layer.Vector({
-                    title: id,
-                    name: id,
-                    source: source,
-                    style: style,
-                    zIndex: 3,
-                    opacity: .8,
-            })
-            shp(url).then(function(geojson){
-                source.addFeatures(
-                    new ol.format.GeoJSON().readFeatures(geojson, {
-                        dataProjection: 'EPSG:4326',
-                        featureProjection: map.getView().getProjection()
+            const basemap = new Basemap({
+                baseLayers: [
+                    new TileLayer({
+                        id: "defaultBasemap",
+                        layerType: "ArcGISTiledMapServiceLayer",
+                        url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+                        title: "Basemap",
+                        visibility: true,
+                        opacity: 1,
+                        title: "Topographic",
                     })
-                );
-                const finalLayers = map.getLayers();
-                finalLayers.push(newLayer);
-                const layerAdded = map.setLayers(finalLayers);
+                ],
+                title: "basemap",
+                id: "basemap"
             });
-        } else {
-            const layersToRemove = [];
-            const layers = map.getLayers();
-            layers.forEach((layer) => {
-                if (layer.get('name') != undefined && layer.get('name') === id) {
-                    layersToRemove.push(layer);
+
+            const parcel_base = new TileLayer({
+                url: 'https://gis.sanfordfl.gov/server/rest/services/Parcel_Base/MapServer/0',
+                title: 'Sanford Parcels',
+                popupInfo: {
+                    title: "Parcels: {GISAssets.DBO.Parcels.PARCEL}",
+                    fieldInfos: [
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.OBJECTID",
+                        label: "OBJECTID",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.PARCEL",
+                        label: "PARCEL",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.PARCEL_KEY",
+                        label: "PARCEL_KEY",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.GIS_ACRES",
+                        label: "GIS Acres",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.LEG_ACRES",
+                        label: "LEG_ACRES",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.EDIT_DATE",
+                        label: "EDIT_DATE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        dateFormat: "shortDateShortTime"
+                        }
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.SPLIT",
+                        label: "SPLIT",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.EDIT_USER",
+                        label: "USER",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.Shape",
+                        label: "Shape",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.OBJECTID",
+                        label: "OBJECTID",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 0,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.PARCEL",
+                        label: "PARCEL",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.PARCEL_KEY",
+                        label: "PARCEL_KEY",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.TD",
+                        label: "TD",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.DOR",
+                        label: "DOR",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.OWNER",
+                        label: "Owner: ",
+                        tooltip: "",
+                        visible: true,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.ADD1",
+                        label: "ADD1",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.ADD2",
+                        label: "ADD2",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.CITY",
+                        label: "CITY",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.STATE",
+                        label: "STATE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.ZIP",
+                        label: "ZIP",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_NUM",
+                        label: "PAD_NUM",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_DIR",
+                        label: "PAD_DIR",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_NAME",
+                        label: "PAD_NAME",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_STREET",
+                        label: "PAD_STREET",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.EI_CODE",
+                        label: "EI_CODE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.EI_NUMBER",
+                        label: "EI_NUMBER",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 0,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.APPR_BLDG",
+                        label: "APPR_BLDG",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.APPR_EXFT",
+                        label: "APPR_EXFT",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.APPR_LAND",
+                        label: "APPR_LAND",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.ADJ_AG",
+                        label: "ADJ_AG",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.INCOME_VALUE",
+                        label: "INCOME_VALUE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.INCOME_IND",
+                        label: "INCOME_IND",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_ASSESSED_VALUE",
+                        label: "TOTAL_ASSESSED_VALUE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_JUST_VALUE",
+                        label: "TOTAL_JUST_VALUE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.EXEMPT_REMOVAL_CODE",
+                        label: "EXEMPT_REMOVAL_CODE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.EXMP",
+                        label: "EXMP",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.NBHD_FACTOR",
+                        label: "NBHD_FACTOR",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.HMST_YEAR_GRANTED",
+                        label: "HMST_YEAR_GRANTED",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 0,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_NEW_CONST",
+                        label: "TOTAL_NEW_CONST",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_AMD10_CLASSIFIED",
+                        label: "TOTAL_AMD10_CLASSIFIED",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.BLDG_TYPE",
+                        label: "BLDG_TYPE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_SQFT",
+                        label: "TOTAL_SQFT",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.LIVING_AREA",
+                        label: "LIVING_AREA",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.BASE_YR_BLT",
+                        label: "BASE_YR_BLT",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.BASE_RATE",
+                        label: "BASE_RATE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 2,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.POOLS",
+                        label: "POOLS",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.FIREPLACES",
+                        label: "FIREPLACES",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.EXFT_CODE",
+                        label: "EXFT_CODE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.LAND_ASSESS_CODE",
+                        label: "LAND_ASSESS_CODE",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "Gisassets.DBO.ParcelTable1.FACILITY_NAME",
+                        label: "FACILITY_NAME",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.NC_FLAG",
+                        label: "NC_FLAG",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox",
+                        format: {
+                        places: 0,
+                        digitSeparator: true
+                        }
+                    },
+                    {
+                        fieldName: "GISAssets.DBO.Parcels.GLOBALID",
+                        label: "GISAssets.DBO.Parcels.GLOBALID",
+                        tooltip: "",
+                        visible: false,
+                        stringFieldOption: "textbox"
+                    }
+                    ],
+                    description: null,
+                    showAttachments: true,
+                    mediaInfos: []
                 }
             });
-            layersToRemove.forEach((layer) => map.removeLayer(layer));
-        }
-    }
+            const feature = new FeatureLayer({
+                url: 'https://services1.arcgis.com/EPXb1p5YttfWtj8l/arcgis/rest/services/Zoning/FeatureServer',
+                title: 'Sanford Parcels Feature Layer',
+                f: 'pbf',
+                renderer: new_renderer,
+                outFields: ["*"],
+            });
+            const feature_two = new FeatureLayer({
+                url: 'https://services1.arcgis.com/EPXb1p5YttfWtj8l/arcgis/rest/services/Zoning/FeatureServer',
+                title: 'Sanford Parcels Feature Layer',
+                f: 'json',
+                renderer: new_renderer,
+                outFields: ["*"],
+            });
 
-    // long: FLOAT EPSG:4326 Long
-    // lat: FLOAT EPSG:4326 Lat
-    // zoom: FLOAT (furthest) 1-16 (closest)
-    function setView(long, lat, zoom) {
-        map.setView(new ol.View({
-            center: ol.proj.fromLonLat([long, lat]),
-            zoom: zoom
-        }));
-    }
+            const map = new Map({
+                basemap: basemap,
+                layers: [feature, parcel_base]
+            });
 
-    function displayTooltip(event) {
-        const pixel = event.pixel;
-        const feature = map.forEachFeatureAtPixel(pixel, function(feature) {
-            return feature;
+            const view = new MapView({
+                map: map,
+                center: [-81.27152091122406, 28.813592973393817], // Longitude, latitude
+                zoom: 14, // Zoom level
+                container: "map", // Div element
+                constraints: {
+                    rotationEnabled: false,
+                }
+            });
+
+            view.on("pointer-down", eventHandler);
+
+            function eventHandler(event) {
+                view.hitTest(event).then(function (response) {
+                    if (response.results.length) {
+                        console.log(response.results)
+                    const graphic = response.results[0].graphic;
+                    const attributes = graphic.attributes;
+                    console.log(attributes);
+                    }
+                });
+            }
+
+            // Click Events
+            view.on("click", clickEvent);
+
+            function clickEvent(event) {
+                console.log(event)
+            }
+
         });
-        console.log('feature layers', feature)
-        const layer = map.forEachLayerAtPixel(pixel, function(layer) {
-            return layer;
-        });
-        console.log('tooltip layers', layer)
-        const tooltipContent = feature || layer ?
-            `<br>${feature ? feature.get('something') : ''} <br> ${layer ? 'Feature layers coming soon.' : ''}` : 'No Data Found <br>';
-        overlay.setPosition(event.coordinate);
-        tooltip.innerHTML = tooltipContent;
+    })().catch(err => {
+        console.error(err);
+    });
 
-        tooltip.style.display = feature || layer ? '' : '';
-    };
+  </script>
 
+  <div id="map" class="map"></div>
 
-</script>
-
+z

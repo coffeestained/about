@@ -981,7 +981,7 @@
         </h3>
         <div id="special">
             My Wife, the open-source community, <a
-            href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my parents, my friends, my family, my
+            href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my home state of Florida, my parents, my friends, my family, my
             co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better
             engineer & architect, but a better person.
         </div>
@@ -1419,3 +1419,4 @@
         $(this).scrollTop(0);
     });
 </script>
+
