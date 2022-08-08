@@ -25,7 +25,11 @@
             "esri/layers/BaseTileLayer",
             "esri/layers/TileLayer",
             "esri/layers/FeatureLayer",
+            "esri/layers/support/LabelClass",
             "esri/widgets/Popup",
+            "esri/popup/FieldInfo",
+            "esri/popup/content/FieldsContent",
+            "esri/popup/content/CustomContent",
             "esri/renderers/support/jsonUtils",
             ],
         function (
@@ -39,13 +43,16 @@
             BaseTileLayer,
             TileLayer,
             FeatureLayer,
+            LabelClass,
             Popup,
+            FieldInfo,
+            FieldsContent,
+            CustomContent,
             rendererJsonUtils,
             ) {
 
-            // TODO Change to Unique Value Per Field
-            const new_renderer = rendererJsonUtils.fromJSON(
-            {
+            // Renderer JSON
+            const renderer_json = {
                 "type": "uniqueValue",
                 "field1": "ZONECODE",
                 "field2": null,
@@ -61,7 +68,7 @@
                                 190,
                                 239,
                                 71,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -70,7 +77,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -96,7 +103,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -113,7 +120,7 @@
                                 152,
                                 127,
                                 239,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -122,7 +129,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -139,7 +146,7 @@
                                 239,
                                 175,
                                 155,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -148,7 +155,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -165,7 +172,7 @@
                                 204,
                                 127,
                                 239,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -174,7 +181,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -191,7 +198,7 @@
                                 238,
                                 164,
                                 99,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -200,7 +207,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -217,7 +224,7 @@
                                 147,
                                 113,
                                 78,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -226,7 +233,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -243,7 +250,7 @@
                                 239,
                                 202,
                                 169,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -252,7 +259,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -269,7 +276,7 @@
                                 234,
                                 51,
                                 162,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -278,7 +285,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -295,7 +302,7 @@
                                 239,
                                 189,
                                 71,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -304,7 +311,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -321,7 +328,7 @@
                                 252,
                                 197,
                                 239,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -330,7 +337,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -347,7 +354,7 @@
                                 155,
                                 239,
                                 223,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -356,7 +363,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -373,7 +380,7 @@
                                 239,
                                 236,
                                 197,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -382,7 +389,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -399,7 +406,7 @@
                                 168,
                                 158,
                                 10,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -408,7 +415,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -425,7 +432,7 @@
                                 239,
                                 231,
                                 113,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -434,7 +441,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -451,7 +458,7 @@
                                 185,
                                 169,
                                 239,
-                                50
+                                100
                             ],
                             "outline": {
                                 "type": "esriSLS",
@@ -460,7 +467,7 @@
                                     0,
                                     0,
                                     0,
-                                    0
+                                    100
                                 ],
                                 "width": 0.40000000000000002
                             }
@@ -471,7 +478,10 @@
                     }
                 ],
                 "fieldDelimiter": ","
-            }
+            };
+
+            const new_renderer = rendererJsonUtils.fromJSON(
+                renderer_json
             );
 
             const basemap = new Basemap({
@@ -490,475 +500,548 @@
                 id: "basemap"
             });
 
-            const parcel_base = new TileLayer({
+            const parcel_tile = new TileLayer({
+                url: 'https://gis.sanfordfl.gov/server/rest/services/Parcel_Base/MapServer',
+                title: 'Sanford Parcels Tile',
+            });
+
+            const parcel_feature = new FeatureLayer({
                 url: 'https://gis.sanfordfl.gov/server/rest/services/Parcel_Base/MapServer/0',
-                title: 'Sanford Parcels',
-                popupInfo: {
-                    title: "Parcels: {GISAssets.DBO.Parcels.PARCEL}",
-                    fieldInfos: [
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.OBJECTID",
-                        label: "OBJECTID",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.PARCEL",
-                        label: "PARCEL",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.PARCEL_KEY",
-                        label: "PARCEL_KEY",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.GIS_ACRES",
-                        label: "GIS Acres",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
+                title: 'Sanford Parcels Feature',
+                outFields: ["*"],
+                popupTemplate: {
+                    title: "Parcel: {GISAssets.DBO.Parcels.PARCEL}",
+                    content: [
+                        {
+                            type: "fields",
+                            fieldInfos: [
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.OBJECTID",
+                                    label: "OBJECTID",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.PARCEL",
+                                    label: "PARCEL",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.PARCEL_KEY",
+                                    label: "PARCEL_KEY",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.GIS_ACRES",
+                                    label: "GIS Acres",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.LEG_ACRES",
+                                    label: "LEG_ACRES",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.EDIT_DATE",
+                                    label: "EDIT_DATE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    dateFormat: "short-date-short-time"
+                                    }
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.SPLIT",
+                                    label: "SPLIT",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.EDIT_USER",
+                                    label: "USER",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.Shape",
+                                    label: "Shape",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.OBJECTID",
+                                    label: "OBJECTID",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 0,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.PARCEL",
+                                    label: "PARCEL",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.PARCEL_KEY",
+                                    label: "PARCEL_KEY",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.TD",
+                                    label: "TD",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.DOR",
+                                    label: "DOR",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.OWNER",
+                                    label: "Owner: ",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.ADD1",
+                                    label: "ADD1",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.ADD2",
+                                    label: "ADD2",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.CITY",
+                                    label: "CITY",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.STATE",
+                                    label: "STATE",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.ZIP",
+                                    label: "ZIP",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.PAD_NUM",
+                                    label: "PAD_NUM",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.PAD_DIR",
+                                    label: "PAD_DIR",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.PAD_NAME",
+                                    label: "PAD_NAME",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.PAD_STREET",
+                                    label: "PAD_STREET",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.EI_CODE",
+                                    label: "EI_CODE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.EI_NUMBER",
+                                    label: "EI_NUMBER",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 0,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.APPR_BLDG",
+                                    label: "APPR_BLDG",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.APPR_EXFT",
+                                    label: "APPR_EXFT",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.APPR_LAND",
+                                    label: "APPR_LAND",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.ADJ_AG",
+                                    label: "ADJ_AG",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.INCOME_VALUE",
+                                    label: "INCOME_VALUE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.INCOME_IND",
+                                    label: "INCOME_IND",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.TOTAL_ASSESSED_VALUE",
+                                    label: "TOTAL_ASSESSED_VALUE",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.TOTAL_JUST_VALUE",
+                                    label: "TOTAL_JUST_VALUE",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.EXEMPT_REMOVAL_CODE",
+                                    label: "EXEMPT_REMOVAL_CODE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.EXMP",
+                                    label: "EXMP",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.NBHD_FACTOR",
+                                    label: "NBHD_FACTOR",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.HMST_YEAR_GRANTED",
+                                    label: "HMST_YEAR_GRANTED",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 0,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_NEW_CONST",
+                                    label: "TOTAL_NEW_CONST",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_AMD10_CLASSIFIED",
+                                    label: "TOTAL_AMD10_CLASSIFIED",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.BLDG_TYPE",
+                                    label: "BLDG_TYPE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.TOTAL_SQFT",
+                                    label: "TOTAL_SQFT",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.LIVING_AREA",
+                                    label: "LIVING_AREA",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.BASE_YR_BLT",
+                                    label: "BASE_YR_BLT",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.BASE_RATE",
+                                    label: "BASE_RATE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 2,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.POOLS",
+                                    label: "POOLS",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.FIREPLACES",
+                                    label: "FIREPLACES",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.EXFT_CODE",
+                                    label: "EXFT_CODE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "Gisassets.DBO.ParcelTable1.LAND_ASSESS_CODE",
+                                    label: "LAND_ASSESS_CODE",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.ParcelTable1.FACILITY_NAME",
+                                    label: "FACILITY_NAME",
+                                    tooltip: "",
+                                    visible: true,
+                                    stringFieldOption: "text-box"
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.NC_FLAG",
+                                    label: "NC_FLAG",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box",
+                                    format: {
+                                    places: 0,
+                                    digitSeparator: true
+                                    }
+                                },
+                                {
+                                    fieldName: "GISAssets.DBO.Parcels.GLOBALID",
+                                    label: "GISAssets.DBO.Parcels.GLOBALID",
+                                    tooltip: "",
+                                    visible: false,
+                                    stringFieldOption: "text-box"
+                                }
+                                ],
+                                description: null,
+                                showAttachments: true,
+                                mediaInfos: []
                         }
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.LEG_ACRES",
-                        label: "LEG_ACRES",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.EDIT_DATE",
-                        label: "EDIT_DATE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        dateFormat: "shortDateShortTime"
-                        }
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.SPLIT",
-                        label: "SPLIT",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.EDIT_USER",
-                        label: "USER",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.Shape",
-                        label: "Shape",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.OBJECTID",
-                        label: "OBJECTID",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 0,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.PARCEL",
-                        label: "PARCEL",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.PARCEL_KEY",
-                        label: "PARCEL_KEY",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.TD",
-                        label: "TD",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.DOR",
-                        label: "DOR",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.OWNER",
-                        label: "Owner: ",
-                        tooltip: "",
-                        visible: true,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.ADD1",
-                        label: "ADD1",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.ADD2",
-                        label: "ADD2",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.CITY",
-                        label: "CITY",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.STATE",
-                        label: "STATE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.ZIP",
-                        label: "ZIP",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_NUM",
-                        label: "PAD_NUM",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_DIR",
-                        label: "PAD_DIR",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_NAME",
-                        label: "PAD_NAME",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.PAD_STREET",
-                        label: "PAD_STREET",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.EI_CODE",
-                        label: "EI_CODE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.EI_NUMBER",
-                        label: "EI_NUMBER",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 0,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.APPR_BLDG",
-                        label: "APPR_BLDG",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.APPR_EXFT",
-                        label: "APPR_EXFT",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.APPR_LAND",
-                        label: "APPR_LAND",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.ADJ_AG",
-                        label: "ADJ_AG",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.INCOME_VALUE",
-                        label: "INCOME_VALUE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.INCOME_IND",
-                        label: "INCOME_IND",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_ASSESSED_VALUE",
-                        label: "TOTAL_ASSESSED_VALUE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_JUST_VALUE",
-                        label: "TOTAL_JUST_VALUE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.EXEMPT_REMOVAL_CODE",
-                        label: "EXEMPT_REMOVAL_CODE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.EXMP",
-                        label: "EXMP",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.NBHD_FACTOR",
-                        label: "NBHD_FACTOR",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.HMST_YEAR_GRANTED",
-                        label: "HMST_YEAR_GRANTED",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 0,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_NEW_CONST",
-                        label: "TOTAL_NEW_CONST",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_AMD10_CLASSIFIED",
-                        label: "TOTAL_AMD10_CLASSIFIED",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.BLDG_TYPE",
-                        label: "BLDG_TYPE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.TOTAL_SQFT",
-                        label: "TOTAL_SQFT",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.LIVING_AREA",
-                        label: "LIVING_AREA",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.BASE_YR_BLT",
-                        label: "BASE_YR_BLT",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.BASE_RATE",
-                        label: "BASE_RATE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 2,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.POOLS",
-                        label: "POOLS",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.FIREPLACES",
-                        label: "FIREPLACES",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.EXFT_CODE",
-                        label: "EXFT_CODE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.LAND_ASSESS_CODE",
-                        label: "LAND_ASSESS_CODE",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "Gisassets.DBO.ParcelTable1.FACILITY_NAME",
-                        label: "FACILITY_NAME",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.NC_FLAG",
-                        label: "NC_FLAG",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox",
-                        format: {
-                        places: 0,
-                        digitSeparator: true
-                        }
-                    },
-                    {
-                        fieldName: "GISAssets.DBO.Parcels.GLOBALID",
-                        label: "GISAssets.DBO.Parcels.GLOBALID",
-                        tooltip: "",
-                        visible: false,
-                        stringFieldOption: "textbox"
-                    }
                     ],
-                    description: null,
-                    showAttachments: true,
-                    mediaInfos: []
                 }
             });
-            const feature = new FeatureLayer({
+
+            const site_address_labels = new LabelClass({
+                "labelPlacement": "above-right",
+                "where": null,
+                "labelExpression": "[PAD_NUM]",
+                "useCodedValues": true,
+                "symbol": {
+                 "type": "text",
+                 "color": [
+                  255,
+                  0,
+                  0,
+                  255
+                 ],
+                 "backgroundColor": null,
+                 "borderLineColor": null,
+                 "borderLineSize": null,
+                 "verticalAlignment": "bottom",
+                 "horizontalAlignment": "center",
+                 "rightToLeft": false,
+                 "angle": 0,
+                 "xoffset": 0,
+                 "yoffset": 0,
+                 "kerning": true,
+                 "haloColor": null,
+                 "haloSize": null,
+                 "font": {
+                  "family": "Arial",
+                  "size": 6,
+                  "style": "normal",
+                  "weight": "normal",
+                  "decoration": "none"
+                 }
+                },
+                "minScale": 0,
+                "maxScale": 0
+               })
+
+            const site_address_tile = new TileLayer({
+                url: 'https://gis.sanfordfl.gov/server/rest/services/SiteAddresses/MapServer',
+                title: 'Sanford Addresses',
+                labelingInfo: [
+                    site_address_labels
+                ]
+            });
+
+            const site_address_feature = new FeatureLayer({
+                url: 'https://gis.sanfordfl.gov/server/rest/services/SiteAddresses/MapServer/0',
+                title: 'Sanford Addresses',
+                labelingInfo: [
+                    site_address_labels
+                ]
+            });
+
+            const zoning_feature = new FeatureLayer({
                 url: 'https://services1.arcgis.com/EPXb1p5YttfWtj8l/arcgis/rest/services/Zoning/FeatureServer',
-                title: 'Sanford Parcels Feature Layer',
+                title: 'Sanford Zoning Feature Layer',
                 f: 'pbf',
                 renderer: new_renderer,
                 outFields: ["*"],
-            });
-            const feature_two = new FeatureLayer({
-                url: 'https://services1.arcgis.com/EPXb1p5YttfWtj8l/arcgis/rest/services/Zoning/FeatureServer',
-                title: 'Sanford Parcels Feature Layer',
-                f: 'json',
-                renderer: new_renderer,
-                outFields: ["*"],
+                popupTemplate: {
+                    title: "Zoning:",
+                    content: [
+                    new CustomContent({
+                        outFields: ["*"],
+                        creator: function(event) {
+                            const zoneCode = event.graphic.attributes.ZONECODE;
+                            const object = renderer_json.uniqueValueInfos.find((o) => o.value === zoneCode);
+                            return `${ object.value }: ${ object.label }`;
+                        }
+                      })
+                    ],
+                    showAttachments: true,
+                    mediaInfos: []
+                },
             });
 
             const map = new Map({
                 basemap: basemap,
-                layers: [feature, parcel_base]
+                layers: [parcel_tile, parcel_feature, zoning_feature, site_address_tile, site_address_feature]
             });
 
             const view = new MapView({
@@ -976,10 +1059,13 @@
             function eventHandler(event) {
                 view.hitTest(event).then(function (response) {
                     if (response.results.length) {
-                        console.log(response.results)
-                    const graphic = response.results[0].graphic;
-                    const attributes = graphic.attributes;
-                    console.log(attributes);
+                        response.results.forEach((resp) => {
+                            const graphic = resp.graphic;
+                            const attributes = graphic.attributes;
+                            console.log(attributes);
+                        });
+
+
                     }
                 });
             }
@@ -999,5 +1085,3 @@
   </script>
 
   <div id="map" class="map"></div>
-
-z

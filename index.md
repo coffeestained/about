@@ -369,8 +369,8 @@
                     border-radius: 5px; max-height: 29.06px;">
             </a>
         </h3>
-        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ). In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering (this very page is a good example),
-        gaming and a wide array of outdoorsy stuff. Get connected at <a
+        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ). In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering,
+        gaming and a wide array of outdoorsy stuff. This page is a personal tinkering project where I work on the things that I love as well as new stuff. The repo is public, feel free to inspect the code if you want to replicate how I accomplished anything. Get connected at <a
             href="https://linkedin.com/in/matthew-grady-orlando">LinkedIn</a>.</div>
     </div>
 </div>
@@ -777,11 +777,11 @@
     <div class="row-logo" style="background-image:url('assets/America_Monochromatic.svg');"></div>
     <div class="row-item flex-grow">
         <h3>Bits & Bobs
-            <i class="fa-solid fa-volume-high tts" role="button" title="OpenLayers mapping text-to-speech." tabindex="0"
-            aria-label="OpenLayers mapping text-to-speech." onclick="speak('bobs')"></i>
+            <i class="fa-solid fa-volume-high tts" role="button" title="ARCGIS mapping text-to-speech." tabindex="0"
+            aria-label="ARCGIS mapping text-to-speech." onclick="speak('bobs')"></i>
         </h3>
         <div id="bobs">
-            Explore strange new worlds using OpenLayers.
+            Explore strange new worlds using ARCGIS.
         </div>
     </div>
     {% include_relative map.md %}
@@ -980,10 +980,10 @@
             aria-label="Special thanks text-to-speech." onclick="speak('special')"></i>
         </h3>
         <div id="special">
-            My Wife, the open-source community, <a
-            href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my home state of Florida, my parents, my friends, my family, my
+            My Wife, my parents, the open-source community, the great people of my great home State of Florida, my friends, my family, my
             co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better
-            engineer & architect, but a better person.
+            engineer & architect, but a better person. Thank you to <a
+            href="https://www.manypixels.co/gallery">ManyPixels Vectors</a> for the graphical assets assistance. Thanks to all the Public/Private workers behind the Public Works datasets visualized on this page.
         </div>
     </div>
 </div>
@@ -1017,7 +1017,8 @@
     .rocket {
         position: absolute;
         width: 40px;
-        left: 150px;
+        /* default 150px for working. moving to 1500px to fix rocket later*/
+        left: 1500px;
         z-index: 200;
     }
 
