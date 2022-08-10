@@ -334,11 +334,11 @@
         text-decoration: underline;
     }
     .site-footer-owner a, .site-footer-credits a {
-        background: linear-gradient(to right, #4a4acf, #527087 , #9ec2cf, #7f6da8, #2525da);
+        background: linear-gradient(to right, #ffffff, #f4f3f3 , #eaeced, #f4f3f7, #fdfdff);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: rainbow_animation 6s ease-in-out infinite;
+        animation: rainbow_animation 5s ease-in-out infinite;
         background-size: 400% 100%;
     }
 
@@ -369,7 +369,7 @@
                     border-radius: 5px; max-height: 29.06px;">
             </a>
         </h3>
-        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ). In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering,
+        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind some monitors. In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering,
         gaming and a wide array of outdoorsy stuff. This page is a personal tinkering project where I work on the things that I love as well as new stuff. The repo is public, feel free to inspect the code if you want to replicate how I accomplished anything. Get connected at <a
             href="https://linkedin.com/in/matthew-grady-orlando">LinkedIn</a>.</div>
     </div>
@@ -1018,7 +1018,7 @@
         position: absolute;
         width: 40px;
         /* default 150px for working. moving to 1500px to fix rocket later*/
-        left: 1500px;
+        right: 0px;
         z-index: 200;
     }
 
@@ -1351,15 +1351,15 @@
         }
     }
 </style>
-<div style="z-index:100; position: absolute; bottom: 0px; top: 0px; left: 0px;">
-    <div id="rocket" class="rocket" style="bottom: 1000px; transform: scale(.5);">
-        <div id="rocketBody" class="rocket-body rocketBounce">
+<div style="z-index:100; position: relative; top: 400px;">
+    <div id="rocket" class="rocket" style="transform: scale(.3); bottom: 0px;">
+        <div id="rocketBody" class="rocket-body">
             <div class="body"></div>
             <div class="fin fin-left"></div>
             <div class="fin fin-right"></div>
             <div class="window"></div>
         </div>
-        <div style="height: 60px;" id="flame" class="container">
+        <div style="height: 60px;" id="flame">
             <div class="red flame"></div>
             <div class="orange flame"></div>
             <div class="yellow flame"></div>
@@ -1373,46 +1373,56 @@
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    const scrollableHeight = document.getElementById('content').scrollHeight;
-    const animateRocket = async function (direction = 1, scrollableHeight) {
+
+    const generateThrust = async function (direction = 1, pause = false, multiplier = 1) {
+        const scrollHeight = document.getElementById('content').scrollHeight;
         const rocket = document.getElementById('rocket');
-        let bottom = parseInt(rocket.style.bottom);
+        let bottom = parseFloat(rocket.style.bottom);
+
         const flame = document.getElementById('flame');
         const rocketBody = document.getElementById('rocketBody');
-        flame.classList.add('container');
-        rocketBody.classList.add('rocketBounce');
-        const scaleFactor = Math.abs(bottom) / scrollableHeight;
-        const transformAmount = scaleFactor < .4 ? .4 : scaleFactor;
+        const scale = .3;
+        const scaleFactor = scale + (bottom / (scrollHeight * 100));
+        const transformAmount = scaleFactor;
         rocket.style.transform = `scale(${transformAmount})`;
+
+        const thrustRange = [1, 3];
+        const thrust = (thrustRange[0] + thrustRange[1]) / 2;
+        const increment = thrust / scrollHeight;
+
         await sleep(1);
         if (direction === 1) {
-            if (bottom > -(scrollableHeight / 3)) bottom = bottom - 3;
-            else if (bottom > -(scrollableHeight / 5)) bottom = bottom - 2;
-            else bottom = bottom - 1;
+            multiplier -= 5;
+            console.log((multiplier));
+            let incrementFallen = (increment * multiplier);
+            if (incrementFallen < 1) incrementFallen = 1;
+            bottom = bottom - incrementFallen;
+
             rocket.style.bottom = bottom + 'px';
-            if (bottom < -(scrollableHeight - 350)) {
+            if (bottom <= 0) {
                 flame.classList.remove('container');
                 rocketBody.classList.remove('rocketBounce');
                 await sleep(15000);
-                animateRocket(0, scrollableHeight);
             } else {
-                animateRocket(1, scrollableHeight);
+                generateThrust(1, false, multiplier);
             }
         } else {
-            if (bottom > -(scrollableHeight / 3)) bottom = bottom + 3;
-            else if (bottom > -(scrollableHeight / 5)) bottom = bottom + 2;
-            else bottom = bottom + 1;
+            multiplier += 5;
+            rocketBody.classList.add('rocketBounce');
+            flame.classList.add('container');
+            if (pause) await sleep(5000);
+            bottom = bottom + (increment * multiplier);
             rocket.style.bottom = bottom + 'px';
-            if (bottom > 800) {
-                await sleep(4444);
-                animateRocket(1, scrollableHeight);
+            if (bottom >= (scrollHeight * 2)) {
+                const startingMultiplier = scrollHeight * 3;
+                generateThrust(1, false, startingMultiplier);
             } else {
-                animateRocket(0 , scrollableHeight);
+                generateThrust(0, false, multiplier);
             }
         }
     };
 
-    animateRocket(0, scrollableHeight);
+    generateThrust(0);
 </script>
 
 <script>

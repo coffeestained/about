@@ -7,7 +7,6 @@
         width: 100%;
         display: block;
         overflow-x: auto;
-        height: 600px;
         position: relative;
     }
     .d3-container > div.d3-toolbar {
@@ -17,7 +16,6 @@
         padding: 5px;
         top: .5em;
         right: 0px;
-        background: rgba(255,255,255,.6);
         z-index: 999;
         border-radius: 5px;
         font-size: 11px;
@@ -37,7 +35,7 @@
     <div class="d3-toolbar">
       <div class="d3-toolbar-item">
         <h4>D3 Charts</h4>
-        <select id="d3-select" onchange="selectChart(this)" class="form-select" style="width: max-content;" aria-label="Default select example">
+        <select id="d3-select" onchange="selectChart(this)" class="form-select" style="width: max-content;" aria-label="Adjust Chart Select">
           <option selected value="strange">A Strange Class</option>
           <option value="flights">United States Domestic Flight Volume</option>
         </select>
@@ -215,6 +213,8 @@
         display: block;
         overflow-x: scroll;
         position: relative;
+        background: rgb(245, 245, 245);
+        margin: 15px;
     }
     .d3-container > div.d3-toolbar {
         position: absolute;
@@ -222,7 +222,6 @@
         padding: 5px;
         top: .5em;
         right: 0px;
-        background: rgba(255,255,255,.6);
         z-index: 999;
         border-radius: 5px;
         font-size: 11px;

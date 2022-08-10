@@ -7,8 +7,8 @@ const localization_static = {
         {es: 'Español'},
     ],
     en: {
-        about: `Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind a monitor ( or 2, or 3 ). In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering (this very page is a good example),
-            gaming and a wide array of outdoorsy stuff. Get connected at <a
+        about: `Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind some monitors. In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering,
+        gaming and a wide array of outdoorsy stuff. This page is a personal tinkering project where I work on the things that I love as well as new stuff. The repo is public, feel free to inspect the code if you want to replicate how I accomplished anything. Get connected at <a
             href="https://linkedin.com/in/matthew-grady-orlando">LinkedIn</a>.`,
         employment: `I'm currently working with a FinTech company out of Ohio. We are working to provide
             regulatory frameworks for operating on distributed/decentralized ledgers. Contact us at 10XTS to learn more about
@@ -26,10 +26,7 @@ const localization_static = {
             <li>Coffee & Tea Logistics, Production and Consumption</li>`,
         bobs: `Explore strange new worlds using OpenLayers.`,
         d3: `Check out this D3 sandbox.`,
-        special: `My Wife, the open-source community, <a
-            href="https://www.manypixels.co/gallery">ManyPixels Vectors</a>, my parents, my friends, my family, my
-            co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better
-            engineer & architect, but a better person.`,
+        special: `My Wife, my parents, the open-source community, the great people of my great home State of Florida, my friends, my family, my co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better engineer & architect, but a better person. Thank you to ManyPixels Vectors for the graphical assets assistance. Thanks to all the Public/Private workers behind the Public Works datasets visualized on this page.`,
         accessibility: `This page is WCAG 2.1 Level AA compliant. In 2018, Section 508 was officially updated to include new requirements that reflect technological developments. These requirements alongside the requirements of the ADA and WCAG 2.0 directly benefit users who have accessibility needs due to disabilities. They then represent crucial tools with which we can build a better and more inclusive web. This page attempts to integrate these concepts.`,
         voice_lang: 'en-GB',
         voice_number: 2

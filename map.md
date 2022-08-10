@@ -1,4 +1,10 @@
 <style>
+    .map-container {
+        width: 100%;
+        display: block;
+        margin-top: 15px;
+        position: relative;
+    }
     .map {
         position: relative;
         width: 100%;
@@ -27,6 +33,11 @@
             "esri/layers/FeatureLayer",
             "esri/layers/support/LabelClass",
             "esri/widgets/Popup",
+            "esri/widgets/Fullscreen",
+            "esri/widgets/Legend",
+            "esri/widgets/Zoom",
+            "esri/widgets/BasemapGallery",
+            "esri/widgets/LayerList",
             "esri/popup/FieldInfo",
             "esri/popup/content/FieldsContent",
             "esri/popup/content/CustomContent",
@@ -45,6 +56,11 @@
             FeatureLayer,
             LabelClass,
             Popup,
+            Fullscreen,
+            Legend,
+            Zoom,
+            BasemapGallery,
+            LayerList,
             FieldInfo,
             FieldsContent,
             CustomContent,
@@ -507,7 +523,7 @@
 
             const parcel_feature = new FeatureLayer({
                 url: 'https://gis.sanfordfl.gov/server/rest/services/Parcel_Base/MapServer/0',
-                title: 'Sanford Parcels Feature',
+                title: 'Sanford Parcels',
                 outFields: ["*"],
                 popupTemplate: {
                     title: "Parcel: {GISAssets.DBO.Parcels.PARCEL}",
@@ -1018,7 +1034,7 @@
 
             const zoning_feature = new FeatureLayer({
                 url: 'https://services1.arcgis.com/EPXb1p5YttfWtj8l/arcgis/rest/services/Zoning/FeatureServer',
-                title: 'Sanford Zoning Feature Layer',
+                title: 'Sanford Zoning Feature',
                 f: 'pbf',
                 renderer: new_renderer,
                 outFields: ["*"],
@@ -1041,7 +1057,7 @@
 
             const map = new Map({
                 basemap: basemap,
-                layers: [parcel_tile, parcel_feature, zoning_feature, site_address_tile, site_address_feature]
+                layers: [parcel_feature, zoning_feature, site_address_feature]
             });
 
             const view = new MapView({
@@ -1054,9 +1070,16 @@
                 }
             });
 
-            view.on("pointer-down", eventHandler);
+            // Full Screen Handler
+            fullscreen = new Fullscreen({
+                view: view
+            }); // Register
+            view.ui.add(fullscreen, "top-right");
 
-            function eventHandler(event) {
+            // Click Handler 1
+            view.on("pointer-down", eventHandlerOne);
+            // Click 1 Function
+            function eventHandlerOne(event) {
                 view.hitTest(event).then(function (response) {
                     if (response.results.length) {
                         response.results.forEach((resp) => {
@@ -1070,12 +1093,43 @@
                 });
             }
 
-            // Click Events
-            view.on("click", clickEvent);
-
-            function clickEvent(event) {
+            // Click Handler 2
+            view.on("click", eventHandlerTwo);
+            // Click Function 2 (Gis Coords)
+            function eventHandlerTwo(event) {
                 console.log(event)
             }
+
+            // Legend Handler
+            const legend = new Legend({
+                view: view,
+                layerInfos: [
+                    {
+                        layer: zoning_feature
+                    },
+                ],
+            }); // Reigster Legend
+            view.ui.add(legend, "top-left");
+
+            // Zoom Default Move
+            view.ui.move("zoom", "top-right");
+
+            // Basemap Gallery Toggle
+            const basemapGallery = new BasemapGallery({
+                view: view,
+                container: document.createElement("div"),
+            }); // Register
+            // view.ui.add(basemapGallery, {
+            //     position: "top-left",
+            // });
+
+            // Layer List Toggle
+            const layerList = new LayerList({
+                view: view,
+            }); // Register
+            view.ui.add(layerList, {
+                position: "top-left",
+            });
 
         });
     })().catch(err => {
@@ -1084,4 +1138,6 @@
 
   </script>
 
-  <div id="map" class="map"></div>
+<div class="map-container">
+    <div id="map" class="map"></div>
+</div>
