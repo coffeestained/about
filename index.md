@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     type="text/css">
+<link rel="stylesheet" href="./css/main.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Localization SECTION <3 -->
@@ -15,25 +16,12 @@
     <select onchange="changeLocalization(this)" id="localization-select" class="form-select " aria-label="Select Language" title="Select Language" tabindex="0">
 
     </select>
+    <select onchange="changeTheme(this)" id="theme-select" class="form-select " aria-label="Select Theme" title="Select Theme" tabindex="0">
+        <option value="default">Default</option>
+        <option value="upsideDown">The Upside Down</option>
+    </select>
 </div>
-<style>
-    .localization {
-        position: fixed;
-        top: 334px;
-        left: 0px;
-        border-radius: 0px;
-        z-index: 999;
-        color: white;
-    }
-    .localization select {
-        background-color: transparent;
-        border-radius: 0px;
-        -webkit-box-shadow: 0px 0px 17px -8px #000000;
-        box-shadow: 0px 0px 17px -8px #000000;
-        border-color: transparent;
-        padding: .175rem 2.25rem .175rem .75rem;
-    }
-</style>
+
 <script type="module">
     import { get_localization } from './assets/localization.js';
 
@@ -75,23 +63,6 @@
 <!-- End Localization -->
 
 <!-- ACCESIBILITY SECTION <3 -->
-<style>
-    .hide-element {
-        border: 0;
-        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-        clip; rect(1px, 1px, 1px, 1px);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-    }
-    i.fa-solid.fa-volume-high.tts {
-        font-size: 14px;
-        opacity: 0px;
-    }
-</style>
 <script>
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -197,162 +168,6 @@
     }
 </script>
 
-<style>
-    :root {
-        --one-opacity: 0;
-        --two-opacity: .1;
-        --three-opacity: .2;
-        --four-opacity: .3;
-        --five-opacity: .4;
-        --six-opacity: .55;
-        --seven-opacity: .7;
-        --eight-opacity: .8;
-        --nine-opacity: .9;
-        --ten-opacity: 1;
-        --timeOfDayOpacity: 0;
-    }
-
-    .hidden {
-        opacity: 0 !important;
-    }
-
-    .project-name {
-        font-size: 3.25rem;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    /* Tooltip container */
-    .tooltip {
-        position: relative;
-        display: inline-block;
-        border-bottom: 1px dotted black;
-        /* If you want dots under the hoverable text */
-    }
-
-    /* Tooltip text */
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        color: darkslategrey;
-        text-align: center;
-        padding: 30px 0px;
-        border-radius: 6px;
-        position: absolute;
-        z-index: 1;
-        bottom: 0px;
-        left: 50%;
-        margin-left: -60px;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    /* Tooltip arrow */
-    .tooltip .tooltiptext::before {
-        content: "";
-        position: absolute;
-        top: 0%;
-        left: 50%;
-        margin-left: -5px;
-        margin-top: 20px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent transparent #555 transparent;
-    }
-
-    /* Show the tooltip text when you mouse over the tooltip container */
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .tooltip-bottom {
-        top: 50%;
-        left: 50%;
-        margin-left: -60px;
-    }
-
-    .headerControls {
-        position: fixed;
-        opacity: 1;
-        padding: 5px;
-        top: 0px;
-        right: 0px;
-        z-index: 999;
-        -webkit-box-shadow: 0px 0px 17px -8px #000000;
-        box-shadow: 0px 0px 17px -8px #000000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .controlsExpanded {
-        background-size: 130%;
-        background-repeat: repeat;
-        background-position: 0 0;
-        padding: 154px 15px;
-    }
-
-    .controlsCollapsed {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-size: 130%;
-        background-repeat: repeat;
-        background-position: 0 0;
-        padding: 11px 15px;
-    }
-
-    .collapse .project-tagline {
-        display: none;
-    }
-
-    .collapse:not(.show) {
-        display: block;
-        height: 44px;
-    }
-
-    .collapse:not(.show) .project-name {
-        margin-top: 12px;
-    }
-
-    .tooltip {
-        border-color: transparent;
-    }
-
-    .headerControls .sun {
-        color: gold;
-    }
-
-    .headerControls .moon {
-        color: darkslategrey
-    }
-
-    .site-footer-owner a, .site-footer-credits a {
-        text-align: center;
-        text-decoration: underline;
-    }
-    .site-footer-owner a, .site-footer-credits a {
-        background: linear-gradient(to right, #ffffff, #f4f3f3 , #eaeced, #f4f3f7, #fdfdff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: rainbow_animation 5s ease-in-out infinite;
-        background-size: 400% 100%;
-    }
-
-    @keyframes rainbow_animation {
-        0%,100% {
-            background-position: 0 0;
-        }
-
-        50% {
-            background-position: 100% 0;
-        }
-    }
-</style>
-
 <div class="row" id="first-row">
     <div class="row-logo" style="background-image:url('assets/Watermelon_Monochromatic.svg');"></div>
     <div class="row-item">
@@ -381,6 +196,12 @@
         headerScrollFunction(event)
     };
 
+    for (let i = 0; i < 300; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        header[0].appendChild(particle);
+    }
+
     async function headerScrollFunction(event) {
         const headerControls = document.getElementById('headerControls');
         if (document.documentElement.scrollTop > 10 && document.documentElement.scrollTop < 200 && event.deltaY > 0) {
@@ -402,321 +223,6 @@
         }
     }
 </script>
-<style>
-    .parachute {
-        margin: 200px;
-        width: 400px;
-        animation: xAxis 60s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
-        position: absolute;
-        z-index: 99;
-        top: 16.66px;
-        left: 100px;
-    }
-
-    .parachute__img {
-        animation: yAxis 60s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
-    }
-
-    .parachute__img:before {
-        content: "";
-        display: block;
-        width: 15px;
-        height: 15px;
-        background: url("https://dl.dropboxusercontent.com/s/7xthrrako1qpxy9/parachute.svg") no-repeat;
-        animation: swing ease-in-out 1s infinite alternate;
-        transform-origin: center -20px;
-    }
-
-    .plane {
-        background: url("https://dl.dropboxusercontent.com/s/egcs4ohbyrfa39n/aeroplane.svg") no-repeat;
-        width: 42px;
-        height: 42px;
-        position: absolute;
-        z-index: 99;
-        top: -16px;
-        left: -108px;
-        animation: right linear 30s infinite;
-    }
-
-    @keyframes yAxis {
-        33% {
-            animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
-            transform: translateY(-200px);
-        }
-
-        66% {
-            animation-timing-function: cubic-bezier(0, .2, -1.42, -6);
-            transform: translateY(-200px);
-        }
-    }
-
-    @keyframes xAxis {
-        33% {
-            animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
-            transform: translateX(700px);
-        }
-
-        66% {
-            animation-timing-function: cubic-bezier(0, 0, -1.15, -6.64);
-            transform: translateX(700px);
-        }
-    }
-
-    @keyframes swing {
-        0% {
-            transform: rotate(5deg);
-        }
-
-        100% {
-            transform: rotate(-5deg);
-        }
-    }
-
-
-    @keyframes right {
-        0% {
-            left: -108px;
-        }
-
-        25% {
-            left: calc(25% + 108px);
-        }
-
-        35% {
-            left: calc(35% + 108px);
-            top: 12px;
-        }
-
-        50% {
-            left: calc(50% + 108px);
-            top: 12px;
-        }
-
-        75% {
-            left: calc(75% + 108px);
-            top: 5px;
-        }
-
-        100% {
-            left: calc(100% + 108px);
-        }
-    }
-
-    .page-header {
-        background-image: url('assets/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
-        background-size: 130%;
-        background-repeat: repeat;
-        background-position: 0 0;
-        /*adjust s value for speed*/
-        animation: animatedBackground 850s linear infinite;
-        z-index: 99;
-        -webkit-box-shadow: 0px 10px 50px 13px #FFFFFF;
-        box-shadow: 0px 10px 50px 13px #FFFFFF;
-    }
-
-    .page-header:after,
-    .page-header:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        mix-blend-mode: hard-light;
-    }
-
-    .page-header:before {
-        background: linear-gradient(0deg, rgba(255, 255, 255, .4) 25%, rgba(0, 212, 255, 0.3) 100%);
-        border-bottom: 4px rgba(255, 255, 255, .4) solid;
-    }
-
-    .page-header:after {
-        background: linear-gradient(0deg, rgb(81 89 57 / 65%) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('assets/stars.png') repeat;
-        animation: animatedBackground 1200s linear infinite;
-        border-bottom: 4px rgba(0, 0, 0, .3) solid;
-        opacity: var(--timeOfDayOpacity);
-    }
-
-    @keyframes animatedBackground {
-        from {
-            background-position: 0 0;
-        }
-
-        /*use negative width if you want it to flow right to left else and positive for left to right*/
-        to {
-            background-position: -10000px 0;
-        }
-    }
-
-    .row {
-        display: flex;
-        margin-bottom: 50px;
-        scroll-snap-align: start;
-        font-size: 15px;
-        font-family: Arial;
-        line-height: 3;
-        color: black;
-        z-index: 0;
-    }
-
-    .row-item { flex: 1; text-align: left; }
-
-    .row-item > h3 {
-        padding-right: 115px;
-    }
-
-    .row-logo {
-        margin-right: 15rem;
-        width: 100px;
-        height: 100px;
-        max-width: 100px;
-        margin-right: 1rem;
-        min-width: 100px;
-        max-height: 100px;
-        min-height: 100%;
-        background-size: 100px 100px;
-    }
-
-    .row-logo:after {
-        content: '';
-        display: block;
-        position: relative;
-        top: -100px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100px;
-        height: 100px;
-    }
-
-    .row-logo:before {
-        content: '';
-        display: block;
-        position: relative;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100px;
-        height: 100px;
-    }
-
-    ul li {
-        list-style-image: radial-gradient(circle, #155799, #155799);
-    }
-
-    .collapse {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        animation: collapse .5s ease forwards, animatedBackground 850s linear infinite;
-        background-size: 130%;
-        background-repeat: repeat;
-        background-position: 0 0;
-    }
-
-    .project-name {
-        z-index: 100;
-        position: relative;
-    }
-
-    .project-tagline {
-        z-index: 100;
-        position: relative;
-    }
-
-    .page-header a {
-        z-index: 100;
-        position: relative;
-        color: rgba(255, 255, 255, .9);
-        background-color: rgba(0, 0, 0, .4);
-        border-color: white;
-    }
-
-    .collapse .project-name {
-        font-size: 12px;
-    }
-
-    .collapse a.btn {
-        display: none;
-    }
-
-    .expand {
-        animation: expand .5s ease forwards, animatedBackground 850s linear infinite;
-        padding-top: 80px;
-        padding-bottom: 80px;
-        background-size: 130%;
-        background-repeat: repeat;
-        background-position: 0 0;
-    }
-
-    .bottom-left {
-        position: fixed;
-        bottom: 18px;
-        left: -10px;
-    }
-
-    .top-right {
-        position: fixed;
-        top: 60px;
-        right: 00px;
-    }
-
-    .page-header {
-        background-image: linear-gradient(120deg, #155799, #fff);
-        position: sticky;
-        top: 0px;
-        padding-top: 80px;
-        padding-bottom: 80px;
-    }
-
-    .main-content {
-        padding: 8rem 6rem 2rem 6rem;
-    }
-
-    .main-content h1,
-    .main-content h2,
-    .main-content h3,
-    .main-content h4,
-    .main-content h5,
-    .main-content h6 {
-        color: #155799;
-    }
-
-    @keyframes collapse {
-        from {
-            padding-top: 80px;
-            padding-bottom: 80px;
-        }
-
-        to {
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
-    }
-
-    @keyframes expand {
-        from {
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
-
-        to {
-            padding-top: 80px;
-            padding-bottom: 80px;
-        }
-    }
-
-    .flex-grow {
-        flex-grow: 1;
-    }
-
-    .wide-stuffs {
-        padding: 50px;
-        background: rgb(240, 240, 233);
-    }
-</style>
 
 <div class="parachute">
     <div class="parachute__img"></div>
@@ -747,6 +253,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Data Arranging_Monochromatic.svg');"></div>
     <div class="row-item">
@@ -770,6 +277,7 @@
         </ul>
     </div>
 </div>
+
 <div class="row wide-stuffs" style="width: 100vw; z-index: 0; position: relative;
     margin: 0px;
     margin-left: calc(50% - 50vw);
@@ -786,6 +294,7 @@
     </div>
     {% include_relative map.md %}
 </div>
+
 <div class="row wide-stuffs" style="width: 100vw;
     z-index: 0;
     position: relative;
@@ -805,173 +314,7 @@
     </div>
     {% include_relative d3.md %}
 </div>
-<script>
-    // Set the dimensions of the canvas / graph
-    initChart();
 
-    function initChart() {
-        const margin = {
-            top: 30,
-            right: 20,
-            bottom: 30,
-            left: 50
-        },
-            width = 600 - margin.left - margin.right,
-            height = 270 - margin.top - margin.bottom;
-        // Parse the date / time
-        const parseDate = d3.timeFormat("%d-%b-%y").parse;
-        // Set the ranges
-        const x = d3.scaleBand()
-            .rangeRound([0, width])
-            .padding(1);
-        const y = d3.scaleLinear().range([height, 0]);
-        // Define the axes
-        const xAxis = d3.axisBottom(x).tickFormat(function(d){ return d.x;});
-        const yAxis = d3.axisLeft(y);
-        // Define the line
-        const valueline = d3.line().curve(d3.curveBasis).x(function (d) {
-            return x(d.superposition);
-        }).y(function (d) {
-            return y(d.value);
-        });
-        // Adds the svg canvas
-        const svg = d3.select("section").append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        window.sneakyVariable = [];
-        $.ajax({
-            url: 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
-            type: 'GET',
-            success: function (data) {
-                const past = {
-                    value: (data.value - 1) / 2,
-                    superposition: 'The Past'
-                };
-                window.sneakyVariable.push(past);
-                $.ajax({
-                    url: 'https://api.countapi.xyz/hit/coffeestained.github.io/about-this-dev',
-                    type: 'GET',
-                    success: function (data) {
-                        const present = {
-                            value: (data.value) / 2,
-                            superposition: 'The Present'
-                        };
-                        window.sneakyVariable.push(present);
-                        window.sneakyVariable.forEach(function (d) {
-                            d.superposition = d.superposition;
-                            d.value = +d.value;
-                        });
-                        // Scale the range of the data
-                        x.domain(d3.extent(window.sneakyVariable, function (d) {
-                            return d.superposition;
-                        }));
-                        y.domain([0, d3.max(window.sneakyVariable, function (d) {
-                            return d.value;
-                        })]);
-                        // Add the valueline path.
-                        //svg.append("path")
-                        //.attr("class", "line")
-                        //.attr("d", valueline(window.sneakyVariable));
-                        // Add the X Axis
-                        svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
-                        // Add the Y Axis
-                        svg.append("g").attr("class", "y axis").call(yAxis);
-                        svg.selectAll(".dot").data(window.sneakyVariable, function (d) {
-                            return d.value
-                        }).enter().append("circle").attr("r", 3).attr("cx", function (d, i) {
-                            if (i == 0) return 175;
-                            else return 350;
-                        }).attr("cy", function (d) {
-                            return d.value
-                        }).attr("fill", function (d) {
-                            return '#155799';
-                        });
-                        // Add the line
-                        svg.append("path").datum(data).attr("fill", "none").attr("stroke", "steelblue").attr("stroke-width", 1.5).attr("d", d3.line().x(function (d) {
-                            return x(d.superposition)
-                        }).y(function (d) {
-                            return y(d.value)
-                        }))
-                    },
-                    error: function (request, error) {
-                        alert("Request: " + JSON.stringify(request));
-                    }
-                });
-            },
-            error: function (request, error) {
-                alert("Request: " + JSON.stringify(request));
-            }
-        });
-        const element = document.querySelector("h1");
-        element.classList.add('animate__animated');
-        window.sneakyAnimationEnum = ['animate__bounce', 'animate__pulse', 'animate__rubberBand', 'animate__shakeX', 'animate__shakeY', 'animate__swing', 'animate__tada', 'animate__jello', 'animate__heartBeat'];
-        window.sneakyCurrentAnimation = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
-        element.classList.add(window.sneakyCurrentAnimation);
-        element.addEventListener("mouseover", event => {
-            element.classList.remove(window.sneakyCurrentAnimation);
-            let current = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
-            window.sneakyCurrentAnimation = current;
-            element.classList.add(current);
-        });
-        window.hoverFriends = document.querySelectorAll('div.row-logo');
-        window.hoverFriends.forEach(element => {
-            element.classList.add('animate__animated');
-            element.addEventListener("mouseover", event => {
-                element.classList.remove(window.sneakyCurrentAnimation);
-                let current = window.sneakyAnimationEnum[Math.floor(Math.random() * window.sneakyAnimationEnum.length)];
-                window.sneakyCurrentAnimation = current;
-                element.classList.add(current);
-            });
-        });
-
-    }
-</script>
-<style>
-    .absolute {
-        position: absolute;
-        color: white;
-    }
-
-    .footer-stuffs {
-        background: url('assets/Landscape-agriculture.svg');
-        background-size: cover;
-        height: 400px;
-    }
-
-    .footer-stuffs:after,
-    .footer-stuffs:before {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        mix-blend-mode: multiply;
-        height: 400px;
-        margin-top: -50px;
-    }
-
-    .footer-stuffs:before {
-        background: linear-gradient(0deg, rgba(255, 255, 255, .4) 25%, rgba(0, 212, 255, 0.95) 100%);
-        mix-blend-mode: initial;
-    }
-
-    .footer-stuffs:after {
-        background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('assets/stars.png') repeat;
-        animation: animatedBackground 1200s linear infinite;
-        opacity: var(--timeOfDayOpacity);
-    }
-
-    .site-footer {
-        position: absolute;
-        color: white;
-    }
-
-    .site-footer-credits {
-        color: white;
-    }
-
-    .cloud {
-        z-index: 1
-    }
-</style>
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Brainstorming session _Monochromatic.svg');"></div>
     <div class="row-item">
@@ -1009,348 +352,222 @@
     right: 0px;
     margin: 0px;
     margin-left: calc(50% - 50vw);">
-
-
-
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+    <div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
 </div>
-<style>
-    .rocket {
-        position: absolute;
-        width: 40px;
-        /* default 150px for working. moving to 1500px to fix rocket later*/
-        right: 0px;
-        z-index: 200;
-    }
 
-    .rocket .rocket-body {
-        width: 40px;
-        position: relative;
-        z-index: 99;
-        left: calc(50% - 50px);
-    }
-
-    .rocketBounce {
-        animation: bounce 0.5s infinite;
-    }
-
-    .rocket .rocket-body .body {
-        background-color: #dadada;
-        height: 180px;
-        left: calc(50% - 50px);
-        border-top-right-radius: 100%;
-        border-top-left-radius: 100%;
-        border-bottom-left-radius: 50%;
-        border-bottom-right-radius: 50%;
-        border-top: 5px solid #f5f5f5;
-    }
-
-    .rocket .rocket-body:before {
-        content: '';
-        position: absolute;
-        left: calc(50% - 24px);
-        width: 48px;
-        height: 13px;
-        background-color: #554842;
-        bottom: -13px;
-        border-bottom-right-radius: 60%;
-        border-bottom-left-radius: 60%;
-    }
-
-    .rocket .window {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        border-radius: 100%;
-        background-color: #a75248;
-        left: calc(50% - 10px);
-        top: 40px;
-        border: 5px solid #b4b2b2;
-    }
-
-    .rocket .fin {
-        position: absolute;
-        z-index: -100;
-        height: 55px;
-        width: 25px;
-        background-color: #a75248;
-    }
-
-    .rocket .fin-left {
-        left: -20px;
-        top: calc(100% - 55px);
-        border-top-left-radius: 80%;
-        border-bottom-left-radius: 20%;
-    }
-
-    .rocket .fin-right {
-        right: -20px;
-        top: calc(100% - 55px);
-        border-top-right-radius: 80%;
-        border-bottom-right-radius: 20%;
-    }
-
-    .rocket .exhaust-flame {
-        position: absolute;
-        top: 90%;
-        width: 28px;
-        background: linear-gradient(to bottom, transparent 10%, #f5f5f5 100%);
-        height: 150px;
-        left: calc(50% - 14px);
-        animation: exhaust 0.2s infinite;
-    }
-
-    .rocket .exhaust-fumes li {
-        width: 60px;
-        height: 60px;
-        background-color: #f5f5f5;
-        list-style: none;
-        position: absolute;
-        border-radius: 100%;
-    }
-
-    .rocket .exhaust-fumes li:first-child {
-        width: 200px;
-        height: 200px;
-        bottom: -300px;
-        animation: fumes 5s infinite;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(2) {
-        width: 150px;
-        height: 150px;
-        left: -120px;
-        top: 260px;
-        animation: fumes 3.2s infinite;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(3) {
-        width: 120px;
-        height: 120px;
-        left: -40px;
-        top: 330px;
-        animation: fumes 3s 1s infinite;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(4) {
-        width: 100px;
-        height: 100px;
-        left: -170px;
-        animation: fumes 4s 2s infinite;
-        top: 380px;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(5) {
-        width: 130px;
-        height: 130px;
-        left: -120px;
-        top: 350px;
-        animation: fumes 5s infinite;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(6) {
-        width: 200px;
-        height: 200px;
-        left: -60px;
-        top: 280px;
-        animation: fumes2 10s infinite;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(7) {
-        width: 100px;
-        height: 100px;
-        left: -100px;
-        top: 320px;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(8) {
-        width: 110px;
-        height: 110px;
-        left: 70px;
-        top: 340px;
-    }
-
-    .rocket .exhaust-fumes li:nth-child(9) {
-        width: 90px;
-        height: 90px;
-        left: 200px;
-        top: 380px;
-        animation: fumes 20s infinite;
-    }
-
-    @keyframes fumes {
-        50% {
-            transform: scale(1.5);
-            background-color: transparent;
-        }
-
-        51% {
-            transform: scale(0.8);
-        }
-
-        100% {
-            background-color: #f5f5f5;
-            transform: scale(1);
-        }
-    }
-
-    @keyframes bounce {
-        0% {
-            transform: translate3d(0px, 0px, 0);
-        }
-
-        50% {
-            transform: translate3d(0px, -4px, 0);
-        }
-
-        100% {
-            transform: translate3d(0px, 0px, 0);
-        }
-    }
-
-    @keyframes exhaust {
-        0% {
-            background: linear-gradient(to bottom, transparent 10%, #f5f5f5 100%);
-        }
-
-        50% {
-            background: linear-gradient(to bottom, transparent 8%, #f5f5f5 100%);
-        }
-
-        75% {
-            background: linear-gradient(to bottom, transparent 12%, #f5f5f5 100%);
-        }
-    }
-
-    @keyframes fumes2 {
-        50% {
-            transform: scale(1.1);
-        }
-    }
-
-
-    .container {
-        position: relative;
-        left: -35px;
-        top: -5px;
-        margin: 0 auto;
-        width: 40px;
-        height: 60px;
-        transform-origin: center top;
-        animation-name: flicker;
-        animation-duration: 3ms;
-        animation-delay: 200ms;
-        animation-timing-function: ease-in;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-    }
-
-    .container .flame {
-        bottom: 0;
-        position: absolute;
-        border-bottom-right-radius: 50%;
-        border-bottom-left-radius: 50%;
-        border-top-left-radius: 50%;
-        transform: rotate(135deg) scale(1.5, 1.5);
-        -moz-transform: rotate(135deg) scale(1.5, 1.5);
-        -webkit-transform: rotate(135deg) scale(1.5, 1.5);
-        -o-transform: rotate(135deg) scale(1.5, 1.5);
-    }
-
-    .container .yellow {
-        left: 15px;
-        width: 20px;
-        height: 30px;
-        background: gold;
-        box-shadow: 0px 0px 9px 4px gold;
-    }
-
-    .container .orange {
-        left: 10px;
-        width: 30px;
-        height: 40px;
-        background: orange;
-        box-shadow: 0px 0px 9px 4px orange;
-    }
-
-    .container .red {
-        left: 5px;
-        top: 20px;
-        width: 40px;
-        height: 50px;
-        background: OrangeRed;
-        border: 1px solid OrangeRed;
-        box-shadow: 0px 0px 5px 4px OrangeRed;
-    }
-
-    .container .white {
-        left: 15px;
-        top: 20px;
-        width: 20px;
-        height: 30px;
-        background: white;
-        box-shadow: 0px 0px 9px 4px white;
-    }
-
-    .container .circle {
-        border-radius: 50%;
-        position: absolute;
-    }
-
-    .container .blue {
-        width: 10px;
-        height: 10px;
-        left: 25px;
-        top: 5px;
-        background: SlateBlue;
-        box-shadow: 0px 0px 15px 10px #4fc1e9;
-    }
-
-    .container .black {
-        width: 30px;
-        height: 40px;
-        left: 10px;
-        top: -30px;
-        background: #ddd;
-        border: 1px solid #282A3A;
-        box-shadow: 0px 0px 10px 10px #282A3A;
-    }
-
-    @keyframes flicker {
-        0% {
-            transform: rotate(-1deg);
-            -moz-transform: rotate(-1deg);
-            -webkit-transform: rotate(-1deg);
-        }
-
-        20% {
-            transform: rotate(1deg);
-            -moz-transform: rotate(1deg);
-            -webkit-transform: rotate(1deg);
-        }
-
-        40% {
-            transform: rotate(-1deg);
-            -moz-transform: rotate(-1deg);
-            -webkit-transform: rotate(-1deg);
-        }
-
-        60% {
-            transform: rotate(1deg) scaleY(1.04);
-        }
-
-        80% {
-            transform: rotate(-2deg) scaleY(0.92);
-            -moz-transform: rotate(-2deg) scaleY(0.92);
-            -webkit-transform: rotate(-2deg) scaleY(0.92);
-        }
-
-        100% {
-            transform: rotate(1deg);
-            -webkit-transform: rotate(1deg);
-            -moz-transform: rotate(1deg);
-        }
-    }
-</style>
 <div style="z-index:100; position: relative; top: 400px;">
     <div id="rocket" class="rocket" style="transform: scale(.3); bottom: 0px;">
         <div id="rocketBody" class="rocket-body">
@@ -1393,7 +610,6 @@
         await sleep(1);
         if (direction === 1) {
             multiplier -= 5;
-            console.log((multiplier));
             let incrementFallen = (increment * multiplier);
             if (incrementFallen < 1) incrementFallen = 1;
             bottom = bottom - incrementFallen;
@@ -1431,3 +647,17 @@
     });
 </script>
 
+<script>
+    const body = document.body;
+    function changeTheme(slug) {
+        body.classList.remove('upsideDown');
+        switch(slug.value) {
+            case 'upsideDown':
+                body.classList.add('upsideDown');
+                break;
+            default:
+                break;
+        }
+    }
+
+</script>

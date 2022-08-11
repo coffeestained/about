@@ -1,0 +1,45 @@
+.upsideDown .footer-stuffs, .upsideDown header, .upsideDown .row-logo, .upsideDown h3, .upsideDown .map-container, .upsideDown footer {
+    filter: invert(1);
+}
+
+.upsideDown .d3-container h4 {
+    filter: invert(1);
+}
+
+.upsideDown .page-header {
+    box-shadow: 0px 10px 50px 13px #000;
+}
+
+.upsideDown .page-header > * {
+    color: #000;
+}
+
+.upsideDown .site-footer * {
+    color: #000;
+}
+
+.upsideDown .particle {
+    position: absolute;
+    border-radius: 50%;
+    padding: 0px;
+    top: -100px;
+}
+
+@for $i from 1 through 200 {
+    @keyframes particle-animation-#{$i} {
+        100% {
+            transform: translate3d((random(90) * 1vw), (random(90) * 1vh), (random(100) * 1px));
+        }
+    }
+
+.upsideDown .particle:nth-child(#{$i}){
+        animation: particle-animation-#{$i} 60s infinite;
+        $size: random(3) + px;
+        opacity: random(100)/100;
+        height: $size;
+        width: $size;
+        animation-delay: -$i * .2s;
+        transform: translate3d((random(90) * 1vw), (random(90) * 1vh), (random(100) * 1px));
+        background: hsl(random(360), 5%, 10%);
+    }
+}
