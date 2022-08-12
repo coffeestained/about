@@ -142,7 +142,7 @@
 }
 
 .page-header:after {
-    background: linear-gradient(0deg, rgba(81, 89, 57, .65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('../assets/stars.png') repeat;
+    background: linear-gradient(0deg, rgba(57, 52, 67, .65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35);
     animation: animatedBackground 1200s linear infinite;
     border-bottom: 4px rgba(0, 0, 0, .3) solid;
     opacity: var(--timeOfDayOpacity);
@@ -492,7 +492,7 @@ ul li {
 }
 
 .footer-stuffs:after {
-    background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35) url('../assets/stars.png') repeat;
+    background: linear-gradient(0deg, rgba(85, 48, 83, 0.65) 25%, rgba(85, 48, 83, 0.45) 100%), rgba(0, 0, 0, .35);
     animation: animatedBackground 1200s linear infinite;
     opacity: var(--timeOfDayOpacity);
 }
@@ -872,4 +872,10 @@ ul li {
 i.fa-solid.fa-volume-high.tts {
     font-size: 14px;
     opacity: 0px;
+}
+
+@media screen and (min-width: 64em) {
+    .page-header {
+        padding: 80px 0px 80px 0px;
+    }
 }
