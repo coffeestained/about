@@ -197,7 +197,7 @@
     };
 
     const starCont = document.createElement('div');
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 200; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         header[0].appendChild(particle);
@@ -464,34 +464,6 @@
 	<div class="particle"></div>
 	<div class="particle"></div>
     <div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
-	<div class="particle"></div>
 	<div class="particle"></div>
 	<div class="particle"></div>
 	<div class="particle"></div>
@@ -852,86 +824,84 @@
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-
+    </div>
+    <div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+                <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <svg width="0" height="0">
+            <!-- Back Layer -->
+            <filter id="filter-back">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" />
+            <feDisplacementMap  in="SourceGraphic" scale="170" />
+            </filter>
+            <!-- Middle Layer -->
+            <filter id="filter-mid">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" />
+            <feDisplacementMap  in="SourceGraphic" scale="150" />
+            </filter>
+            <!-- Front Layer -->
+            <filter id="filter-front">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" />
+            <feDisplacementMap  in="SourceGraphic" scale="100" />
+            </filter>
+        </svg>
     </div>
 </div>
 
@@ -995,7 +965,7 @@
             multiplier += 5;
             rocketBody.classList.add('rocketBounce');
             flame.classList.add('container');
-            if (pause) await sleep(5000);
+            if (pause) await sleep(20000);
             bottom = bottom + (increment * multiplier);
             rocket.style.bottom = bottom + 'px';
             if (bottom >= (scrollHeight * 2)) {
