@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/main.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -184,7 +187,7 @@
                     border-radius: 5px; max-height: 29.06px;">
             </a>
         </h3>
-        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind some monitors. In my free time, I like to enjoy time with my Wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering,
+        <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind some monitors. In my free time, I like to enjoy time with my wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering,
         gaming and a wide array of outdoorsy stuff. This page is a personal tinkering project where I work on the things that I love as well as new stuff. The repo is public, feel free to inspect the code if you want to replicate how I accomplished anything. Get connected at <a
             href="https://linkedin.com/in/matthew-grady-orlando">LinkedIn</a>.</div>
     </div>
@@ -327,7 +330,7 @@
             aria-label="Special thanks text-to-speech." onclick="speak('special')"></i>
         </h3>
         <div id="special">
-            My Wife, my parents, the open-source community, the great people of my great home State of Florida, my friends, my family, my
+            My wife, my parents, the open-source community, the great people of my great home State of Florida, my friends, my family, my
             co-workers, my colleagues and my mentors who have helped me and continue to help me to become not only a better
             engineer & architect, but a better person. Thank you to <a
             href="https://www.manypixels.co/gallery">ManyPixels Vectors</a> for the graphical assets assistance. Thanks to all the Public/Private workers behind the Public Works datasets visualized on this page.

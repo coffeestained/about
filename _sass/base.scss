@@ -12,6 +12,11 @@
     --timeOfDayOpacity: 0;
 }
 
+main {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
 .parachute {
     margin: 200px;
     width: 400px;
@@ -164,7 +169,6 @@
     margin-bottom: 50px;
     scroll-snap-align: start;
     font-size: 15px;
-    font-family: Arial;
     line-height: 3;
     color: black;
     z-index: 0;
@@ -324,7 +328,7 @@ ul li {
 
 .wide-stuffs {
     padding: 50px;
-    background: rgb(240, 240, 233);
+    background: rgb(245,245,245);
 }
 
 .hidden {
@@ -902,4 +906,7 @@ i.fa-solid.fa-volume-high.tts {
 		-ms-animation: none !important;
 		animation: none !important;
 	}
+    .cloud {
+        display: none !important;
+    }
 }
