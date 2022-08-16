@@ -31,7 +31,7 @@
         width: 100%;
     }
 </style>
-<div class="d3-container">
+<div id="chart" class="d3-container">
     <div class="d3-toolbar">
       <div class="d3-toolbar-item">
         <div style="display: flex;">
@@ -39,6 +39,7 @@
             <b>Chart Selector</b>
             <select id="d3-select" onchange="selectChart(this)" class="form-select" style="width: max-content;" aria-label="Adjust Chart Select">
               <option selected value="strange">A Strange Class</option>
+              <option value="finance">Financial OHLC w/ Additional Options</option>
               <option value="flights">United States Domestic Flight Volume</option>
             </select>
           </div>
@@ -70,8 +71,8 @@
             <b>Favorite Element</b>
             <span id="favorite" role="presentation"></span>
           </div>
-          <div style="display: flex; flex-direction: column; margin-right: 15px;">
-            <b>Keyclicks Legend</b>
+          <div id="legend" style="display: flex; flex-direction: column; margin-right: 15px;">
+            <b>Legend</b>
             <div style="display: flex;">
               <div style="display: flex; flex-direction: column; margin-right: 10px;">
                 <span role="presentation">
@@ -109,8 +110,21 @@
 -->
 <script>
   function selectChart(event) {
-    if (event.value === 'flights') generateData('flights', null);
-    if (event.value === 'strange') peculiarities.showChart();
+    if (simulatorInterval) {
+      clearInterval(simulatorInterval);
+    }
+    if (event.value === 'flights') {
+      document.getElementById('legend').style.display = 'none';
+      generateData('flights', null);
+    }
+    if (event.value === 'strange') {
+      document.getElementById('legend').style.display = 'flex';
+      peculiarities.showChart();
+    }
+    if (event.value === 'finance') {
+      document.getElementById('legend').style.display = 'none';
+      generateData('finance', null);
+    }
   }
 </script>
 
@@ -235,9 +249,20 @@
 
 </style>
 
+<!--
+  Inport Finance Data
+-->
+<script type="module">
+  import { get_data } from './assets/asset.js';
+  window.asset_data = get_data();
+</script>
+
 <!-- Generate data -->
 <script>
-    function generateData(type, opts) {
+    let simulatorInterval = null;
+
+    async function generateData(type, opts) {
+
         // Select D3 Chart
         let svg  = d3.select("svg#svgF");
 
@@ -254,7 +279,7 @@
         // Clear D3 Chart
         d3.selectAll("#svgF > g").remove();
 
-        if (type == 'flights') {
+        if (type === 'flights') {
 
             svg.append("g").attr("id", "basemap");
             svg.append("g").attr("id", "flights");
@@ -661,8 +686,210 @@
             }
         }
 
+        if (type === 'finance') {
+
+          const parseDate = d3.timeParse("%Y-%m-%d");
+
+          window.data = await d3.dsv(",", "./assets/stock.csv", (d) => {
+            const date = parseDate(d["Date"]);
+            return {
+              date,
+              high: +d["High"],
+              low: +d["Low"],
+              open: +d["Open"],
+              close: +d["Close"]
+            };
+          });
+
+          updateOHLC(window.data);
+
+          // Shallow clone object will snapshot the initial response
+          // and additionally be used to
+          // rotate through and generate new entries.
+          const initialItems = [...window.data];
+
+          // Will be used to track position in rotation
+          let nextElement = initialItems.length;
+          let nextDate = Object.assign({}, initialItems[nextElement - 1]);
+              nextDate =  new Date(nextDate['date'].getTime());
+
+          // Direction to iterate
+          // 0 desc
+          // 1 asc
+          let direction = 0;
+
+          simulatorInterval = setInterval(simulator, 5000);
+
+          function simulator() {
+            const parseDate = d3.timeParse("%Y-%m-%d");
+
+            // Get Market Action
+            const marketAction = JSON.parse(JSON.stringify(initialItems[nextElement - 2]));
+            nextDate.setDate(nextDate.getDate() + 1)
+            marketAction['date'] = new Date(new Date(marketAction['date']).setDate(nextDate.getDate() + 1));
+
+            // Skip Weekends
+            let skipCount = 1;
+            while (marketAction['date'].getDay() === 0 || marketAction['date'].getDay() === 6) {
+              console.log(marketAction['date'], marketAction['date'].setDate(nextDate.getDate() + skipCount))
+              marketAction['date'] = new Date(marketAction['date'].setDate(nextDate.getDate() + skipCount));
+              console.log(marketAction['date'], skipCount)
+              skipCount = skipCount + 1;
+            }
+
+            // Update Dataset
+            console.log(marketAction)
+            window.data.push(marketAction);
+            window.data.shift();
+            console.log(window.data)
+
+            // Update Iterate Trackers
+            if (direction === 1) nextElement = nextElement + 1;
+            if (direction === 0) nextElement = nextElement - 1;
+            if ((nextElement - 2) === initialItems.length) direction = 0;
+            if ((nextElement - 2) === 0) direction = 1;
+
+            // Update with new data
+            updateOHLC(window.data);
+          }
+
+
+        }
+
     }
-</script>
+
+    // TODO Need to create function to just add one
+    // Rather than clearing and updating the entire dataset.
+    function updateOHLC(data) {
+
+      // Clear D3 Chart
+      d3.selectAll("#svgF > g").remove();
+
+      const height = 400;
+      const width = 640;
+      const margin = ({top: 20, right: 30, bottom: 30, left: 40});
+
+      function formatChange(y0, y1) {
+        const f = d3.format("+.2%");
+        return (y0, y1) => f((y1 - y0) / y0);
+      }
+
+      const formatValue = d3.format(".2f");
+
+      const formatDate = d3.timeFormat("%B %-d, %Y");
+
+      yAxis = g => g
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y)
+            .tickFormat(d3.format("$~f"))
+            .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
+        .call(g => g.selectAll(".tick line").clone()
+            .attr("stroke-opacity", 0.2)
+            .attr("x2", width - margin.left - margin.right))
+        .call(g => g.select(".domain").remove());
+
+      xAxis = g => g
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x)
+            .tickValues(d3.timeMonday
+                .every(width > 720 ? 1 : 2)
+                .range(data[0].date, data[data.length - 1].date))
+            .tickFormat(d3.timeFormat("%-m/%-d")))
+        .call(g => g.select(".domain").remove());
+
+      const y = d3.scaleLog()
+        .domain([d3.min(data, d => d.low), d3.max(data, d => d.high)])
+        .rangeRound([height - margin.bottom, margin.top]);
+
+      const x = d3.scaleBand()
+        .domain(d3.timeDay
+            .range(data[0].date, +data[data.length - 1].date + 1)
+            .filter(d => d.getDay() !== 0 && d.getDay() !== 6))
+        .range([margin.left, width - margin.right])
+        .padding(0.2);
+
+      const svg = d3.select("svg#svgF");
+
+      svg.append("g")
+          .call(xAxis);
+
+      svg.append("g")
+          .call(yAxis);
+
+      const g = svg.append("g")
+          .attr("stroke-linecap", "round")
+          .attr("stroke", "black")
+        .selectAll("g")
+        .data(data)
+        .join("g")
+          .attr("transform", d => `translate(${x(d.date)},0)`);
+
+      g.append("line")
+          .attr("y1", d => y(d.low))
+          .attr("y2", d => y(d.high));
+
+      g.append("line")
+          .attr("y1", d => y(d.open))
+          .attr("y2", d => y(d.close))
+          .attr("stroke-width", x.bandwidth())
+          .attr("stroke", d => d.open > d.close ? d3.schemeSet1[0]
+              : d.close > d.open ? d3.schemeSet1[2]
+              : d3.schemeSet1[8]);
+
+      g.append("title")
+          .text(d => `
+            ${formatDate(d.date)}
+            Open: ${formatValue(d.open)}
+            Close: ${formatValue(d.close)} (${formatChange(d.open, d.close)})
+            Low: ${formatValue(d.low)}
+            High: ${formatValue(d.high)}
+          `);
+        }
+
+    // Simulator Function
+    function simulateMarketInterval(rnd, marketData) {
+      console.log(rnd)
+      // Generate Appreciation Trend
+      if (rnd >= 50) {
+        const low = randomIntFromInterval(0, 2);
+        const high = randomIntFromInterval(low, low + 2);
+        const open = randomIntFromInterval(low, high);
+        const close = randomIntFromInterval(open, high);
+        marketData['low'] += low;
+        marketData['high'] += high;
+        marketData['open'] += open;
+        marketData['close'] += close;
+      }
+      // Generate Random Neutral Trend
+      if (rnd < 50 && rnd >= 25) {
+        const low = randomIntFromInterval(0, 1);
+        const high = randomIntFromInterval(low, low + 1);
+        const open = randomIntFromInterval(low, high);
+        const close = randomIntFromInterval(open, high);
+        marketData['low'] += low;
+        marketData['high'] += high;
+        marketData['open'] += open;
+        marketData['close'] += close;
+      }
+      // Generate Depreciation Trend
+      if (rnd < 25) {
+        const low = randomIntFromInterval(0, 1);
+        const high = randomIntFromInterval(low, low + 1);
+        const open = randomIntFromInterval(low, high);
+        const close = randomIntFromInterval(low, open);
+        marketData['low'] -= low;
+        marketData['high'] -= high;
+        marketData['open'] -= open;
+        marketData['close'] -= close;
+      }
+      console.log(marketData)
+      return marketData;
+    }
+
+    function randomIntFromInterval(min, max) { // min and max included
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+  </script>
 
 <!-- Flight D3 Styles -->
 <style>

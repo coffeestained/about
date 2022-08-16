@@ -12,9 +12,10 @@
     --timeOfDayOpacity: 0;
 }
 
-main {
+body {
     font-family: 'Roboto', sans-serif;
-    overflow: hidden;
+    position: relative;
+
 }
 
 .parachute {
