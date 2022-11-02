@@ -908,7 +908,7 @@
     </div>
 </div>
 
-<div style="z-index:100; position: relative; top: 400px;">
+<!-- <div style="z-index:100; position: relative; top: 400px;">
     <div id="rocket" class="rocket" style="transform: scale(.3); bottom: 0px;">
         <div id="rocketBody" class="rocket-body">
             <div class="body"></div>
@@ -925,8 +925,8 @@
             <div class="black circle"></div>
         </div>
     </div>
-</div>
-<script>
+</div> -->
+<!-- <script>
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -951,7 +951,7 @@
 
         await sleep(1);
         if (direction === 1) {
-            multiplier -= 5;
+            multiplier -= 15;
             let incrementFallen = (increment * multiplier);
             if (incrementFallen < 1) incrementFallen = 1;
             bottom = bottom - incrementFallen;
@@ -965,7 +965,7 @@
                 generateThrust(1, false, multiplier);
             }
         } else {
-            multiplier += 5;
+            multiplier += 15;
             rocketBody.classList.add('rocketBounce');
             flame.classList.add('container');
             if (pause) await sleep(20000);
@@ -981,7 +981,7 @@
     };
 
     generateThrust(0);
-</script>
+</script> -->
 
 <script>
     $(document).ready(function(){

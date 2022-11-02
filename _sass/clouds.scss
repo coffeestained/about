@@ -7,7 +7,7 @@ div > .cloud {
     box-shadow: 200px 200px 50px 0px #fff;
 }
 
-@for $h from 1 through 81 {
+@for $h from 1 through 40 {
     @keyframes cloud-animation-#{$h} {
         100% {
             transform: translate3d(0vw, random(30) * 1vh, (random(100) * 1px));
