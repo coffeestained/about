@@ -1,28 +1,28 @@
-div > .cloud {
-    position: absolute;
-    border-radius: 50%;
-    padding: 0px;
-    top: 150px;
-    filter: url(#filter-back);
-    box-shadow: 200px 200px 50px 0px #fff;
-}
+// div > .cloud {
+//     position: absolute;
+//     border-radius: 50%;
+//     padding: 0px;
+//     top: 150px;
+//     filter: url(#filter-back);
+//     box-shadow: 200px 200px 50px 0px #fff;
+// }
 
-@for $h from 1 through 40 {
-    @keyframes cloud-animation-#{$h} {
-        100% {
-            transform: translate3d(0vw, random(30) * 1vh, (random(100) * 1px));
-        }
-    }
+// @for $h from 1 through 40 {
+//     @keyframes cloud-animation-#{$h} {
+//         100% {
+//             transform: translate3d(0vw, random(30) * 1vh, (random(100) * 1px));
+//         }
+//     }
 
-div > .cloud:nth-child(#{$h}){
-        animation: cloud-animation-#{$h} 480s infinite;
-        $size: random(30) * random(30) + px;
-        opacity: random(3) / 70;
-        height: $size;
-        width: $size;
-        animation-delay: -$h * 30s;
-        transform: translate3d(100vw, ((random(30)) * 1vh), (random(100) * 1px));
-        background: hsl(random(360), 5%, 20%);
-    }
-}
+// div > .cloud:nth-child(#{$h}){
+//         animation: cloud-animation-#{$h} 480s infinite;
+//         $size: random(30) * random(30) + px;
+//         opacity: random(3) / 70;
+//         height: $size;
+//         width: $size;
+//         animation-delay: -$h * 30s;
+//         transform: translate3d(100vw, ((random(30)) * 1vh), (random(100) * 1px));
+//         background: hsl(random(360), 5%, 20%);
+//     }
+// }
 
