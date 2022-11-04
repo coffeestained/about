@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:".",unitOrder:"DD.MM.YYYY",weekStart:1,placeholder:"DD.MM.YYYY",days:{abbreviated:"ne po \u00fat st \u010dt p\u00e1 so".split(" "),narrow:"NP\u00daS\u010cPS".split(""),"short":"ne po \u00fat st \u010dt p\u00e1 so".split(" "),wide:"ned\u011ble pond\u011bl\u00ed \u00fater\u00fd st\u0159eda \u010dtvrtek p\u00e1tek sobota".split(" ")},numerals:"0123456789",months:{abbreviated:"led \u00fano b\u0159e dub kv\u011b \u010dvn \u010dvc srp z\u00e1\u0159 \u0159\u00edj lis pro".split(" "),
+narrow:"1 2 3 4 5 6 7 8 9 10 11 12".split(" "),wide:"leden \u00fanor b\u0159ezen duben kv\u011bten \u010derven \u010dervenec srpen z\u00e1\u0159\u00ed \u0159\u00edjen listopad prosinec".split(" ")}}});

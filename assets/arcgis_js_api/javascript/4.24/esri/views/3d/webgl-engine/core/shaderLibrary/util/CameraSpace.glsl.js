@@ -1,0 +1,7 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../../../chunks/vec2 ../../../../../../chunks/vec2f64 ../../../../../../chunks/vec4 ../../../../../../chunks/vec4f64 ../../shaderModules/Float2PassUniform ../../shaderModules/Float4PassUniform ../../shaderModules/interfaces".split(" "),function(d,e,l,f,m,n,p,q){function g(c){return 0===c.camera.projectionMatrix[11]?e.set(h,0,1):e.set(h,1,0)}const k=m.create(),h=l.create();d.CameraSpace=function(c){c.fragment.uniforms.add(new p.Float4PassUniform("projInfo",(a,b)=>{a=b.camera.projectionMatrix;
+b=0===a[11]?f.set(k,2/(b.camera.fullWidth*a[0]),2/(b.camera.fullHeight*a[5]),(1+a[12])/a[0],(1+a[13])/a[5]):f.set(k,-2/(b.camera.fullWidth*a[0]),-2/(b.camera.fullHeight*a[5]),(1-a[8])/a[0],(1-a[9])/a[5]);return b}));c.fragment.uniforms.add(new n.Float2PassUniform("zScale",(a,b)=>g(b)));c.fragment.code.add(q.glsl`vec3 reconstructPosition(vec2 fragCoord, float depth) {
+return vec3((fragCoord * projInfo.xy + projInfo.zw) * (zScale.x * depth + zScale.y), depth);
+}`)};d.getZScale=g;Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

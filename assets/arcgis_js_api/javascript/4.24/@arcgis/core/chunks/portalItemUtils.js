@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{initializeProjection as e,project as t}from"../geometry/projection.js";import r from"../geometry/SpatialReference.js";import{webMercatorToGeographic as o}from"../geometry/support/webMercatorUtils.js";function n(e,t){if(!s(e,t)){const r=e.typeKeywords;r?r.push(t):e.typeKeywords=[t]}}function s(e,t){return!!e.typeKeywords?.includes(t)}function i(e,t){const r=e.typeKeywords;if(r){const e=r.indexOf(t);e>-1&&r.splice(e,1)}}async function a(n){const s=n.clone().normalize();let i;if(s.length>1)for(const e of s)i?e.width>i.width&&(i=e):i=e;else i=s[0];return async function(n){const s=n.spatialReference;if(s.isWGS84)return n.clone();if(s.isWebMercator)return o(n);const i=r.WGS84;return await e(s,i),t(n,i)}(i)}const c={DEVELOPER_BASEMAP:"DeveloperBasemap",JSAPI:"ArcGIS API for JavaScript",METADATA:"Metadata",MULTI_LAYER:"Multilayer",SINGLE_LAYER:"Singlelayer",TABLE:"Table"};export{c as T,n as a,a as g,s as h,i as r};

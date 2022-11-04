@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","./tracking","./tracking/SimpleTrackingTarget"],function(l,h,m){let g=!1;const d=[];l.autorun=function(e){function f(){if(b&&!a)if(g)d.includes(f)||d.unshift(f);else for(b.clear(),a=g=!0,h.runTracked(b,e),g=a=!1;d.length;)d.pop()()}let b=new m.SimpleTrackingTarget(f),a=!1;a=!0;h.runTracked(b,e);a=!1;return{remove:function(){b&&(b.destroy(),b=null)}}};l.reaction=function(e,f){function b(){if(a&&!k)if(g)d.includes(b)||d.unshift(b);else{var n=c;a.clear();k=g=!0;c=h.runTracked(a,e);
+g=k=!1;for(f(c,n);d.length;)d.pop()()}}let a=new m.SimpleTrackingTarget(b),c=null,k=!1;k=!0;c=h.runTracked(a,e);k=!1;return{remove:function(){a&&(a.destroy(),c=a=null)}}};l.reactionDeferred=function(e,f){function b(){if(!a)return null;a.clear();return c=h.runTracked(a,e)}let a=new m.SimpleTrackingTarget(function(){f(c,b)}),c=null;b();return{remove:function(){a&&(a.destroy(),a=null);c=null}}};Object.defineProperties(l,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

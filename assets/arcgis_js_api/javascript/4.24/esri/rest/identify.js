@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../chunks/_rollupPluginBabelHelpers ../request ../geometry/support/normalizeUtils ./utils ./operations/identify ./support/IdentifyParameters ./support/IdentifyResult".split(" "),function(k,l,m,n,g,p,q,r){function h(){h=l._asyncToGenerator(function*(a,b,e){b=t(b);const f=b.geometry?[b.geometry]:[],c=g.parseUrl(a);c.path+="/identify";return n.normalizeCentralMeridian(f).then(d=>{d=p.identifyToIdentifyRESTParameters(b,{geometry:d&&d[0]});d=g.encode({...c.query,f:"json",...d});d=g.asValidOptions(d,
+e);return m(c.path,d).then(u).then(v=>w(v,b.sublayers))})});return h.apply(this,arguments)}function u(a){a=a.data;a.results=a.results||[];const b={results:[]};b.results=a.results.map(e=>r.fromJSON(e));return b}function t(a){return a=q.from(a)}function w(a,b){function e(c){f.set(c.id,c);c.sublayers&&c.sublayers.forEach(e)}if(null==b||!b.length)return a;const f=new Map;b.forEach(e);for(const c of a.results)c.feature.sourceLayer=f.get(c.layerId);return a}k.identify=function(a,b,e){return h.apply(this,
+arguments)};Object.defineProperties(k,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

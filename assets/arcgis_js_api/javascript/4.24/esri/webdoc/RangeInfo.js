@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../chunks/_rollupPluginBabelHelpers ../chunks/tslib.es6 ../core/JSONSupport ../core/lang ../core/accessorSupport/decorators/property ../core/accessorSupport/ensureType ../core/accessorSupport/decorators/subclass".split(" "),function(h,c,a,k,d,m,l){var e;a=e=function(g){function f(b){b=g.call(this,b)||this;b.activeRange=null;b.currentRangeExtent=null;b.fullRangeExtent=null;return b}h._inheritsLoose(f,g);f.prototype.clone=function(){return new e(k.clone({activeRange:this.activeRange,currentRangeExtent:this.currentRangeExtent,
+fullRangeExtent:this.fullRangeExtent}))};return f}(a.JSONSupport);c.__decorate([d.property({type:String,nonNullable:!0,json:{read:{source:"activeRangeName"},write:{target:"activeRangeName",isRequired:!0}}})],a.prototype,"activeRange",void 0);c.__decorate([d.property({type:[Number],json:{write:!0}})],a.prototype,"currentRangeExtent",void 0);c.__decorate([d.property({type:[Number],json:{write:!0}})],a.prototype,"fullRangeExtent",void 0);return a=e=c.__decorate([l.subclass("esri.webdoc.RangeInfo")],
+a)});

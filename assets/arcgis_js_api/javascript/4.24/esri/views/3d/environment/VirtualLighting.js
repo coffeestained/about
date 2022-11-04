@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../core/Evented ../../../core/accessorSupport/decorators/property ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/ensureType ../../../core/accessorSupport/decorators/subclass ../../../webscene/VirtualLighting".split(" "),function(l,e,b,f,p,q,r,m,n){var c;b=c=function(g){function d(a){a=g.call(this,a)||this;a.ambientOcclusionEnabled=!1;a.waterReflectionEnabled=!1;return a}l._inheritsLoose(d,g);
+var h=d.prototype;h.clone=function(){return new c({...this.cloneConstructProperties(),ambientOcclusionEnabled:this.ambientOcclusionEnabled,waterReflectionEnabled:this.waterReflectionEnabled})};d.fromWebsceneLighting=function(a){return new c(a.cloneConstructProperties())};h.cloneWithWebsceneLighting=function(a){const k=this.clone();k.directShadowsEnabled=a.directShadowsEnabled;return k};return d}(b.EventedMixin(n));e.__decorate([f.property({type:Boolean})],b.prototype,"ambientOcclusionEnabled",void 0);
+e.__decorate([f.property({type:Boolean})],b.prototype,"waterReflectionEnabled",void 0);return b=c=e.__decorate([m.subclass("esri.views.3d.environment.VirtualLighting")],b)});

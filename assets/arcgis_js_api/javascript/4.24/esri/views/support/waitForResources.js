@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../core/maybe","../../core/promiseUtils","../../core/reactiveUtils","../../core/scheduling","../../core/accessorSupport/watch"],function(r,t,u,e,f){function v(a){function d(){!a.destroyed&&w()?(c=null,setTimeout(d,16)):(c||(c=performance.now()),200<=performance.now()-c?g():setTimeout(d,16))}const g=t.createResolver();let c=performance.now();const w=()=>{var h,k,l,m,n,p,q;f.dispatch();e.debug.dispatch();return!a.ready||a.updating||!a.stationary||a.rendering||!0===(null==(h=a.layerViewManager)?
+void 0:h.updating)||!0===(null==(k=a.labelManager)?void 0:k.updating)||!0===(null==(l=a.graphicsView)?void 0:l.updating)||!0===(null==(m=a.magnifier)?void 0:m.visible)&&r.isSome(null==(n=a.magnifier)?void 0:n.position)&&(null==(p=a._magnifierView)||!p.mask||null==(q=a._magnifierView)||!q.overlay)||a.allLayerViews.some(b=>!0===b.updating)||a.allLayerViews.find(b=>{const x=!b.isFulfilled();b=b.updating&&!b.suspended;return x||b})?!0:!1};setTimeout(d,16);return g.promise}return function(a){switch(a.type){case "2d":return v(a);
+case "3d":if(a)return f.dispatch(),e.debug.dispatch(),u.whenOnce(()=>!a.updating)}return Promise.resolve()}});

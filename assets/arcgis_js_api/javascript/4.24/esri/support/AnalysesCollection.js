@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../chunks/_rollupPluginBabelHelpers ../chunks/tslib.es6 ../core/Logger ../core/maybe ../core/accessorSupport/ensureType ../core/arrayUtils ../core/has ../core/accessorSupport/set ../core/accessorSupport/decorators/subclass ../core/support/OwningCollection".split(" "),function(b,h,k,l,m,r,t,u,v,n,p){const q=l.getLogger("esri.support.AnalysesCollection");b.AnalysesCollection=function(f){function d(a){var c=f.call(this,a)||this;c.handles.add(c.on("before-add",e=>{m.isNone(e.item)||e.item.parent!==
+c.owner||(q.warn("Analysis inside the collection must be unique. Not adding this element again."),e.preventDefault())}));return c}h._inheritsLoose(d,f);var g=d.prototype;g._own=function(a){a.parent=this.owner};g._release=function(a){a.parent=null};return d}(p.OwningCollection);b.AnalysesCollection=k.__decorate([n.subclass("esri.support.AnalysesCollection")],b.AnalysesCollection);Object.defineProperties(b,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

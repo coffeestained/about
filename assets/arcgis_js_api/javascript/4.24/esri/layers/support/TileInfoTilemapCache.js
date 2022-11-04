@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../chunks/_rollupPluginBabelHelpers","../../core/promiseUtils"],function(g,h){return function(){function k(e,a=0,b=e.lods.length-1){this.tileInfo=e;this.minLOD=a;this.maxLOD=b}var f=k.prototype;f.getAvailability=function(e,a,b){const c=this.tileInfo.lodAt(e);return!c||e<this.minLOD||e>this.maxLOD?"unavailable":c.cols&&c.rows?b>=c.cols[0]&&b<=c.cols[1]&&a>=c.rows[0]&&a<=c.rows[1]?"available":"unavailable":"available"};f.fetchAvailability=function(){var e=g._asyncToGenerator(function*(a,
+b,c,d){yield h.waitTick(d);return this.getAvailability(a,b,c)});return function(a,b,c,d){return e.apply(this,arguments)}}();f.fetchAvailabilityUpsample=function(){var e=g._asyncToGenerator(function*(a,b,c,d,l){yield h.waitTick(l);d.level=a;d.row=b;d.col=c;a=this.tileInfo;for(a.updateTileInfo(d);;)if(b=this.getAvailability(d.level,d.row,d.col),"unavailable"===b){if(!a.upsampleTile(d))return"unavailable"}else return b});return function(a,b,c,d,l){return e.apply(this,arguments)}}();return k}()});

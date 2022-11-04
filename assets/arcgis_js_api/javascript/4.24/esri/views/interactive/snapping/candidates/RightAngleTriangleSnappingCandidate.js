@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../chunks/_rollupPluginBabelHelpers ../../../../chunks/vec2 ../../../../chunks/vec2f64 ../SnappingConstraint ../snappingUtils ./SnappingCandidate ../hints/LineSnappingHint ../hints/RightAngleSnappingHint".split(" "),function(f,g,h,n,p,k,b,l,q){b=function(m){function c({coordinateHelper:a,targetPoint:r,point1:d,point2:e,elevationInfo:t}){a=m.call(this,a,r,new p.PlanarCircleConstraint(a,h.lerp(u,d,e,.5),.5*h.distance(d,e)),t)||this;a.p1=d;a.p2=e;return a}g._inheritsLoose(c,
+m);g._createClass(c,[{key:"hints",get:function(){const a=this.elevationInfo;return[new l.LineSnappingHint(k.LineSegmentHintType.REFERENCE,this.targetPoint,this.p1,a),new l.LineSnappingHint(k.LineSegmentHintType.REFERENCE,this.targetPoint,this.p2,a),new q.RightAngleSnappingHint(this.p1,this.targetPoint,this.p2,a)]}}]);return c}(b.SnappingCandidate);const u=n.create();f.RightAngleTriangleSnappingCandidate=b;Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

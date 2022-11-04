@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{d as e}from"./screenUtils.js";import{e as t,g as s}from"./vec2.js";import{s as r,b as i,o as a}from"./mathUtils.js";import{f as n}from"./unitUtils.js";function o(e,t){if(r(t,0,0,0),e.length>0){for(let s=0;s<e.length;++s)i(t,t,e[s]);a(t,t,1/e.length)}}function c(e,r,i,a){a.projectToRenderScreen(e,l),a.projectToRenderScreen(r,h),t(i,f,m),s(i,i)}const l=e(),m=l,h=e(),f=h;class p{constructor(e=null){this.spatialReference=e}get spatialReference(){return this._spatialReference}set spatialReference(e){e!==this._spatialReference&&(this._spatialReference=e,this._updateNormalizationFactors())}normalizeDistance(e){return e*this._metersPerDistanceUnit}normalizeElevation(e){return e*this._metersPerElevationUnit}normalizeArea(e){return e*this._squareMetersPerAreaUnit}_updateNormalizationFactors(){this._metersPerDistanceUnit=n(this._spatialReference,1),this._metersPerElevationUnit=n(this._spatialReference,1),this._squareMetersPerAreaUnit=this._metersPerDistanceUnit*this._metersPerDistanceUnit}}export{p as U,o as m,c as s};

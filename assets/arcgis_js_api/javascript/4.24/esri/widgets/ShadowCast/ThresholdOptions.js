@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../Color ../../core/Accessor ../../core/timeUtils ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass".split(" "),function(k,b,e,a,f,d,m,n,p,l){a=function(g){function h(){var c=g.apply(this,arguments)||this;c.color=new e([255,0,0,.7]);c.value=f.convertTime(4,"hours","milliseconds");c.minValue=0;c.maxValue=f.convertTime(8,
+"hours","milliseconds");return c}k._inheritsLoose(h,g);return h}(a);b.__decorate([d.property({type:e})],a.prototype,"color",void 0);b.__decorate([d.property()],a.prototype,"value",void 0);b.__decorate([d.property()],a.prototype,"minValue",void 0);b.__decorate([d.property()],a.prototype,"maxValue",void 0);return a=b.__decorate([l.subclass("esri.widgets.ShadowCast.ThresholdOptions")],a)});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../core/accessorSupport/decorators/property ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/ensureType ../../../core/accessorSupport/decorators/subclass ../SmartMappingSliderViewModel".split(" "),function(e,c,f,a,l,m,h,k){a=function(g){function d(b){b=g.call(this,b)||this;b.zoomingEnabled=!1;return b}e._inheritsLoose(d,g);e._createClass(d,[{key:"breaks",get:function(){return this.breaks}}]);
+return d}(k);c.__decorate([f.property()],a.prototype,"breaks",null);c.__decorate([f.property({readOnly:!0})],a.prototype,"zoomingEnabled",void 0);return a=c.__decorate([h.subclass("esri.widgets.smartMapping.ClassedSizeSlider.ClassedSizeSliderViewModel")],a)});

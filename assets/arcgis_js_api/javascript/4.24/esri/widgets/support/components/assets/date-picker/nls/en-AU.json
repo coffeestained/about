@@ -1,0 +1,2 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:"/",unitOrder:"DD/MM/YYYY",weekStart:1,placeholder:"DD/MM/YYYY",days:{narrow:"Su. M. Tu. W. Th. F. Sa.".split(" "),"short":"Su Mon Tu Wed Th Fri Sat".split(" ")},numerals:"0123456789",months:{narrow:"JFMAMJJASOND".split(""),abbreviated:"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" "),wide:"January February March April May June July August September October November December".split(" ")}}});

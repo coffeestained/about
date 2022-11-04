@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("require exports ../../../../chunks/_rollupPluginBabelHelpers ../core/shaderTechnique/ReloadableShaderModule ../core/shaderTechnique/ShaderTechnique ../lib/DefaultVertexAttributeLocations ../lib/Program ../../../../chunks/HighlightApply.glsl ../../../webgl/enums ../../../webgl/renderState".split(" "),function(h,f,k,l,b,m,n,p,c,e){b=function(d){function a(){return d.apply(this,arguments)||this}k._inheritsLoose(a,d);var g=a.prototype;g.initializeProgram=function(q){const r=a.shader.get().build();
+return new n.Program(q.rctx,r,m.Default3D)};g.initializePipeline=function(){return e.makePipelineState({blending:e.separateBlendingParams(c.BlendFactor.SRC_ALPHA,c.BlendFactor.ONE,c.BlendFactor.ONE_MINUS_SRC_ALPHA,c.BlendFactor.ONE_MINUS_SRC_ALPHA),colorWrite:e.defaultColorWriteParams})};return a}(b.ShaderTechnique);b.shader=new l.ReloadableShaderModule(p.HighlightApply,()=>new Promise((d,a)=>h(["./HighlightApply.glsl"],d,a)));f.HighlightApplyTechnique=b;Object.defineProperties(f,{__esModule:{value:!0},
+[Symbol.toStringTag]:{value:"Module"}})});

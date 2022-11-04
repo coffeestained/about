@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(g){g.glslifyDefineMap=function(h){let b="";for(const d in h){var a=h[d];if("boolean"===typeof a)a&&(b+=`#define ${d}\n`);else if("number"===typeof a)b+=`#define ${d} ${a.toFixed()}\n`;else if("object"===typeof a){{const {options:e,value:c}=a;var f="number"===typeof e[c]}if(f){const {value:e,options:c,namespace:k}=a;a=k?`${k}_`:"";for(const l in c)b+=`#define ${a}${l} ${c[l].toFixed()}\n`;b+=`#define ${d} ${a}${e}\n`}else{f=a.options;let e=0;for(const c in f)b+=`#define ${f[c]} ${(e++).toFixed()}\n`;
+b+=`#define ${d} ${f[a.value]}\n`}}}return b};Object.defineProperties(g,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

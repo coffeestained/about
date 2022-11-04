@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/ObjectPool","../../../webgl/enums","../../../webgl/FramebufferObject"],function(f,k,m,l,n){let p=function(){function d(a){this._rctx=a;this._pools=new Map}var c=d.prototype;c.acquire=function(a){return this._getPool(a).acquire()};c.clear=function(){this._pools.forEach(a=>a.destroy());this._pools.clear()};c._getPool=function(a){var b=this._pools.get(a);b||(b=g.bind(g,this._rctx,{colorTarget:l.TargetType.TEXTURE,depthStencilTarget:l.DepthStencilTargetType.DEPTH_RENDER_BUFFER,
+width:a,height:a},e=>this._getPool(e.width).release(e)),b=new m(b,null,()=>{}),this._pools.set(a,b));return b};return d}(),g=function(d){function c(a,b,e){var h=d.call(this,a,b)||this;h.release=()=>e(k._assertThisInitialized(h));return h}k._inheritsLoose(c,d);return c}(n.FramebufferObject);f.FBOPool=p;f.PooledFramebufferObject=g;Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

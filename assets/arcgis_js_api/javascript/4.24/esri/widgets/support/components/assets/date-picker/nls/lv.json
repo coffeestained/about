@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:".",unitOrder:"DD.MM.YYYY",weekStart:1,placeholder:"DD.MM.YYYY",days:{abbreviated:"sv\u0113td. pirmd. otrd. tre\u0161d. ceturtd. piektd. sestd.".split(" "),narrow:"SPOTCPS".split(""),"short":"Sv Pr Ot Tr Ce Pk Se".split(" "),wide:"sv\u0113tdiena pirmdiena otrdiena tre\u0161diena ceturtdiena piektdiena sestdiena".split(" ")},numerals:"0123456789",months:{abbreviated:"janv. febr. marts apr. maijs j\u016bn. j\u016bl. aug. sept. okt. nov. dec.".split(" "),
+narrow:"JFMAMJJASOND".split(""),wide:"janv\u0101ris febru\u0101ris marts apr\u012blis maijs j\u016bnijs j\u016blijs augusts septembris oktobris novembris decembris".split(" ")}}});

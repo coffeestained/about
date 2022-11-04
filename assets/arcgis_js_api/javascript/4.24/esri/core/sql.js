@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["require","exports","../chunks/_rollupPluginBabelHelpers","./maybe"],function(f,c,g,e){function d(){d=g._asyncToGenerator(function*(a,b){const {WhereClause:h}=yield new Promise((k,l)=>f(["./sql/WhereClause"],k,l));return h.create(a,b)});return d.apply(this,arguments)}c.parseWhereClause=function(a,b){return d.apply(this,arguments)};c.sqlAnd=function(a,b){return e.isSome(a)?e.isSome(b)?`(${a}) AND (${b})`:a:b};Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

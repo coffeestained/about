@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../../core/byteSizeEstimations","../../../core/maybe","../layers/support/MemoryManagedLayerView","./LayerPerformanceInfo","../terrain/terrainUtils"],function(d,e,f,g,h){return function(a){this.usedMemory=this.totalMemory=0;this.quality=1;this.edgesMemory=this.terrainMemory=this.load=0;this.layerPerformanceInfos=[];var b=a.resourceController.memoryController;this.totalMemory=b.maxMemory*d.ByteSizeUnit.MEGABYTES;this.usedMemory=Math.round(b.usedMemory*this.totalMemory);this.quality=b.memoryFactor;
+this.load=a.resourceController.scheduler.load;this.terrainMemory=a.basemapTerrain?a.basemapTerrain.getUsedMemory():0;b=a._stage&&a._stage.renderView&&a._stage.renderView.edgeView;this.edgesMemory=e.isSome(b)?b.usedMemory:0;a.allLayerViews.items.forEach(c=>{(f.isMemoryManagedLayerView(c)||h.isSurfaceLayerView(c))&&this.layerPerformanceInfos.push(new g(c,a))});this.layerPerformanceInfos.sort((c,k)=>k.memory-c.memory)}});

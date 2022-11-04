@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../chunks/_rollupPluginBabelHelpers ../../../../chunks/tslib.es6 ../../../../core/accessorSupport/decorators/property ../../../../core/arrayUtils ../../../../core/has ../../../../core/accessorSupport/ensureType ../../../../core/accessorSupport/decorators/subclass ../css ../../../../widgets/Widget ../../../../widgets/support/widgetUtils ../../../../widgets/support/jsxFactory".split(" "),function(a,h,b,f,q,r,t,k,l,m,u,c){const d=`${l.BASE}-field`;var n=`${d}__title`,p=`${d}__value`;
+a.TooltipField=function(g){function e(){return g.apply(this,arguments)||this}h._inheritsLoose(e,g);e.prototype.render=function(){return c.tsx("div",{class:d},c.tsx("div",{class:n},this.title),c.tsx("div",{class:p},this.value))};return e}(m);b.__decorate([f.property()],a.TooltipField.prototype,"title",void 0);b.__decorate([f.property()],a.TooltipField.prototype,"value",void 0);a.TooltipField=b.__decorate([k.subclass("esri.views.interactive.tooltip.support.TooltipField")],a.TooltipField);Object.defineProperties(a,
+{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

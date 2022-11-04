@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../core/arrayUtils ../../core/ObjectStack ../../chunks/vec3 ../../chunks/vec3f64 ./vectorStacks".split(" "),function(e,k,n,d,f,h){function g(a){return a?{origin:f.clone(a.origin),direction:f.clone(a.direction)}:{origin:f.create(),direction:f.create()}}function l(a,b,c=g()){d.copy(c.origin,a);d.copy(c.direction,b);return c}function m(a,b){a=d.cross(h.sv3d.get(),d.normalize(h.sv3d.get(),a.direction),d.subtract(h.sv3d.get(),b,a.origin));return d.dot(a,a)}const p=new n.ObjectStack(function(){return{origin:null,
+direction:null}});e.closestPoint=function(a,b,c){b=d.dot(a.direction,d.subtract(c,b,a.origin));d.add(c,a.origin,d.scale(c,a.direction,b));return c};e.copy=function(a,b=g()){return l(a.origin,a.direction,b)};e.create=g;e.distance=function(a,b){return Math.sqrt(m(a,b))};e.distance2=m;e.equals=function(a,b){return k.equals(a.origin,b.origin)&&k.equals(a.direction,b.direction)};e.fromPoints=function(a,b,c=g()){d.copy(c.origin,a);d.subtract(c.direction,b,a);return c};e.fromValues=l;e.wrap=function(a,b){const c=
+p.get();c.origin=a;c.direction=b;return c};Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

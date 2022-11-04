@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../chunks/vec2"],function(d,f){d.LineSegmentHintType=void 0;(function(a){a[a.TARGET=0]="TARGET";a[a.REFERENCE=1]="REFERENCE";a[a.REFERENCE_EXTENSION=2]="REFERENCE_EXTENSION"})(d.LineSegmentHintType||(d.LineSegmentHintType={}));d.objectEqual=function(a,b){const c=a.length===b.length&&a[0]===b[0]&&a[1]===b[1];switch(a.length){case 2:return c;case 3:return c&&a[2]===b[2];case 4:return c&&a[3]===b[3]}return!1};d.sortCandidatesInPlace=function(a,b){b.sort((c,e)=>{c=f.squaredDistance(c.targetPoint,
+a);e=f.squaredDistance(e.targetPoint,a);return c-e})};d.squareDistance=function(a,b){const c=a.x-b.x;a=a.y-b.y;return c*c+a*a};Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

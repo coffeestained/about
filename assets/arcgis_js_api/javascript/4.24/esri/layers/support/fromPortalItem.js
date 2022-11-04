@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["require","exports","../../chunks/_rollupPluginBabelHelpers","../../config","../../core/Logger"],function(e,d,f,g,h){function c(){c=f._asyncToGenerator(function*(a){a="portalItem"in a?a:{portalItem:a};const l=yield new Promise((b,k)=>e(["../../portal/support/portalLayers"],b,k));try{return yield l.fromItem(a)}catch(b){throw a=a&&a.portalItem,m.error("#fromPortalItem()","Failed to create layer from portal item (portal: '"+(a&&a.portal&&a.portal.url||g.portalUrl)+"', id: '"+(a&&a.id||"unset")+
+"')",b),b;}});return c.apply(this,arguments)}const m=h.getLogger("esri.layers.support.fromPortalItem");d.fromPortalItem=function(a){return c.apply(this,arguments)};Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

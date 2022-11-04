@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:"/",unitOrder:"DD/MM/YYYY",weekStart:1,placeholder:"DD/MM/YYYY",days:{abbreviated:"CN;Th 2;Th 3;Th 4;Th 5;Th 6;Th 7".split(";"),narrow:"CN T2 T3 T4 T5 T6 T7".split(" "),"short":"CN T2 T3 T4 T5 T6 T7".split(" "),wide:"Ch\u1ee7 Nh\u1eadt;Th\u1ee9 Hai;Th\u1ee9 Ba;Th\u1ee9 T\u01b0;Th\u1ee9 N\u0103m;Th\u1ee9 S\u00e1u;Th\u1ee9 B\u1ea3y".split(";")},numerals:"0123456789",months:{abbreviated:"Thg 1;Thg 2;Thg 3;Thg 4;Thg 5;Thg 6;Thg 7;Thg 8;Thg 9;Thg 10;Thg 11;Thg 12".split(";"),
+narrow:"1 2 3 4 5 6 7 8 9 10 11 12".split(" "),wide:"Th\u00e1ng 1;Th\u00e1ng 2;Th\u00e1ng 3;Th\u00e1ng 4;Th\u00e1ng 5;Th\u00e1ng 6;Th\u00e1ng 7;Th\u00e1ng 8;Th\u00e1ng 9;Th\u00e1ng 10;Th\u00e1ng 11;Th\u00e1ng 12".split(";")}}});

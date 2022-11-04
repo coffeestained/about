@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(e){let h=function(){function f(a){this._allocations=new Map;a?Error.stackTraceLimit=Infinity:(this.add=()=>{},this.remove=()=>{})}var d=f.prototype;d.add=function(a){this._allocations.set(a,Error().stack)};d.remove=function(a){this._allocations.delete(a)};d.print=function(){if(0<this._allocations.size){console.log(`${this._allocations.size} live object allocations:`);const a=new Map;this._allocations.forEach(c=>{var b;a.set(c,(null!=(b=a.get(c))?b:0)+1)});a.forEach((c,
+b)=>{b=b.split("\n");b.shift();b.shift();console.log(`${c}: ${b.shift()}`);b.forEach(g=>console.log("   ",g))})}};return f}();e.AllocationTracer=h;Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

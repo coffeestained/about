@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../../../chunks/_rollupPluginBabelHelpers","../../engine/FeatureContainer","./GraphicBoundsRenderer","../../../webgl/enums"],function(g,h,k,l){return function(e){function d(a){a=e.call(this,a)||this;a.hasHighlight=()=>!0;return a}g._inheritsLoose(d,e);var c=d.prototype;c.destroy=function(){e.prototype.destroy.call(this);this._boundsRenderer&&(this._boundsRenderer.destroy(),this._boundsRenderer=null)};c.enableRenderingBounds=function(a){this._boundsRenderer=new k(a);this.requestRender()};
+c.onTileData=function(a,f){a.patch(f);this.contains(a)||this.addChild(a);this.requestRender()};c.onTileError=function(a){a.clear();this.contains(a)||this.addChild(a)};c._renderChildren=function(a,f){for(const b of this.children)b.isReady&&b.hasData&&(b.commit(a),a.context.setStencilFunction(l.CompareFunction.EQUAL,b.stencilRef,255),b._displayList.replay(a,b,f))};g._createClass(d,[{key:"hasLabels",get:function(){return!1}}]);return d}(h.FeatureContainer)});

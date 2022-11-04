@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../geometry ../../core/maybe ../../core/Logger ../../core/accessorSupport/ensureType ../../core/arrayUtils ../../core/has ../../core/accessorSupport/set ../../core/accessorSupport/decorators/subclass ./DrawAction ./input/DrawEvents ../input/InputManager ../interactive/keybindings ../support/screenUtils ../../geometry/Point ../../chunks/MultipointDrawAction".split(" "),function(a,c,d,e,f,g,h,k,l,m,n,p,q,r,t,u,v,b){Object.defineProperty(a,
+"MultipointDrawAction",{enumerable:!0,get:()=>b.MultipointDrawAction});Object.defineProperties(a,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

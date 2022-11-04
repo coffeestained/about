@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../core/JSONSupport ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass ../../geometry/support/jsonUtils".split(" "),function(g,d,a,f,m,n,h,k,l){a=function(c){function e(b){b=c.call(this,b)||this;b.bevelRatio=null;b.geometries=null;b.offsetDistance=null;b.offsetHow=null;b.offsetUnit=null;return b}g._inheritsLoose(e,
+c);return e}(a.JSONSupport);d.__decorate([f.property({type:Number,json:{write:!0}})],a.prototype,"bevelRatio",void 0);d.__decorate([f.property({json:{read:{reader:c=>c?c.map(e=>l.fromJSON(e)):null},write:{writer:(c,e)=>{e.geometries=c.map(b=>b.toJSON())}}}})],a.prototype,"geometries",void 0);d.__decorate([f.property({type:Number,json:{write:!0}})],a.prototype,"offsetDistance",void 0);d.__decorate([f.property({type:String,json:{write:!0}})],a.prototype,"offsetHow",void 0);d.__decorate([f.property({type:String,
+json:{write:!0}})],a.prototype,"offsetUnit",void 0);a=d.__decorate([k.subclass("esri.rest.support.OffsetParameters")],a);a.from=h.ensureType(a);return a});

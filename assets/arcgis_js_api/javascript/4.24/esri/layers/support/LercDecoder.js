@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../core/maybe","../../core/workers/WorkerHandle"],function(h,m,k,n){let l=function(c){function a(b=null){var d=c.call(this,"LercWorker","_decode",{_decode:g=>[g.buffer]},b,{strategy:"dedicated"})||this;d.schedule=b;d.ref=0;return d}m._inheritsLoose(a,c);var f=a.prototype;f.decode=function(b,d,g){return b&&0!==b.byteLength?this.invoke({buffer:b,options:d},g):Promise.resolve(null)};f.release=function(){0>=--this.ref&&(e.forEach((b,d)=>{b===
+this&&e.delete(d)}),this.destroy())};return a}(n.WorkerHandle);const e=new Map;h.acquireDecoder=function(c=null){let a=e.get(k.unwrap(c));a||(k.isSome(c)?(a=new l(f=>c.schedule(f)),e.set(c,a)):(a=new l,e.set(null,a)));++a.ref;return a};Object.defineProperties(h,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(e){let g=function(){function f(a){this._notify=a;this._accessed=[];this._handles=[];this._invalidCount=0}var c=f.prototype;c.destroy=function(){this._accessed.length=0;this.clear()};c.onInvalidated=function(){this._invalidCount++};c.onCommitted=function(){const a=this._invalidCount;1===a?(this._invalidCount=0,this._notify()):this._invalidCount=0<a?a-1:0};c.onObservableAccessed=function(a){this._accessed.includes(a)||this._accessed.push(a)};c.onTrackingEnd=function(){const a=
+this._handles,b=this._accessed;for(let d=0;d<b.length;++d)a.push(b[d].observe(this));b.length=0};c.clear=function(){const a=this._handles;for(let b=0;b<a.length;++b)a[b].remove();a.length=0};return f}();e.SimpleTrackingTarget=g;Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

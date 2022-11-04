@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../core/shaderTechnique/ShaderTechniqueConfiguration"],function(b,h,f,c){b.ShadowCastVisualization=void 0;(function(a){a[a.Gradient=0]="Gradient";a[a.Threshold=1]="Threshold";a[a.COUNT=2]="COUNT"})(b.ShadowCastVisualization||(b.ShadowCastVisualization={}));let e=function(a){function g(){var d=a.apply(this,arguments)||this;d.visualization=b.ShadowCastVisualization.Gradient;d.bandsEnabled=!1;return d}h._inheritsLoose(g,
+a);return g}(c.ShaderTechniqueConfiguration);f.__decorate([c.parameter({count:b.ShadowCastVisualization.COUNT})],e.prototype,"visualization",void 0);f.__decorate([c.parameter()],e.prototype,"bandsEnabled",void 0);b.ShadowCastVisualizeTechniqueConfiguration=e;Object.defineProperties(b,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

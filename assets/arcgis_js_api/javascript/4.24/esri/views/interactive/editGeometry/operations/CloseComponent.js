@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../core/arrayUtils","../../../../core/maybe","../EditGeometry"],function(e,h,a,k){let l=function(){function f(b,c){this.editGeometry=b;this.component=c;this.createdEdge=null}var d=f.prototype;d.apply=function(){let b="redo";if(a.isNone(this.createdEdge)){b="apply";const c=this.component.getFirstVertex(),g=this.component.getLastVertex();if(this.component.isClosed()||3>this.component.vertices.length||a.isNone(c)||a.isNone(g))return;this.createdEdge=new k.Edge(this.component,
+g,c)}this.createdEdge.leftVertex.rightEdge=this.createdEdge;this.createdEdge.rightVertex.leftEdge=this.createdEdge;this.component.edges.push(this.createdEdge);this.editGeometry.notifyChanges({operation:b})};d.undo=function(){a.isNone(this.createdEdge)||(h.remove(this.component.edges,this.createdEdge),this.createdEdge.leftVertex.rightEdge=null,this.createdEdge.rightVertex.leftEdge=null,this.editGeometry.notifyChanges({operation:"undo"}))};d.accumulate=function(){return!1};return f}();e.CloseComponent=
+l;Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../core/maybe"],function(b,f){function e(a){if(f.isNone(a))return null;const d=null!=a.layer?a.layer.id:"";let c=null;c=null!=a.objectId?a.objectId:null!=a.layer&&"objectIdField"in a.layer&&null!=a.layer.objectIdField&&null!=a.attributes?a.attributes[a.layer.objectIdField]:a.uid;return null==c?null:`o-${d}-${c}`}function g(a,d){var c;f.isNone(a)||null==(null==(c=a.layer)?void 0:c.objectIdField)||null==a.attributes||(d.feature={layerId:a.layer.id,objectId:a.attributes[a.layer.objectIdField]})}
+function h(a){if(null!=a.layerId&&null!=a.objectId)return{uid:null,layer:{id:a.layerId,objectIdField:"ObjectId"},attributes:{ObjectId:a.objectId}}}const k={json:{write:{writer:g,target:{"feature.layerId":{type:[Number,String]},"feature.objectId":{type:[Number,String]}}},origins:{"web-scene":{read:h}}}};b.featureReferenceEquals=function(a,d){return e(a)===e(d)};b.featureReferenceProperty=k;b.getFeatureId=e;b.readFeatureReference=h;b.writeFeatureReference=g;Object.defineProperties(b,{__esModule:{value:!0},
+[Symbol.toStringTag]:{value:"Module"}})});

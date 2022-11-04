@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(b){b.OverlayIndex=void 0;(function(a){a[a.INNER=0]="INNER";a[a.OUTER=1]="OUTER"})(b.OverlayIndex||(b.OverlayIndex={}));b.PatchType=void 0;(function(a){a[a.REGULAR=0]="REGULAR";a[a.HAS_NORTH_POLE=1]="HAS_NORTH_POLE";a[a.HAS_SOUTH_POLE=2]="HAS_SOUTH_POLE";a[a.HAS_BOTH_POLES=3]="HAS_BOTH_POLES"})(b.PatchType||(b.PatchType={}));b.NeighborIndex=void 0;(function(a){a[a.NORTH=0]="NORTH";a[a.NORTH_EAST=1]="NORTH_EAST";a[a.EAST=2]="EAST";a[a.SOUTH_EAST=3]="SOUTH_EAST";a[a.SOUTH=
+4]="SOUTH";a[a.SOUTH_WEST=5]="SOUTH_WEST";a[a.WEST=6]="WEST";a[a.NORTH_WEST=7]="NORTH_WEST"})(b.NeighborIndex||(b.NeighborIndex={}));b.LODSnapping=void 0;(function(a){a[a.OFF=0]="OFF";a[a.ON=1]="ON"})(b.LODSnapping||(b.LODSnapping={}));b.RenderTargetType=void 0;(function(a){a[a.Color=0]="Color";a[a.ColorNoRasterImage=1]="ColorNoRasterImage";a[a.Highlight=2]="Highlight";a[a.Water=3]="Water";a[a.Occluded=4]="Occluded"})(b.RenderTargetType||(b.RenderTargetType={}));b.TextureUpdate=void 0;(function(a){a[a.FADING=
+0]="FADING";a[a.IMMEDIATE=1]="IMMEDIATE";a[a.UNFADED=2]="UNFADED"})(b.TextureUpdate||(b.TextureUpdate={}));Object.defineProperties(b,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

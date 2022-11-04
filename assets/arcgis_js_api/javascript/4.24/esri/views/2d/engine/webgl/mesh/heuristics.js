@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../definitions","../enums"],function(c,g,b){const a=new Map;a.set(b.WGLGeometryType.MARKER,{multiplier:1,indicesPerRecord:6,verticesPerRecord:4});a.set(b.WGLGeometryType.LINE,{multiplier:1,indicesPerRecord:24,verticesPerRecord:8});a.set(b.WGLGeometryType.FILL,{multiplier:1,indicesPerRecord:10,verticesPerRecord:10});a.set(b.WGLGeometryType.TEXT,{multiplier:8,indicesPerRecord:6,verticesPerRecord:4});a.set(b.WGLGeometryType.LABEL,{multiplier:8,indicesPerRecord:6,verticesPerRecord:4});
+c.getMeshHeuristic=function(d){return a.get(d)};c.getMeshSizeHint=function(d,h,e){const {indicesPerRecord:k,multiplier:f,verticesPerRecord:l}=a.get(d);return{recordBytes:e*g.DISPLAY_RECORD_INT_PER_ELEMENT*Uint32Array.BYTES_PER_ELEMENT,indexBytes:f*k*e*Uint32Array.BYTES_PER_ELEMENT,vertexBytes:f*l*e*h}};Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

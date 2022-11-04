@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../../chunks/_rollupPluginBabelHelpers ../../../../../core/maybe ../../../../../chunks/vec2 ../../../../../chunks/vec2f64 ./Float2DrawUniform ./Uniform ../shaderTechnique/BindType".split(" "),function(f,l,m,n,h,p,q,r){let k=function(b){function c(d,e){return b.call(this,d,"sampler2D",r.BindType.Draw,(a,g,t)=>a.bindTexture(d,e(g,t)))||this}l._inheritsLoose(c,b);return c}(q.Uniform);const u=h.create();f.Texture2DDrawUniform=k;f.createTexture2DDrawSizeUniforms=function(b,c,d){const e=
+[new k(b,c)];d&&e.push(new p.Float2DrawUniform(b+"Size",(a,g)=>{a=c(a,g);return m.isSome(a)?n.set(u,a.descriptor.width,a.descriptor.height):h.ZEROS}));return e};Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

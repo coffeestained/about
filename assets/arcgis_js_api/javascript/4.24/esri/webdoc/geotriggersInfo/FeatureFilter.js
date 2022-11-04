@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../geometry ../../core/Clonable ../../core/JSONSupport ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass ../../geometry/support/jsonUtils".split(" "),function(g,c,h,a,k,d,n,p,q,l,m){a=function(e){function f(b){b=e.call(this,b)||this;b.geometry=null;b.where=null;return b}g._inheritsLoose(f,e);return f}(a.ClonableMixin(k.JSONSupport));
+c.__decorate([d.property({types:h.geometryTypes,json:{read:m.fromJSON,write:!0}})],a.prototype,"geometry",void 0);c.__decorate([d.property({type:String,json:{write:!0}})],a.prototype,"where",void 0);return a=c.__decorate([l.subclass("esri.webdoc.geotriggersInfo.FeatureFilter")],a)});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../chunks/_rollupPluginBabelHelpers"],function(e){return function(){function f(){this.declaredRootClass="esri.arcade.featureSetCollection";this._layerById={};this._layerByName={}}var c=f.prototype;c.add=function(b,a,d){this._layerById[a]=d;this._layerByName[b]=d};c.featureSetByName=function(){var b=e._asyncToGenerator(function*(a,d,g){return void 0===this._layerByName[a]?null:this._layerByName[a]});return function(a){return b.apply(this,arguments)}}();c.featureSetById=function(){var b=e._asyncToGenerator(function*(a,
+d,g){return void 0===this._layerById[a]?null:this._layerById[a]});return function(a){return b.apply(this,arguments)}}();c.castToText=function(){return"object, FeatureSetCollection"};return f}()});

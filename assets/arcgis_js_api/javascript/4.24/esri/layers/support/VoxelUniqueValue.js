@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../Color ../../core/JSONSupport ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass".split(" "),function(h,b,k,a,d,m,n,e,l){a=function(f){function g(){var c=f.apply(this,arguments)||this;c.color=null;c.value=0;c.enabled=!0;c.label=null;return c}h._inheritsLoose(g,f);return g}(a.JSONSupport);b.__decorate([d.property({type:k,
+json:{type:[e.Integer],write:{enabled:!0,isRequired:!0}}})],a.prototype,"color",void 0);b.__decorate([d.property({type:e.Integer,json:{write:{enabled:!0,isRequired:!0}}})],a.prototype,"value",void 0);b.__decorate([d.property({type:Boolean,json:{default:!0,write:!0}})],a.prototype,"enabled",void 0);b.__decorate([d.property({type:String,json:{write:!0}})],a.prototype,"label",void 0);return a=b.__decorate([l.subclass("esri.layers.support.VoxelUniqueValue")],a)});

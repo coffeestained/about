@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../../../chunks/_rollupPluginBabelHelpers","./GraphicDisplayList","./WGLDisplayObject","./util/serializationUtils"],function(h,k,l,m){return function(){function c(){}var d=c.prototype;d.computeDisplayList=function(){this._displayList=new k;for(const a of this.displayObjects)for(const b of a.displayRecords)this._displayList.addToList(b)};d.clone=function(){const a=new c;this.displayObjects&&(a.displayObjects=this.displayObjects.map(b=>b.clone()));return a};d.serialize=function(a){m.serializeList(a,
+this.displayObjects);return a};d._deserializeObjects=function(a){var b=a.readInt32();b=Array(b);const g=new Map;for(let e=0;e<b.length;++e){const f=l.deserialize(a);b[e]=f;g.set(f.id,f)}this.displayObjects=b;this._displayList=null;this._displayObjectRegistry=g};c.deserialize=function(a){const b=new c;b._deserializeObjects(a);return b};h._createClass(c,[{key:"displayObjectRegistry",get:function(){if(!this._displayObjectRegistry){this._displayObjectRegistry=new Map;for(const a of this.displayObjects)this._displayObjectRegistry.set(a.id,
+a)}return this._displayObjectRegistry}},{key:"displayList",get:function(){return this._displayList}}]);return c}()});

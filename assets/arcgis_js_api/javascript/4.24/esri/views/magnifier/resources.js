@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["require","exports","../../chunks/_rollupPluginBabelHelpers","../../core/promiseUtils","../../support/requestImageUtils"],function(h,k,n,p,l){function c(){c=n._asyncToGenerator(function*(a){var g=new Promise((d,e)=>h(["./mask-svg"],f=>d(m(f)),e)),b=new Promise((d,e)=>h(["./overlay-svg"],f=>d(m(f)),e));g=l.requestImage((yield g).default,{signal:a});b=l.requestImage((yield b).default,{signal:a});b={mask:yield g,overlay:yield b};p.throwIfAborted(a);return b});return c.apply(this,arguments)}const m=
+a=>Object.freeze(Object.defineProperty({__proto__:null,default:a},Symbol.toStringTag,{value:"Module"}));k.loadMagnifierResources=function(a){return c.apply(this,arguments)};Object.defineProperties(k,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

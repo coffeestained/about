@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../core/accessorSupport/decorators/property ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/ensureType ../../../core/accessorSupport/decorators/subclass ./ColumnTemplateBase ./EditableColumnTemplateMixin".split(" "),function(f,c,g,a,m,n,h,k,l){a=function(d){function e(b){b=d.call(this,b)||this;b.type="column";return b}f._inheritsLoose(e,d);return e}(l.EditableColumnTemplateMixin(k));c.__decorate([g.property({type:String,
+json:{read:!1,write:!0}})],a.prototype,"type",void 0);return a=c.__decorate([h.subclass("esri.widgets.FeatureTable.support.ColumnTemplate")],a)});

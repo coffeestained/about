@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(d){let k=function(f){function e(){this._store=new Map;this._byteSize=0}var b=e.prototype;b.set=function(a,c){this.delete(a);this._store.set(a,c);this._byteSize+=c.byteSize};b.delete=function(a){const c=this._store.get(a);return this._store.delete(a)?(this._byteSize-=c.byteSize,!0):!1};b.get=function(a){this._used(a);return this._store.get(a)};b.has=function(a){this._used(a);return this._store.has(a)};b.clear=function(){this._store.clear()};b.applyByteSizeLimit=function(a,
+c){for(const [g,h]of this._store){if(this._byteSize<=a)break;this.delete(g);c(h)}};b.values=function(){return this._store.values()};b[f]=function(){return this._store[Symbol.iterator]()};b._used=function(a){const c=this._store.get(a);c&&(this._store.delete(a),this._store.set(a,c))};return e}(Symbol.iterator);d.FeatureServiceTileCache=k;Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

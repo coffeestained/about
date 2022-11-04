@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/mat3f64","../../../../chunks/vec3f64","../lib/Material"],function(c,g,h,b,d){d=function(e){function f(){var a=e.apply(this,arguments)||this;a.vvSizeEnabled=!1;a.vvSizeMinSize=b.fromValues(1,1,1);a.vvSizeMaxSize=b.fromValues(100,100,100);a.vvSizeOffset=b.fromValues(0,0,0);a.vvSizeFactor=b.fromValues(1,1,1);a.vvSizeValue=b.fromValues(1,1,1);a.vvColorEnabled=!1;a.vvColorValues=[0,0,0,0,0,0,0,0];a.vvColorColors=[1,0,
+0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0];a.vvOpacityEnabled=!1;a.vvOpacityValues=[0,0,0,0,0,0,0,0];a.vvOpacityOpacities=[1,1,1,1,1,1,1,1];a.vvSymbolAnchor=[0,0,0];a.vvSymbolRotationMatrix=h.create();return a}g._inheritsLoose(f,e);return f}(d.MaterialParameters);c.VisualVariablePassParameters=d;c.vvColorNumber=8;Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers"],function(d,f){let h=function(){function e(){this._data=new Map;this._hit=this._miss=0;this.initialized=!0}var a=e.prototype;a.init=function(){return Promise.resolve()};a.get=function(){var c=f._asyncToGenerator(function*(b,g){if(this._data.has(b))return this._hit++,this._data.get(b);this._miss++;return null});return function(b,g){return c.apply(this,arguments)}}();a.destroy=function(){};a.put=function(c,b){this._data.set(c,b);return Promise.resolve()};
+a.remove=function(c){this._data.delete(c);return Promise.resolve()};a.getHitRate=function(){return this._hit/(this._hit+this._miss)};return e}();d.IDBMockCache=h;Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

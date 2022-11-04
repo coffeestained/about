@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("require exports ../../chunks/_rollupPluginBabelHelpers ../../core/maybe ../../core/promiseUtils ../Mesh ./meshUtils/georeference ./meshUtils/merge".split(" "),function(h,d,k,m,n,p,l,q){function e(){e=k._asyncToGenerator(function*(a,b,c){const f=yield new Promise((r,t)=>h(["./meshUtils/elevation"],r,t));n.throwIfAborted(c);return f.create(a,b,c)});return e.apply(this,arguments)}function g(){g=k._asyncToGenerator(function*(a,b){yield a.load();return(yield new Promise((c,f)=>h(["./meshUtils/elevationSampler"],
+c,f))).create(a,b)});return g.apply(this,arguments)}d.createElevationSampler=function(a,b){return g.apply(this,arguments)};d.createFromElevation=function(a,b,c){return e.apply(this,arguments)};d.georeference=function(a,b,c){return l.georeference(a,b,c)};d.merge=function(a){a=q.merge(a);return m.isSome(a)?new p(a):null};d.ungeoreference=function(a,b,c){return l.ungeoreference(a,b,c)};Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

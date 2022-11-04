@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../core/maybe","./locale"],function(c,k,e){function g(a){const b=a||h;if(!d.has(b)){var f=e.getLocale();f=l[e.getLocale()]||f;d.set(b,new Intl.NumberFormat(f,a))}return k.assumeNonNull(d.get(b))}const l={ar:"ar-u-nu-latn"};let d=new WeakMap,h={};e.beforeLocaleChange(()=>{d=new WeakMap;h={}});c.convertNumberFormatToIntlOptions=function(a={}){const b={};null!=a.digitSeparator&&(b.useGrouping=a.digitSeparator);null!=a.places&&(b.minimumFractionDigits=b.maximumFractionDigits=a.places);
+return b};c.formatNumber=function(a,b){-0===a&&(a=0);return g(b).format(a)};c.getFormatter=g;Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

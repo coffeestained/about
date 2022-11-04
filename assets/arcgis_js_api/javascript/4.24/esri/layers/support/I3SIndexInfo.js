@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../../core/Error","../../core/maybe"],function(l,q,m,r,n){function f(){f=q._asyncToGenerator(function*(c,a,b,g,h,k){var d=null;if(n.isSome(b)){d=`${c}/nodepages/`;const e=d+Math.floor(b.rootIndex/b.nodesPerPage);try{return{type:"page",rootPage:(yield m(e,{query:{f:"json",token:g},responseType:"json",signal:k})).data,rootIndex:b.rootIndex,pageSize:b.nodesPerPage,lodMetric:b.lodSelectionMetricType,urlPrefix:d}}catch(p){n.isSome(h)&&
+h.warn("#fetchIndexInfo()","Failed to load root node page. Falling back to node documents.",e,p),d=p}}if(!a)return null;a=a&&a.split("/").pop();c=`${c}/nodes/`;a=c+a;try{return{type:"node",rootNode:(yield m(a,{query:{f:"json",token:g},responseType:"json",signal:k})).data,urlPrefix:c}}catch(e){throw new r("sceneservice:root-node-missing","Root node missing.",{pageError:d,nodeError:e,url:a});}});return f.apply(this,arguments)}l.fetchIndexInfo=function(c,a,b,g,h,k){return f.apply(this,arguments)};Object.defineProperties(l,
+{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

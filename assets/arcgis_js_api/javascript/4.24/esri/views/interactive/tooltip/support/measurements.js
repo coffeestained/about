@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../core/maybe ../../../../core/quantityUtils ../../../../chunks/vec3f64 ../../../support/automaticAreaMeasurementUtils ../../../support/automaticLengthMeasurementUtils ../../../support/euclideanAreaMeasurementUtils".split(" "),function(m,d,u,n,p,q,v){const k=n.create();m.computeAreaWithStagedVertex=function(a,e){const f=v.createEuclideanPlanarAreaCache();return c=>{if(d.isNone(c)||1>a.rings.length||2>a.rings[0].length)return p.autoAreaByDrapedStatus(a,e,f);const g=a.clone();
+g.rings[0].push([c.x,c.y]);return p.autoAreaByDrapedStatus(g,e,f)}};m.computeLengthWithStagedVertex=function(a,e){var f,c,g;const h=q.autoLengthByElevationMode(a,e),l=null!=(f=null==(c=a.paths[0])?void 0:c[(null==(g=a.paths[0])?NaN:g.length)-1])?f:null,{hasZ:r,spatialReference:w}=a,t=l?n.fromValues(l[0],l[1],r?l[2]:0):null;return b=>{if(d.isNone(b)||d.isNone(h)||d.isNone(t))return h;k[0]=b.x;k[1]=b.y;k[2]=r?b.z:0;b=q.autoDirectDistanceByElevationMode(t,k,w,e);return d.isNone(b)?h:u.createLength(h.value+
+b.value,h.unit)}};Object.defineProperties(m,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

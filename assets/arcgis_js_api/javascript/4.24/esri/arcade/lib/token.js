@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(b){b.TokenType=void 0;var a=b.TokenType||(b.TokenType={});a[a.BooleanLiteral=1]="BooleanLiteral";a[a.EOF=2]="EOF";a[a.Identifier=3]="Identifier";a[a.Keyword=4]="Keyword";a[a.NullLiteral=5]="NullLiteral";a[a.NumericLiteral=6]="NumericLiteral";a[a.Punctuator=7]="Punctuator";a[a.StringLiteral=8]="StringLiteral";a[a.RegularExpression=9]="RegularExpression";a[a.Template=10]="Template";a={};a[b.TokenType.BooleanLiteral]="Boolean";a[b.TokenType.EOF]="\x3cend\x3e";a[b.TokenType.Identifier]=
+"Identifier";a[b.TokenType.Keyword]="Keyword";a[b.TokenType.NullLiteral]="Null";a[b.TokenType.NumericLiteral]="Numeric";a[b.TokenType.Punctuator]="Punctuator";a[b.TokenType.StringLiteral]="String";a[b.TokenType.RegularExpression]="RegularExpression";a[b.TokenType.Template]="Template";b.TokenName=a;Object.defineProperties(b,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../core/Accessor ../../../core/accessorSupport/decorators/property ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/ensureType ../../../core/accessorSupport/decorators/subclass ../state/Constraints".split(" "),function(a,h,b,k,d,m,n,p,l,e){a.AltitudeConstraint=function(f){function g(){var c=f.apply(this,arguments)||this;c.min=e.earthAltitudeConstraint.min;c.max=e.earthAltitudeConstraint.max;
+return c}h._inheritsLoose(g,f);return g}(k);b.__decorate([d.property({type:Number})],a.AltitudeConstraint.prototype,"min",void 0);b.__decorate([d.property({type:Number})],a.AltitudeConstraint.prototype,"max",void 0);a.AltitudeConstraint=b.__decorate([l.subclass("esri.views.3d.constraints.AltitudeConstraint")],a.AltitudeConstraint);Object.defineProperties(a,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

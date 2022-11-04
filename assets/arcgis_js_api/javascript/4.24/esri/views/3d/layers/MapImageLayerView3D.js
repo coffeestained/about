@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../core/Logger ../../../core/accessorSupport/ensureType ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/set ../../../core/accessorSupport/decorators/subclass ./DynamicLayerView3D ../../layers/MapImageLayerView ../../support/drapedUtils".split(" "),function(f,g,b,p,q,r,t,h,k,l,m){b=function(e){function c(){var a=e.apply(this,arguments)||this;a.type="map-image-3d";return a}f._inheritsLoose(c,e);
+var d=c.prototype;d.initialize=function(){this.updatingHandles.add(()=>this.exportImageVersion,()=>this.updatingHandles.addPromise(this.refreshDebounced()))};d.createFetchPopupFeaturesQueryGeometry=function(a,n){return m.createQueryGeometry(a,n,this.view)};d.getFetchOptions=function(){return{timeExtent:this.timeExtent}};return c}(l(k));return b=g.__decorate([h.subclass("esri.views.3d.layers.MapImageLayerView3D")],b)});

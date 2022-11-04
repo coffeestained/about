@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(h){function*m(a,c,d){let e=0;for(;e<=a.length;){var b=a.indexOf(c,e);b=a.substring(e,-1<b?b:void 0);e+=b.length+c.length;if(!d||b.trim())yield b}}function n(a,c){return m(a,c,!1)}function q(a){let c=0,d;for(d=a.indexOf('"',0);0<=d;)c++,d=a.indexOf('"',d+1);return c}const r=/^\s*"([\S\s]*)"\s*$/,t=/""/g,u=[","," ",";","|","\t"];h.inferDelimiter=function(a){a=a.trim();let c=0,d="";for(const e of u){const b=a.split(e).length;b>c&&(c=b,d=e)}return""===d?null:d};h.parseRows=
+function*(a,c,d,e=()=>Object.create(null)){var b="";let l="",f=0,k=e(),g=0;a:for(const v of a){a=n(v,d);for(const p of a)if(b+=l+p,l="",f+=q(p),0===f%2){if(0<f)if(b=r.exec(b))k[c[g]]=b[1].replace(t,'"'),g++;else{k=e();g=0;b="";f=0;continue a}else k[c[g]]=b,g++;b="";f=0}else l=d;0===f?(yield k,k=e(),g=0):l="\n"}};h.readRowParts=n;h.readRows=function(a){const c=a.includes("\r\n")?"\r\n":"\n";return m(a,c,!0)};Object.defineProperties(h,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

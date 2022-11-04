@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../../core/maybe ./utils ./styles/Imagery ./styles/Particles ./styles/Stack ./styles/Streamlines".split(" "),function(g,d,h,k,l,m){return function(a,b){const {flowSpeed:n,trailLength:p}=a,q=d.getFlowSimulationSettings(a);let f=null;const e={opacity:d.getOpacity(a),size:d.getSize(a)};let c=d.getColor(a);"none"===a.background?e.color=c:("constant"===c.kind&&(c={kind:"ramp",stops:[0,1],values:[0,0,0,1,c.value[0],c.value[1],c.value[2],c.value[3]],count:2}),f=new h.default({loadImagery:b.loadImagery,
+timeExtent:b.timeExtent,color:c,opacity:{kind:"constant",value:[1]}}),e.color=d.getForegroundColor());b={loadImagery:b.loadImagery,createFlowMesh:b.createFlowMesh,simulationSettings:q,timeExtent:b.timeExtent,trailLength:p,flowSpeed:n,featheringSize:1,featheringOffset:.5,introFade:!0,fadeToZero:!0,decayRate:2.3,color:e.color,opacity:e.opacity,size:e.size};a="butt"===a.trailCap||4>=d.getMax(d.getSize(a))?new m(b):new k.default(b);return g.isSome(f)?new l.default([f,a]):a}});

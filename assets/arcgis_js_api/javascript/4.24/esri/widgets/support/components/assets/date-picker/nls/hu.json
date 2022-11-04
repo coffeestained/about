@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:".",unitOrder:"YYYY. MM. DD.",weekStart:1,placeholder:"YYYY. MM. DD.",days:{abbreviated:"V H K Sze Cs P Szo".split(" "),narrow:"V H K Sz Cs P Sz".split(" "),"short":"V H K Sze Cs P Szo".split(" "),wide:"vas\u00e1rnap h\u00e9tf\u0151 kedd szerda cs\u00fct\u00f6rt\u00f6k p\u00e9ntek szombat".split(" ")},numerals:"0123456789",months:{abbreviated:"jan. febr. m\u00e1rc. \u00e1pr. m\u00e1j. j\u00fan. j\u00fal. aug. szept. okt. nov. dec.".split(" "),
+narrow:"J F M \u00c1 M J J A Sz O N D".split(" "),wide:"janu\u00e1r febru\u00e1r m\u00e1rcius \u00e1prilis m\u00e1jus j\u00fanius j\u00falius augusztus szeptember okt\u00f3ber november december".split(" ")}}});

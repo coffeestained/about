@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../geometry/support/aaBoundingRect","../../../geometry/support/boundsUtils","../CIMPlacements","../enums"],function(g,k,l,m,e){let h=function(){function b(){}b.local=function(){null===b.instance&&(b.instance=new b);return b.instance};b.prototype.execute=function(d,c,a,f){return new n(d,c,a)};return b}();h.instance=null;let n=function(){function b(c,a,f){this._geometry=c;this._offsetX=void 0!==a.offsetX?a.offsetX*f:0;this._offsetY=void 0!==a.offsetY?a.offsetY*f:0;this._method=
+void 0!==a.method?a.method:e.PlacementPolygonCenterMethod.OnPolygon;this._internalPlacement=new m.Placement}var d=b.prototype;d.next=function(){const c=this._geometry;this._geometry=null;return c&&void 0!==c.rings?this._polygonCenter(c):null};d._polygonCenter=function(c){switch(this._method){default:case e.PlacementPolygonCenterMethod.CenterOfMass:case e.PlacementPolygonCenterMethod.BoundingBoxCenter:{const a=k.create();l.getBoundsXY(a,c);this._internalPlacement.setTranslate((a[2]+a[0])/2+this._offsetX,
+(a[3]+a[1])/2+this._offsetY)}}return this._internalPlacement};return b}();g.PlacementPolygonCenter=h;Object.defineProperties(g,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

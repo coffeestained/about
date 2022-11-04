@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(d){let g=function(){function e(a){this.callbacks=a;this.currentCount=0;this.callbacks.condition||(this.callbacks.condition=()=>!0)}var b=e.prototype;b.handle=function(a){const f=a.data,c=f.pointers.size;switch(f.action){case "start":this.currentCount=c;this._emitStart(a);break;case "added":this._emitEnd(this.previousEvent);this.currentCount=c;this._emitStart(a);break;case "update":this._emitUpdate(a);break;case "removed":this.startEvent&&this._emitEnd(this.previousEvent);
+this.currentCount=c;this._emitStart(a);break;case "end":this._emitEnd(a),this.currentCount=0}this.previousEvent=a};b._emitStart=function(a){this.startEvent=a;this.callbacks.condition(this.currentCount,a)&&this.callbacks.start(this.currentCount,a,this.startEvent)};b._emitUpdate=function(a){this.callbacks.condition(this.currentCount,a)&&this.callbacks.update(this.currentCount,a,this.startEvent)};b._emitEnd=function(a){this.callbacks.condition(this.currentCount,a)&&this.callbacks.end(this.currentCount,
+a,this.startEvent);this.startEvent=null};return e}();d.DragEventSeparator=g;Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

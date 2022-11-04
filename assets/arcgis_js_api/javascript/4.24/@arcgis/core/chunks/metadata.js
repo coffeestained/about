@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+*/
+import{clone as t}from"../core/lang.js";import{b as e}from"./maybe.js";import{m as r}from"./utils.js";class o{constructor(t){this.autoDestroy=!1,this.properties=t}}function s(r){let s=r.constructor.__accessorMetadata__;const a=Object.prototype.hasOwnProperty.call(r.constructor,"__accessorMetadata__");if(s){if(!a){const e=Object.create(s.properties),a=s.autoDestroy;for(const r in e)e[r]=t(e[r]);s=new o(e),s.autoDestroy=a,Object.defineProperty(r.constructor,"__accessorMetadata__",{value:s,enumerable:!1,configurable:!0,writable:!0})}}else s=new o({}),Object.defineProperty(r.constructor,"__accessorMetadata__",{value:s,enumerable:!1,configurable:!0,writable:!0});return e(r.constructor.__accessorMetadata__)}function a(t,e){const r=function(t){return s(t).properties}(t);let o=r[e];return o||(o=r[e]={}),o}function c(t,e){return r(t,e,u)}const n=/^(?:[^.]+\.)?(?:value|type|(?:json\.type|json\.origins\.[^.]\.type))$/;function u(t){return n.test(t)?"replace":"merge"}export{s as a,a as g,c as m};

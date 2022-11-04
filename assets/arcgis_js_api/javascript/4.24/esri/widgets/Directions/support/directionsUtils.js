@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../intl","../../../core/has","../../../core/unitUtils","../../../intl/substitute"],function(c,m,n,f,g){function h(a,b){switch(b){case "days":return 24*a;case "hours":return a;case "minutes":return a/60;case "seconds":return a/60/60;default:return 0}}c.formatDistance=function(a,b,d,k){const {fromUnits:l,toUnits:e}=k;d=f.convertUnit(d,l,e);if(!d)return"";b=(b=b.units[e])?b.abbr:e.toLowerCase();return g.substitute(a.distanceTemplate,{distance:d,units:b},{format:{distance:{type:"number",
+intlOptions:{minimumFractionDigits:2,maximumFractionDigits:2}}}})};c.formatTime=function(a,b){a=h(a,b);return 1>a?`${Math.floor(60*a)}m`:`${Math.floor(a)}:${String(Math.floor(a%1*60)).padStart(2,"0")}h`};c.isTimeUnits=function(a){return"esriNAUSeconds"===a||"esriNAUMinutes"===a||"esriNAUHours"===a||"esriNAUDays"===a};Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

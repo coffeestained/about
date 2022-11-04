@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../core/Accessor ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass ../../portal/Portal".split(" "),function(h,b,a,c,m,n,p,k,l){var d;a=d=function(f){function e(){var g=f.apply(this,arguments)||this;g.portal=null;return g}h._inheritsLoose(e,f);e.prototype.clone=function(){return new d({name:this.name,styleUrl:this.styleUrl,
+styleName:this.styleName,portal:this.portal})};return e}(a);b.__decorate([c.property({type:String})],a.prototype,"name",void 0);b.__decorate([c.property({type:String})],a.prototype,"styleUrl",void 0);b.__decorate([c.property({type:String})],a.prototype,"styleName",void 0);b.__decorate([c.property({type:l})],a.prototype,"portal",void 0);return a=d=b.__decorate([k.subclass("esri.symbols.support.StyleOrigin")],a)});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../core/handleUtils","../../../core/nextTick","./SceneSnappingEngine","./SnappingManager"],function(e,f,g,h,k){function l(a,b){b.referenceCount--;0<b.referenceCount||g.nextTick(()=>{0===b.referenceCount&&(b.snappingManager.destroy(),c.delete(a))})}function m(a){return new k.SnappingManager({view:a,snappingEnginesFactory:(b,d)=>[new h.SceneSnappingEngine({view:a,options:d})]})}const c=new Map;e.acquire=function(a){c.has(a)||c.set(a,{referenceCount:0,snappingManager:m(a)});
+const b=c.get(a);b.referenceCount++;const d=f.makeHandle(()=>l(a,b));return{snappingManager:b.snappingManager,...d}};Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

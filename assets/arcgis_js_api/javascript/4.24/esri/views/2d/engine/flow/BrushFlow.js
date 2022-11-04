@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../../../chunks/_rollupPluginBabelHelpers","../../../../core/maybe","../../../../chunks/mat3f32","../webgl/brushes/WGLBrush","../../../webgl/enums"],function(m,d,g,n,p){return function(h){function e(){var a=h.apply(this,arguments)||this;a._visualState={time:0,dvsMat3:g.create(),displayViewMat3:g.create()};return a}m._inheritsLoose(e,h);var f=e.prototype;f.dispose=function(){};f.prepareState=function(a){({context:a}=a);a.setColorMask(!0,!0,!0,!0);a.setStencilFunction(p.CompareFunction.EQUAL,
+0,255)};f.draw=function(a,k){const {requestRender:c}=a,{displayData:b}=k;if(!d.isNone(b)&&("loaded"===b.state.name&&b.attach(a),"attached"===b.state.name)){var l=b.state.resources;!l.ready&&d.isSome(c)?c():(this._visualState.time=a.time/1E3,this._visualState.dvsMat3=k.transforms.dvs,this._visualState.displayViewMat3=a.state.displayViewMat3,b.flowStyle.render(a,this._visualState,l),b.flowStyle.animated&&d.isSome(c)&&c())}};return e}(n)});

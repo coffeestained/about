@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","./GCSShiftTransform","./IdentityTransform","./PolynomialTransform"],function(c,e,f,g){const d={GCSShiftXform:e,IdentityXform:f,PolynomialXform:g},h=Object.keys(d);c.isTransformSupported=function(a){const b=null==a?void 0:a.type;return!a||h.includes(b)};c.readTransform=function(a){if(null==a||!a.type)return null;var b=d[null==a?void 0:a.type];return b?(b=new b,b.read(a),b):null};Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

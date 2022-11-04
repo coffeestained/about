@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:"-",unitOrder:"YYYY-MM-DD",weekStart:1,placeholder:"YYYY-MM-DD",days:{abbreviated:"s\u00f6n m\u00e5n tis ons tors fre l\u00f6r".split(" "),narrow:"SMTOTFL".split(""),"short":"s\u00f6 m\u00e5 ti on to fr l\u00f6".split(" "),wide:"s\u00f6ndag m\u00e5ndag tisdag onsdag torsdag fredag l\u00f6rdag".split(" ")},numerals:"0123456789",months:{abbreviated:"jan. feb. mars apr. maj juni juli aug. sep. okt. nov. dec.".split(" "),narrow:"JFMAMJJASOND".split(""),
+wide:"januari februari mars april maj juni juli augusti september oktober november december".split(" ")}}});

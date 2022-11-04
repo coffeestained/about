@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:".",unitOrder:"DD.MM.YYYY",weekStart:1,placeholder:"DD.MM.YYYY",days:{abbreviated:"su ma ti ke to pe la".split(" "),narrow:"SMTKTPL".split(""),"short":"su ma ti ke to pe la".split(" "),wide:"sunnuntaina maanantaina tiistaina keskiviikkona torstaina perjantaina lauantaina".split(" ")},numerals:"0123456789",months:{abbreviated:"tammi helmi maalis huhti touko kes\u00e4 hein\u00e4 elo syys loka marras joulu".split(" "),narrow:"THMHTKHESLMJ".split(""),
+wide:"tammikuu helmikuu maaliskuu huhtikuu toukokuu kes\u00e4kuu hein\u00e4kuu elokuu syyskuu lokakuu marraskuu joulukuu".split(" ")}}});

@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("require exports ../../../chunks/_rollupPluginBabelHelpers ../../../chunks/CloudsComposition.glsl ../webgl-engine/core/shaderTechnique/ReloadableShaderModule ../webgl-engine/core/shaderTechnique/ShaderTechnique ../webgl-engine/lib/DefaultVertexAttributeLocations ../webgl-engine/lib/Program ../../webgl/enums ../../webgl/renderState".split(" "),function(l,h,m,n,p,b,q,r,e,f){b=function(c){function a(g){var d;return d=c.call(this,g,null,()=>d.destroy())||this}m._inheritsLoose(a,c);var k=a.prototype;
+k.initializeProgram=function(g){const d=a.shader.get().build();return new r.Program(g.rctx,d,q.Default3D)};k.initializePipeline=function(){return f.makePipelineState({blending:f.simpleBlendingParams(e.BlendFactor.ONE,e.BlendFactor.SRC_ALPHA),depthTest:{func:e.CompareFunction.LEQUAL},colorWrite:f.defaultColorWriteParams})};return a}(b.ShaderTechnique);b.shader=new p.ReloadableShaderModule(n.CloudsCompositionShader,()=>new Promise((c,a)=>l(["./CloudsComposition.glsl"],c,a)));h.CloudsCompositionTechnique=
+b;Object.defineProperties(h,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

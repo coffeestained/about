@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:"-",unitOrder:"YYYY-MM-DD",weekStart:1,placeholder:"YYYY-MM-DD",days:{abbreviated:"sk pr an tr kt pn \u0161t".split(" "),narrow:"SPATKP\u0160".split(""),"short":"Sk Pr An Tr Kt Pn \u0160t".split(" "),wide:"sekmadienis pirmadienis antradienis tre\u010diadienis ketvirtadienis penktadienis \u0161e\u0161tadienis".split(" ")},numerals:"0123456789",months:{abbreviated:"saus. vas. kov. bal. geg. bir\u017e. liep. rugp. rugs. spal. lapkr. gruod.".split(" "),
+narrow:"SVKBGBLRRSLG".split(""),wide:"sausis vasaris kovas balandis gegu\u017e\u0117 bir\u017eelis liepa rugpj\u016btis rugs\u0117jis spalis lapkritis gruodis".split(" ")}}});

@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","./mathUtils"],function(d,g){function f(b,e=0){let c=0;for(let a=0;4>a;a++)c+=b[e+a]*h[a];return c}function k(b){return b-Math.floor(b)}const l=[1,256,65536,16777216],h=[1/256,1/65536,1/16777216,1/4294967296],m=f(new Uint8ClampedArray([255,255,255,255]));d.packFloatRGBA=function(b,e,c=0){b=g.clamp(b,0,m);for(let a=0;4>a;a++)e[c+a]=Math.floor(256*k(b*l[a]))};d.unpackFloatRGBA=f;Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

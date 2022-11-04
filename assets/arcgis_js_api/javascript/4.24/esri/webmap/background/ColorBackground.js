@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../Color ../../core/JSONSupport ../../core/lang ../../core/accessorSupport/decorators/property ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass".split(" "),function(h,e,f,a,k,l,n,m){var c;a=c=function(g){function d(b){b=g.call(this,b)||this;b.color=new f([0,0,0,1]);return b}h._inheritsLoose(d,g);d.prototype.clone=function(){return new c(k.clone({color:this.color}))};return d}(a.JSONSupport);
+e.__decorate([l.property({type:f,json:{write:!0}})],a.prototype,"color",void 0);return a=c=e.__decorate([m.subclass("esri.webmap.background.ColorBackground")],a)});

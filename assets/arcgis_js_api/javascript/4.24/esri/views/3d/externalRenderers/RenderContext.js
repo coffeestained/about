@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/vec3f64","../webgl-engine/lib/Camera"],function(d,a,e){return function(){function b(f){this.view=f;this.camera=new e.Camera;this.sunLight={direction:a.create(),ambient:{color:a.create(),intensity:1},diffuse:{color:a.create(),intensity:1}};this._renderTargetHelper=null}var c=b.prototype;c.resetWebGLState=function(){null!=this.rctx&&(this.rctx.enforceState(),this._renderTargetHelper&&this._renderTargetHelper.bindFramebuffer())};c.bindRenderTarget=
+function(){this._renderTargetHelper&&this._renderTargetHelper.framebuffer.initializeAndBind()};d._createClass(b,[{key:"gl",get:function(){return this.rctx.gl}}]);return b}()});

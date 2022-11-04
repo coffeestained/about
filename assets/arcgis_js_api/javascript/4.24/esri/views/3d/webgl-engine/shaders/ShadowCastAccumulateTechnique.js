@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("require exports ../../../../chunks/_rollupPluginBabelHelpers ../core/shaderTechnique/ReloadableShaderModule ../core/shaderTechnique/ShaderTechnique ../lib/DefaultVertexAttributeLocations ../lib/Program ../../../../chunks/ShadowCastAccumulate.glsl ../../../webgl/enums ../../../webgl/renderState".split(" "),function(n,h,k,p,c,q,r,t,b,e){c=function(d){function a(f,g){var l;return l=d.call(this,f,g,()=>l.destroy())||this}k._inheritsLoose(a,d);var m=a.prototype;m.initializeProgram=function(f){const g=
+a.shader.get().build();return new r.Program(f.rctx,g,q.Default3D)};m.initializePipeline=function(){return e.makePipelineState({blending:e.separateBlendingParams(b.BlendFactor.ONE,b.BlendFactor.ONE,b.BlendFactor.ONE,b.BlendFactor.ONE),colorWrite:e.defaultColorWriteParams,depthTest:null,depthWrite:null})};k._createClass(a,[{key:"primitiveType",get:function(){return b.PrimitiveType.TRIANGLE_STRIP}}]);return a}(c.ShaderTechnique);c.shader=new p.ReloadableShaderModule(t.ShadowCastAccumulate,()=>new Promise((d,
+a)=>n(["./ShadowCastAccumulate.glsl"],d,a)));h.ShadowCastAccumulateTechnique=c;Object.defineProperties(h,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

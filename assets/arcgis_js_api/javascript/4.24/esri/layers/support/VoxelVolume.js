@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../core/JSONSupport ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass ./VoxelDimension".split(" "),function(h,c,b,e,m,n,p,k,l){b=function(f){function d(){var a=f.apply(this,arguments)||this;a.id=0;a.dimensions=null;return a}h._inheritsLoose(d,f);var g=d.prototype;g.getZDimension=function(){if(!this.dimensions||
+!Array.isArray(this.dimensions)||4!==this.dimensions.length)return-1;for(let a=2;4>a;++a)if(0<this.dimensions[a].size)return a;return-1};g.isVolumeValid=function(){return!this.dimensions||!Array.isArray(this.dimensions)||4!==this.dimensions.length||1>this.dimensions[0].size||1>this.dimensions[1].size||-1===this.getZDimension()?!1:!0};return d}(b.JSONSupport);c.__decorate([e.property({type:Number,json:{write:{enabled:!0,isRequired:!0}}})],b.prototype,"id",void 0);c.__decorate([e.property({type:[l],
+json:{write:{enabled:!0,isRequired:!0}}})],b.prototype,"dimensions",void 0);return b=c.__decorate([k.subclass("esri.layers.support.VoxelVolume")],b)});

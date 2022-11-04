@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","./_commonjsHelpers"],function(k,h){var c={exports:{}};(function(d,f){(function(a){a=a(h.commonjsRequire,f);void 0!==a&&(d.exports=a)})(function(a,b){Object.defineProperty(b,"__esModule",{value:!0});b.default={"Zoom Out":"\u041e\u0442\u0434\u0430\u043b\u0435\u0447\u0430\u0432\u0430\u043d\u0435","From %1 to %2":"\u041e\u0442 %1 \u0434\u043e %2","From %1":"\u041e\u0442 %1","To %1":"\u0414\u043e %1"}})})(c,c.exports);c=function(d,f){for(var a=0;a<f.length;a++){const b=f[a];if("string"!==
+typeof b&&!Array.isArray(b))for(const e in b)if("default"!==e&&!(e in d)){const g=Object.getOwnPropertyDescriptor(b,e);g&&Object.defineProperty(d,e,g.get?g:{enumerable:!0,get:()=>b[e]})}}return Object.freeze(Object.defineProperty(d,Symbol.toStringTag,{value:"Module"}))}({__proto__:null,default:h.getDefaultExportFromCjs(c.exports)},[c.exports]);k.bg_BG=c});

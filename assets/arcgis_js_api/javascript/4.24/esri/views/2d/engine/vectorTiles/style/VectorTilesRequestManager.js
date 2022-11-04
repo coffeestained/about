@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../../request","../../../../../core/lang"],function(f,g,h){function k(a,c){const e=d.get(a);if(e)return e.then(b=>h.clone(b));c=g(a,{responseType:"array-buffer",...c}).then(({data:b})=>{d.delete(a);return b}).catch(b=>{d.delete(a);throw b;});d.set(a,c);return c}const d=new Map;f.request=function(a,c,e,b,l){a=a.replace(/\{z\}/gi,c.toString()).replace(/\{y\}/gi,e.toString()).replace(/\{x\}/gi,b.toString());return k(a,l)};Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

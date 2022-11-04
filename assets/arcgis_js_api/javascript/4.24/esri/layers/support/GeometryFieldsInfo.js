@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../core/Clonable ../../core/JSONSupport ../../core/unitUtils ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass".split(" "),function(h,d,a,k,f,e,m,n,p,l){a=function(c){function g(b){b=c.call(this,b)||this;b.shapeAreaField=null;b.shapeLengthField=null;b.units=null;return b}h._inheritsLoose(g,c);return g}(a.ClonableMixin(k.JSONSupport));
+d.__decorate([e.property({type:String,json:{read:{source:"shapeAreaFieldName"}}})],a.prototype,"shapeAreaField",void 0);d.__decorate([e.property({type:String,json:{read:{source:"shapeLengthFieldName"}}})],a.prototype,"shapeLengthField",void 0);d.__decorate([e.property({type:String,json:{read:c=>f.areaUnitsJSONMap.read(c)||f.lengthUnitsJSONMap.read(c)}})],a.prototype,"units",void 0);return a=d.__decorate([l.subclass("esri.layers.support.GeometryFieldsInfo")],a)});

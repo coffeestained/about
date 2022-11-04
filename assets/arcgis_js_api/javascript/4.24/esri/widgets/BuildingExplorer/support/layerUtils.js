@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/promiseUtils"],function(e,f,g){function k(a,b){return d.apply(this,arguments)}function d(){d=f._asyncToGenerator(function*(a,b){yield a.load(b);yield a.loadAll();g.throwIfAborted(b);a.summaryStatistics&&(yield a.summaryStatistics.load(b))});return d.apply(this,arguments)}e.createLoadLayersFunction=function(){let a=new AbortController;return function(){var b=f._asyncToGenerator(function*(c){a.abort();a=new AbortController;
+const h={signal:a.signal};c=c.toArray().map(l=>k(l,h));yield Promise.all(c);g.throwIfAborted(h)});return function(c){return b.apply(this,arguments)}}()};Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

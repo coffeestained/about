@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(function(){return function(a,c,f,e,h,k,l,m){a.ignorePadding&&(e={left:0,right:0,top:0,bottom:0});var b;null!=a.width&&null!=a.height?b=[a.width,a.height]:null==a.width&&null!=a.height?b=[a.height,a.height]:null!=a.width&&null==a.height?b=[a.width,a.width]:null==a.width&&null==a.height&&(b=null);var d=f[0]-(e.left+e.right);f=f[1]-(e.top+e.bottom);a=a.area||{x:0,y:0,width:d,height:f};if(b){const g=b[0]/b[1];g>d/f?(d=a.width/g,a={x:a.x,y:Math.round(a.y+(a.height-d)/2),width:a.width,height:Math.round(d)}):
+(d=a.height*g,a={x:Math.round(a.x+(a.width-d)/2),y:a.y,width:Math.round(d),height:a.height})}else b=[a.width,a.height];b[0]>a.width?(c=Math.min(b[0]/a.width,c),b=b[0]/a.width/c):(c=1,b=b[0]/a.width);return{resolutionScale:c,cropArea:{x:Math.round((a.x+e.left)*c),y:Math.round((a.y+e.top)*c),width:Math.round(a.width*c),height:Math.round(a.height*c)},outputScale:b,format:h,quality:k,children:l,rotation:m}}});

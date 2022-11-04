@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../chunks/_rollupPluginBabelHelpers ../../request ../utils ../support/AddressCandidate ../support/AddressesToLocationsParameters".split(" "),function(f,k,l,d,m,n){function e(){e=k._asyncToGenerator(function*(b,a,c){a=n.from(a);b=d.parseUrl(b);a={...a.toJSON(),f:"json"};a=d.encode({...b.query,...a});c=d.asValidOptions(a,c);return l(`${b.path}/geocodeAddresses`,c).then(p)});return e.apply(this,arguments)}function p(b){({data:b}=b);if(!b)return[];const {locations:a,spatialReference:c}=
+b;return a?a.map(g=>{const {location:h}=g;h&&(h.spatialReference=c);return m.fromJSON(g)}):[]}f.addressesToLocations=function(b,a,c){return e.apply(this,arguments)};Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

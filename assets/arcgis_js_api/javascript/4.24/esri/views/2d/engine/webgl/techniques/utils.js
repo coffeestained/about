@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../../core/Error ../enums ../materialKey/MaterialKey ./Technique ./dotDensity/TechniqueDotDensity ./heatmap/TechniqueHeatmap ./pieChart/TechniquePieChart".split(" "),function(c,l,b,m,e,f,g,h){c.assertRendererSchema=function(a,d){if(a.type!==d)throw new l("material-view-model:unexpected-renderer-schema",`expected to find renderer schema of type "${d}" but found type "${a.type}"`);};c.getTechniqueFromMaterialKey=function(a){const {geometryType:d,symbologyType:k}=m.MaterialKeyBase.load(a);
+switch(d){case b.WGLGeometryType.FILL:switch(k){case b.WGLSymbologyType.DOT_DENSITY:return f.DotDensityTechnique}break;case b.WGLGeometryType.MARKER:switch(k){case b.WGLSymbologyType.HEATMAP:return g.HeatmapTechnique;case b.WGLSymbologyType.PIE_CHART:return h.PieChartTechnique}}return e.Technique};c.getTechniqueFromRenderer=function(a){switch(a.type){case "dot-density":return f.DotDensityTechnique;case "heatmap":return g.HeatmapTechnique;case "pie-chart":return h.PieChartTechnique;default:return e.Technique}};
+Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

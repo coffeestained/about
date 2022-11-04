@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","./TerrainConst"],function(d,e){let k=function(){function f(){this.sinLonLUT=Array(e.MAX_PATCH_TESSELATION+1);this.cosLonLUT=Array(e.MAX_PATCH_TESSELATION+1)}f.prototype.update=function(g,c){const h=c[0];c=c[2];for(let a=0;a<=g;a++){var b=a/g;b=h*(1-b)+c*b;this.sinLonLUT[a]=Math.sin(b);this.cosLonLUT[a]=Math.cos(b)}};return f}();d.PatchGeometryLUT=k;Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

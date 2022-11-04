@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../chunks/_rollupPluginBabelHelpers ../../chunks/tslib.es6 ../../core/accessorSupport/decorators/property ../../core/arrayUtils ../../core/has ../../core/accessorSupport/ensureType ../../core/accessorSupport/decorators/subclass ./GraphSearch".split(" "),function(f,b,c,a,l,m,g,h){a=function(d){function e(k){return d.call(this,k)||this}f._inheritsLoose(e,d);return e}(h);b.__decorate([c.property()],a.prototype,"returnSearchContext",void 0);b.__decorate([c.property()],a.prototype,"start",void 0);
+b.__decorate([c.property()],a.prototype,"num",void 0);b.__decorate([c.property()],a.prototype,"namedTypesFilter",void 0);b.__decorate([c.property()],a.prototype,"globalIdsFilter",void 0);return a=b.__decorate([g.subclass("esri.rest.knowledgeGraph.GraphSearchStreaming")],a)});

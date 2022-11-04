@@ -13,7 +13,7 @@
         margin: 1.5em;
     }
 </style>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
+  <link rel="stylesheet" href="/about-this-dev/assets/arcgis_js_api/javascript/4.24/esri/themes/light/main.css">
   <script defer src="https://js.arcgis.com/4.24/"></script>
 
   <script defer >

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/mat3f64","../../../../../chunks/vec3f64","../../core/shaderLibrary/attributes/VertexPosition.glsl"],function(f,h,g,k,e){let n=function(b){function c(a,l,m){var d=b.call(this)||this;d.distanceFalloffFactor=a;d.minimumEdgeLength=l;d.transparency=m;d.transformNormalViewFromGlobal=g.create();return d}h._inheritsLoose(c,b);return c}(e.VertexPositionPassParameters);e=function(b){function c(){var a=b.apply(this,arguments)||
+this;a.transformNormalViewFromGlobal=g.create();a.slicePlaneLocalOrigin=k.create();a.transformNormalGlobalFromModel=g.create();return a}h._inheritsLoose(c,b);return c}(e.VertexPositionDrawParameters);f.EdgeDrawParameters=e;f.EdgePassParameters=n;Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

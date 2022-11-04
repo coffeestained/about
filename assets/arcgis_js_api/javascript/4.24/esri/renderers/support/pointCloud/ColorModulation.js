@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../core/JSONSupport ../../../core/accessorSupport/decorators/property ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/ensureType ../../../core/accessorSupport/decorators/subclass".split(" "),function(h,b,a,d,l,m,n,k){var e;a=e=function(g){function f(){var c=g.apply(this,arguments)||this;c.field=null;c.minValue=0;c.maxValue=255;return c}h._inheritsLoose(f,g);f.prototype.clone=function(){return new e({field:this.field,
+minValue:this.minValue,maxValue:this.maxValue})};return f}(a.JSONSupport);b.__decorate([d.property({type:String,json:{write:!0}})],a.prototype,"field",void 0);b.__decorate([d.property({type:Number,nonNullable:!0,json:{write:!0}})],a.prototype,"minValue",void 0);b.__decorate([d.property({type:Number,nonNullable:!0,json:{write:!0}})],a.prototype,"maxValue",void 0);return a=e=b.__decorate([k.subclass("esri.renderers.support.pointCloud.ColorModulation")],a)});

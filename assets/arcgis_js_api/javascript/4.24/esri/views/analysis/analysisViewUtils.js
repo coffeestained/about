@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../core/maybe","../../core/promiseUtils","../../core/reactiveUtils"],function(d,q,k,l,f){function g(a,b){a.interactive?m(a,b):h(a)}function m(a,b){h(a);const {view:c,analysis:e}=a;b=new b({view:c,analysis:e,analysisViewData:a});a.tool=b;c.tools.add(b);return b}function h(a){const {view:b,tool:c}=a;k.isNone(c)||(b.tools.remove(c),a.tool=null)}d.activateTemporaryAnalysisViewTool=function(a,b,c){const e=m(a,b);a.view.activeTool=e;let n=l.onAbort(c,
+()=>g(a,b));return l.createTask(function(){var r=q._asyncToGenerator(function*(p){yield f.whenOnce(()=>!e.active,p);n=k.removeMaybe(n);g(a,b)});return function(p){return r.apply(this,arguments)}}(),c)};d.connectAnalysisViewToTool=function(a,b){return f.watch(()=>a.interactive,()=>g(a,b),f.syncAndInitial)};d.removeAnalysisViewTool=h;Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

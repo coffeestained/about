@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../Color ../../../core/JSONSupport ../../../core/accessorSupport/decorators/property ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/ensureType ../../../core/accessorSupport/decorators/subclass ../../../core/accessorSupport/decorators/writer".split(" "),function(k,c,l,b,d,t,u,m,n,p){var e;b=e=function(g){function f(a){a=g.call(this,a)||this;a.color=null;a.label=null;a.value=null;return a}k._inheritsLoose(f,
+g);var h=f.prototype;h.writeValue=function(a,q,r){q[r]=null==a?0:a};h.clone=function(){return new e({color:this.color&&this.color.clone(),label:this.label,value:this.value})};return f}(b.JSONSupport);c.__decorate([d.property({type:l,json:{type:[m.Integer],write:!0}})],b.prototype,"color",void 0);c.__decorate([d.property({type:String,json:{write:!0}})],b.prototype,"label",void 0);c.__decorate([d.property({type:Number,json:{write:{writerEnsuresNonNull:!0}}})],b.prototype,"value",void 0);c.__decorate([p.writer("value")],
+b.prototype,"writeValue",null);return b=e=c.__decorate([n.subclass("esri.renderers.visualVariables.support.ColorStop")],b)});

@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../../../chunks/_rollupPluginBabelHelpers ../../../chunks/tslib.es6 ../../../core/accessorSupport/decorators/property ../../../core/arrayUtils ../../../core/has ../../../core/accessorSupport/ensureType ../../../core/accessorSupport/decorators/enumeration ../../../core/accessorSupport/decorators/subclass ./BaseRasterTransform".split(" "),function(g,c,h,b,n,p,k,l,m){b=function(e){function d(){var a=e.apply(this,arguments)||this;a.type="gcs-shift";a.tolerance=1E-8;return a}g._inheritsLoose(d,
+e);var f=d.prototype;f.forwardTransform=function(a){a=a.clone();if("point"===a.type)return a.x>180+this.tolerance&&(a.x-=360),a;a.xmin>=180-this.tolerance?(a.xmax-=360,a.xmin-=360):a.xmax>180+this.tolerance&&(a.xmin=-180,a.xmax=180);return a};f.inverseTransform=function(a){a=a.clone();if("point"===a.type)return a.x<-this.tolerance&&(a.x+=360),a;a.xmin<-this.tolerance&&(a.xmin+=360,a.xmax+=360);return a};return d}(m);c.__decorate([k.enumeration({GCSShiftXform:"gcs-shift"})],b.prototype,"type",void 0);
+c.__decorate([h.property()],b.prototype,"tolerance",void 0);return b=c.__decorate([l.subclass("esri.layers.support.rasterTransforms.GCSShiftTransform")],b)});

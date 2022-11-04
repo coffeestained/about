@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports"],function(b){function f(){var a,c;return null!=(a=null!=l?l:null==(c=globalThis.navigator)?void 0:c.language)?a:"en"}function g(){void 0===d&&(d=f());return d}function m(a=g()){a=/^([a-zA-Z]{2,3})(?:[_\-]\w+)*$/.exec(a);return null==a?void 0:a[1].toLowerCase()}function n(){var a;const c=null!=(a=p)?a:f();d!==c&&(d=c,[...h].forEach(k=>{k.call(null,c)}),[...e].forEach(k=>{k.call(null,c)}))}var q,r,t;let p=void 0,d=void 0;const l=null!=(q=null==(r=globalThis.esriConfig)?void 0:r.locale)?
+q:null==(t=globalThis.dojoConfig)?void 0:t.locale,u={he:!0,ar:!0},e=[],h=[];null==globalThis.addEventListener?void 0:globalThis.addEventListener("languagechange",n);b.beforeLocaleChange=function(a){h.push(a);return{remove(){e.splice(h.indexOf(a),1)}}};b.getDefaultLocale=f;b.getLanguage=m;b.getLocale=g;b.onLocaleChange=function(a){e.push(a);return{remove(){e.splice(e.indexOf(a),1)}}};b.prefersRTL=function(a=g()){a=m(a);return void 0!==a&&(u[a]||!1)};b.setLocale=function(a){p=a?a:void 0;n()};Object.defineProperties(b,
+{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

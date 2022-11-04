@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../core/maybe","../Manipulator3D","./GrabbingState","./ManipulatorType"],function(e,g,h,b,c){let l=function(){function f(){this.grabbingState=b.GrabbingState.NONE;this.firstSelected=this.zManipulator=null;this.numSelected=0;this.firstGrabbedXY=null}f.prototype.update=function(k){this.grabbingState=b.GrabbingState.NONE;this.zManipulator=null;this.numSelected=0;this.firstGrabbedXY=this.firstSelected=null;k.forEachManipulator((a,d)=>{d===c.ManipulatorType.TRANSLATE_Z&&(this.zManipulator=
+a);a instanceof h.Manipulator3D&&(a.selected&&(0===this.numSelected&&(this.firstSelected=a),this.numSelected++),g.isNone(this.firstGrabbedXY)&&a.grabbing&&d===c.ManipulatorType.TRANSLATE_XY&&(this.firstGrabbedXY=a));if(a.grabbing)switch(this.grabbingState|=b.GrabbingState.ANY,d){case c.ManipulatorType.TRANSLATE_Z:this.grabbingState|=b.GrabbingState.Z;break;case c.ManipulatorType.TRANSLATE_XY:this.grabbingState|=b.GrabbingState.XY}})};return f}();e.ManipulatorState=l;Object.defineProperties(e,{__esModule:{value:!0},
+[Symbol.toStringTag]:{value:"Module"}})});

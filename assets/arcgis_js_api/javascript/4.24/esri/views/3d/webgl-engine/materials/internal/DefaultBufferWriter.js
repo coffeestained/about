@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../support/buffer/InterleavedLayout","../../lib/VertexAttribute","./bufferWriterUtils"],function(c,d,b,g){const h=d.newLayout().vec3f(b.VertexAttribute.POSITION),k=d.newLayout().vec3f(b.VertexAttribute.POSITION).vec2f(b.VertexAttribute.UV0);d=d.newLayout().vec3f(b.VertexAttribute.POSITION).vec4u8(b.VertexAttribute.COLOR);let p=function(){function f(a){this.vertexBufferLayout=a}var e=f.prototype;e.allocate=function(a){return this.vertexBufferLayout.createBuffer(a)};e.elementCount=
+function(a){return a.indices.get(b.VertexAttribute.POSITION).length};e.write=function(a,l,m,n){g.writeDefaultAttributes(l,this.vertexBufferLayout,a.transformation,a.invTranspTransformation,m,n)};return f}();c.DefaultBufferWriter=p;c.PositionColorLayout=d;c.PositionLayout=h;c.PositionUVLayout=k;Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

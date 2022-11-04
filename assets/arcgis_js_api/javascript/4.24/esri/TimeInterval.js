@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("./chunks/_rollupPluginBabelHelpers ./chunks/tslib.es6 ./core/JSONSupport ./core/timeUtils ./core/accessorSupport/decorators/property ./core/arrayUtils ./core/has ./core/accessorSupport/ensureType ./core/accessorSupport/decorators/subclass ./portal/timeUnitKebabDictionary".split(" "),function(l,d,a,m,g,p,q,r,n,c){var e;a=e=function(h){function f(b){b=h.call(this,b)||this;b.value=0;b.unit="milliseconds";return b}l._inheritsLoose(f,h);var k=f.prototype;k.toMilliseconds=function(){return m.convertTime(this.value,
+this.unit,"milliseconds")};k.clone=function(){return new e({value:this.value,unit:this.unit})};return f}(a.JSONSupport);d.__decorate([g.property({type:Number,json:{write:!0},nonNullable:!0})],a.prototype,"value",void 0);d.__decorate([g.property({type:c.timeUnitKebabDictionary.apiValues,json:{type:c.timeUnitKebabDictionary.jsonValues,read:c.timeUnitKebabDictionary.read,write:c.timeUnitKebabDictionary.write},nonNullable:!0})],a.prototype,"unit",void 0);return a=e=d.__decorate([n.subclass("esri.TimeInterval")],
+a)});

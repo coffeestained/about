@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration"],function(b,g,h,c){b.RayMarchingSteps=void 0;(function(a){a[a.SIXTEEN=0]="SIXTEEN";a[a.HUNDRED=1]="HUNDRED";a[a.TWOHUNDRED=2]="TWOHUNDRED";a[a.COUNT=3]="COUNT"})(b.RayMarchingSteps||(b.RayMarchingSteps={}));let f=function(a){function d(){var e=a.apply(this,arguments)||this;e.steps=b.RayMarchingSteps.SIXTEEN;return e}g._inheritsLoose(d,a);return d}(c.ShaderTechniqueConfiguration);
+h.__decorate([c.parameter({count:b.RayMarchingSteps.COUNT})],f.prototype,"steps",void 0);b.CloudsTechniqueConfiguration=f;Object.defineProperties(b,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/time"],function(l,p,m){let q=function(){function k(){this.segments=[]}var n=k.prototype;n.interpolateComponentsAt=function(b,a){b=Math.min(Math.max(b,0),1);b*=this.time;var c=0,g=0;const e=this.definition;for(let h=0;h<this.segments.length;h++){const f=this.segments[h],d=f.definition;if(b<=f.time||h===this.segments.length-1)return a=this.segmentInterpolateComponentsAt(f,b/f.time,a),a.pan=e.hasPan?(c+d.compared.pan*a.pan)/
+e.compared.pan:1,a.rotate=e.hasRotate?(g+d.compared.rotate*a.rotate)/e.compared.rotate:1,b=a.zoom*(d.compared.targetZoom-d.compared.sourceZoom)+d.compared.sourceZoom,c=this.segments[0].definition.compared.sourceZoom,g=this.segments[this.segments.length-1].definition.compared.targetZoom,a.zoom=e.hasZoom?(b-c)/(g-c):1,a;b-=f.time;c+=d.compared.pan;g+=d.compared.rotate}};n.segmentInterpolateComponentsAt=function(b,a,c){return b.interpolateComponentsAt(a,c)};p._createClass(k,[{key:"time",get:function(){return this.segments.reduce((b,
+a)=>m.Seconds(b+a.time),m.Seconds(0))}}]);return k}();l.Path=q;Object.defineProperties(l,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

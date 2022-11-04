@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../core/maybe","./euclideanLengthMeasurementUtils","./geodesicLengthMeasurementUtils"],function(e,l,c,f){function g(a,b,d,h,...k){return"on-the-ground"===h?(a=b.apply(void 0,k),l.isSome(a)?a:d.apply(void 0,k)):a.apply(void 0,k)}e.autoDirectDistanceByElevationMode=function(a,b,d,h){return g(c.euclideanDirectDistance,f.geodesicDistance,c.euclideanHorizontalDistance,h,a,b,d)};e.autoDirectDistanceByElevationModeBetweenPoints=function(a,b,d){return g(c.euclideanDirectDistanceBetweenPoints,
+f.geodesicDistanceBetweenPoints,c.euclideanHorizontalDistanceBetweenPoints,d,a,b)};e.autoHorizontalDistanceByElevationMode=function(a,b,d,h){return g(c.euclideanHorizontalDistance,f.geodesicDistance,c.euclideanHorizontalDistance,h,a,b,d)};e.autoHorizontalDistanceByElevationModeBetweenPoints=function(a,b,d){return g(c.euclideanHorizontalDistanceBetweenPoints,f.geodesicDistanceBetweenPoints,c.euclideanHorizontalDistanceBetweenPoints,d,a,b)};e.autoLengthByElevationMode=function(a,b){return g(c.euclideanLength,
+f.geodesicLength,c.euclideanHorizontalLength,b,a)};Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

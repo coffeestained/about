@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("../chunks/_rollupPluginBabelHelpers ../chunks/tslib.es6 ../core/JSONSupport ../core/accessorSupport/decorators/property ../core/arrayUtils ../core/has ../core/accessorSupport/ensureType ../core/accessorSupport/decorators/subclass ../layers/support/FacilityLayerInfo ../layers/support/LevelLayerInfo ../layers/support/SiteLayerInfo".split(" "),function(g,c,a,d,n,p,q,h,k,l,m){a=function(e){function f(b){b=e.call(this,b)||this;b.levelLayer=null;b.facilityLayer=null;b.siteLayer=null;return b}g._inheritsLoose(f,
+e);return f}(a.JSONSupport);c.__decorate([d.property({type:l,json:{write:!0}})],a.prototype,"levelLayer",void 0);c.__decorate([d.property({type:k,json:{write:!0}})],a.prototype,"facilityLayer",void 0);c.__decorate([d.property({type:m,json:{write:!0}})],a.prototype,"siteLayer",void 0);return a=c.__decorate([h.subclass("esri.support.MapFloorInfo")],a)});

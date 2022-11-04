@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../Color ../../interactive/Manipulator3D ../../interactive/manipulatorUtils ../../interactive/editingTools/manipulatorUtils ../../webgl-engine/lib/GeometryUtil ../../../interactive/interfaces".split(" "),function(d,g,h,k,l,m,e){function c(a,b,n){return{geometry:m.createSphereGeometry(a,32,32),material:k.createManipulatorMaterial(g.toUnitRGBA(b)),stateMask:n}}function f(a){const b=[];a.customColor1&&b.push(c(a.size,a.customColor1,e.ManipulatorStateCustomFlags.Custom1));a.customColor2&&
+b.push(c(a.size,a.customColor2,e.ManipulatorStateCustomFlags.Custom2));a.customColor3&&b.push(c(a.size,a.customColor3,e.ManipulatorStateCustomFlags.Custom3));a.color&&b.push(c(a.size,a.color));return b}d.createSphereManipulator=function(a,b){b=f(b);a=new h.Manipulator3D({view:a,renderObjects:b,elevationInfo:{mode:"absolute-height",offset:0}});l.disableDisplayOnGrab(a);return a};d.createSphereManipulatorRenderObject=c;d.createSphereManipulatorRenderObjects=f;Object.defineProperties(d,{__esModule:{value:!0},
+[Symbol.toStringTag]:{value:"Module"}})});

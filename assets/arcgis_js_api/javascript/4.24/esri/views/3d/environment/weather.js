@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ./CloudyWeather ./FoggyWeather ./RainyWeather ./SnowyWeather ./SunnyWeather".split(" "),function(c,d,g,h,k,e){d={key:"type",base:e,typeMap:{sunny:e,cloudy:d,rainy:h,snowy:k,foggy:g}};const f=Object.keys(d.typeMap);c.validateWeatherType=function(a,b){return f.includes(a)?!0:(b.error(`"${a}" is not a valid weather type`),!1)};c.weatherEquals=function(a,b){if(a.type!==b.type)return!1;switch(a.type){case "sunny":return a.cloudCover===b.cloudCover;case "rainy":return a.cloudCover===b.cloudCover&&
+a.precipitation===b.precipitation;case "snowy":return a.cloudCover===b.cloudCover&&a.precipitation===b.precipitation&&a.snowCover===b.snowCover;case "cloudy":return a.cloudCover===b.cloudCover;case "foggy":return a.fogStrength===b.fogStrength}};c.weatherHeightLimit=1E4;c.weatherTypes=d;c.weatherTypesArray=f;Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

@@ -1,0 +1,3 @@
+//>>built
+define({root:{"default-calendar":"gregorian",separator:"/",unitOrder:"DD/MM/YYYY",weekStart:1,placeholder:"DD/MM/YYYY",days:{abbreviated:"dg. dl. dt. dc. dj. dv. ds.".split(" "),narrow:"dg dl dt dc dj dv ds".split(" "),"short":"dg. dl. dt. dc. dj. dv. ds.".split(" "),wide:"diumenge dilluns dimarts dimecres dijous divendres dissabte".split(" ")},numerals:"0123456789",months:{abbreviated:"gen. febr. mar\u00e7 abr. maig juny jul. ag. set. oct. nov. des.".split(" "),narrow:"GN FB M\u00c7 AB MG JN JL AG ST OC NV DS".split(" "),
+wide:"gener febrer mar\u00e7 abril maig juny juliol agost setembre octubre novembre desembre".split(" ")}}});

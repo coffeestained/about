@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["../../chunks/_rollupPluginBabelHelpers"],function(k){return function(){function d(a=[],b=[],c=!1){this.lengths=null!=a?a:[];this.coords=null!=b?b:[];this.hasIndeterminateRingOrder=c}d.fromRect=function(a){const [b,c,f,e]=a;a=f-b;const g=e-c;return new d([5],[b,c,a,0,0,g,-a,0,0,-g])};var h=d.prototype;h.forEachVertex=function(a){let b=0;this.lengths.length||a(this.coords[0],this.coords[1]);for(let c=0;c<this.lengths.length;c++){const f=this.lengths[c];for(let e=0;e<f;e++)a(this.coords[2*(e+
+b)],this.coords[2*(e+b)+1]);b+=f}};h.clone=function(a){return a?(a.set(this.coords),new d(this.lengths.slice(),a,this.hasIndeterminateRingOrder)):new d(this.lengths.slice(),this.coords.slice(),this.hasIndeterminateRingOrder)};k._createClass(d,[{key:"isPoint",get:function(){return 0===this.lengths.length}},{key:"maxLength",get:function(){return Math.max(...this.lengths)}},{key:"size",get:function(){return this.lengths.reduce((a,b)=>a+b)}}]);return d}()});

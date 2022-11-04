@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("require exports ../../../../chunks/_rollupPluginBabelHelpers ../core/shaderTechnique/ReloadableShaderModule ../core/shaderTechnique/ShaderTechnique ../lib/DefaultVertexAttributeLocations ../lib/OrderIndependentTransparency ../lib/Program ../../../../chunks/ShadowCastVisualize.glsl ../../../webgl/enums ../../../webgl/renderState".split(" "),function(m,f,g,n,b,p,q,r,t,u,h){b=function(c){function a(d,e){var k;return k=c.call(this,d,e,()=>k.destroy())||this}g._inheritsLoose(a,c);var l=a.prototype;
+l.initializeProgram=function(d){const e=a.shader.get().build(this.configuration);return new r.Program(d.rctx,e,p.Default3D)};l.initializePipeline=function(){return h.makePipelineState({blending:q.blendingDefault,colorWrite:h.defaultColorWriteParams,depthTest:null,depthWrite:null})};g._createClass(a,[{key:"primitiveType",get:function(){return u.PrimitiveType.TRIANGLE_STRIP}}]);return a}(b.ShaderTechnique);b.shader=new n.ReloadableShaderModule(t.ShadowCastVisualize,()=>new Promise((c,a)=>m(["./ShadowCastVisualize.glsl"],
+c,a)));f.ShadowCastVisualizeTechnique=b;Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

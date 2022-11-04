@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../chunks/_rollupPluginBabelHelpers ../request ./utils ./operations/find ./support/FindParameters ./support/FindResult".split(" "),function(f,g,h,d,k,l,m){function e(){e=g._asyncToGenerator(function*(a,b,c){b=l.from(b);b=k.findToFindRESTParameters(b);a=d.parseUrl(a);a.path+="/find";b=d.encode({...a.query,f:"json",...b});c=d.asValidOptions(b,c);return h(a.path,c).then(n)});return e.apply(this,arguments)}function n(a){a=a.data;a.results=a.results||[];const b={results:[]};b.results=a.results.map(c=>
+m.fromJSON(c));return b}f.find=function(a,b,c){return e.apply(this,arguments)};Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

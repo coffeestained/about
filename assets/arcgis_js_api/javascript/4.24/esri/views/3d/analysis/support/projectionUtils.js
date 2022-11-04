@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../core/maybe","../../../../geometry/projection","../../support/ElevationProvider"],function(c,d,f,g){c.applyProjectionAndElevationAlignment=function(a,e,b,h=!1){a=f.tryProjectWithZConversion(a,e);if(d.isNone(a))return null;a.hasZ&&!h||!d.isSome(b)||(a.z=d.unwrapOr(g.getElevationAtPoint(b,a),0));return a};c.logFailedGeometryProjectionError=function(a,e,b){b.warnOnce(`Failed to project analysis geometry (id: '${a.id}'), projection from spatial reference `+`(wkid: '${e.wkid}') to view spatial reference is not supported. `+
+"Projection may be possible after calling projection.load().")};Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

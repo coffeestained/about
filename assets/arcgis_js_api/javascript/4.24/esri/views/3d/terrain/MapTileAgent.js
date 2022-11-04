@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","./TerrainConst","./TileAgent"],function(c,d,g,a){a=function(e){function b(){var f=e.call(this)||this;f._scaleRangeEnabled=!0;return f}d._inheritsLoose(b,e);d._createClass(b,[{key:"_desiredMinLevelDelta",get:function(){return 0}},{key:"_progressiveLevelModulo",get:function(){return g.PROGRESSIVE_LOADING_MODULO}}]);return b}(a.TileAgent);c.MapTileAgent=a;Object.defineProperties(c,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

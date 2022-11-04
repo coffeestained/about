@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../core/shaderTechnique/ShaderTechniqueConfiguration"],function(b,g,h,c){b.SSAOOutput=void 0;(function(a){a[a.SSAO=0]="SSAO";a[a.Blur=1]="Blur";a[a.COUNT=2]="COUNT"})(b.SSAOOutput||(b.SSAOOutput={}));let f=function(a){function d(){var e=a.apply(this,arguments)||this;e.output=b.SSAOOutput.SSAO;return e}g._inheritsLoose(d,a);return d}(c.ShaderTechniqueConfiguration);h.__decorate([c.parameter({count:b.SSAOOutput.COUNT})],
+f.prototype,"output",void 0);b.SSAOTechniqueConfiguration=f;Object.defineProperties(b,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

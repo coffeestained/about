@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../../../../core/maybe ../../../../../layers/support/arcgisLayerUrl ./DrillDownFeatureSource ./GeoEventSource ./PagedFeatureSource ./SnapshotFeatureSource".split(" "),function(f,h,k,l,m,n,p){f.createSource=function(a,c,g,d,e,b){a:{switch(a.type){case "snapshot":a={type:"feature",origin:"snapshot",featureCount:h.unwrapOr(a.featureCount,0),serviceInfo:a,onMessage:d,outSR:c,tileInfoView:g,canAcceptRequest:e,store:b};break a;case "stream":a={type:"geoevent",serviceInfo:a,onMessage:d,
+outSR:c,canAcceptRequest:e};break a;case "memory":case "on-demand":b=a.source;b=Array.isArray(b)?"local":"path"in b&&k.isHostedAgolService(b.path)?"hosted":"unknown";a={type:"feature",serviceInfo:a,onMessage:d,outSR:c,origin:b,tileInfoView:g,canAcceptRequest:e};break a}a=void 0}switch(a.type){case "feature":switch(a.origin){case "hosted":case "local":return new n.PagedFeatureSource(a);case "snapshot":return new p.SnapshotFeatureSource(a);case "unknown":return new l.DrillDownFeatureSource(a)}case "geoevent":return new m.GeoEventSource(a)}};
+Object.defineProperties(f,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

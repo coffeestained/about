@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../chunks/_rollupPluginBabelHelpers ../../PopupTemplate ../../core/Error ../../intl/messages ./support/utils".split(" "),function(f,g,k,l,m,h){function n(a){return d.apply(this,arguments)}function d(){d=g._asyncToGenerator(function*(a){const {layer:b,renderer:c}=a;yield b.load();a=c||b.renderer;if("heatmap"!==a.type)throw new l("heatmap-popup:invalid-parameters","renderer.type must be 'heatmap'");return{layer:b,renderer:a}});return d.apply(this,arguments)}function e(){e=g._asyncToGenerator(function*(a){const [{renderer:b,
+layer:c},p]=yield Promise.all([n(a),m.fetchMessageBundle("esri/smartMapping/t9n/smartMapping")]);if(!b.field)return null;({fieldInfos:a}=yield h.getFieldAndExpressionInfos({renderer:b,layer:c}));a=new k({content:yield h.getContentFromFieldInfos(c,{fieldInfos:a}),fieldInfos:a});return{primaryTemplate:{name:"heatmap",title:p.heatmap,value:a},secondaryTemplates:[]}});return e.apply(this,arguments)}f.getTemplates=function(a){return e.apply(this,arguments)};Object.defineProperties(f,{__esModule:{value:!0},
+[Symbol.toStringTag]:{value:"Module"}})});

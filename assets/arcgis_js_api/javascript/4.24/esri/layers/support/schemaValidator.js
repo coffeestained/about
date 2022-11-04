@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define("exports ../../core/Error ../../chunks/ajv.bundle ../../portal/schemas/buildingSceneLayerItem ../../portal/schemas/integratedMeshLayerItem ../../portal/schemas/pointCloudLayerItem ../../portal/schemas/sceneLayerItem ../../support/validationUtilsAjv".split(" "),function(b,d,e,f,g,h,k,l){function m(a){switch(a){case "building-scene":return f.json;case "integrated-mesh":return g.json;case "point-cloud":return h.json;case "scene":return k.json;default:throw new d("portalitemlayertype:unknown",
+"Can not validate against unknown PortalItemLayerType.");}}const c=new e.Ajv({allErrors:!0,extendRefs:!0});b.validate=function(a,n){c.validate(m(n),a);return l.convertAjvErrors(c.errors||[])};Object.defineProperties(b,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});

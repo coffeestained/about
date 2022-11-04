@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See https://js.arcgis.com/4.24/esri/copyright.txt for details.
+//>>built
+define(["exports","../../../core/shaderModules/interfaces","./EdgeUtil.glsl"],function(d,b,c){d.DiscardShortEdges=function(a,e){a=a.vertex;switch(e.mode){case c.EdgeUtilMode.SKETCH:a.code.add(b.glsl`#define discardShortEdges(unpackedAttributes, lineLengthPixels) { if (lineLengthPixels <= 3.0) { gl_Position = vec4(10.0, 10.0, 10.0, 1.0); return; }}`);break;case c.EdgeUtilMode.MIXED:a.code.add(b.glsl`#define discardShortEdges(unpackedAttributes, lineLengthPixels) { if (unpackedAttributes.type <= 0.0 && lineLengthPixels <= 3.0) { gl_Position = vec4(10.0, 10.0, 10.0, 1.0); return; }}`);
+break;case c.EdgeUtilMode.SOLID:a.code.add(b.glsl`#define discardShortEdges(unpackedAttributes, lineLengthPixels) {}`)}};Object.defineProperties(d,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
