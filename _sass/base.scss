@@ -12,6 +12,11 @@
     --timeOfDayOpacity: 0;
 }
 
+@font-face {
+    font-family: "Roboto";
+    src: url("/about-this-dev/assets/fonts/Roboto-Regular.ttf");
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     position: relative;

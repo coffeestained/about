@@ -1,18 +1,22 @@
+<!-- Favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+
+<!-- Manifest -->
 <link rel="manifest" href="/site.webmanifest">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-    type="text/css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+<!-- Jquery -->
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+
+<!-- Bootstrap -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Load Base SCSS File -->
 <link rel="stylesheet" href="./css/main.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <!-- Localization SECTION <3 -->
 <div id="localization" class="localization">
@@ -149,7 +153,7 @@
     let ticker = 0;
     let direction = 'ascending';
 
-    window.setInterval(function () {
+    window.setInterval(async function () {
         if (!overrideTimeOfDay) {
             if (direction == 'ascending') ticker++;
             else ticker--;
@@ -159,7 +163,7 @@
                 .setProperty('--timeOfDayOpacity', ticker / 100);
             document.getElementById('dayNightSlider').value = ticker;
         }
-    }, 1000);
+    }, 2000);
 
     function resetTimeControl() {
         document.getElementById('double-click').classList.add('hidden');
@@ -192,6 +196,7 @@
             href="https://linkedin.com/in/matthew-grady-orlando">LinkedIn</a>.</div>
     </div>
 </div>
+
 <script>
 
     const header = document.getElementsByTagName("header");
@@ -200,7 +205,7 @@
     };
 
     const starCont = document.createElement('div');
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 80; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         header[0].appendChild(particle);
@@ -337,6 +342,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="row-logo" style="background-image:url('assets/Web Developer_Monochromatic.svg');"></div>
     <div class="row-item">
@@ -349,10 +355,6 @@
         </div>
     </div>
 </div>
-
-<script>
-
-</script>
 
 <div class="row wide-stuffs footer-stuffs stars" style="position: absolute;
     left: 0px;
@@ -396,93 +398,7 @@
 	<div class="particle animated"></div>
 	<div class="particle animated"></div>
 	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
     <div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
-	<div class="particle animated"></div>
 	<div class="particle animated"></div>
 	<div class="particle animated"></div>
 	<div class="particle animated"></div>
@@ -647,263 +563,8 @@
         <div class="star animated"></div>
         <div class="star animated"></div>
         <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
-        <div class="star animated"></div>
     </div>
 </div>
-
-<!-- <div style="z-index:100; position: relative; top: 400px;">
-    <div id="rocket" class="rocket" style="transform: scale(.3); bottom: 0px;">
-        <div id="rocketBody" class="rocket-body">
-            <div class="body"></div>
-            <div class="fin fin-left"></div>
-            <div class="fin fin-right"></div>
-            <div class="window"></div>
-        </div>
-        <div style="height: 60px;" id="flame">
-            <div class="red flame"></div>
-            <div class="orange flame"></div>
-            <div class="yellow flame"></div>
-            <div class="white flame"></div>
-            <div class="blue circle"></div>
-            <div class="black circle"></div>
-        </div>
-    </div>
-</div> -->
-<!-- <script>
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    const generateThrust = async function (direction = 1, pause = false, multiplier = 1) {
-        const scrollHeight = document.getElementById('content').scrollHeight;
-        const rocket = document.getElementById('rocket');
-        let bottom = parseFloat(rocket.style.bottom);
-
-        const flame = document.getElementById('flame');
-        const rocketBody = document.getElementById('rocketBody');
-        const scale = .3;
-        const scaleFactor = scale + (bottom / (scrollHeight * 100));
-        const transformAmount = scaleFactor;
-
-        rocket.style.transform = `scale(${transformAmount}) rotate(${transformAmount / 100}turn)`;
-        rocket.style.right = `-${multiplier / 100}px`;
-
-        const thrustRange = [1, 3];
-        const thrust = (thrustRange[0] + thrustRange[1]) / 2;
-        const increment = thrust / scrollHeight;
-
-        await sleep(1);
-        if (direction === 1) {
-            multiplier -= 15;
-            let incrementFallen = (increment * multiplier);
-            if (incrementFallen < 1) incrementFallen = 1;
-            bottom = bottom - incrementFallen;
-
-            rocket.style.bottom = bottom + 'px';
-            if (bottom <= 0) {
-                flame.classList.remove('container');
-                rocketBody.classList.remove('rocketBounce');
-                await sleep(15000);
-            } else {
-                generateThrust(1, false, multiplier);
-            }
-        } else {
-            multiplier += 15;
-            rocketBody.classList.add('rocketBounce');
-            flame.classList.add('container');
-            if (pause) await sleep(20000);
-            bottom = bottom + (increment * multiplier);
-            rocket.style.bottom = bottom + 'px';
-            if (bottom >= (scrollHeight * 2)) {
-                const startingMultiplier = scrollHeight * 3;
-                generateThrust(1, false, startingMultiplier);
-            } else {
-                generateThrust(0, false, multiplier);
-            }
-        }
-    };
-
-    generateThrust(0);
-</script> -->
 
 <script>
     $(document).ready(function(){

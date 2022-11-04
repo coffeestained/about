@@ -6,7 +6,7 @@
     top: -100px;
 }
 
-@for $k from 1 through 150 {
+@for $k from 1 through 100 {
     @keyframes footer-animation-#{$k} {
         100% {
             transform: translate3d(100vw, random(30) * 1vh, (random(100) * 1px));
@@ -33,7 +33,7 @@
     top: -100px;
 }
 
-@for $j from 1 through 150 {
+@for $j from 1 through 100 {
     @keyframes star-animation-#{$j} {
         100% {
             transform: translate3d(100vw, random(100) * 1vh, (random(100) * 1px));
