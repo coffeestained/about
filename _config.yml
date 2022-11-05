@@ -1,7 +1,8 @@
 theme: jekyll-theme-cayman
 remote_theme: pages-themes/cayman@v0.2.0
-title: About-this-dev
+title: about-this-dev
 repository: coffeestained/about-this-dev
+environment: production
 plugins:
   - jekyll-remote-theme
   - jekyll-gzip

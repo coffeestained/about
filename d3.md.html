@@ -1,1291 +1,1288 @@
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="https://unpkg.com/topojson@3"></script>
-<script src="https://unpkg.com/d3-delaunay@4"></script>
-<script src="https://unpkg.com/d3-geo-voronoi@1"></script>
+
 <style>
-    .d3-container {
-        width: 100%;
-        display: block;
-        overflow-x: auto;
-        position: relative;
-    }
-    .d3-container > div.d3-toolbar {
-        display: flex;
-        position: static !important;
-        margin: .5em;
-        padding: 5px;
-        top: .5em;
-        right: 0px;
-        z-index: 999;
-        border-radius: 5px;
-        font-size: 11px;
-    }
-    div.d3-toolbar > .d3-toolbar-item {
-      margin: 15px;
-    }
-    .d3-container > div.d3-toolbar > div {
-        text-align: left;
-    }
-    .d3-container > svg {
-        height: 100%;
-        width: 100%;
-    }
+  .d3-container {
+      width: 100%;
+      display: block;
+      overflow-x: auto;
+      position: relative;
+  }
+  .d3-container > div.d3-toolbar {
+      display: flex;
+      position: static !important;
+      margin: .5em;
+      padding: 5px;
+      top: .5em;
+      right: 0px;
+      z-index: 999;
+      border-radius: 5px;
+      font-size: 11px;
+  }
+  div.d3-toolbar > .d3-toolbar-item {
+    margin: 15px;
+  }
+  .d3-container > div.d3-toolbar > div {
+      text-align: left;
+  }
+  .d3-container > svg {
+      height: 100%;
+      width: 100%;
+  }
 </style>
 <div id="chart" class="d3-container">
-    <div class="d3-toolbar">
-      <div class="d3-toolbar-item">
-        <div style="display: flex;">
-          <div style="display: flex; flex-direction: column; margin-right: 15px;">
-            <b>Chart Selector</b>
-            <select id="d3-select" onchange="selectChart(this)" class="form-select" style="width: max-content;" aria-label="Adjust Chart Select">
-              <option selected value="strange">A Strange Class</option>
-              <option value="finance">Financial OHLC w/ Additional Options</option>
-              <option value="flights">United States Domestic Flight Volume</option>
-            </select>
-          </div>
+  <div class="d3-toolbar">
+    <div class="d3-toolbar-item">
+      <div style="display: flex;">
+        <div style="display: flex; flex-direction: column; margin-right: 15px;">
+          <b>Chart Selector</b>
+          <select id="d3-select" onchange="selectChart(this)" class="form-select" style="width: max-content;" aria-label="Adjust Chart Select">
+            <option selected value="strange">A Strange Class</option>
+            <option value="finance">Financial OHLC w/ Additional Options</option>
+            <option value="flights">United States Domestic Flight Volume</option>
+          </select>
         </div>
-        <span id="debugContainer">
-          <label for="debug" class="hide-element">
-            Debug Chart Checkbox
-          </label>
-          <input id="debug" type="checkbox" name="debug" value="debug" style="margin-bottom: 10px" /> Debug (Console)
-        </span>
-        <span id="haltContainer">
-          <label for="halt" class="hide-element">
-            Halt Chart Checkbox
-          </label>
-          <input id="halt" type="checkbox" name="halt" value="halt" style="margin-bottom: 10px" /> Halt
-        </span>
       </div>
-      <div id="strangeInfo" class="d3-toolbar-item">
-        <div style="display: flex;">
-          <div style="display: flex; flex-direction: column; margin-right: 15px;">
-            <b>IP</b>
-            <span id="ip" role="presentation"></span>
-          </div>
-          <div style="display: flex; flex-direction: column; margin-right: 15px;">
-            <b>Elapsed</b>
-            <span id="elapsed" role="presentation"></span>
-          </div>
-          <div style="display: flex; flex-direction: column; margin-right: 15px;">
-            <b>Favorite Element</b>
-            <span id="favorite" role="presentation"></span>
-          </div>
-          <div id="legend" style="display: flex; flex-direction: column; margin-right: 15px;">
-            <b>Legend</b>
-            <div style="display: flex;">
-              <div style="display: flex; flex-direction: column; margin-right: 10px;">
-                <span role="presentation">
-                  Letters
-                </span>
-                <span class="alpha" role="presentation"></span>
-              </div>
-              <div style="display: flex; flex-direction: column; margin-right: 10px;">
-                <span role="presentation">
-                  Numbers
-                </span>
-                <span class="numeric" role="presentation"></span>
-              </div>
-              <div style="display: flex; flex-direction: column; margin-right: 10px;">
-                <span role="presentation">
-                  Other (Symbol, Misc KeyCodes)
-                </span>
-                <span class="other" role="presentation"></span>
-              </div>
-
-
+      <span id="debugContainer">
+        <label for="debug" class="hide-element">
+          Debug Chart Checkbox
+        </label>
+        <input id="debug" type="checkbox" name="debug" value="debug" style="margin-bottom: 10px" /> Debug (Console)
+      </span>
+      <span id="haltContainer">
+        <label for="halt" class="hide-element">
+          Halt Chart Checkbox
+        </label>
+        <input id="halt" type="checkbox" name="halt" value="halt" style="margin-bottom: 10px" /> Halt
+      </span>
+    </div>
+    <div id="strangeInfo" class="d3-toolbar-item">
+      <div style="display: flex;">
+        <div style="display: flex; flex-direction: column; margin-right: 15px;">
+          <b>IP</b>
+          <span id="ip" role="presentation"></span>
+        </div>
+        <div style="display: flex; flex-direction: column; margin-right: 15px;">
+          <b>Elapsed</b>
+          <span id="elapsed" role="presentation"></span>
+        </div>
+        <div style="display: flex; flex-direction: column; margin-right: 15px;">
+          <b>Favorite Element</b>
+          <span id="favorite" role="presentation"></span>
+        </div>
+        <div id="legend" style="display: flex; flex-direction: column; margin-right: 15px;">
+          <b>Legend</b>
+          <div style="display: flex;">
+            <div style="display: flex; flex-direction: column; margin-right: 10px;">
+              <span role="presentation">
+                Letters
+              </span>
+              <span class="alpha" role="presentation"></span>
             </div>
+            <div style="display: flex; flex-direction: column; margin-right: 10px;">
+              <span role="presentation">
+                Numbers
+              </span>
+              <span class="numeric" role="presentation"></span>
+            </div>
+            <div style="display: flex; flex-direction: column; margin-right: 10px;">
+              <span role="presentation">
+                Other (Symbol, Misc KeyCodes)
+              </span>
+              <span class="other" role="presentation"></span>
+            </div>
+
+
           </div>
         </div>
       </div>
     </div>
-    <svg id="svgF" role="presentation">
+  </div>
+  <svg id="svgF" role="presentation">
 
-    </svg>
-    <div id="viewDiv"></div>
+  </svg>
+  <div id="viewDiv"></div>
 </div>
 
 <!--
-  Select onchange
+Select onchange
 -->
-<script>
-  function selectChart(event) {
-    if (simulatorInterval) {
-      clearInterval(simulatorInterval);
-    }
-    if (event.value === 'flights') {
-      document.getElementById('legend').style.display = 'none';
-      generateData('flights', null);
-    }
-    if (event.value === 'strange') {
-      document.getElementById('legend').style.display = 'flex';
-      peculiarities.showChart();
-    }
-    if (event.value === 'finance') {
-      document.getElementById('legend').style.display = 'none';
-      generateData('finance', null);
-    }
+<script defer>
+function selectChart(event) {
+  if (simulatorInterval) {
+    clearInterval(simulatorInterval);
   }
+  if (event.value === 'flights') {
+    document.getElementById('legend').style.display = 'none';
+    generateData('flights', null);
+  }
+  if (event.value === 'strange') {
+    document.getElementById('legend').style.display = 'flex';
+    peculiarities.showChart();
+  }
+  if (event.value === 'finance') {
+    document.getElementById('legend').style.display = 'none';
+    generateData('finance', null);
+  }
+}
 </script>
 
 <!-- Flight D3 Styles -->
 <style>
-    .land {
-      fill: #dddddd;
-    }
+  .land {
+    fill: #dddddd;
+  }
 
-    .border {
-      fill: none;
-      stroke-width: 1px;
-    }
+  .border {
+    fill: none;
+    stroke-width: 1px;
+  }
 
-    .interior {
-      stroke: white;
-    }
+  .interior {
+    stroke: white;
+  }
 
-    .exterior {
-      stroke: #bbbbbb;
-    }
+  .exterior {
+    stroke: #bbbbbb;
+  }
 
-    .airport {
-      fill: white;
-      opacity: 0.6;
-      stroke: #252525;
-    }
+  .airport {
+    fill: white;
+    opacity: 0.6;
+    stroke: #252525;
+  }
 
-    .flight {
-      fill: none;
-      stroke: #252525;
-      stroke-width: 1px;
-      stroke-opacity: 0.1;
-    }
+  .flight {
+    fill: none;
+    stroke: #252525;
+    stroke-width: 1px;
+    stroke-opacity: 0.1;
+  }
 
-    .voronoi {
-      fill: none;
-      stroke: none;
-      stroke-width: 1px;
-    }
+  .voronoi {
+    fill: none;
+    stroke: none;
+    stroke-width: 1px;
+  }
 
-    .highlight {
-      opacity: 1 !important;
-      stroke: red !important;
-      stroke-width: 2px !important;
-      stroke-opacity: 0.8 !important;
-    }
+  .highlight {
+    opacity: 1 !important;
+    stroke: red !important;
+    stroke-width: 2px !important;
+    stroke-opacity: 0.8 !important;
+  }
 
-    g#voronoi {
-      pointer-events: all;
-    }
+  g#voronoi {
+    pointer-events: all;
+  }
 
-    /* shadow trick from bl.ocks.org */
-    #tooltipD3 {
-      font-size: 11px;
-      font-weight: 900;
-      fill: white;
-      text-shadow: 1px 1px 0 #252525, 1px -1px 0 #252525, -1px 1px 0 #252525, -1px -1px 0 #252525;
-    }
+  /* shadow trick from bl.ocks.org */
+  #tooltipD3 {
+    font-size: 11px;
+    font-weight: 900;
+    fill: white;
+    text-shadow: 1px 1px 0 #252525, 1px -1px 0 #252525, -1px 1px 0 #252525, -1px -1px 0 #252525;
+  }
 </style>
 <!-- Dendogram Styles -->
 <style>
-    .node circle {
-      fill: #999;
-    }
+  .node circle {
+    fill: #999;
+  }
 
-    .node text {
-      font: 10px sans-serif;
-    }
+  .node text {
+    font: 10px sans-serif;
+  }
 
-    .node--internal circle {
-      fill: #555;
-    }
+  .node--internal circle {
+    fill: #555;
+  }
 
-    .node--internal text {
-      text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
-    }
+  .node--internal text {
+    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+  }
 
-    .link {
-      fill: none;
-      stroke: #555;
-      stroke-opacity: 0.4;
-      stroke-width: 1.5px;
-    }
+  .link {
+    fill: none;
+    stroke: #555;
+    stroke-opacity: 0.4;
+    stroke-width: 1.5px;
+  }
 
-    form {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      position: absolute;
-      left: 10px;
-      top: 10px;
-    }
+  form {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
 
-    label {
-      display: block;
-    }
+  label {
+    display: block;
+  }
 </style>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://unpkg.com/topojson@3"></script>
 <script src="https://unpkg.com/d3-delaunay@4"></script>
 <script src="https://unpkg.com/d3-geo-voronoi@1"></script>
 <style>
-    .d3-container {
-        display: block;
-        overflow-x: scroll;
-        position: relative;
-        background: rgb(245, 245, 245);
-        margin: 15px;
-    }
-    .d3-container > div.d3-toolbar {
-        position: absolute;
-        margin: .5em;
-        padding: 5px;
-        top: .5em;
-        right: 0px;
-        z-index: 999;
-        border-radius: 5px;
-        font-size: 11px;
-    }
-    .d3-container > div.d3-toolbar > div {
-        text-align: left;
-    }
+  .d3-container {
+      display: block;
+      overflow-x: scroll;
+      position: relative;
+      background: rgb(245, 245, 245);
+      margin: 15px;
+  }
+  .d3-container > div.d3-toolbar {
+      position: absolute;
+      margin: .5em;
+      padding: 5px;
+      top: .5em;
+      right: 0px;
+      z-index: 999;
+      border-radius: 5px;
+      font-size: 11px;
+  }
+  .d3-container > div.d3-toolbar > div {
+      text-align: left;
+  }
 
 </style>
 
 <!--
-  Inport Finance Data
+Inport Finance Data
 -->
 <script type="module">
-  import { get_data } from './assets/asset.js';
-  window.asset_data = get_data();
+import { get_data } from './assets/asset.js';
+window.asset_data = get_data();
 </script>
 
 <!-- Generate data -->
 <script>
-    let simulatorInterval = null;
+  let simulatorInterval = null;
 
-    async function generateData(type, opts) {
+  async function generateData(type, opts) {
 
-        // Select D3 Chart
-        let svg  = d3.select("svg#svgF");
+      // Select D3 Chart
+      let svg  = d3.select("svg#svgF");
 
-        document.getElementById('svgF').setAttribute("height", "600");
-        document.getElementById('svgF').setAttribute("width", "1000");
-        document.getElementById('svgF').style.height = '600px';
-        document.getElementById('svgF').style.width = '1000px';
-        document.getElementById('svgF').style.display = 'block';
+      document.getElementById('svgF').setAttribute("height", "600");
+      document.getElementById('svgF').setAttribute("width", "1000");
+      document.getElementById('svgF').style.height = '600px';
+      document.getElementById('svgF').style.width = '1000px';
+      document.getElementById('svgF').style.display = 'block';
 
-        document.getElementById('debugContainer').style.display = 'none';
-        document.getElementById('haltContainer').style.display = 'none';
-        document.getElementById('viewDiv').style.display = 'none';
-
-        // Clear D3 Chart
-        d3.selectAll("#svgF > g").remove();
-
-        if (type === 'flights') {
-
-            svg.append("g").attr("id", "basemap");
-            svg.append("g").attr("id", "flights");
-            svg.append("g").attr("id", "airports");
-            svg.append("g").attr("id", "voronoi");
-            svg.append("text").attr("id", "tooltipD3").style("display", "none");
-
-            const urls = {
-                // source: https://observablehq.com/@mbostock/u-s-airports-voronoi
-                // source: https://github.com/topojson/us-atlas
-                map: "assets/states-albers-10m.json",
-
-                // source: https://gist.github.com/mbostock/7608400
-                airports:
-                "https://gist.githubusercontent.com/mbostock/7608400/raw/e5974d9bba45bc9ab272d98dd7427567aafd55bc/airports.csv",
-
-                // source: https://gist.github.com/mbostock/7608400
-                flights:
-                "https://gist.githubusercontent.com/mbostock/7608400/raw/e5974d9bba45bc9ab272d98dd7427567aafd55bc/flights.csv"
-            };
-
-            let width  = parseInt(svg.attr("width"));
-            let height = parseInt(svg.attr("height"));
-            const hypotenuse = Math.sqrt(width * width + height * height);
-
-            // must be hard-coded to match our topojson projection
-            // source: https://github.com/topojson/us-atlas
-            const projection = d3.geoAlbers().scale(1280).translate([480, 300]);
-
-            const scales = {
-                // used to scale airport bubbles
-                airports: d3.scaleSqrt()
-                .range([4, 18]),
-
-                // used to scale number of segments per line
-                segments: d3.scaleLinear()
-                .domain([0, hypotenuse])
-                .range([1, 10])
-            };
-
-            // have these already created for easier drawing
-            let g = {
-                basemap:  svg.select("g#basemap"),
-                flights:  svg.select("g#flights"),
-                airports: svg.select("g#airports"),
-                voronoi:  svg.select("g#voronoi")
-            };
-
-            console.assert(g.basemap.size()  === 1);
-            console.assert(g.flights.size()  === 1);
-            console.assert(g.airports.size() === 1);
-            console.assert(g.voronoi.size()  === 1);
-
-            const tooltipD3 = d3.select("text#tooltipD3");
-            console.assert(tooltipD3.size() === 1);
-
-            // load and draw base map
-            d3.json(urls.map).then(drawMap);
-
-            // load the airport and flight data together
-            const promises = [
-                d3.csv(urls.airports, typeAirport),
-                d3.csv(urls.flights,  typeFlight)
-            ];
-
-            Promise.all(promises).then(processData);
-
-            // process airport and flight data
-            function processData(values) {
-                console.assert(values.length === 2);
-
-                let airports = values[0];
-                let flights  = values[1];
-
-                // convert airports array (pre filter) into map for fast lookup
-                let iata = new Map(airports.map(node => [node.iata, node]));
-
-                // calculate incoming and outgoing degree based on flights
-                // flights are given by airport iata code (not index)
-                flights.forEach(function(link) {
-                link.source = iata.get(link.origin);
-                link.target = iata.get(link.destination);
-
-                link.source.outgoing += link.count;
-                link.target.incoming += link.count;
-                });
-
-                // remove airports out of bounds
-                let old = airports.length;
-                airports = airports.filter(airport => airport.x >= 0 && airport.y >= 0);
-
-                // remove airports with NA state
-                old = airports.length;
-                airports = airports.filter(airport => airport.state !== "NA");
-
-                // remove airports without any flights
-                old = airports.length;
-                airports = airports.filter(airport => airport.outgoing > 0 && airport.incoming > 0);
-
-                // sort airports by outgoing degree
-                airports.sort((a, b) => d3.descending(a.outgoing, b.outgoing));
-
-                // keep only the top airports
-                old = airports.length;
-                airports = airports.slice(0, 50);
-
-                // done filtering airports can draw
-                drawAirports(airports);
-                drawPolygons(airports);
-
-                // reset map to only include airports post-filter
-                iata = new Map(airports.map(node => [node.iata, node]));
-
-                // filter out flights that are not between airports we have leftover
-                old = flights.length;
-                flights = flights.filter(link => iata.has(link.source.iata) && iata.has(link.target.iata));
-
-                // done filtering flights can draw
-                drawFlights(airports, flights);
-
-            }
-
-            // draws the underlying map
-            function drawMap(map) {
-                // remove non-continental states
-                map.objects.states.geometries = map.objects.states.geometries.filter(isContinental);
-
-                // run topojson on remaining states and adjust projection
-                let land = topojson.merge(map, map.objects.states.geometries);
-
-                // use null projection; data is already projected
-                let path = d3.geoPath();
-
-                // draw base map
-                g.basemap.append("path")
-                .datum(land)
-                .attr("class", "land")
-                .attr("d", path);
-
-                // draw interior borders
-                g.basemap.append("path")
-                .datum(topojson.mesh(map, map.objects.states, (a, b) => a !== b))
-                .attr("class", "border interior")
-                .attr("d", path);
-
-                // draw exterior borders
-                g.basemap.append("path")
-                .datum(topojson.mesh(map, map.objects.states, (a, b) => a === b))
-                .attr("class", "border exterior")
-                .attr("d", path);
-            }
-
-            function drawAirports(airports) {
-                // adjust scale
-                const extent = d3.extent(airports, d => d.outgoing);
-                scales.airports.domain(extent);
-
-                // draw airport bubbles
-                g.airports.selectAll("circle.airport")
-                .data(airports, d => d.iata)
-                .enter()
-                .append("circle")
-                .attr("r",  d => scales.airports(d.outgoing))
-                .attr("cx", d => d.x) // calculated on load
-                .attr("cy", d => d.y) // calculated on load
-                .attr("class", "airport")
-                .each(function(d) {
-                    // adds the circle object to our airport
-                    // makes it fast to select airports on hover
-                    d.bubble = this;
-                });
-            }
-
-            function drawPolygons(airports) {
-                // convert array of airports into geojson format
-                const geojson = airports.map(function(airport) {
-                return {
-                    type: "Feature",
-                    properties: airport,
-                    geometry: {
-                    type: "Point",
-                    coordinates: [airport.longitude, airport.latitude]
-                    }
-                };
-                });
-
-                // calculate voronoi polygons
-                const polygons = d3.geoVoronoi().polygons(geojson);
-
-                g.voronoi.selectAll("path")
-                .data(polygons.features)
-                .enter()
-                .append("path")
-                .attr("d", d3.geoPath(projection))
-                .attr("class", "voronoi")
-                .on("mouseover", function(d) {
-                    let airport = d.properties.site.properties;
-
-                    d3.select(airport.bubble)
-                    .classed("highlight", true);
-
-                    d3.selectAll(airport.flights)
-                    .classed("highlight", true)
-                    .raise();
-
-                    // make tooltip take up space but keep it invisible
-                    tooltipD3.style("display", null);
-                    tooltipD3.style("visibility", "hidden");
-
-                    // set default tooltip positioning
-                    tooltipD3.attr("text-anchor", "middle");
-                    tooltipD3.attr("dy", -scales.airports(airport.outgoing) - 4);
-                    tooltipD3.attr("x", airport.x);
-                    tooltipD3.attr("y", airport.y);
-
-                    // set the tooltip text
-                    tooltipD3.text(airport.name + " in " + airport.city + ", " + airport.state);
-
-                    // double check if the anchor needs to be changed
-                    let bbox = tooltipD3.node().getBBox();
-
-                    if (bbox.x <= 0) {
-                    tooltipD3.attr("text-anchor", "start");
-                    }
-                    else if (bbox.x + bbox.width >= width) {
-                    tooltipD3.attr("text-anchor", "end");
-                    }
-
-                    tooltipD3.style("visibility", "visible");
-                })
-                .on("mouseout", function(d) {
-                    let airport = d.properties.site.properties;
-
-                    d3.select(airport.bubble)
-                    .classed("highlight", false);
-
-                    d3.selectAll(airport.flights)
-                    .classed("highlight", false);
-
-                    d3.select("text#tooltipD3").style("visibility", "hidden");
-                })
-                .on("dblclick", function(d) {
-                    // toggle voronoi outline
-                    let toggle = d3.select(this).classed("highlight");
-                    d3.select(this).classed("highlight", !toggle);
-                });
-            }
-
-            function drawFlights(airports, flights) {
-                // break each flight between airports into multiple segments
-                let bundle = generateSegments(airports, flights);
-
-                // https://github.com/d3/d3-shape#curveBundle
-                let line = d3.line()
-                .curve(d3.curveBundle)
-                .x(airport => airport.x)
-                .y(airport => airport.y);
-
-                let links = g.flights.selectAll("path.flight")
-                .data(bundle.paths)
-                .enter()
-                .append("path")
-                .attr("d", line)
-                .attr("class", "flight")
-                .each(function(d) {
-                    // adds the path object to our source airport
-                    // makes it fast to select outgoing paths
-                    d[0].flights.push(this);
-                });
-
-                // https://github.com/d3/d3-force
-                let layout = d3.forceSimulation()
-                // settle at a layout faster
-                .alphaDecay(0.1)
-                // nearby nodes attract each other
-                .force("charge", d3.forceManyBody()
-                    .strength(10)
-                    .distanceMax(scales.airports.range()[1] * 2)
-                )
-                // edges want to be as short as possible
-                // prevents too much stretching
-                .force("link", d3.forceLink()
-                    .strength(0.7)
-                    .distance(0)
-                )
-                .on("tick", function(d) {
-                    links.attr("d", line);
-                });
-
-                layout.nodes(bundle.nodes).force("link").links(bundle.links);
-            }
-
-            // Turns a single edge into several segments that can
-            // be used for simple edge bundling.
-            function generateSegments(nodes, links) {
-                // generate separate graph for edge bundling
-                // nodes: all nodes including control nodes
-                // links: all individual segments (source to target)
-                // paths: all segments combined into single path for drawing
-                let bundle = {nodes: [], links: [], paths: []};
-
-                // make existing nodes fixed
-                bundle.nodes = nodes.map(function(d, i) {
-                d.fx = d.x;
-                d.fy = d.y;
-                return d;
-                });
-
-                links.forEach(function(d, i) {
-                // calculate the distance between the source and target
-                let length = distance(d.source, d.target);
-
-                // calculate total number of inner nodes for this link
-                let total = Math.round(scales.segments(length));
-
-                // create scales from source to target
-                let xscale = d3.scaleLinear()
-                    .domain([0, total + 1]) // source, inner nodes, target
-                    .range([d.source.x, d.target.x]);
-
-                let yscale = d3.scaleLinear()
-                    .domain([0, total + 1])
-                    .range([d.source.y, d.target.y]);
-
-                // initialize source node
-                let source = d.source;
-                let target = null;
-
-                // add all points to local path
-                let local = [source];
-
-                for (let j = 1; j <= total; j++) {
-                    // calculate target node
-                    target = {
-                    x: xscale(j),
-                    y: yscale(j)
-                    };
-
-                    local.push(target);
-                    bundle.nodes.push(target);
-
-                    bundle.links.push({
-                    source: source,
-                    target: target
-                    });
-
-                    source = target;
-                }
-
-                local.push(d.target);
-
-                // add last link to target node
-                bundle.links.push({
-                    source: target,
-                    target: d.target
-                });
-
-                bundle.paths.push(local);
-                });
-
-                return bundle;
-            }
-
-            // determines which states belong to the continental united states
-            // https://gist.github.com/mbostock/4090846#file-us-state-names-tsv
-            function isContinental(state) {
-                const id = parseInt(state.id);
-                return id < 60 && id !== 2 && id !== 15;
-            }
-
-            // see airports.csv
-            // convert gps coordinates to number and init degree
-            function typeAirport(airport) {
-                airport.longitude = parseFloat(airport.longitude);
-                airport.latitude  = parseFloat(airport.latitude);
-
-                // use projection hard-coded to match topojson data
-                const coords = projection([airport.longitude, airport.latitude]);
-                airport.x = coords[0];
-                airport.y = coords[1];
-
-                airport.outgoing = 0;  // eventually tracks number of outgoing flights
-                airport.incoming = 0;  // eventually tracks number of incoming flights
-
-                airport.flights = [];  // eventually tracks outgoing flights
-
-                return airport;
-            }
-
-            // see flights.csv
-            // convert count to number
-            function typeFlight(flight) {
-                flight.count = parseInt(flight.count);
-                return flight;
-            }
-
-            // calculates the distance between two nodes
-            // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
-            function distance(source, target) {
-                const dx2 = Math.pow(target.x - source.x, 2);
-                const dy2 = Math.pow(target.y - source.y, 2);
-
-                return Math.sqrt(dx2 + dy2);
-            }
-        }
-
-        if (type === 'finance') {
-
-          const parseDate = d3.timeParse("%Y-%m-%d");
-
-          window.data = await d3.dsv(",", "./assets/stock.csv", (d) => {
-            const date = parseDate(d["Date"]);
-            return {
-              date,
-              high: +d["High"],
-              low: +d["Low"],
-              open: +d["Open"],
-              close: +d["Close"]
-            };
-          });
-
-          updateOHLC(window.data);
-
-          // Shallow clone object will snapshot the initial response
-          // and additionally be used to
-          // rotate through and generate new entries.
-          const initialItems = [...window.data];
-
-          // Will be used to track position in rotation
-          let nextElement = initialItems.length - 1;
-          let lastObject = JSON.parse(JSON.stringify(initialItems[nextElement]));
-          let nextDay = new Date(new Date(lastObject['date']).getTime() + (1*24*60*60*1000));
-
-          // Direction to iterate
-          // 0 desc
-          // 1 asc
-          let direction = 0;
-
-          simulatorInterval = setInterval(simulator, 100);
-
-          function simulator() {
-            const parseDate = d3.timeParse("%Y-%m-%d");
-
-            // Get Market Action
-            const marketAction = JSON.parse(JSON.stringify(initialItems[nextElement]));
-
-            // Skip Weekends
-            if (nextDay.getDay() === 6) nextDay = new Date(nextDay.getTime() + (2*24*60*60*1000));
-            if (nextDay.getDay() === 0) nextDay = new Date(nextDay.getTime() + (2*24*60*60*1000));
-
-            // Set Final Date
-            marketAction['date'] = nextDay;
-
-            // Swap Open Close
-            [marketAction['open'], marketAction['close']] = [marketAction['close'], marketAction['open']];
-
-            // Switch Dir on last and first
-            if ((nextElement) === (initialItems.length - 1)) direction = 0;
-            if ((nextElement) === 0) direction = 1;
-
-            // Update Iterate Trackers
-            if (direction === 1) {
-              nextElement = nextElement + 1;
-              lastObject = JSON.parse(JSON.stringify(initialItems[nextElement]));
-            }
-            if (direction === 0) {
-              nextElement = nextElement - 1;
-              lastObject = JSON.parse(JSON.stringify(initialItems[nextElement]));
-            }
-
-            // Adjust next day
-            nextDay = new Date(nextDay.getTime() + (1*24*60*60*1000))
-
-            // Update Dataset
-            window.data.push(marketAction);
-            window.data.shift();
-            console.log('boom', window.data[0], window.data[window.data.length - 1])
-
-            // Ensure days do not conflict
-            if (window.data[0].date.getDay() === window.data[window.data.length - 1].date.getDay()) window.data.shift();
-
-            // Update with new data
-            try {
-              const final = window.data.sort((a, b) => a.date - b.date)
-              updateOHLC(final);
-            } catch (err) {}
-
-          }
-
-
-        }
-
-    }
-
-    // TODO Need to create function to just add one
-    // Rather than clearing and updating the entire dataset.
-    function updateOHLC(data) {
+      document.getElementById('debugContainer').style.display = 'none';
+      document.getElementById('haltContainer').style.display = 'none';
+      document.getElementById('viewDiv').style.display = 'none';
 
       // Clear D3 Chart
       d3.selectAll("#svgF > g").remove();
 
-      const height = 400;
-      const width = 640;
-      const margin = ({top: 20, right: 30, bottom: 30, left: 40});
+      if (type === 'flights') {
 
-      function formatChange(y0, y1) {
-        const f = d3.format("+.2%");
-        return (y0, y1) => f((y1 - y0) / y0);
+          svg.append("g").attr("id", "basemap");
+          svg.append("g").attr("id", "flights");
+          svg.append("g").attr("id", "airports");
+          svg.append("g").attr("id", "voronoi");
+          svg.append("text").attr("id", "tooltipD3").style("display", "none");
+
+          const urls = {
+              // source: https://observablehq.com/@mbostock/u-s-airports-voronoi
+              // source: https://github.com/topojson/us-atlas
+              map: "assets/states-albers-10m.json",
+
+              // source: https://gist.github.com/mbostock/7608400
+              airports:
+              "https://gist.githubusercontent.com/mbostock/7608400/raw/e5974d9bba45bc9ab272d98dd7427567aafd55bc/airports.csv",
+
+              // source: https://gist.github.com/mbostock/7608400
+              flights:
+              "https://gist.githubusercontent.com/mbostock/7608400/raw/e5974d9bba45bc9ab272d98dd7427567aafd55bc/flights.csv"
+          };
+
+          let width  = parseInt(svg.attr("width"));
+          let height = parseInt(svg.attr("height"));
+          const hypotenuse = Math.sqrt(width * width + height * height);
+
+          // must be hard-coded to match our topojson projection
+          // source: https://github.com/topojson/us-atlas
+          const projection = d3.geoAlbers().scale(1280).translate([480, 300]);
+
+          const scales = {
+              // used to scale airport bubbles
+              airports: d3.scaleSqrt()
+              .range([4, 18]),
+
+              // used to scale number of segments per line
+              segments: d3.scaleLinear()
+              .domain([0, hypotenuse])
+              .range([1, 10])
+          };
+
+          // have these already created for easier drawing
+          let g = {
+              basemap:  svg.select("g#basemap"),
+              flights:  svg.select("g#flights"),
+              airports: svg.select("g#airports"),
+              voronoi:  svg.select("g#voronoi")
+          };
+
+          console.assert(g.basemap.size()  === 1);
+          console.assert(g.flights.size()  === 1);
+          console.assert(g.airports.size() === 1);
+          console.assert(g.voronoi.size()  === 1);
+
+          const tooltipD3 = d3.select("text#tooltipD3");
+          console.assert(tooltipD3.size() === 1);
+
+          // load and draw base map
+          d3.json(urls.map).then(drawMap);
+
+          // load the airport and flight data together
+          const promises = [
+              d3.csv(urls.airports, typeAirport),
+              d3.csv(urls.flights,  typeFlight)
+          ];
+
+          Promise.all(promises).then(processData);
+
+          // process airport and flight data
+          function processData(values) {
+              console.assert(values.length === 2);
+
+              let airports = values[0];
+              let flights  = values[1];
+
+              // convert airports array (pre filter) into map for fast lookup
+              let iata = new Map(airports.map(node => [node.iata, node]));
+
+              // calculate incoming and outgoing degree based on flights
+              // flights are given by airport iata code (not index)
+              flights.forEach(function(link) {
+              link.source = iata.get(link.origin);
+              link.target = iata.get(link.destination);
+
+              link.source.outgoing += link.count;
+              link.target.incoming += link.count;
+              });
+
+              // remove airports out of bounds
+              let old = airports.length;
+              airports = airports.filter(airport => airport.x >= 0 && airport.y >= 0);
+
+              // remove airports with NA state
+              old = airports.length;
+              airports = airports.filter(airport => airport.state !== "NA");
+
+              // remove airports without any flights
+              old = airports.length;
+              airports = airports.filter(airport => airport.outgoing > 0 && airport.incoming > 0);
+
+              // sort airports by outgoing degree
+              airports.sort((a, b) => d3.descending(a.outgoing, b.outgoing));
+
+              // keep only the top airports
+              old = airports.length;
+              airports = airports.slice(0, 50);
+
+              // done filtering airports can draw
+              drawAirports(airports);
+              drawPolygons(airports);
+
+              // reset map to only include airports post-filter
+              iata = new Map(airports.map(node => [node.iata, node]));
+
+              // filter out flights that are not between airports we have leftover
+              old = flights.length;
+              flights = flights.filter(link => iata.has(link.source.iata) && iata.has(link.target.iata));
+
+              // done filtering flights can draw
+              drawFlights(airports, flights);
+
+          }
+
+          // draws the underlying map
+          function drawMap(map) {
+              // remove non-continental states
+              map.objects.states.geometries = map.objects.states.geometries.filter(isContinental);
+
+              // run topojson on remaining states and adjust projection
+              let land = topojson.merge(map, map.objects.states.geometries);
+
+              // use null projection; data is already projected
+              let path = d3.geoPath();
+
+              // draw base map
+              g.basemap.append("path")
+              .datum(land)
+              .attr("class", "land")
+              .attr("d", path);
+
+              // draw interior borders
+              g.basemap.append("path")
+              .datum(topojson.mesh(map, map.objects.states, (a, b) => a !== b))
+              .attr("class", "border interior")
+              .attr("d", path);
+
+              // draw exterior borders
+              g.basemap.append("path")
+              .datum(topojson.mesh(map, map.objects.states, (a, b) => a === b))
+              .attr("class", "border exterior")
+              .attr("d", path);
+          }
+
+          function drawAirports(airports) {
+              // adjust scale
+              const extent = d3.extent(airports, d => d.outgoing);
+              scales.airports.domain(extent);
+
+              // draw airport bubbles
+              g.airports.selectAll("circle.airport")
+              .data(airports, d => d.iata)
+              .enter()
+              .append("circle")
+              .attr("r",  d => scales.airports(d.outgoing))
+              .attr("cx", d => d.x) // calculated on load
+              .attr("cy", d => d.y) // calculated on load
+              .attr("class", "airport")
+              .each(function(d) {
+                  // adds the circle object to our airport
+                  // makes it fast to select airports on hover
+                  d.bubble = this;
+              });
+          }
+
+          function drawPolygons(airports) {
+              // convert array of airports into geojson format
+              const geojson = airports.map(function(airport) {
+              return {
+                  type: "Feature",
+                  properties: airport,
+                  geometry: {
+                  type: "Point",
+                  coordinates: [airport.longitude, airport.latitude]
+                  }
+              };
+              });
+
+              // calculate voronoi polygons
+              const polygons = d3.geoVoronoi().polygons(geojson);
+
+              g.voronoi.selectAll("path")
+              .data(polygons.features)
+              .enter()
+              .append("path")
+              .attr("d", d3.geoPath(projection))
+              .attr("class", "voronoi")
+              .on("mouseover", function(d) {
+                  let airport = d.properties.site.properties;
+
+                  d3.select(airport.bubble)
+                  .classed("highlight", true);
+
+                  d3.selectAll(airport.flights)
+                  .classed("highlight", true)
+                  .raise();
+
+                  // make tooltip take up space but keep it invisible
+                  tooltipD3.style("display", null);
+                  tooltipD3.style("visibility", "hidden");
+
+                  // set default tooltip positioning
+                  tooltipD3.attr("text-anchor", "middle");
+                  tooltipD3.attr("dy", -scales.airports(airport.outgoing) - 4);
+                  tooltipD3.attr("x", airport.x);
+                  tooltipD3.attr("y", airport.y);
+
+                  // set the tooltip text
+                  tooltipD3.text(airport.name + " in " + airport.city + ", " + airport.state);
+
+                  // double check if the anchor needs to be changed
+                  let bbox = tooltipD3.node().getBBox();
+
+                  if (bbox.x <= 0) {
+                  tooltipD3.attr("text-anchor", "start");
+                  }
+                  else if (bbox.x + bbox.width >= width) {
+                  tooltipD3.attr("text-anchor", "end");
+                  }
+
+                  tooltipD3.style("visibility", "visible");
+              })
+              .on("mouseout", function(d) {
+                  let airport = d.properties.site.properties;
+
+                  d3.select(airport.bubble)
+                  .classed("highlight", false);
+
+                  d3.selectAll(airport.flights)
+                  .classed("highlight", false);
+
+                  d3.select("text#tooltipD3").style("visibility", "hidden");
+              })
+              .on("dblclick", function(d) {
+                  // toggle voronoi outline
+                  let toggle = d3.select(this).classed("highlight");
+                  d3.select(this).classed("highlight", !toggle);
+              });
+          }
+
+          function drawFlights(airports, flights) {
+              // break each flight between airports into multiple segments
+              let bundle = generateSegments(airports, flights);
+
+              // https://github.com/d3/d3-shape#curveBundle
+              let line = d3.line()
+              .curve(d3.curveBundle)
+              .x(airport => airport.x)
+              .y(airport => airport.y);
+
+              let links = g.flights.selectAll("path.flight")
+              .data(bundle.paths)
+              .enter()
+              .append("path")
+              .attr("d", line)
+              .attr("class", "flight")
+              .each(function(d) {
+                  // adds the path object to our source airport
+                  // makes it fast to select outgoing paths
+                  d[0].flights.push(this);
+              });
+
+              // https://github.com/d3/d3-force
+              let layout = d3.forceSimulation()
+              // settle at a layout faster
+              .alphaDecay(0.1)
+              // nearby nodes attract each other
+              .force("charge", d3.forceManyBody()
+                  .strength(10)
+                  .distanceMax(scales.airports.range()[1] * 2)
+              )
+              // edges want to be as short as possible
+              // prevents too much stretching
+              .force("link", d3.forceLink()
+                  .strength(0.7)
+                  .distance(0)
+              )
+              .on("tick", function(d) {
+                  links.attr("d", line);
+              });
+
+              layout.nodes(bundle.nodes).force("link").links(bundle.links);
+          }
+
+          // Turns a single edge into several segments that can
+          // be used for simple edge bundling.
+          function generateSegments(nodes, links) {
+              // generate separate graph for edge bundling
+              // nodes: all nodes including control nodes
+              // links: all individual segments (source to target)
+              // paths: all segments combined into single path for drawing
+              let bundle = {nodes: [], links: [], paths: []};
+
+              // make existing nodes fixed
+              bundle.nodes = nodes.map(function(d, i) {
+              d.fx = d.x;
+              d.fy = d.y;
+              return d;
+              });
+
+              links.forEach(function(d, i) {
+              // calculate the distance between the source and target
+              let length = distance(d.source, d.target);
+
+              // calculate total number of inner nodes for this link
+              let total = Math.round(scales.segments(length));
+
+              // create scales from source to target
+              let xscale = d3.scaleLinear()
+                  .domain([0, total + 1]) // source, inner nodes, target
+                  .range([d.source.x, d.target.x]);
+
+              let yscale = d3.scaleLinear()
+                  .domain([0, total + 1])
+                  .range([d.source.y, d.target.y]);
+
+              // initialize source node
+              let source = d.source;
+              let target = null;
+
+              // add all points to local path
+              let local = [source];
+
+              for (let j = 1; j <= total; j++) {
+                  // calculate target node
+                  target = {
+                  x: xscale(j),
+                  y: yscale(j)
+                  };
+
+                  local.push(target);
+                  bundle.nodes.push(target);
+
+                  bundle.links.push({
+                  source: source,
+                  target: target
+                  });
+
+                  source = target;
+              }
+
+              local.push(d.target);
+
+              // add last link to target node
+              bundle.links.push({
+                  source: target,
+                  target: d.target
+              });
+
+              bundle.paths.push(local);
+              });
+
+              return bundle;
+          }
+
+          // determines which states belong to the continental united states
+          // https://gist.github.com/mbostock/4090846#file-us-state-names-tsv
+          function isContinental(state) {
+              const id = parseInt(state.id);
+              return id < 60 && id !== 2 && id !== 15;
+          }
+
+          // see airports.csv
+          // convert gps coordinates to number and init degree
+          function typeAirport(airport) {
+              airport.longitude = parseFloat(airport.longitude);
+              airport.latitude  = parseFloat(airport.latitude);
+
+              // use projection hard-coded to match topojson data
+              const coords = projection([airport.longitude, airport.latitude]);
+              airport.x = coords[0];
+              airport.y = coords[1];
+
+              airport.outgoing = 0;  // eventually tracks number of outgoing flights
+              airport.incoming = 0;  // eventually tracks number of incoming flights
+
+              airport.flights = [];  // eventually tracks outgoing flights
+
+              return airport;
+          }
+
+          // see flights.csv
+          // convert count to number
+          function typeFlight(flight) {
+              flight.count = parseInt(flight.count);
+              return flight;
+          }
+
+          // calculates the distance between two nodes
+          // sqrt( (x2 - x1)^2 + (y2 - y1)^2 )
+          function distance(source, target) {
+              const dx2 = Math.pow(target.x - source.x, 2);
+              const dy2 = Math.pow(target.y - source.y, 2);
+
+              return Math.sqrt(dx2 + dy2);
+          }
       }
 
-      const formatValue = d3.format(".2f");
+      if (type === 'finance') {
 
-      const formatDate = d3.timeFormat("%B %-d, %Y");
+        const parseDate = d3.timeParse("%Y-%m-%d");
 
-      yAxis = g => g
-        .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y)
-            .tickFormat(d3.format("$~f"))
-            .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
-        .call(g => g.selectAll(".tick line").clone()
-            .attr("stroke-opacity", 0.2)
-            .attr("x2", width - margin.left - margin.right))
-        .call(g => g.select(".domain").remove());
+        window.data = await d3.dsv(",", "./assets/stock.csv", (d) => {
+          const date = parseDate(d["Date"]);
+          return {
+            date,
+            high: +d["High"],
+            low: +d["Low"],
+            open: +d["Open"],
+            close: +d["Close"]
+          };
+        });
 
-      xAxis = g => g
-        .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x)
-            .tickValues(d3.timeMonday
-                .every(width > 720 ? 1 : 2)
-                .range(data[0].date, data[data.length - 1].date))
-            .tickFormat(d3.timeFormat("%-m/%-d")))
-        .call(g => g.select(".domain").remove());
+        updateOHLC(window.data);
 
-      const y = d3.scaleLog()
-        .domain([d3.min(data, d => d.low), d3.max(data, d => d.high)])
-        .rangeRound([height - margin.bottom, margin.top]);
+        // Shallow clone object will snapshot the initial response
+        // and additionally be used to
+        // rotate through and generate new entries.
+        const initialItems = [...window.data];
 
-        console.log( 'range',data[0].date, +data[data.length - 1].date + 1, data[data.length - 1].date)
-      const x = d3.scaleBand()
-        .domain(d3.timeDay
-            .range(data[0].date, +data[data.length - 1].date + 1)
-            .filter(d => d.getDay() !== 0 && d.getDay() !== 6))
-        .range([margin.left, width - margin.right])
-        .padding(0.2);
+        // Will be used to track position in rotation
+        let nextElement = initialItems.length - 1;
+        let lastObject = JSON.parse(JSON.stringify(initialItems[nextElement]));
+        let nextDay = new Date(new Date(lastObject['date']).getTime() + (1*24*60*60*1000));
 
-      const svg = d3.select("svg#svgF");
+        // Direction to iterate
+        // 0 desc
+        // 1 asc
+        let direction = 0;
 
-      svg.append("g")
-          .call(xAxis);
+        simulatorInterval = setInterval(simulator, 100);
 
-      svg.append("g")
-          .call(yAxis);
+        function simulator() {
+          const parseDate = d3.timeParse("%Y-%m-%d");
 
-      const g = svg.append("g")
-          .attr("stroke-linecap", "round")
-          .attr("stroke", "black")
-        .selectAll("g")
-        .data(data)
-        .join("g")
-          .attr("transform", d => {
-            console.log(d);
-            return `translate(${x(d.date)},0)`
-          });
+          // Get Market Action
+          const marketAction = JSON.parse(JSON.stringify(initialItems[nextElement]));
 
-      g.append("line")
-          .attr("y1", d => y(d.low))
-          .attr("y2", d => y(d.high));
+          // Skip Weekends
+          if (nextDay.getDay() === 6) nextDay = new Date(nextDay.getTime() + (2*24*60*60*1000));
+          if (nextDay.getDay() === 0) nextDay = new Date(nextDay.getTime() + (2*24*60*60*1000));
 
-      g.append("line")
-          .attr("y1", d => y(d.open))
-          .attr("y2", d => y(d.close))
-          .attr("stroke-width", x.bandwidth())
-          .attr("stroke", d => d.open > d.close ? d3.schemeSet1[0]
-              : d.close > d.open ? d3.schemeSet1[2]
-              : d3.schemeSet1[8]);
+          // Set Final Date
+          marketAction['date'] = nextDay;
 
-      g.append("title")
-          .text(d => `
-            ${formatDate(d.date)}
-            Open: ${formatValue(d.open)}
-            Close: ${formatValue(d.close)} (${formatChange(d.open, d.close)})
-            Low: ${formatValue(d.low)}
-            High: ${formatValue(d.high)}
-          `);
+          // Swap Open Close
+          [marketAction['open'], marketAction['close']] = [marketAction['close'], marketAction['open']];
+
+          // Switch Dir on last and first
+          if ((nextElement) === (initialItems.length - 1)) direction = 0;
+          if ((nextElement) === 0) direction = 1;
+
+          // Update Iterate Trackers
+          if (direction === 1) {
+            nextElement = nextElement + 1;
+            lastObject = JSON.parse(JSON.stringify(initialItems[nextElement]));
+          }
+          if (direction === 0) {
+            nextElement = nextElement - 1;
+            lastObject = JSON.parse(JSON.stringify(initialItems[nextElement]));
+          }
+
+          // Adjust next day
+          nextDay = new Date(nextDay.getTime() + (1*24*60*60*1000))
+
+          // Update Dataset
+          window.data.push(marketAction);
+          window.data.shift();
+          console.log('boom', window.data[0], window.data[window.data.length - 1])
+
+          // Ensure days do not conflict
+          if (window.data[0].date.getDay() === window.data[window.data.length - 1].date.getDay()) window.data.shift();
+
+          // Update with new data
+          try {
+            const final = window.data.sort((a, b) => a.date - b.date)
+            updateOHLC(final);
+          } catch (err) {}
+
         }
 
-    // Simulator Function
-    function simulateMarketInterval(rnd, marketData) {
-      console.log(rnd)
-      // Generate Appreciation Trend
-      if (rnd >= 50) {
-        const low = randomIntFromInterval(0, 2);
-        const high = randomIntFromInterval(low, low + 2);
-        const open = randomIntFromInterval(low, high);
-        const close = randomIntFromInterval(open, high);
-        marketData['low'] += low;
-        marketData['high'] += high;
-        marketData['open'] += open;
-        marketData['close'] += close;
+
       }
-      // Generate Random Neutral Trend
-      if (rnd < 50 && rnd >= 25) {
-        const low = randomIntFromInterval(0, 1);
-        const high = randomIntFromInterval(low, low + 1);
-        const open = randomIntFromInterval(low, high);
-        const close = randomIntFromInterval(open, high);
-        marketData['low'] += low;
-        marketData['high'] += high;
-        marketData['open'] += open;
-        marketData['close'] += close;
-      }
-      // Generate Depreciation Trend
-      if (rnd < 25) {
-        const low = randomIntFromInterval(0, 1);
-        const high = randomIntFromInterval(low, low + 1);
-        const open = randomIntFromInterval(low, high);
-        const close = randomIntFromInterval(low, open);
-        marketData['low'] -= low;
-        marketData['high'] -= high;
-        marketData['open'] -= open;
-        marketData['close'] -= close;
-      }
-      console.log(marketData)
-      return marketData;
+
+  }
+
+  // TODO Need to create function to just add one
+  // Rather than clearing and updating the entire dataset.
+  function updateOHLC(data) {
+
+    // Clear D3 Chart
+    d3.selectAll("#svgF > g").remove();
+
+    const height = 400;
+    const width = 640;
+    const margin = ({top: 20, right: 30, bottom: 30, left: 40});
+
+    function formatChange(y0, y1) {
+      const f = d3.format("+.2%");
+      return (y0, y1) => f((y1 - y0) / y0);
     }
 
-    function randomIntFromInterval(min, max) { // min and max included
-      return Math.floor(Math.random() * (max - min + 1) + min)
+    const formatValue = d3.format(".2f");
+
+    const formatDate = d3.timeFormat("%B %-d, %Y");
+
+    yAxis = g => g
+      .attr("transform", `translate(${margin.left},0)`)
+      .call(d3.axisLeft(y)
+          .tickFormat(d3.format("$~f"))
+          .tickValues(d3.scaleLinear().domain(y.domain()).ticks()))
+      .call(g => g.selectAll(".tick line").clone()
+          .attr("stroke-opacity", 0.2)
+          .attr("x2", width - margin.left - margin.right))
+      .call(g => g.select(".domain").remove());
+
+    xAxis = g => g
+      .attr("transform", `translate(0,${height - margin.bottom})`)
+      .call(d3.axisBottom(x)
+          .tickValues(d3.timeMonday
+              .every(width > 720 ? 1 : 2)
+              .range(data[0].date, data[data.length - 1].date))
+          .tickFormat(d3.timeFormat("%-m/%-d")))
+      .call(g => g.select(".domain").remove());
+
+    const y = d3.scaleLog()
+      .domain([d3.min(data, d => d.low), d3.max(data, d => d.high)])
+      .rangeRound([height - margin.bottom, margin.top]);
+
+      console.log( 'range',data[0].date, +data[data.length - 1].date + 1, data[data.length - 1].date)
+    const x = d3.scaleBand()
+      .domain(d3.timeDay
+          .range(data[0].date, +data[data.length - 1].date + 1)
+          .filter(d => d.getDay() !== 0 && d.getDay() !== 6))
+      .range([margin.left, width - margin.right])
+      .padding(0.2);
+
+    const svg = d3.select("svg#svgF");
+
+    svg.append("g")
+        .call(xAxis);
+
+    svg.append("g")
+        .call(yAxis);
+
+    const g = svg.append("g")
+        .attr("stroke-linecap", "round")
+        .attr("stroke", "black")
+      .selectAll("g")
+      .data(data)
+      .join("g")
+        .attr("transform", d => {
+          console.log(d);
+          return `translate(${x(d.date)},0)`
+        });
+
+    g.append("line")
+        .attr("y1", d => y(d.low))
+        .attr("y2", d => y(d.high));
+
+    g.append("line")
+        .attr("y1", d => y(d.open))
+        .attr("y2", d => y(d.close))
+        .attr("stroke-width", x.bandwidth())
+        .attr("stroke", d => d.open > d.close ? d3.schemeSet1[0]
+            : d.close > d.open ? d3.schemeSet1[2]
+            : d3.schemeSet1[8]);
+
+    g.append("title")
+        .text(d => `
+          ${formatDate(d.date)}
+          Open: ${formatValue(d.open)}
+          Close: ${formatValue(d.close)} (${formatChange(d.open, d.close)})
+          Low: ${formatValue(d.low)}
+          High: ${formatValue(d.high)}
+        `);
+      }
+
+  // Simulator Function
+  function simulateMarketInterval(rnd, marketData) {
+    console.log(rnd)
+    // Generate Appreciation Trend
+    if (rnd >= 50) {
+      const low = randomIntFromInterval(0, 2);
+      const high = randomIntFromInterval(low, low + 2);
+      const open = randomIntFromInterval(low, high);
+      const close = randomIntFromInterval(open, high);
+      marketData['low'] += low;
+      marketData['high'] += high;
+      marketData['open'] += open;
+      marketData['close'] += close;
     }
-  </script>
+    // Generate Random Neutral Trend
+    if (rnd < 50 && rnd >= 25) {
+      const low = randomIntFromInterval(0, 1);
+      const high = randomIntFromInterval(low, low + 1);
+      const open = randomIntFromInterval(low, high);
+      const close = randomIntFromInterval(open, high);
+      marketData['low'] += low;
+      marketData['high'] += high;
+      marketData['open'] += open;
+      marketData['close'] += close;
+    }
+    // Generate Depreciation Trend
+    if (rnd < 25) {
+      const low = randomIntFromInterval(0, 1);
+      const high = randomIntFromInterval(low, low + 1);
+      const open = randomIntFromInterval(low, high);
+      const close = randomIntFromInterval(low, open);
+      marketData['low'] -= low;
+      marketData['high'] -= high;
+      marketData['open'] -= open;
+      marketData['close'] -= close;
+    }
+    console.log(marketData)
+    return marketData;
+  }
+
+  function randomIntFromInterval(min, max) { // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+</script>
 
 <!-- Flight D3 Styles -->
 <style>
-    .land {
-      fill: #dddddd;
-    }
+  .land {
+    fill: #dddddd;
+  }
 
-    .border {
-      fill: none;
-      stroke-width: 1px;
-    }
+  .border {
+    fill: none;
+    stroke-width: 1px;
+  }
 
-    .interior {
-      stroke: white;
-    }
+  .interior {
+    stroke: white;
+  }
 
-    .exterior {
-      stroke: #bbbbbb;
-    }
+  .exterior {
+    stroke: #bbbbbb;
+  }
 
-    .airport {
-      fill: white;
-      opacity: 0.6;
-      stroke: #252525;
-    }
+  .airport {
+    fill: white;
+    opacity: 0.6;
+    stroke: #252525;
+  }
 
-    .flight {
-      fill: none;
-      stroke: #252525;
-      stroke-width: 1px;
-      stroke-opacity: 0.1;
-    }
+  .flight {
+    fill: none;
+    stroke: #252525;
+    stroke-width: 1px;
+    stroke-opacity: 0.1;
+  }
 
-    .voronoi {
-      fill: none;
-      stroke: none;
-      stroke-width: 1px;
-    }
+  .voronoi {
+    fill: none;
+    stroke: none;
+    stroke-width: 1px;
+  }
 
-    .highlight {
-      opacity: 1 !important;
-      stroke: red !important;
-      stroke-width: 2px !important;
-      stroke-opacity: 0.8 !important;
-    }
+  .highlight {
+    opacity: 1 !important;
+    stroke: red !important;
+    stroke-width: 2px !important;
+    stroke-opacity: 0.8 !important;
+  }
 
-    g#voronoi {
-      pointer-events: all;
-    }
+  g#voronoi {
+    pointer-events: all;
+  }
 
-    /* shadow trick from bl.ocks.org */
-    #tooltipD3 {
-      font-size: 11px;
-      font-weight: 900;
-      fill: white;
-      text-shadow: 1px 1px 0 #252525, 1px -1px 0 #252525, -1px 1px 0 #252525, -1px -1px 0 #252525;
-    }
+  /* shadow trick from bl.ocks.org */
+  #tooltipD3 {
+    font-size: 11px;
+    font-weight: 900;
+    fill: white;
+    text-shadow: 1px 1px 0 #252525, 1px -1px 0 #252525, -1px 1px 0 #252525, -1px -1px 0 #252525;
+  }
 </style>
 
 <!-- Strange Styles -->
 <style>
-  .alpha {
-    height: 10px;
-    width: 10px;
-    background: #00FAF8;
+.alpha {
+  height: 10px;
+  width: 10px;
+  background: #00FAF8;
+}
+.numeric {
+  height: 10px;
+  width: 10px;
+  background: #F500C4;
+}
+.other {
+  height: 10px;
+  width: 10px;
+  background: #FFD10D;
+}
+  .axis text {
+    font: 10px sans-serif;
   }
-  .numeric {
-    height: 10px;
-    width: 10px;
-    background: #F500C4;
+  .chartTitle {
+    font-size: 12px;
+    font-weight: bold;
+    text-anchor: middle;
   }
-  .other {
-    height: 10px;
-    width: 10px;
-    background: #FFD10D;
+  .axis .title {
+    font-weight: bold;
+    text-anchor: middle;
   }
-    .axis text {
-      font: 10px sans-serif;
-    }
-    .chartTitle {
-      font-size: 12px;
-      font-weight: bold;
-      text-anchor: middle;
-    }
-    .axis .title {
-      font-weight: bold;
-      text-anchor: middle;
-    }
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
-    }
-    .x.axis path {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
-    }
-    .nav .area {
-      fill: lightgrey;
-      stroke-width: 0px;
-    }
-    .nav .line {
-      fill: none;
-      stroke: darkgrey;
-      stroke-width: 1px;
-    }
-    .viewport {
-      stroke: grey;
-      fill: black;
-      fill-opacity: 0.3;
-    }
-    .viewport .extent {
-      fill: green;
-    }
-    .well {
-      padding-top: 0px;
-      padding-bottom: 0px;
-    }
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .x.axis path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  .nav .area {
+    fill: lightgrey;
+    stroke-width: 0px;
+  }
+  .nav .line {
+    fill: none;
+    stroke: darkgrey;
+    stroke-width: 1px;
+  }
+  .viewport {
+    stroke: grey;
+    fill: black;
+    fill-opacity: 0.3;
+  }
+  .viewport .extent {
+    fill: green;
+  }
+  .well {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 </style>
 
 <!--
-    A Strange Class
+  A Strange Class
 -->
 <script src="realTimeChartMulti.js"></script>
-<script>
-    class StrangeClass {
+<script defer>
+  class StrangeClass {
 
-        constructor(options = {}) {
-            Object.assign(this, options);
+      constructor(options = {}) {
+          Object.assign(this, options);
 
-            // Throw Err If Identity Cannot Be Established
-            // A Strange Class Will Continue As Anonymous User
-            if (!this.ip) throw new Error('Strange-Class issue. You must be using a more complex security implementation! Good job!');
+          // Throw Err If Identity Cannot Be Established
+          // A Strange Class Will Continue As Anonymous User
+          if (!this.ip) throw new Error('Strange-Class issue. You must be using a more complex security implementation! Good job!');
 
-            // Declare Chart
-            const chart = realTimeChartMulti()
-                .title("Strange Class")
-                .yTitle("Categories")
-                .xTitle("Time")
-                .yDomain(["Mouse Movements", "Mouse Clicks", "Keyclicks"]) // initial y domain (note array)
-                .border(true)
-                .width(900)
-                .height(350);
-            this.chart = chart;
+          // Declare Chart
+          const chart = realTimeChartMulti()
+              .title("Strange Class")
+              .yTitle("Categories")
+              .xTitle("Time")
+              .yDomain(["Mouse Movements", "Mouse Clicks", "Keyclicks"]) // initial y domain (note array)
+              .border(true)
+              .width(900)
+              .height(350);
+          this.chart = chart;
 
-            // Invoke Chart
-            d3.select("#viewDiv").append("div")
-                .attr("id", "chartDiv")
-                .call(this.chart);
+          // Invoke Chart
+          d3.select("#viewDiv").append("div")
+              .attr("id", "chartDiv")
+              .call(this.chart);
 
-            // Debug
-            d3.select("#debug").on("change", function() {
-                var state = d3.select(this).property("checked")
-                chart.debug(state);
-            })
+          // Debug
+          d3.select("#debug").on("change", function() {
+              var state = d3.select(this).property("checked")
+              chart.debug(state);
+          })
 
-            // Halt
-            d3.select("#halt").on("change", function() {
-                var state = d3.select(this).property("checked");
-                chart.halt(state);
-            })
+          // Halt
+          d3.select("#halt").on("change", function() {
+              var state = d3.select(this).property("checked");
+              chart.halt(state);
+          })
 
-            this.tx = 5; // time constant, multiple of one second
-            this.meanMs = 1000 * this.tx; // milliseconds
-            this.dev = 200 * this.tx; // std dev
+          this.tx = 5; // time constant, multiple of one second
+          this.meanMs = 1000 * this.tx; // milliseconds
+          this.dev = 200 * this.tx; // std dev
 
-            // This map will be used to store
-            // user interactions with various
-            // elements. Simply this list of
-            // actions will be used client
-            // side. And exists exclusively
-            // to demo functionality within
-            // a class of this nature. This
-            // data is not designed to be
-            // stored at this time.
-            // EXPECTED INPUT:
-            // Map key: 'div#id'
-            // Map Value:
-            // {
-            //   actions: [<string>],
-            //   count: <int>,
-            //   ??? other ideas
-            //
-            // }
-            this.interactingWith = new Map();
+          // This map will be used to store
+          // user interactions with various
+          // elements. Simply this list of
+          // actions will be used client
+          // side. And exists exclusively
+          // to demo functionality within
+          // a class of this nature. This
+          // data is not designed to be
+          // stored at this time.
+          // EXPECTED INPUT:
+          // Map key: 'div#id'
+          // Map Value:
+          // {
+          //   actions: [<string>],
+          //   count: <int>,
+          //   ??? other ideas
+          //
+          // }
+          this.interactingWith = new Map();
 
-            // Define time scale
-            this.timeScale = d3.scaleLinear()
-                .domain([300 * this.tx, 1700 * this.tx])
-                .range([300 * this.tx, 1700 * this.tx])
-                .clamp(true);
+          // Define time scale
+          this.timeScale = d3.scaleLinear()
+              .domain([300 * this.tx, 1700 * this.tx])
+              .range([300 * this.tx, 1700 * this.tx])
+              .clamp(true);
 
-            // Define function that returns normally distributed random numbers
-            this.normal = d3.randomNormal(this.meanMs, this.dev);
+          // Define function that returns normally distributed random numbers
+          this.normal = d3.randomNormal(this.meanMs, this.dev);
 
-            // Define color scale
-            this.color = {
-              keypress: {
-                alpha: '#00FAF8',
-                numeric: '#F500C4',
-                other: '#FFD10D',
-              },
-              default: '#000'
-            }
-
-            // In a normal use case, real time data would arrive through the network or some other mechanism
-            this.d = -1;
-            this.shapes = ["rect", "circle"];
-            this.timeout = 0;
-
-            // Render chart
-            this.showChart();
-
-            // Hmmm
-            this.myObj = document.getElementById('deep');
-            this.listenToEvents();
-
-        }
-
-        checkType(character) {
-          if (character) {
-            if (character.length <= 1) {
-                if (character.toUpperCase() != character.toLowerCase()) {
-                    return "alpha";
-                }
-                else if (!isNaN(character)) {
-                    return "numeric";
-                } else{
-                    return "other";
-                }
-            }
+          // Define color scale
+          this.color = {
+            keypress: {
+              alpha: '#00FAF8',
+              numeric: '#F500C4',
+              other: '#FFD10D',
+            },
+            default: '#000'
           }
-        }
 
-        listenToEvents() {
-          for (const key in this.myObj) {
-            if (key.search('on') === 0) {
-              this.myObj.addEventListener(key.slice(2), event => {
-                this.processEvent(event);
-              });
-            }
-          }
-        }
+          // In a normal use case, real time data would arrive through the network or some other mechanism
+          this.d = -1;
+          this.shapes = ["rect", "circle"];
+          this.timeout = 0;
 
-        processEvent(event) {
-          // If not includes these
-          // Skippable event types
-          // let's fill this chart
-          if (![
-            'animationiteration','animationstart','animationend',
-            'transitionrun','transitionend','transitionend'
-          ].includes(event.type)) {
+          // Render chart
+          this.showChart();
 
-            // Debug
-            // console.log(event.type)
+          // Hmmm
+          this.myObj = document.getElementById('deep');
+          this.listenToEvents();
 
-            // Bool to assist in tracking matches
-            let eventFound = false;
+      }
 
-            // Time now
-            const now = new Date();
-
-            // Object Declare
-            const obj = {
-              // Complex data item; four attributes (type, color, opacity and size) are changing dynamically with each iteration (as an example)
-              time: now,
-              color: this.color.default,
-              opacity: .5, // TODO Length of press ?
-              tooltip: '',
-              category: '',
-              type: "rect",
-              size: 5, // TODO Not sure what this scales with ?
-            };
-
-
-            // Switch to define object category
-            switch (event.type) {
-              case 'mousemove':
-                obj.category = 'Mouse Movements';
-                obj.tooltip = `
-                  X: ${event.pageX}<br>
-                  Y: ${event.pageY}<br>
-                  Modifiers: ${ event.shiftKey ? 'Shift' : '' } ${ event.ctrlKey ? 'Ctrl' : '' }
-                `;
-                eventFound = true;
-                break;
-              case 'mouseover':
-                const key = `${event.target.tagName.toLowerCase()}${event.target.id ? '#' + event.target.id : '' }`
-                const mapResponse = this.interactingWith.get(key);
-                let entry;
-                if (mapResponse) {
-                  entry = mapResponse;
-                  entry.count = entry.count + 1;
-                  entry.actions.push('MOUSEOVER');
-                } else entry =  {
-                  actions: ['MOUSEOVER'],
-                  count: 1
-                }
-                this.interactingWith.set(key, entry);
-                break;
-              case 'click':
-                const cKey = `${event.path[0].tagName.toLowerCase()}${event.path[0].id ? '#' + event.path[0].id : '' }`
-                obj.category = 'Mouse Clicks';
-                obj.tooltip = `
-                  X: ${event.pageX}<br>
-                  Y: ${event.pageY}<br>
-                  Modifiers: ${ event.shiftKey ? 'Shift' : '' } ${ event.ctrlKey ? 'Ctrl' : '' }<br>
-                  Target: ${cKey}
-                `;
-                eventFound = true;
-                break;
-              case 'keypress':
-                obj.category = 'Keyclicks';
-                obj.color = this.color['keypress'][this.checkType(event.key)];
-                obj.tooltip = `
-                  Key: ${event.key}<br>
-                  Code: ${event.code}<br>
-                  Modifiers: ${ event.shiftKey ? 'Shift' : '' } ${ event.ctrlKey ? 'Ctrl' : '' }
-                `;
-                eventFound = true;
-                break;
-              case 'moretypesifneeded':
-                eventFound = true;
-
-                break;
-            }
-
-            // Update favorite
-            let highest = 0;
-            let result = "This is a rare message. +170 EXP. You found the Master Sword.";
-            Array.from(this.interactingWith).forEach((item) => {
-              if (item[1].count > highest) {
-                highest = item[1].count;
-                result = item[0];
+      checkType(character) {
+        if (character) {
+          if (character.length <= 1) {
+              if (character.toUpperCase() != character.toLowerCase()) {
+                  return "alpha";
               }
-            })
-            let entry = `${result} - Visited ${highest} Times`;
-            let bonusEntry;
-            if (highest >= 10 && highest < 20) bonusEntry = '. You really seem to like that element.';
-            if (highest >= 20 && highest < 30) bonusEntry = ". Ha! Look at them go!";
-            if (highest >= 30 && highest < 40) bonusEntry = '. Mmhm. Yep, it is not going anywhere..';
-            if (highest >= 40 && highest < 50) bonusEntry = ". -sweat emoji- There is a lot more to look at...";
-            if (highest >= 50) bonusEntry = ". ";
-            if (bonusEntry) entry = entry + bonusEntry;
-            document.getElementById('favorite').innerHTML = entry;
+              else if (!isNaN(character)) {
+                  return "numeric";
+              } else{
+                  return "other";
+              }
+          }
+        }
+      }
 
-            // Send the datum to the chart if found
-            if (eventFound) this.chart.datum(obj);
+      listenToEvents() {
+        for (const key in this.myObj) {
+          if (key.search('on') === 0) {
+            this.myObj.addEventListener(key.slice(2), event => {
+              this.processEvent(event);
+            });
+          }
+        }
+      }
 
+      processEvent(event) {
+        // If not includes these
+        // Skippable event types
+        // let's fill this chart
+        if (![
+          'animationiteration','animationstart','animationend',
+          'transitionrun','transitionend','transitionend'
+        ].includes(event.type)) {
+
+          // Debug
+          // console.log(event.type)
+
+          // Bool to assist in tracking matches
+          let eventFound = false;
+
+          // Time now
+          const now = new Date();
+
+          // Object Declare
+          const obj = {
+            // Complex data item; four attributes (type, color, opacity and size) are changing dynamically with each iteration (as an example)
+            time: now,
+            color: this.color.default,
+            opacity: .5, // TODO Length of press ?
+            tooltip: '',
+            category: '',
+            type: "rect",
+            size: 5, // TODO Not sure what this scales with ?
+          };
+
+
+          // Switch to define object category
+          switch (event.type) {
+            case 'mousemove':
+              obj.category = 'Mouse Movements';
+              obj.tooltip = `
+                X: ${event.pageX}<br>
+                Y: ${event.pageY}<br>
+                Modifiers: ${ event.shiftKey ? 'Shift' : '' } ${ event.ctrlKey ? 'Ctrl' : '' }
+              `;
+              eventFound = true;
+              break;
+            case 'mouseover':
+              const key = `${event.target.tagName.toLowerCase()}${event.target.id ? '#' + event.target.id : '' }`
+              const mapResponse = this.interactingWith.get(key);
+              let entry;
+              if (mapResponse) {
+                entry = mapResponse;
+                entry.count = entry.count + 1;
+                entry.actions.push('MOUSEOVER');
+              } else entry =  {
+                actions: ['MOUSEOVER'],
+                count: 1
+              }
+              this.interactingWith.set(key, entry);
+              break;
+            case 'click':
+              const cKey = `${event.composedPath()[0].tagName.toLowerCase()}${event.path[0].id ? '#' + event.path[0].id : '' }`
+              obj.category = 'Mouse Clicks';
+              obj.tooltip = `
+                X: ${event.pageX}<br>
+                Y: ${event.pageY}<br>
+                Modifiers: ${ event.shiftKey ? 'Shift' : '' } ${ event.ctrlKey ? 'Ctrl' : '' }<br>
+                Target: ${cKey}
+              `;
+              eventFound = true;
+              break;
+            case 'keypress':
+              obj.category = 'Keyclicks';
+              obj.color = this.color['keypress'][this.checkType(event.key)];
+              obj.tooltip = `
+                Key: ${event.key}<br>
+                Code: ${event.code}<br>
+                Modifiers: ${ event.shiftKey ? 'Shift' : '' } ${ event.ctrlKey ? 'Ctrl' : '' }
+              `;
+              eventFound = true;
+              break;
+            case 'moretypesifneeded':
+              eventFound = true;
+
+              break;
           }
 
+          // Update favorite
+          let highest = 0;
+          let result = "This is a rare message. +170 EXP. You found the Master Sword.";
+          Array.from(this.interactingWith).forEach((item) => {
+            if (item[1].count > highest) {
+              highest = item[1].count;
+              result = item[0];
+            }
+          })
+          let entry = `${result} - Visited ${highest} Times`;
+          let bonusEntry;
+          if (highest >= 10 && highest < 20) bonusEntry = '. You really seem to like that element.';
+          if (highest >= 20 && highest < 30) bonusEntry = ". Ha! Look at them go!";
+          if (highest >= 30 && highest < 40) bonusEntry = '. Mmhm. Yep, it is not going anywhere..';
+          if (highest >= 40 && highest < 50) bonusEntry = ". -sweat emoji- There is a lot more to look at...";
+          if (highest >= 50) bonusEntry = ". ";
+          if (bonusEntry) entry = entry + bonusEntry;
+          document.getElementById('favorite').innerHTML = entry;
+
+          // Send the datum to the chart if found
+          if (eventFound) this.chart.datum(obj);
+
         }
 
-        showChart() {
-            document.getElementById('svgF').style.display = 'none';
-            document.getElementById('debugContainer').style.display = 'inline';
-            document.getElementById('haltContainer').style.display = 'inline';
-            document.getElementById('viewDiv').style.display = 'block';
-        }
+      }
 
-        sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+      showChart() {
+          document.getElementById('svgF').style.display = 'none';
+          document.getElementById('debugContainer').style.display = 'inline';
+          document.getElementById('haltContainer').style.display = 'inline';
+          document.getElementById('viewDiv').style.display = 'block';
+      }
 
-    }
+      sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+      }
 
-    let peculiarities;
-    function initStrangeties(json) {
-        peculiarities = new StrangeClass({
-            ip: json.ip,
-            svg: d3.select("svg"),
-        });
-        document.getElementById('ip').innerHTML = json.ip;
-    }
+  }
+
+  let peculiarities;
+  function initStrangeties(json) {
+      peculiarities = new StrangeClass({
+          ip: json.ip,
+          svg: d3.select("svg"),
+      });
+      document.getElementById('ip').innerHTML = json.ip;
+  }
 
 </script>
-<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=initStrangeties"></script>
+<script defer type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=initStrangeties"></script>

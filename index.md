@@ -1,7 +1,7 @@
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/about-this-dev/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/about-this-dev/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/about-this-dev/assets/favicon.ico">
 
 <!-- Manifest -->
 <link rel="manifest" href="/site.webmanifest">
@@ -10,12 +10,12 @@
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 
 <!-- Bootstrap -->
-<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link defer href="assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 
 
 <!-- Load Base SCSS File -->
-<link rel="stylesheet" href="./css/main.css">
+<link defer rel="stylesheet" href="./css/main.css">
 
 
 <!-- Localization SECTION <3 -->
@@ -29,7 +29,7 @@
     </select>
 </div>
 
-<script type="module">
+<script defer type="module">
     import { get_localization } from './assets/localization.js';
 
     // Set Localization Object to Window
@@ -184,11 +184,11 @@
             <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-orlando">
                 <img class="hover-friends"
                     src="assets/LI-In-Bug.png" alt="Linked In Hyperlink Image" style="
-                    float: right; max-width: 66px;
+                    float: right; width: 52px; height: 29px;
                     padding: 5px 15px;
                     border: 1px solid #155799;
                     background: rgba(21, 87, 153, .05);
-                    border-radius: 5px; max-height: 29.06px;">
+                    border-radius: 5px;">
             </a>
         </h3>
         <div id="about"> Hi, I'm Matthew. I do solo and agile full-stack stuff and things from behind some monitors. In my free time, I like to enjoy time with my wife and friends. I also enjoy activities such as Twitch/YouTube, code tinkering,
@@ -251,7 +251,7 @@
             <i class="fa-solid fa-volume-high tts" role="button" title="Employment information text-to-speech." tabindex="0"
             aria-label="Employment information text-to-speech." onclick="speak('employment')"></i>
             <a style="position: absolute; right: 0px;" href="mailto: info@10xts.com">
-                <img src="assets/10xts.png" alt="Mail to 10XTS Hyperlink Image" style=" float: right; max-width: 66px;
+                <img src="assets/10xts.png" alt="Mail to 10XTS Hyperlink Image" style=" float: right; width: 66px; height: 29px;
     padding: 5px 15px;
     border: 1px solid #155799;
     background: rgba(21, 87, 153, .05);
@@ -294,7 +294,7 @@
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px; flex-wrap: wrap;">
-    <div class="row-logo" style="background-image:url('assets/America_Monochromatic.svg');"></div>
+    <div class="row-logo" style="background-image:url('assets/America_Monochromatic.webp');"></div>
     <div class="row-item flex-grow">
         <h3>Bits & Bobs
             <i class="fa-solid fa-volume-high tts" role="button" title="ARCGIS mapping text-to-speech." tabindex="0"

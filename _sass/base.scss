@@ -15,6 +15,7 @@
 @font-face {
     font-family: "Roboto";
     src: url("/about-this-dev/assets/fonts/Roboto-Regular.ttf");
+    font-display: swap;
 }
 
 body {
@@ -123,7 +124,7 @@ body {
 }
 
 .page-header {
-    background-image: url('../assets/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg') !important;
+    background-image: url('../assets/clouds-bg-0001.webp') !important;
     background-size: 130%;
     background-repeat: repeat;
     background-position: 0 0;
@@ -393,7 +394,7 @@ ul li {
 }
 
 .tooltip-bottom {
-    top: 50%;
+    top: 75%;
     left: 50%;
     margin-left: -60px;
 }
@@ -478,7 +479,7 @@ ul li {
 }
 
 .footer-stuffs {
-    background: url('../assets/Landscape-agriculture.svg');
+    background: url('../assets/Landscape-agriculture.webp');
     background-size: cover;
     height: 400px;
     overflow: hidden;
