@@ -179,8 +179,8 @@
     <div class="row-logo" style="background-image:url('assets/Watermelon_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3 style="position: relative;">Matthew Grady ☕
-            <i class="fa-solid fa-volume-high tts" role="button" title="Introduction text-to-speech." tabindex="0"
-                aria-label="Introduction text-to-speech." onclick="speak('about')"></i>
+            <span class="tts" role="button" title="Introduction text-to-speech." tabindex="0"
+                aria-label="Introduction text-to-speech." onclick="speak('about')">🔊</span>
             <a style="position: absolute; right: 0px;" href="https://linkedin.com/in/matthew-grady-orlando">
                 <img class="hover-friends"
                     src="assets/LI-In-Bug.png" alt="Linked In Hyperlink Image" style="
@@ -248,8 +248,8 @@
     <div class="row-logo" style="background-image:url('assets/Statue of liberty_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3 style="position: relative;">10XTS
-            <i class="fa-solid fa-volume-high tts" role="button" title="Employment information text-to-speech." tabindex="0"
-            aria-label="Employment information text-to-speech." onclick="speak('employment')"></i>
+            <span class="tts" role="button" title="Employment information text-to-speech." tabindex="0"
+            aria-label="Employment information text-to-speech." onclick="speak('employment')">🔊</span>
             <a style="position: absolute; right: 0px;" href="mailto: info@10xts.com">
                 <img src="assets/10xts.png" alt="Mail to 10XTS Hyperlink Image" style=" float: right; width: 66px; height: 29px;
     padding: 5px 15px;
@@ -271,8 +271,8 @@
     <div class="row-item">
         <h3>Stuff & Things (But not limited to)
 
-            <i class="fa-solid fa-volume-high tts" role="button" title="Listen to Job Skills" tabindex="0"
-            aria-label="Listen to Job Skills" onclick="speak('jobSkills')"></i>
+            <span class="tts" role="button" title="Listen to Job Skills" tabindex="0"
+            aria-label="Listen to Job Skills" onclick="speak('jobSkills')">🔊</span>
         </h3>
         <ul id="jobSkills" style="list-style-position: inside; padding: 0px;">
             <li>Linux, MacOS and Windows</li>
@@ -297,8 +297,8 @@
     <div class="row-logo" style="background-image:url('assets/America_Monochromatic.webp');"></div>
     <div class="row-item flex-grow">
         <h3>Bits & Bobs
-            <i class="fa-solid fa-volume-high tts" role="button" title="ARCGIS mapping text-to-speech." tabindex="0"
-            aria-label="ARCGIS mapping text-to-speech." onclick="speak('bobs')"></i>
+            <span class="tts" role="button" title="ARCGIS mapping text-to-speech." tabindex="0"
+            aria-label="ARCGIS mapping text-to-speech." onclick="speak('bobs')">🔊</span>
         </h3>
         <div id="bobs">
             Explore strange new worlds using ARCGIS.
@@ -317,8 +317,8 @@
     <div class="row-logo" style="background-image:url('assets/Spotlight _Monochromatic.svg');"></div>
     <div class="row-item" style="flex: 1;">
         <h3>Curiosity Chart
-            <i class="fa-solid fa-volume-high tts" role="button" title="D3 charting text-to-speech." tabindex="0"
-            aria-label="D3 charting text-to-speech." onclick="speak('d3')"></i>
+            <span class="tts" role="button" title="D3 charting text-to-speech." tabindex="0"
+            aria-label="D3 charting text-to-speech." onclick="speak('d3')">🔊</span>
         </h3>
         <div id="d3">
             Check out this D3 sandbox.
@@ -331,8 +331,8 @@
     <div class="row-logo" style="background-image:url('assets/Brainstorming session _Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Special Thanks
-            <i class="fa-solid fa-volume-high tts" role="button" title="Special thanks text-to-speech." tabindex="0"
-            aria-label="Special thanks text-to-speech." onclick="speak('special')"></i>
+            <span class="tts" role="button" title="Special thanks text-to-speech." tabindex="0"
+            aria-label="Special thanks text-to-speech." onclick="speak('special')">🔊</span>
         </h3>
         <div id="special">
             My wife, my parents, the open-source community, the great people of my great home State of Florida, my friends, my family, my
@@ -347,8 +347,8 @@
     <div class="row-logo" style="background-image:url('assets/Web Developer_Monochromatic.svg');"></div>
     <div class="row-item">
         <h3>Final Thoughts
-            <i class="fa-solid fa-volume-high tts" role="button" title="Accessibility text-to-speech." tabindex="0"
-            aria-label="Accessibility text-to-speech." onclick="speak('accessibility')"></i>
+            <span class="tts" role="button" title="Accessibility text-to-speech." tabindex="0"
+            aria-label="Accessibility text-to-speech." onclick="speak('accessibility')">🔊</span>
         </h3>
         <div id="accessibility">
             This page is WCAG 2.1 Level AA compliant. In 2018, Section 508 was officially updated to include new requirements that reflect technological developments. These requirements alongside the requirements of the ADA and WCAG 2.0 directly benefit users who have accessibility needs due to disabilities. They then represent crucial tools with which we can build a better and more inclusive web. This page attempts to integrate these concepts.
