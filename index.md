@@ -294,7 +294,7 @@
     margin: 0px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 50px; flex-wrap: wrap;">
-    <div class="row-logo" style="background-image:url('assets/America_Monochromatic.webp');"></div>
+    <div class="row-logo" style="background-image:url('assets/America_Monochromatic.svg');"></div>
     <div class="row-item flex-grow">
         <h3>Bits & Bobs
             <span class="tts" role="button" title="ARCGIS mapping text-to-speech." tabindex="0"
