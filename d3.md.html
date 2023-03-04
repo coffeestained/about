@@ -1210,7 +1210,7 @@ window.asset_data = get_data();
               this.interactingWith.set(key, entry);
               break;
             case 'click':
-              const cKey = `${event.composedPath()[0].tagName.toLowerCase()}${event.path[0].id ? '#' + event.path[0].id : '' }`
+              const cKey = `${event.composedPath()[0].tagName.toLowerCase()}${event.composedPath()[0].id ? '#' + event.composedPath()[0].id : '' }`
               obj.category = 'Mouse Clicks';
               obj.tooltip = `
                 X: ${event.pageX}<br>
